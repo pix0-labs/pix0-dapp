@@ -2,6 +2,8 @@ import { FC, useState, useEffect, useCallback } from "react";
 import { Collection } from "pix0-js-arch-test";
 import { useCollectionContract } from "pix0-react2-arch-test";
 
+
+
 type props = {
     owner? : string, 
 }
@@ -48,5 +50,6 @@ export const CollectionView : FC <props> = ({
             })
         }
 
+        <p></p>
     </div>
 }
