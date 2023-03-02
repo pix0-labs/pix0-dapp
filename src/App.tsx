@@ -1,24 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
+import { CollectionView } from './views/CollectionView';
+//import { ItemsView } from 'pix0-react2-arch-test';
+//import { CollectionView } from 'pix0-react2-arch-test';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{textAlign:"left"}}>
+      <CollectionView owner="archway12pcytur9del2t5wm93t8kuqakvf9yk9wzt4w0x"/>
     </div>
   );
 }
