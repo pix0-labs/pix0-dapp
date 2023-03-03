@@ -19,7 +19,7 @@ export const ConnectWalletButton : FC = () =>{
     }}>    
     Connect Wallet
     </button><br/>
-    <button style={{background:"#375",color:"white",width:"150px",
+    <button style={{background:"#375",color:"white",width:"250px",
     padding:"10px",margin:"10px", borderRadius:"20px",border:"0px", cursor:"pointer"}}
     onClick={async (e)=>{
 
