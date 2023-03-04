@@ -3875,7 +3875,7 @@ css-has-pseudo@^3.0.4:
   dependencies:
     postcss-selector-parser "^6.0.9"
 
-css-loader@^6.5.1:
+css-loader@^6.5.1, css-loader@^6.7.3:
   version "6.7.3"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-6.7.3.tgz#1e8799f3ccc5874fdd55461af51137fcc5befbcd"
   integrity sha512-qhOH1KlBMnZP8FzRO6YCH9UHXQhVMcEGLyNdb7Hv2cpcmJbW0YrddO+tG1ab5nT41KpHIYGsbeHqxB9xPu1pKQ==
@@ -7521,31 +7521,33 @@ pirates@^4.0.4:
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
-pix0-js-arch-test@^1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/pix0-js-arch-test/-/pix0-js-arch-test-1.0.14.tgz#728d803b2f7de47bcdbbd817c57412f4184d932d"
-  integrity sha512-VI8hqMl6MnPFaWpMwkOupLBcJvOiep1jFK+ARiCxzB66a7Gdwvm1aKMJ8H/TfReVNmKKp5s0q2yQfiFiXE/F2Q==
+pix0-js-arch-test@^1.0.16:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/pix0-js-arch-test/-/pix0-js-arch-test-1.0.16.tgz#02ad722b9ce45031523dc2dff93df13d0ad04a19"
+  integrity sha512-Z7kf7+Sp0PmuIbD4c7t2zhTS2v0hoppzUu6rmkRxCjpkN+it4Y8rIkVQ97ifHvZ7wKcMq4oVjwpntSK35wE2Ug==
   dependencies:
     "@archwayhq/arch3.js" "^0.1.0"
     "@cosmjs/proto-signing" "^0.29.5"
     "@cosmjs/stargate" "^0.29.5"
 
-pix0-react2-arch-test@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.2.4.tgz#ea3fb9daa3641d4f517a049b22769e919ec67869"
-  integrity sha512-4ATi77SzyAoNT+0YFfHnA8pa6nKsy+j8FlskZCvie78o5bQbDlgrTUHaw9DW0zCZbciQOZGkBT9E1tNm8pSckQ==
+pix0-react2-arch-test@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.2.6.tgz#1f43fce954336f2687edb098e8c30dfc4dcad8a7"
+  integrity sha512-+upogosniXA9tOhJnhquD9+KsLZO9xsW0b2w9zXjnC378fm4tOV1IGoa/wjXBEslPjDvr2Ae6HkR/SdCiEp9AQ==
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
     crypto-browserify "^3.12.0"
+    css-loader "^6.7.3"
     dotenv-webpack "^8.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js-arch-test "^1.0.14"
+    pix0-js-arch-test "^1.0.16"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"
     stream-http "^3.2.0"
+    style-loader "^3.3.1"
 
 pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   version "4.2.0"
