@@ -1,6 +1,7 @@
 import { ItemsView } from 'pix0-react2-arch-test';
 import { CollectionView } from 'pix0-react2-arch-test';
 import { MintButton, ConnectButton, BalanceView} from 'pix0-react2-arch-test';
+import copyIcon from './images/copy.png';
 
 import './App.css';
 
@@ -9,7 +10,8 @@ function App() {
     <div className="App" style={{textAlign:"left"}}>
       <ConnectButton experimental={true}/>
       <p>&nbsp;</p>
-      <BalanceView displayDecimals={3}/>
+      <BalanceView displayDecimals={3} copyIcon={<img src={copyIcon} 
+      style={{marginLeft:"4px",width:"20px",height:"20px"}}/>}/>
       <CollectionView owner="archway12pcytur9del2t5wm93t8kuqakvf9yk9wzt4w0x"/>
       <p>Collection View 2::<br/>
       <CollectionView owner="archway12pcytur9del2t5wm93t8kuqakvf9yk9wzt4w0x"/>
