@@ -16,7 +16,8 @@ export const View : FC = () =>{
       </p>
 
 
-      <MintButton/>
+      <MintButton collection_owner="archway12pcytur9del2t5wm93t8kuqakvf9yk9wzt4w0x" collection_name='Test NFT Collection 2'
+      collection_symbol='TNFT2'/>
       <p>Items::</p>
       { <ItemsView owner="archway12pcytur9del2t5wm93t8kuqakvf9yk9wzt4w0x" collection_name='Test NFT Collection 2'
       collection_symbol='TNFT2'/>  }
