@@ -15,7 +15,9 @@ export const ConnectWalletView : FC = () =>{
     </div>
 
     <ConnectButton connectedCallback={()=>{
+        
         setWalletConnected();
+    
     }}/>
     </div>
 }

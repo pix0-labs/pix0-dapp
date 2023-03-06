@@ -20,7 +20,7 @@ const INIT_STATE : WalletState = {
 export const WalletReducer = (state : WalletState = INIT_STATE, 
     action : WalletActions.WalletAction ) : WalletState => {
 
- 
+  
     switch(action.type) {
 
         case WalletActions.CONNECTED :
@@ -31,12 +31,14 @@ export const WalletReducer = (state : WalletState = INIT_STATE,
 
         case WalletActions.DISCONNECTED :
 
-        console.log("wallet.action.dis.connected", action.connected);
-        return {...state, connected : action.connected, 
+            console.log("wallet.action.dis.connected", action.connected);
+            return {...state, connected : action.connected, 
                 dateUpdated : new Date() };
 
             
         default :
+
+        console.log("unknwon.action::", action.type);
 
             return state; 
     }

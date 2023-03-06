@@ -26,7 +26,7 @@ export default function useWalletState() {
 
     useEffect(()=>{
 
-        if (isWalletConnected()){
+      if (isWalletConnected()){
 
             setWalletConnected();
         }
