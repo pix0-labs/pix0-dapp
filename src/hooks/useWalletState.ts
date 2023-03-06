@@ -2,6 +2,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Dispatch } from "redux";
 import { useCallback, useEffect} from "react";
 import { WalletState } from "../sm/WalletStateReducer";
+import { isWalletConnected } from "pix0-react2-arch-test";
 import { setWalletConnected as walletAsConnected, setWalletDisconnected as walletDisconnected} from "../sm/WalletActions";
 
 
@@ -23,6 +24,18 @@ export default function useWalletState() {
 
     const walletConnected : boolean|undefined = walletState.connected;
 
+    useEffect(()=>{
+
+        if (isWalletConnected()){
+
+            setWalletConnected();
+        }
+        else {
+
+            setWalletDisonnected();
+        }
+
+    },[isWalletConnected()]);
 
     return {walletConnected, setWalletConnected, setWalletDisonnected} as const;
 
