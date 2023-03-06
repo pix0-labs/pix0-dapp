@@ -31,7 +31,7 @@ export const SideBar : FC = () =>{
                 <div className="inline-flex justify-center w-20">
                     <FiGift/>
                 </div>
-                <div className="text-center text-xs font-normal ">Collectibles</div>
+                <div className="text-center text-xs font-normal">Collectibles</div>
             </a>
 
             <a onClick={()=>{
@@ -41,7 +41,7 @@ export const SideBar : FC = () =>{
                 <div className="inline-flex justify-center w-20">
                     <FiImage/>
                 </div>
-                <div className="text-center text-xs font-normal ">Mint NFT</div>
+                <div className="text-center text-xs font-normal">Mint NFT</div>
             </a>
 
             <a onClick={()=>{
@@ -50,7 +50,7 @@ export const SideBar : FC = () =>{
                 <div className="inline-flex justify-center w-20">
                     <FiShoppingCart/>
                 </div>
-                <div className="text-center text-xs font-normal ">Buy NFT</div>
+                <div className="text-center text-xs font-normal">Market</div>
             </a>
 
             <a onClick={()=>{
@@ -59,7 +59,7 @@ export const SideBar : FC = () =>{
                    <div className="inline-flex justify-center w-20">
                     <FiTool/>
                 </div>
-                <div className="text-center text-xs font-normal ">Creator</div>
+                <div className="text-center text-xs font-normal">Create</div>
             </a>
 
         </div>
