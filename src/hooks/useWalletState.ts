@@ -27,13 +27,11 @@ export default function useWalletState() {
     useEffect(()=>{
 
       if (isWalletConnected()){
-
-            setWalletConnected();
-        }
-        else {
-
-            setWalletDisconnected();
-        }
+        setWalletConnected();
+      }
+      else {
+        setWalletDisconnected();
+      }
 
     },[isWalletConnected()]);
 

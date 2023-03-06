@@ -25,14 +25,11 @@ export const WalletReducer = (state : WalletState = INIT_STATE,
 
         case WalletActions.CONNECTION :
         
-            console.log("wallet.action.connected", action.connected);
             return {...state, connected : action.connected, 
                 dateUpdated : new Date() };
 
         default :
-
-        console.log("unknwon.action::", action.type);
-
+        
             return state; 
     }
 }
