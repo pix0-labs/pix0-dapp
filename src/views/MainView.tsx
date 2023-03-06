@@ -38,7 +38,7 @@ export const MainView : FC = () =>{
         return <MarketView/>
     }
 
-    return <div>
+    return <div className=" bg-gray-900 h-screen">
     {switchView()}
     </div>
 }

@@ -15,7 +15,7 @@ export const SideBar : FC = () =>{
 
     }
 
-    return <div className="min-h-0 flex-1 flex overflow-hidden">
+    return <div className="h-screen flex-1 flex overflow-hidden bg-gray-800">
     <nav aria-label="Sidebar" className="hidden lg:block flex-shrink-0 bg-gray-800 overflow-y-auto">
         <div className="relative w-30 flex space-y-16 flex-col p-3">
 
