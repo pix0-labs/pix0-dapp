@@ -1,4 +1,4 @@
-import { View } from './views/View';
+import { HomeView } from "./views/HomeView";
 import { Provider } from "react-redux";
 import { StateStore } from './sm/StateStore';
 import './App.css';
@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App" style={{textAlign:"left"}}>
       <Provider store={StateStore}>
-        <View/>
+        <HomeView/>
       </Provider>
     </div>
   );
