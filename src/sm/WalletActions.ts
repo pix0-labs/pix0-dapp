@@ -30,7 +30,7 @@ export function setWalletDisconnected() {
 
     const action: WalletAction = {
         type: DISCONNECTED,
-        connected: true, 
+        connected: false, 
         dateUpdated : new Date(), 
     } 
   
