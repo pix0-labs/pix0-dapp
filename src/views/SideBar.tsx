@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { FiGift, FiImage, FiShoppingCart, FiTool} from 'react-icons/fi';
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import logo from '../images/pix0_logo1.png';
@@ -16,18 +17,19 @@ export const SideBar : FC = () =>{
     }
 
     return <div className="h-screen flex-1 flex overflow-hidden bg-gray-800">
-    <nav aria-label="Sidebar" className="hidden lg:block flex-shrink-0 bg-gray-800 overflow-y-auto">
+    <nav aria-label="Sidebar" 
+    className="hidden lg:block flex-shrink-0 bg-gradient-to-r from-gray-700 to-gray-900 overflow-y-auto h-screen">
         <div className="relative w-30 flex space-y-16 flex-col p-3">
 
-            <div className="m-1">
+            <div className="m-1.5">
                 <img src={logo} className="w-24 h-auto mx-auto"/>
             </div>
 
             <a onClick={()=>{
                 setPage(Page.Collectibles);
             }} className={classNamesIfPageIs(Page.Collectibles)}>
-                <div className="flex-shrink-0 inline-flex items-center justify-center w-14">
-                    <i className="fa fa-gift"/>
+                <div className="inline-flex justify-center w-20">
+                    <FiGift/>
                 </div>
                 <div className="text-center text-xs font-normal ">Collectibles</div>
             </a>
@@ -36,8 +38,8 @@ export const SideBar : FC = () =>{
                 setPage(Page.MintNFT);
             }} className={ 
                 classNamesIfPageIs(Page.MintNFT)}>
-                <div className="flex-shrink-0 inline-flex items-center justify-center w-14">
-                    <i className="fa fa-picture-o"/>
+                <div className="inline-flex justify-center w-20">
+                    <FiImage/>
                 </div>
                 <div className="text-center text-xs font-normal ">Mint NFT</div>
             </a>
@@ -45,8 +47,8 @@ export const SideBar : FC = () =>{
             <a onClick={()=>{
                 setPage(Page.Market);
             }} className={classNamesIfPageIs(Page.Market)}>
-                <div className="flex-shrink-0 inline-flex items-center justify-center w-14">
-                    <i className="fa fa-exchange"/>
+                <div className="inline-flex justify-center w-20">
+                    <FiShoppingCart/>
                 </div>
                 <div className="text-center text-xs font-normal ">Buy NFT</div>
             </a>
@@ -54,8 +56,8 @@ export const SideBar : FC = () =>{
             <a onClick={()=>{
                 setPage(Page.CreateCollection);
             }} className={classNamesIfPageIs(Page.CreateCollection)}>
-                <div className="flex-shrink-0 inline-flex items-center justify-center w-14">
-                    <i className="fa fa-file-image-o"/>
+                   <div className="inline-flex justify-center w-20">
+                    <FiTool/>
                 </div>
                 <div className="text-center text-xs font-normal ">Creator</div>
             </a>
