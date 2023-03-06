@@ -1,6 +1,4 @@
-export const CONNECTED = "CONNECTED";
-
-export const DISCONNECTED = "DISCONNECTED";
+export const CONNECTION = "CONNECTIOM";
 
 export type WalletAction = {
 
@@ -13,26 +11,14 @@ export type WalletAction = {
 }
 
 
-export function setWalletConnected() {
+export function setWalletConnected(connected : boolean) {
 
     const action: WalletAction = {
-        type: CONNECTED,
-        connected: true, 
+        type: CONNECTION,
+        connected: connected, 
         dateUpdated : new Date(), 
     } 
   
     return action;
 }
 
-
-
-export function setWalletDisconnected() {
-
-    const action: WalletAction = {
-        type: DISCONNECTED,
-        connected: false, 
-        dateUpdated : new Date(), 
-    } 
-  
-    return action;
-}
