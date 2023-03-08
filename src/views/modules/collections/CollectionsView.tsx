@@ -1,7 +1,7 @@
 import { FC , useState} from "react";
 import { CollectionsListView } from "./CollectionsListView";
 import { CollectionForm } from "./CollectionForm";
-import { View } from "../../View";
+import { FiPlusCircle} from 'react-icons/fi';
 
 export enum ViewType {
 
@@ -57,6 +57,6 @@ export const CollectionsView : FC  = () =>{
     className="bg-gray-600 rounded-3xl p-2" onClick={(e)=>{
         e.preventDefault();
         setViewType(ViewType.CREATE);
-    }}>Create Collection</button>
+    }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>
         {switchView()}</div>;
 }
