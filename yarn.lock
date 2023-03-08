@@ -7605,19 +7605,19 @@ pirates@^4.0.4:
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.5.tgz#feec352ea5c3268fb23a37c702ab1699f35a5f3b"
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
-pix0-js-arch-test@^1.0.34:
-  version "1.0.34"
-  resolved "https://registry.yarnpkg.com/pix0-js-arch-test/-/pix0-js-arch-test-1.0.34.tgz#2f0d520cf6a3f4610f8bd3e3e633721d0cf50887"
-  integrity sha512-9jI+YVCg5v60duzAlbhcg+vXNFYvcd1Wi5pveq8wtrB+dEH1yhrnwq4QnyQKTQpIkPxPOD/qltDTMn4/ve/fYA==
+pix0-js-arch-test@^1.0.41:
+  version "1.0.41"
+  resolved "https://registry.yarnpkg.com/pix0-js-arch-test/-/pix0-js-arch-test-1.0.41.tgz#1044c6e1d1c9316b6e57a35fd4dcfc9bfd13f7f0"
+  integrity sha512-uYwUuvgFvwtA9a0Tyc18Ewl1VV30BsX5oiGG4hIzXgzZY8ctqh21M121ov1VP8T/N1IJ/42tvhBYcUklxeYM2g==
   dependencies:
     "@archwayhq/arch3.js" "^0.1.0"
     "@cosmjs/proto-signing" "^0.29.5"
     "@cosmjs/stargate" "^0.29.5"
 
-pix0-react2-arch-test@^1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.7.2.tgz#be6d49224704e92fb8d1df08d2ab33937151b70c"
-  integrity sha512-6osFYC430GZ6HV1FOSOFkhT/c8L5NhWxnO41bx1UOCnMa+/Azvrj7vSiQcB3dFRiIa7B1wd66GyuBbUBqCifEQ==
+pix0-react2-arch-test@^1.7.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.7.4.tgz#70b15a1737ee407b860f10a518630085c8c87358"
+  integrity sha512-0tvBXKY8T3Wf45FgyhgmgvlHZlpmxtmTzjVtQ4X5kFNovmiNqVdz7Yx+gmR27Yn8GpxVvcI8QMz7CUXXqE3TmQ==
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
@@ -7627,7 +7627,7 @@ pix0-react2-arch-test@^1.7.2:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js-arch-test "^1.0.34"
+    pix0-js-arch-test "^1.0.41"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"
