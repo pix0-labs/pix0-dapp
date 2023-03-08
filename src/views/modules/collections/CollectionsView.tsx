@@ -51,11 +51,12 @@ export const CollectionsView : FC  = () =>{
         }
     }
 
-    return <div>
-    <button className="bg-gray-600 rounded-3xl p-2" onClick={(e)=>{
+    return <div className="text-left">
+    <button 
+    style={{width:"200px"}}
+    className="bg-gray-600 rounded-3xl p-2" onClick={(e)=>{
         e.preventDefault();
         setViewType(ViewType.CREATE);
-
     }}>Create Collection</button>
         {switchView()}</div>;
 }

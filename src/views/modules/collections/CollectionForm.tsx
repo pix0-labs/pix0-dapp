@@ -19,8 +19,8 @@ export const CollectionForm : FC <props>= ({
     });
 
 
-    return <div className="m-auto p-10 mt-4 border-2 border-gray-200 rounded-3xl w-5/6 text-left">
-    <form className="bg-white shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
+    return <div className="mxl-2 p-2 mt-4 border-2 rounded-xl w-5/6 text-left">
+    <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
     <div className="mt-2 mb-4 font-bold">
     {isEditMode ? "Update" : "Create"} Your Collection
     </div>
@@ -46,7 +46,9 @@ export const CollectionForm : FC <props>= ({
         }} value={collection.description}/>
     </div>
     <div className="mb-4">
-    <button className="bg-gray-600 rounded-3xl p-2" onClick={(e)=>{
+    <button className="bg-gray-600 rounded-3xl p-2" 
+    style={{width:"150px"}}
+    onClick={(e)=>{
         e.preventDefault();
 
         if ( setViewType)
