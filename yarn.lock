@@ -7614,10 +7614,10 @@ pix0-js-arch-test@^1.0.34:
     "@cosmjs/proto-signing" "^0.29.5"
     "@cosmjs/stargate" "^0.29.5"
 
-pix0-react2-arch-test@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.7.0.tgz#ab8d97d06d4d3b21b65480001cfe218131f34abb"
-  integrity sha512-3h42/3BOzaDyMBXFjObJX1S5wipUzRPT3XqR+jEOFEBPnUVNwX4YlHw1Q9BZHYzVborC94DaHggBGHiUe2jHCg==
+pix0-react2-arch-test@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.7.2.tgz#be6d49224704e92fb8d1df08d2ab33937151b70c"
+  integrity sha512-6osFYC430GZ6HV1FOSOFkhT/c8L5NhWxnO41bx1UOCnMa+/Azvrj7vSiQcB3dFRiIa7B1wd66GyuBbUBqCifEQ==
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"

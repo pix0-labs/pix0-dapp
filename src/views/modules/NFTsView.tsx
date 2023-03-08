@@ -9,7 +9,9 @@ export const NFTsView : FC = () =>{
     const {getMintedTokensByOwner} = useCollectionContract();
 
     const fetchTokens = useCallback (async () =>{
-        let nfts = await getMintedTokensByOwner();
+        let nfts = await getMintedTokensByOwner({});
+
+        console.log("Nfts...x", nfts);
         setTokens(nfts);
     }, []);
 
