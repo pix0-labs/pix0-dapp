@@ -21,7 +21,7 @@ export const CollectionsListView : FC = () =>{
     },[]);
 
     return <div className="w-10/2 p-2 overflow-x-auto">
-    <table className="table-auto w-10/12">
+    <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
         <thead>
         <tr className="bg-gray-700">    
         <th className="px-4 py-2 text-left">Name</th>
