@@ -51,10 +51,10 @@ export const CollectionsView : FC  = () =>{
         }
     }
 
-    return <div className="text-left">
+    return <div className="text-left p-4">
     <button 
     style={{width:"200px"}}
-    className="bg-gray-600 rounded-3xl p-2" onClick={(e)=>{
+    className="bg-gray-600 rounded-3xl p-2 mb-4" onClick={(e)=>{
         e.preventDefault();
         setViewType(ViewType.CREATE);
     }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>
