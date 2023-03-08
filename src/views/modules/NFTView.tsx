@@ -26,7 +26,7 @@ export const NFTView : FC <props> = ({
         fetchToken();
     },[fetchToken]);
 
-    return <div className="bg-gray-700 rounded-2xl text-left p-4 m-4 max-w-200">
+    return <div className="bg-gray-700 hover:bg-stone-800 rounded-2xl text-left w-11/12 sm:w-1/3 lg:w-1/4 px-2 py-2 m-2 shadow-3xl min-h-200">
         <div className="m-2">{token?.extension.name}</div>
         <div className="m-2"><a href={token?.extension.image}
         target="_blank"><img src={token?.extension.image} style={{maxWidth:"200px"}}/></a></div>
