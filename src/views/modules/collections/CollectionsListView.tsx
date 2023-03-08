@@ -3,7 +3,7 @@ import useCollectionContract from "pix0-react2-arch-test";
 import { Collection } from "pix0-js-arch-test";
 import { Loader} from 'pix0-react2-arch-test';
 import { CollectionRow } from "./CollectionRow";
-import { CommonMessageDiv } from "../CommonMessageDiv";
+import { CommonMessageDiv } from "../../CommonMessageDiv";
 
 export const CollectionsListView : FC = () =>{
 

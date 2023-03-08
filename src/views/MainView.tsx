@@ -4,7 +4,7 @@ import { Page } from "../sm/PageActions";
 import { MintNFTView } from "./modules/MintNFTView";
 import { MarketView } from "./modules/MarketView";
 import { CollectiblesView } from "./modules/CollectiblesView";
-import { CreateCollectionView } from "./modules/CreateCollectionView";
+import { MainView as CreateCollectionView } from "./modules/collections/MainView";
 
 export const MainView : FC = () =>{
 
