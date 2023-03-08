@@ -1,6 +1,7 @@
 import { FC , useState} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { Collection } from "pix0-js-arch-test";
+import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 
 
@@ -19,7 +20,8 @@ export const CollectionForm : FC <props>= ({
     });
 
 
-    return <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
+    return <CommonAnimatedDiv className="text-center">
+    <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
     <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
     <div className="mt-2 mb-4 font-bold">
     {isEditMode ? "Update" : "Create"} Your Collection
@@ -58,5 +60,5 @@ export const CollectionForm : FC <props>= ({
     
     </div>
     </form>
-    </div>
+    </div></CommonAnimatedDiv>
 }

@@ -4,6 +4,7 @@ import { Collection } from "pix0-js-arch-test";
 import { Loader} from 'pix0-react2-arch-test';
 import { CollectionRow } from "./CollectionRow";
 import { CommonMessageDiv } from "../../CommonMessageDiv";
+import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 
 export const CollectionsListView : FC = () =>{
 
@@ -20,7 +21,7 @@ export const CollectionsListView : FC = () =>{
         fetchCollections();
     },[]);
 
-    return <div className="w-10/2 p-2 overflow-x-auto">
+    return <CommonAnimatedDiv className="text-center"><div className="w-10/2 p-2 overflow-x-auto">
     <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
         <thead>
         <tr className="bg-gray-700">    
@@ -36,8 +37,11 @@ export const CollectionsListView : FC = () =>{
         {
             collections === undefined ?
 
-            <Loader/>
-
+            <tr>
+                <td colSpan={6} className="text-center">
+                    <Loader/>
+                </td>
+            </tr>
             :
 
             collections.length > 0 
@@ -46,8 +50,13 @@ export const CollectionsListView : FC = () =>{
                 return <CollectionRow collection={c} key={`col_${i}`}/>
             })
 
-            : <CommonMessageDiv>No collection found, create one!</CommonMessageDiv>
+            : 
+            <tr>
+                <td colSpan={6} className="text-center">
+                <CommonMessageDiv>No collection found, create one!</CommonMessageDiv>
+                </td>
+            </tr>
         }
         </tbody>
-    </table></div>
+    </table></div></CommonAnimatedDiv>
 }
