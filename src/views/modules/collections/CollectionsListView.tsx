@@ -6,6 +6,29 @@ import { CollectionRow } from "./CollectionRow";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 
+export const statusText = ( status : number) : string =>{
+
+    switch(+status){
+
+        case 0 :
+
+            return "Draft";
+
+        case 1 :
+
+            return "Active";
+
+        case 2 :
+
+            return "Deactivated";
+
+        default :
+
+            return "Draft";
+    }
+}
+
+
 export const CollectionsListView : FC = () =>{
 
     const {getCollections} = useCollectionContract();

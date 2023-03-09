@@ -25,7 +25,8 @@ export const TxHashDiv : FC <props> = ({
         else {
     
             return <CommonMessageDiv className="text-left w-4/5 p-2 bg-cyan-800 text-gray-100 rounded-2xl"
-            transitionDuration={0.32}><a href={`${TX_URL_PREFIX}${txHash}`}>{shortenStringTo(txHash,10)}</a>
+            transitionDuration={0.32}><a target="_blank" 
+            href={`${TX_URL_PREFIX}${txHash}`}>{shortenStringTo(txHash,10)}</a>
             </CommonMessageDiv>
         }
     }

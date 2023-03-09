@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Collection } from "pix0-js-arch-test";
-
+import { statusText } from "./CollectionsListView";
 
 type props = {
 
@@ -18,8 +18,8 @@ export const CollectionRow : FC <props> = ({
         <td className="px-4 py-2 text-left">{collection.name}</td>
         <td className="px-4 py-2">{collection.symbol}</td>
         <td className="px-4 py-2">{collection.description}</td>
-        <td className="px-4 py-2">0</td>
-        <td className="px-4 py-2">{collection.status}</td>
+        <td className="px-4 py-2">{"0"}</td>
+        <td className="px-4 py-2">{statusText(collection.status ?? 0)}</td>
         <td className="px-4 py-2">Action</td>
     </tr>
 }

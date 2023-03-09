@@ -55,12 +55,14 @@ export const CollectionForm : FC <props>= ({
             if ( collection.name.trim() === "") {
                 setTxHash(new Error('Name is blank!'));
                 unsetTxHash();
+                setProcessing(false);
                 return;
             }
 
             if ( collection.symbol.trim() === "") {
                 setTxHash(new Error('Symbol is blank!'));
                 unsetTxHash();
+                setProcessing(false);
                 return;
             }
 
