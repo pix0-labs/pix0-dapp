@@ -16,15 +16,15 @@ export const CollectionRow : FC <props> = ({
     collection
 }) =>{
 
-    const menu =  <Popup contentStyle={{background:"#222"}} 
+    const menu =  <Popup contentStyle={{background:"#222",minWidth:"240px"}} 
     arrowStyle={{color:"#222", border:"1px"}}
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
     trigger={<button className="bg-gray-600 hover:bg-cyan-900 rounded-3xl p-2">
     <AiOutlineMore/></button>} position="left center">
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2"><FiEdit className="mr-2 inline mb-1"/>Edit</div>
+        bg-gray-800 text-gray-200 p-2"><FiEdit className="mr-2 inline mb-1"/>Edit Collection</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2"><FiTrash className="mr-2 inline mb-1"/>Remove?</div>
+        bg-gray-800 text-gray-200 p-2"><FiTrash className="mr-2 inline mb-1"/>Remove Collection?</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2"><FiPlusCircle className="mr-2 inline mb-1"/>Add Items</div>
   </Popup>
