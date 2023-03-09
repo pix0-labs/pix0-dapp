@@ -31,8 +31,6 @@ export const CollectionsView : FC  = () =>{
 
         setViewType(viewType);
         setViewTypeParam(param);
-
-        console.log("v..", viewType, param);
     }
 
     const switchView = () =>{

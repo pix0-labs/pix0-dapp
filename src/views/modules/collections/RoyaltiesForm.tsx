@@ -39,7 +39,7 @@ export const RoyaltiesForm : FC <props> = ({
 
         let royalties = collection.royalties;
 
-        if (royalties === undefined || royalties.length === 0 ){
+        if (royalties === undefined || (royalties?.length ?? 0) === 0 ){
             royalties = [];
             let ro : Royalty = {
                 wallet : "",
@@ -172,7 +172,8 @@ export const RoyaltiesForm : FC <props> = ({
                 </td>
 
                 <td className="px-4 py-2">
-                    <FcDeleteRow className="mb-2" onClick={(e)=>{
+                    <FcDeleteRow className="mb-2" 
+                    title="Remove this row!" onClick={(e)=>{
                         e.preventDefault();
                         removeRoyaltyAt(i);
                     }}/>

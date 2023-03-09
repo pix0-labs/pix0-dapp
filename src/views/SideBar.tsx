@@ -11,14 +11,14 @@ export const SideBar : FC = () =>{
 
     const classNamesIfPageIs = ( page : Page) => {
 
-        return isPage(page) ? "text-sky-400 bg-gray-600 w-32 rounded ml-2 py-1" : 
+        return isPage(page) ? "text-sky-300 bg-gray-600 w-32 rounded ml-2 py-1" : 
         "cursor-pointer text-gray-400 hover:text-orange-300 p-2"
 
     }
 
-    return <div className="h-screen flex-1 flex overflow-hidden bg-gray-800">
+    return <div className="h-auto flex-1 flex overflow-hidden">
     <nav aria-label="Sidebar" 
-    className="hidden lg:block flex-shrink-0 bg-gradient-to-r from-gray-700 to-gray-900 overflow-y-auto h-screen">
+    className="hidden lg:block flex-shrink-0 bg-zinc-900 h-screen">
         <div className="w-64 flex space-y-16 flex-col p-1">
 
             <div className="m-1">

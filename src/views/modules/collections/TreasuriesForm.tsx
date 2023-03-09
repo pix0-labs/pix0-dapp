@@ -39,7 +39,7 @@ export const TreasuriesForm : FC <props> = ({
 
         let treasuries = collection.treasuries;
 
-        if (treasuries === undefined || treasuries.length === 0 ){
+        if (treasuries === undefined || (treasuries?.length ?? 0) === 0 ){
             treasuries = [];
             let ro : Treasury = {
                 wallet : "",
@@ -171,7 +171,7 @@ export const TreasuriesForm : FC <props> = ({
                 </td>
 
                 <td className="px-4 py-2">
-                    <FcDeleteRow className="mb-2" onClick={(e)=>{
+                    <FcDeleteRow className="mb-2" title="Remove this row!" onClick={(e)=>{
                         e.preventDefault();
                         removeTreasuryAt(i);
                     }}/>
