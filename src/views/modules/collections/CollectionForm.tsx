@@ -27,22 +27,28 @@ export const CollectionForm : FC <props>= ({
     {isEditMode ? "Update" : "Create"} Your Collection
     </div>
     <div className="mb-4">
-        <TextField label="Name" labelInline={true} id="name" type="text" placeholder="Name"
-        className={commonTextfieldClassName("w-96 block")}
+        <TextField label="Name:" labelInline={true} id="name" type="text" placeholder="Name"
+        labelRightMargin={"52px"} className={commonTextfieldClassName("w-1/2 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, name : e.target.value});
         }} value={collection.name}/>
+    
+        <div className="inline-block ml-2 font-bold">Status: </div>
     </div>
     <div className="mb-4">
-        <TextField label="Symbol" labelInline={true} id="symbol" type="text" placeholder="Symbol"
-        className={commonTextfieldClassName("w-32 block")}
+        <TextField label="Symbol:" labelInline={true} 
+        labelRightMargin={"40px"}
+       
+        id="symbol" type="text" placeholder="Symbol"
+        className={commonTextfieldClassName("w-32 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, symbol : e.target.value});
         }} value={collection.symbol}/>
     </div>
     <div className="mb-4">
-        <TextField label="Description" labelInline={true} id="description" type="text" 
-        placeholder="Description"
+        <TextField label="Description:" labelInline={true} id="description" type="text" 
+        labelRightMargin={"12px"} placeholder="Description"  
+        className={commonTextfieldClassName("w-3/4 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, description : e.target.value});
         }} value={collection.description}/>

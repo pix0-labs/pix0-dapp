@@ -24,23 +24,26 @@ type Props = {
 
     labelInline? : boolean,
 
+    labelRightMargin? : string,
+
     value? : string, 
  
 }
 
 export const commonTextfieldClassName = (w? : string ) =>{
 
-    return `shadow appearance-none border rounded ${w ?? "w-full"} py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`;
+    return `shadow appearance-none border rounded ${w ?? "w-full"} py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2`;
 
 }
 
 
 export const TextField : FC <Props>= ({
     className, id, type, placeholder, label, defaultValue,
-    onChange, onClick, onDoubleClick, autoComplete, labelInline, value 
+    onChange, onClick, onDoubleClick, autoComplete, labelInline, value, labelRightMargin
 }) =>{
 
-    return  <><label className={
+    return  <><label style={labelRightMargin ? {marginRight:labelRightMargin} : undefined}
+    className={
     `text-white-700 text-sm font-bold mb-2${(labelInline ? " inline-block" : " block")}`} 
     htmlFor={id}>{label}</label><input className={ className ?? 
     commonTextfieldClassName()} defaultValue={defaultValue} value={value}
