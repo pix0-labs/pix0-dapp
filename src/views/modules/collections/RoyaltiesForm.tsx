@@ -14,6 +14,27 @@ export const RoyaltiesForm : FC <props> = ({
     collection, setCollection
 }) =>{
 
+
+    const currentTotalPercentage = () : number  =>{
+
+        let royalties = collection.royalties;
+        if (royalties !== undefined) {
+
+            let total = 0;
+
+            for (var r=0; r < royalties.length; r++){
+
+                total = +royalties[r].percentage + +total;
+            }
+
+            return total;
+        }
+        else {
+
+            return 0;
+        }
+    }
+
     const addRoyalty = () => {
 
         let royalties = collection.royalties;
@@ -31,9 +52,11 @@ export const RoyaltiesForm : FC <props> = ({
         }
         else {
 
+            let tot = currentTotalPercentage();
+            let nv = 100 - tot;
             royalties.push({
                 wallet:"",
-                percentage:100,
+                percentage:nv,
             });
 
         }
@@ -51,9 +74,58 @@ export const RoyaltiesForm : FC <props> = ({
             royalties.splice(index, 1);
 
         }
-        setCollection({...collection, royalties :royalties});
-       
+        setCollection({...collection, royalties :royalties});  
     }
+
+    const setRoyaltyWalletAt = ( index : number, wallet : string  ) =>{
+
+        let royalties = collection.royalties;
+        if (royalties !== undefined) {
+
+            royalties[index].wallet = wallet;
+            setCollection({...collection, royalties :royalties});  
+        }
+
+    }
+
+    const setRoyaltyPercentageAt = ( index : number, percentage : number   ) =>{
+
+        let royalties = collection.royalties;
+        if (royalties !== undefined) {
+
+            royalties[index].percentage = percentage;
+            setCollection({...collection, royalties :royalties});  
+        }
+
+    }
+
+
+    const validPercentage = (index : number, currentValue : number ) : boolean =>{
+
+        let royalties = collection.royalties;
+
+        if (royalties !== undefined) {
+
+            let total : number = 0; 
+
+            for (var r= 0; r < royalties.length; r++){
+
+                if (r !== index) {
+
+                    total = +total + +royalties[r].percentage;
+                }
+            }
+
+            total = +total + +currentValue;
+
+            return (total <= 100);
+        }
+        else {
+
+            return false; 
+        }
+    }
+
 
     return <div className="p2">
     <button className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
@@ -69,7 +141,7 @@ export const RoyaltiesForm : FC <props> = ({
         <thead>
             <tr className="bg-gray-700">    
                 <th className="px-4 py-2 text-left">Wallet</th>
-                <th className="px-4 py-2">Percentage</th>
+                <th className="px-4 py-2">Percentage %</th>
                 <th className="px-4 py-2">&nbsp;</th>
             </tr>
         </thead> 
@@ -81,15 +153,18 @@ export const RoyaltiesForm : FC <props> = ({
                 <TextField id={`wallet_${i}`} type="text" placeholder="Wallet"
                 className={commonTextfieldClassName("w-64 block mb-2")}
                 onChange={(e)=>{
-                    setCollection({...collection, name : e.target.value});
-                }} value={collection.name}/>
+                    setRoyaltyWalletAt(i,e.target.value);
+                }} value={r.wallet ?? ""}/>
                 </td>
                 <td className="px-4 py-2">
-                <TextField id={`perc_${i}`} type="text" placeholder="Percentage"
+                <TextField id={`perc_${i}`} type="number" placeholder="Percentage"
                 className={commonTextfieldClassName("w-32 block mb-2")}
                 onChange={(e)=>{
-                    setCollection({...collection, name : e.target.value});
-                }} value={collection.name}/>
+                    let v = parseFloat(e.target.value);
+                    if (validPercentage(i, v)) {
+                        setRoyaltyPercentageAt(i,e.target.value);
+                    }
+                }} value={`${r.percentage ?? 0}`}/>
                 </td>
 
                 <td className="px-4 py-2">
