@@ -9,11 +9,15 @@ type props = {
 
 }
 
-
-
 export const CollectionRow : FC <props> = ({
     collection
 }) =>{
+
+
+    const dropdownOpts = [
+        { value: '1', label: 'Edit' },
+        { value: '2', label: 'Delete?' },
+    ];
 
     return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer">
         <td className="px-4 py-2 text-left">{collection.name}</td>
