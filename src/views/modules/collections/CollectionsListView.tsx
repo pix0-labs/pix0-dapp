@@ -3,7 +3,7 @@ import useCollectionContract from "pix0-react2-arch-test";
 import { Collection } from "pix0-js-arch-test";
 import { Loader} from 'pix0-react2-arch-test';
 import { CollectionRow } from "./CollectionRow";
-import { CommonMessageDiv } from "../../CommonMessageDiv";
+import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 
 export const CollectionsListView : FC = () =>{
@@ -53,7 +53,7 @@ export const CollectionsListView : FC = () =>{
             : 
             <tr>
                 <td colSpan={6} className="text-center">
-                <CommonMessageDiv>No collection found, create one!</CommonMessageDiv>
+                <CommonMessageDiv>No collection found, add one!</CommonMessageDiv>
                 </td>
             </tr>
         }

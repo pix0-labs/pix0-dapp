@@ -15,10 +15,10 @@ export const CommonMessageDiv : FC <props> = ({
 }) =>{
 
     return <motion.div 
-    className="bg-cyan-800 rounded-3xl p-4 w-3/5 mx-auto mt-20"
+    className="bg-cyan-900 rounded-3xl p-4 w-3/5 mx-auto mt-20"
     initial={{ opacity: 0, scale: 0.5 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: transitionDuration ?? 1.2 }}>
-    <FiAlertCircle style={{marginRight:"4px", display:"inline"}}/>{children}
+    <FiAlertCircle style={{marginRight:"4px", display:"inline", marginBottom:"2.5px"}}/>{children}
     </motion.div>
 }

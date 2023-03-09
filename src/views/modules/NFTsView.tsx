@@ -2,7 +2,7 @@ import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionContract from "pix0-react2-arch-test";
 import { Loader} from 'pix0-react2-arch-test';
 import { NFTView } from "./NFTView";
-import { CommonMessageDiv } from "../CommonMessageDiv";
+import { CommonMessageDiv } from "../components/CommonMessageDiv";
 
 export const NFTsView : FC = () =>{
 
