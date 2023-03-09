@@ -33,7 +33,7 @@ export const CollectionForm : FC <props>= ({
             setCollection({...collection, name : e.target.value});
         }} value={collection.name}/>
     
-        <div className="inline-block ml-2 font-bold">Status: </div>
+        <div className="inline-block ml-2 font-bold text-md">Status: </div>
     </div>
     <div className="mb-4">
         <TextField label="Symbol:" labelInline={true} 
@@ -47,7 +47,7 @@ export const CollectionForm : FC <props>= ({
     </div>
     <div className="mb-4">
         <TextField label="Description:" labelInline={true} id="description" type="text" 
-        labelRightMargin={"12px"} placeholder="Description"  
+        labelRightMargin={"10px"} placeholder="Description"  
         className={commonTextfieldClassName("w-3/4 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, description : e.target.value});

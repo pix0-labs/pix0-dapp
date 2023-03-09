@@ -44,7 +44,7 @@ export const TextField : FC <Props>= ({
 
     return  <><label style={labelRightMargin ? {marginRight:labelRightMargin} : undefined}
     className={
-    `text-white-700 text-sm font-bold mb-2${(labelInline ? " inline-block" : " block")}`} 
+    `text-white-700 text-md font-bold mb-2${(labelInline ? " inline-block" : " block")}`} 
     htmlFor={id}>{label}</label><input className={ className ?? 
     commonTextfieldClassName()} defaultValue={defaultValue} value={value}
     id={id} type={type ?? "text"} placeholder={placeholder ?? ""} autoComplete={autoComplete}
