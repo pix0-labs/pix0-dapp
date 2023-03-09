@@ -4,6 +4,7 @@ import { Collection} from "pix0-js-arch-test";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
+import { RoyaltiesForm } from "./RoyaltiesForm";
 
 
 type props = CollectionViewProps & {
@@ -84,7 +85,9 @@ export const CollectionForm : FC <props>= ({
         }} value={`${collection.prices?.filter(p=> {return p.price_type === 1;})[0].value ?? 1}`}/>
         <div className="inline-block ml-2 font-bold text-md">uconst</div>
     </div>
-
+    <div className="mb-4">
+        <RoyaltiesForm collection={collection} setCollection={setCollection}/>
+    </div>
     <div className="mb-4">
     <button className="bg-gray-600 rounded-3xl p-2" 
     style={{width:"150px"}}
