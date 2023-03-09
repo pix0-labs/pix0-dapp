@@ -93,8 +93,18 @@ export const CollectionForm : FC <props>= ({
     <div className="mb-4">
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
     </div>
-    <div className="mb-4">
-    <button className="bg-gray-600 rounded-3xl p-2" 
+    <div className="mb-4 bg-gray-700 p-2 rounded-3xl">
+    <button className="mr-2 bg-blue-900 rounded-3xl p-2" 
+    style={{width:"150px"}}
+    onClick={(e)=>{
+        e.preventDefault();
+
+        if ( setViewType)
+            setViewType(ViewType.NONE);
+
+    }}>Create</button>
+
+    <button className="ml-2 bg-red-900 rounded-3xl p-2" 
     style={{width:"150px"}}
     onClick={(e)=>{
         e.preventDefault();
