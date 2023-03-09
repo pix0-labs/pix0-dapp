@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC , useCallback, useEffect, useState} from "react";
 import { Collection } from "pix0-js-arch-test";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
+import useCollectionContract from "pix0-react2-arch-test";
 import {FiPlusCircle,FiTrash,FiEdit} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -18,6 +19,19 @@ type props = {
 export const CollectionRow : FC <props> = ({
     collection, setViewType
 }) =>{
+
+    const {getItemsCount} = useCollectionContract();
+
+    const[itemsCount, setItemsCount] = useState(0);
+
+    const fetchItemsCount = useCallback(async () =>{
+        let cnt = await getItemsCount(collection.name, collection.symbol);
+        setItemsCount(cnt);
+    },[collection]);
+
+    useEffect(()=>{
+        fetchItemsCount();
+    },[fetchItemsCount]);
 
     const menu =  <Popup contentStyle={{background:"#222",minWidth:"240px"}} 
     arrowStyle={{color:"#222", border:"1px"}}
@@ -45,7 +59,7 @@ export const CollectionRow : FC <props> = ({
         <td className="px-4 py-2 text-left">{collection.name}</td>
         <td className="px-4 py-2">{collection.symbol}</td>
         <td className="px-4 py-2">{collection.description}</td>
-        <td className="px-4 py-2">{"0"}</td>
+        <td className="px-4 py-2">{itemsCount}</td>
         <td className="px-4 py-2">{statusText(collection.status ?? 0)}</td>
         <td className="px-4 py-2 text-center">
         {menu}
