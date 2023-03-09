@@ -128,7 +128,9 @@ export const RoyaltiesForm : FC <props> = ({
 
 
     return <div className="p2">
-    <button className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
+    <button 
+    style={{minWidth:"160px"}}
+    className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
     onClick={(e)=>{
 
         e.preventDefault();
