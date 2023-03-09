@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Collection } from "pix0-js-arch-test";
 import { statusText } from "./CollectionsListView";
+import { AiOutlineMore} from 'react-icons/ai';
 
 type props = {
 
@@ -20,6 +21,8 @@ export const CollectionRow : FC <props> = ({
         <td className="px-4 py-2">{collection.description}</td>
         <td className="px-4 py-2">{"0"}</td>
         <td className="px-4 py-2">{statusText(collection.status ?? 0)}</td>
-        <td className="px-4 py-2">Action</td>
+        <td className="px-4 py-2 text-center">
+        <button className="bg-gray-600 hover:bg-cyan-900 rounded-3xl p-2">
+        <AiOutlineMore/></button></td>
     </tr>
 }

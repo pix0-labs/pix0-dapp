@@ -53,7 +53,7 @@ export const CollectionsListView : FC = () =>{
         <th className="px-4 py-2">Description</th>
         <th className="px-4 py-2">Number Of Items</th>
         <th className="px-4 py-2">Status</th>
-        <th className="px-4 py-2">Action</th>
+        <th className="px-4 py-2 text-center">Action</th>
         </tr>
         </thead>
         <tbody>
