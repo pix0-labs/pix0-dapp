@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Collection } from "pix0-js-arch-test";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
+import { Popup} from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 type props = {
 
@@ -13,11 +15,15 @@ export const CollectionRow : FC <props> = ({
     collection
 }) =>{
 
+    const menu =  <Popup contentStyle={{background:"#222"}} 
+    arrowStyle={{color:"#222", border:"1px"}}
+    className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
+    trigger={<button className="bg-gray-600 hover:bg-cyan-900 rounded-3xl p-2">
+    <AiOutlineMore/></button>} position="left center">
+        <div className="rounded hover:bg-gray-600 hover:cursor-pointer bg-gray-800 text-gray-200 p-2">Edit</div>
+        <div className="rounded hover:bg-gray-600 hover:cursor-pointer bg-gray-800 text-gray-200 p-2">Remove?</div>
+  </Popup>
 
-    const dropdownOpts = [
-        { value: '1', label: 'Edit' },
-        { value: '2', label: 'Delete?' },
-    ];
 
     return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer">
         <td className="px-4 py-2 text-left">{collection.name}</td>
@@ -26,7 +32,7 @@ export const CollectionRow : FC <props> = ({
         <td className="px-4 py-2">{"0"}</td>
         <td className="px-4 py-2">{statusText(collection.status ?? 0)}</td>
         <td className="px-4 py-2 text-center">
-        <button className="bg-gray-600 hover:bg-cyan-900 rounded-3xl p-2">
-        <AiOutlineMore/></button></td>
+        {menu}
+        </td>
     </tr>
 }
