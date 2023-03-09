@@ -140,6 +140,7 @@ export const RoyaltiesForm : FC <props> = ({
     <table className="table-auto mt-4 w-3/5">
         <thead>
             <tr className="bg-gray-700">    
+                <th className="px-4 py-2">No</th>
                 <th className="px-4 py-2 text-left">Wallet</th>
                 <th className="px-4 py-2">Percentage %</th>
                 <th className="px-4 py-2">&nbsp;</th>
@@ -148,7 +149,8 @@ export const RoyaltiesForm : FC <props> = ({
         <tbody>  
         {collection.royalties.map((r, i)=>{
 
-            return <tr className="bg-gray-800 hover:bg-gray-600 hover:cursor-pointer">    
+            return <tr className="bg-gray-800 hover:bg-gray-600 hover:cursor-pointer">   
+                <td className="px-4 py-2">{(i+1)}.</td>
                 <td className="px-4 py-2 text-left">
                 <TextField id={`wallet_${i}`} type="text" placeholder="Wallet"
                 className={commonTextfieldClassName("w-64 block mb-2")}
