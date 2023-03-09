@@ -154,7 +154,7 @@ export const TreasuriesForm : FC <props> = ({
                 <td className="px-4 py-2">{(i+1)}.</td>
                 <td className="px-4 py-2 text-left">
                 <TextField id={`wallet_${i}`} type="text" placeholder="Wallet"
-                className={commonTextfieldClassName("w-64 block mb-2")}
+                className={commonTextfieldClassName("w-96 block mb-2")}
                 onChange={(e)=>{
                     setTreasuryWalletAt(i,e.target.value);
                 }} value={r.wallet ?? ""}/>
