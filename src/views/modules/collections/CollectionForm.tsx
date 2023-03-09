@@ -160,7 +160,7 @@ export const CollectionForm : FC <props>= ({
     onClick={async (e)=>{
         e.preventDefault();
         await saveCollection();
-    }}>{processing ? <Loader/> : <>Create</>}</button>
+    }}>{processing ? <Loader/> : <>{isEditMode ? "Update" : "Create"}</>}</button>
 
     <button className="ml-2 bg-red-900 rounded-3xl p-2" 
     style={{width:"150px"}}
