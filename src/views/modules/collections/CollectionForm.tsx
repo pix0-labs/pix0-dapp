@@ -5,6 +5,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
 import { RoyaltiesForm } from "./RoyaltiesForm";
+import { Loader} from 'pix0-react2-arch-test';
 import { TreasuriesForm } from "./TreasuriesForm";
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
@@ -34,11 +35,20 @@ export const CollectionForm : FC <props>= ({
         },7000);
     }
 
+    const [processing, setProcessing] = useState(false);
+
     const saveCollection = async () =>{
+
+        setProcessing(true);
+
         if ( isEditMode ) {
 
-            await updateCollection(collection);
+            let tx = await updateCollection(collection);
+            setTxHash(tx);
 
+            if ( tx instanceof Error){
+                unsetTxHash();
+            }
         }
         else {
 
@@ -56,10 +66,14 @@ export const CollectionForm : FC <props>= ({
 
             let tx = await createCollection(collection);
             
-            if ( tx instanceof Error){
+            setTxHash(tx);
 
+            if ( tx instanceof Error){
+                unsetTxHash();
             }
         }
+
+        setProcessing(false);
     }
 
 
@@ -143,11 +157,8 @@ export const CollectionForm : FC <props>= ({
     style={{width:"150px"}}
     onClick={async (e)=>{
         e.preventDefault();
-
         await saveCollection();
-       
-
-    }}>Create</button>
+    }}>{processing ? <Loader/> : <>Create</>}</button>
 
     <button className="ml-2 bg-red-900 rounded-3xl p-2" 
     style={{width:"150px"}}
