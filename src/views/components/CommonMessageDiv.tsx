@@ -8,14 +8,16 @@ type props = {
     children? : any 
 
     transitionDuration? : number, 
+
+    className? : string, 
 }
 
 export const CommonMessageDiv : FC <props> = ({
-    children, transitionDuration
+    children, transitionDuration, className
 }) =>{
 
     return <motion.div 
-    className="bg-cyan-900 rounded-3xl p-4 w-3/5 mx-auto mt-20"
+    className= { className ?? "bg-cyan-900 rounded-3xl p-4 w-3/5 mx-auto mt-20"}
     initial={{ opacity: 0, scale: 0.5 }}
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: transitionDuration ?? 1.2 }}>
