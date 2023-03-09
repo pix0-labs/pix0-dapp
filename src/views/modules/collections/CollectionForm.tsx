@@ -5,6 +5,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
 import { RoyaltiesForm } from "./RoyaltiesForm";
+import { TreasuriesForm } from "./TreasuriesForm";
 
 
 type props = CollectionViewProps & {
@@ -84,6 +85,10 @@ export const CollectionForm : FC <props>= ({
             setCollection({...collection, prices : prices});
         }} value={`${collection.prices?.filter(p=> {return p.price_type === 1;})[0].value ?? 1}`}/>
         <div className="inline-block ml-2 font-bold text-md">uconst</div>
+    </div>
+
+    <div className="mb-4">
+        <TreasuriesForm collection={collection} setCollection={setCollection}/>
     </div>
     <div className="mb-4">
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
