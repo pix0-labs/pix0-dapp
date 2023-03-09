@@ -5,6 +5,7 @@ import { Loader} from 'pix0-react2-arch-test';
 import { CollectionRow } from "./CollectionRow";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
+import { ViewType } from "./CollectionsView";
 
 export const statusText = ( status : number) : string =>{
 
@@ -28,8 +29,14 @@ export const statusText = ( status : number) : string =>{
     }
 }
 
+type props = {
 
-export const CollectionsListView : FC = () =>{
+    setViewType?: (viewType: ViewType, param? : any) => void,
+}
+
+export const CollectionsListView : FC <props> = ({
+    setViewType
+}) =>{
 
     const {getCollections} = useCollectionContract();
 
@@ -70,7 +77,7 @@ export const CollectionsListView : FC = () =>{
             collections.length > 0 
             ?
             collections.map((c,i)=>{
-                return <CollectionRow collection={c} key={`col_${i}`}/>
+                return <CollectionRow collection={c} key={`col_${i}`} setViewType={setViewType}/>
             })
 
             : 

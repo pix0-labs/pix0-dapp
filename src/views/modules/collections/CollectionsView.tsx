@@ -9,6 +9,8 @@ export enum ViewType {
 
     CREATE,
 
+    EDIT,
+
     NONE,
 }
 
@@ -16,13 +18,22 @@ export type CollectionViewProps = {
 
     viewType?: ViewType,
 
-    setViewType? : (viewType : ViewType) => void,
+    setViewType? : (viewType : ViewType, param? : any) => void,
 }
 
 export const CollectionsView : FC  = () =>{
 
     const [viewType, setViewType] = useState<ViewType>();
 
+    const [viewTypeParam, setViewTypeParam] = useState<any>();
+
+    const setViewTypeForEdit = (viewType : ViewType, param : any) => {
+
+        setViewType(viewType);
+        setViewTypeParam(param);
+
+        console.log("v..", viewType, param);
+    }
 
     const switchView = () =>{
 
@@ -33,20 +44,25 @@ export const CollectionsView : FC  = () =>{
                 case ViewType.CREATE :
     
                     return <CollectionForm viewType={viewType} setViewType={setViewType}/>;
+
+                case ViewType.EDIT :
+    
+                    return <CollectionForm viewType={viewType} 
+                    setViewType={setViewType} isEditMode={true} collectionToEdit={viewTypeParam}/>;
     
                 case ViewType.LIST :
     
-                    return <CollectionsListView/>
+                    return <CollectionsListView setViewType={setViewTypeForEdit}/>
     
                 default :
     
-                    return <CollectionsListView/>
+                    return <CollectionsListView setViewType={setViewTypeForEdit}/>
             }
     
         }
         else {
 
-            return <CollectionsListView/>
+            return <CollectionsListView setViewType={setViewTypeForEdit}/>
             
         }
     }

@@ -5,15 +5,18 @@ import { AiOutlineMore} from 'react-icons/ai';
 import {FiPlusCircle,FiTrash,FiEdit} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { ViewType } from "./CollectionsView";
 
 type props = {
 
     collection : Collection,
 
+    setViewType?: (viewType: ViewType, param? : any) => void,
+
 }
 
 export const CollectionRow : FC <props> = ({
-    collection
+    collection, setViewType
 }) =>{
 
     const menu =  <Popup contentStyle={{background:"#222",minWidth:"240px"}} 
@@ -22,7 +25,15 @@ export const CollectionRow : FC <props> = ({
     trigger={<button className="bg-gray-600 hover:bg-cyan-900 rounded-3xl p-2">
     <AiOutlineMore/></button>} position="left center">
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2"><FiEdit className="mr-2 inline mb-1"/>Edit Collection</div>
+        bg-gray-800 text-gray-200 p-2"
+        onClick={(e)=>{
+            e.preventDefault();
+            if ( setViewType )
+            {
+                setViewType(ViewType.EDIT, collection);
+            }
+        }}
+        ><FiEdit className="mr-2 inline mb-1"/>Edit Collection</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2"><FiTrash className="mr-2 inline mb-1"/>Remove Collection?</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
