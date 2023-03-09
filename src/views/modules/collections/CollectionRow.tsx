@@ -51,7 +51,14 @@ export const CollectionRow : FC <props> = ({
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2"><FiTrash className="mr-2 inline mb-1"/>Remove Collection?</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2"><FiPlusCircle className="mr-2 inline mb-1"/>Add Items</div>
+        bg-gray-800 text-gray-200 p-2" onClick={(e)=>{
+            e.preventDefault();
+            if ( setViewType )
+            {
+                setViewType(ViewType.ADD_ITEM, collection);
+            }
+        }}
+        ><FiPlusCircle className="mr-2 inline mb-1"/>Add Item</div>
   </Popup>
 
 

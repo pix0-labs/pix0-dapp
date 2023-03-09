@@ -1,6 +1,7 @@
 import { FC , useState} from "react";
 import { CollectionsListView } from "./CollectionsListView";
 import { CollectionForm } from "./CollectionForm";
+import { ItemForm } from "./ItemForm";
 import { FiPlusCircle} from 'react-icons/fi';
 
 export enum ViewType {
@@ -10,6 +11,8 @@ export enum ViewType {
     CREATE,
 
     EDIT,
+
+    ADD_ITEM,
 
     NONE,
 }
@@ -51,6 +54,10 @@ export const CollectionsView : FC  = () =>{
                 case ViewType.LIST :
     
                     return <CollectionsListView setViewType={setViewTypeForEdit}/>
+    
+                case ViewType.ADD_ITEM :
+    
+                    return <ItemForm forCollection={viewTypeParam} viewType={viewType} setViewType={setViewType}/>
     
                 default :
     
