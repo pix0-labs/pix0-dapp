@@ -14,12 +14,14 @@ type props = {
 
     setViewType?: (viewType: ViewType, param? : any) => void,
 
-    refreshCollection? : (txHash? : string|Error) => void, 
+    refreshCollection? : () => void, 
+
+    setTxHashOrError? : (txHash? : string|Error) => void, 
 
 }
 
 export const CollectionRow : FC <props> = ({
-    collection, setViewType, refreshCollection
+    collection, setViewType, refreshCollection, setTxHashOrError
 }) =>{
 
     const {getItemsCount, removeCollection, updateCollection} = useCollectionContract();
@@ -33,10 +35,21 @@ export const CollectionRow : FC <props> = ({
 
     const removeCollectionNow = async () =>{
 
+        if (collection.status === 1){
+
+            if (setTxHashOrError) {
+                setTxHashOrError(new Error("Active collection cannot be removed!"));
+                return ;
+            }
+        }
+
         if ( window.confirm('Are you sure you want to delete the selected collection?')){
             let tx = await removeCollection(collection.name, collection.symbol);
             if ( refreshCollection ){
-                refreshCollection(tx);
+                refreshCollection();
+            }
+            if (setTxHashOrError) {
+                setTxHashOrError(tx);
             }
         }
     }
@@ -69,8 +82,12 @@ export const CollectionRow : FC <props> = ({
             });
 
             if ( refreshCollection ){
-                refreshCollection(tx);
+                refreshCollection();
             }
+            if (setTxHashOrError) {
+                setTxHashOrError(tx);
+            }
+            
         }
         else {
             let tx = await updateCollection({
@@ -80,7 +97,10 @@ export const CollectionRow : FC <props> = ({
             });
 
             if ( refreshCollection ){
-                refreshCollection(tx);
+                refreshCollection();
+            }
+            if (setTxHashOrError) {
+                setTxHashOrError(tx);
             }
         }
     }

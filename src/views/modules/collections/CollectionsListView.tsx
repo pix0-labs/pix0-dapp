@@ -56,12 +56,19 @@ export const CollectionsListView : FC <props> = ({
         },10000);
     }
 
-    const refreshCollection = async (txHash? : string|Error) =>{
+    const refreshCollection = async () =>{
         let c = await getCollections();
         setCollections(c);
+      
+    }
+
+
+    const setTxHashOrError = (txHash? : string|Error) => {
+
         if (txHash){
             setTxHash(txHash);
-            unsetTxHash();
+            if (txHash instanceof Error)
+                unsetTxHash();
         }
     }
 
@@ -96,7 +103,7 @@ export const CollectionsListView : FC <props> = ({
             <tbody>{
             collections.map((c,i)=>{
                 return <CollectionRow collection={c} key={`col_${i}`} setViewType={setViewType} 
-                refreshCollection={refreshCollection}/>
+                refreshCollection={refreshCollection} setTxHashOrError={setTxHashOrError}/>
             })}
             </tbody>
             </table>
