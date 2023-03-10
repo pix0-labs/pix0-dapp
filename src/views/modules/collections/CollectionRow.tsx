@@ -144,7 +144,7 @@ export const CollectionRow : FC <props> = ({
         }}
         ><FiPlusCircle className="mr-2 inline mb-1"/>Add Item</div>
 
-        <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        { (itemsCount > 0) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2" onClick={(e)=>{
             e.preventDefault();
             if ( setViewType )
@@ -152,7 +152,7 @@ export const CollectionRow : FC <props> = ({
                 setViewType(ViewType.ITEMS_LIST, collection);
             }
         }}
-        ><FiFolder className="mr-2 inline mb-1"/>Manage Items</div>
+        ><FiFolder className="mr-2 inline mb-1"/>Manage Items</div>}
   </Popup>
 
 
