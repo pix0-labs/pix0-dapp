@@ -7,8 +7,16 @@ import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { PulseLoader as Loader} from 'react-spinners';
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
+import { singleUpload } from "pix0-react2-arch-test";
 
+export interface Media {
 
+    mediaDataUrl? : string,
+    
+    contentType?: string,
+    
+    fileName?: string, 
+}
 
 type props = CollectionViewProps & {
 
@@ -37,10 +45,24 @@ export const ItemForm : FC <props>= ({
 
     const [processing, setProcessing] = useState(false);
 
-    const setMediaCallback = (_media: {mediaDataUrl? : string,contentType?: string,
-        fileName?: string }, _index? : number ) => 
+    const setMediaCallback = async (_media: Media, _index? : number ) => 
     {
-    
+
+        console.log("media::::", _media);
+        if (_media.mediaDataUrl) {
+
+            console.log("Uploading.....x");
+            let img_url = await singleUpload(_media.mediaDataUrl);
+            if (img_url instanceof Error){
+
+                setTxHash(img_url);
+            }
+            else {
+
+                console.log("Uploaded.to::", img_url);
+            }
+        }
+       
     }
     
 
