@@ -108,6 +108,8 @@ export const ItemForm : FC <props>= ({
 
             let tx = await createItem(item);
             
+            setMedia(undefined);
+
             setTxHash(tx);
 
             if ( tx instanceof Error){
