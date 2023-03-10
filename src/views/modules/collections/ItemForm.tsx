@@ -8,6 +8,7 @@ import { PulseLoader as Loader} from 'react-spinners';
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { singleUpload } from "pix0-react2-arch-test";
+import { FcCancel } from "react-icons/fc";
 
 export interface Media {
 
@@ -175,7 +176,7 @@ export const ItemForm : FC <props>= ({
         if ( setViewType)
             setViewType(ViewType.NONE);
 
-    }}>Cancel</button>
+    }}><FcCancel className="inline mb-1"/> Close</button>
     </div>
 
     </form>

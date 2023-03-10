@@ -9,7 +9,7 @@ import { PulseLoader} from 'react-spinners';
 import { TreasuriesForm } from "./TreasuriesForm";
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
-
+import { FcCancel } from "react-icons/fc";
 
 
 type props = CollectionViewProps & {
@@ -171,7 +171,7 @@ export const CollectionForm : FC <props>= ({
         if ( setViewType)
             setViewType(ViewType.NONE);
 
-    }}>Cancel</button>
+    }}><FcCancel className="inline mb-1"/> Close</button>
     </div>
 
     </form>
