@@ -36,6 +36,8 @@ export const ItemForm : FC <props>= ({
 
     const [txHash, setTxHash] = useState<Error|string>();
 
+    const [media, setMedia] = useState<Media>();
+
     const unsetTxHash = () =>{
 
         setTimeout(()=>{
@@ -47,22 +49,7 @@ export const ItemForm : FC <props>= ({
 
     const setMediaCallback = async (_media: Media, _index? : number ) => 
     {
-
-        console.log("media::::", _media);
-        if (_media.mediaDataUrl) {
-
-            console.log("Uploading.....x");
-            let img_url = await singleUpload(_media.mediaDataUrl);
-            if (img_url instanceof Error){
-
-                setTxHash(img_url);
-            }
-            else {
-
-                console.log("Uploaded.to::", img_url);
-            }
-        }
-       
+        setMedia(_media);  
     }
     
 
@@ -82,6 +69,41 @@ export const ItemForm : FC <props>= ({
                 return;
             }
 
+            if(media === undefined){
+
+                setTxHash(new Error('No image is provided!'));
+                unsetTxHash();
+                setProcessing(false);
+                return;
+            }
+
+            if ( media.mediaDataUrl) {
+
+                let tx = await singleUpload(media.mediaDataUrl);
+
+                if (tx instanceof Error) {
+
+                    setTxHash(tx);
+                    return; 
+                }
+
+                item.links = [{
+                    link_type : 1,
+                    value : tx, 
+                }];
+
+            }
+            else {
+
+                setTxHash(new Error("Undefined media url!!"));
+                return;
+            }
+            
+            item.collection_name = forCollection.name;
+            item.collection_owner = forCollection.owner ?? "";
+            item.collection_symbol = forCollection.symbol;
+
+            console.log("Going to create item::", item);
 
             let tx = await createItem(item);
             
@@ -133,21 +155,23 @@ export const ItemForm : FC <props>= ({
     </div>
     <div className="mb-4">
         <UploadField label="Upload Image/Media" withImagePreview={true}
-            setMediaCallback={setMediaCallback}/>
+            setMediaCallback={setMediaCallback} onClick={()=>{
+                setMedia(undefined);
+            }}/>
     </div>
     <div className="mb-4 bg-gray-700 p-2 rounded">
     <button className="mr-2 bg-cyan-900 rounded-3xl p-2" 
-    style={{width:"150px"}}
+    style={{width:"150px"}}  disabled={processing}
     onClick={async (e)=>{
         e.preventDefault();
         await saveItem();
-    }}>{processing ? <Loader/> : <>{isEditMode ? "Update" : "Add Item"}</>}</button>
+    }}>{processing ? <Loader color="#eee"/> : <>{isEditMode ? "Update" : "Add Item"}</>}</button>
 
     <button className="ml-2 bg-gray-600 rounded-3xl p-2" 
-    style={{width:"150px"}}
+    style={{width:"150px"}} disabled={processing}
     onClick={(e)=>{
         e.preventDefault();
-
+        setMedia(undefined);
         if ( setViewType)
             setViewType(ViewType.NONE);
 

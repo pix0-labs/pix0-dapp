@@ -33,13 +33,16 @@ type Props = {
     index? : number,
 
     notToShowError? : boolean,
+
+    onClick? : (e : any) => void, 
 }
 
 
 export const UploadField : FC <Props> = ({
     id, label, allowedFileTypes, notToShowError, 
     maxFileSize, onError, uploadAction, 
-    uploading, withImagePreview, setMediaCallback, index 
+    uploading, withImagePreview, setMediaCallback, 
+    index, onClick 
 }) =>{
 
     const [mediaDataUrl, setMediaDataUrl] = useState<string>();
@@ -167,9 +170,11 @@ export const UploadField : FC <Props> = ({
     focus:bg-gray-600 focus:border-blue-600 focus:outline-none" 
     type="file" id={id ?? "fileInput"} onChange={ ()=>{
         onChange();
-    }} onClick={()=>{
+    }} onClick={(e)=>{
         setMediaDataUrl(undefined);
         setContentType(undefined);
+        if ( onClick )
+            onClick(e);
     }}/>
     </div>
     {uploadAction && <>
