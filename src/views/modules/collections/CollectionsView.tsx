@@ -80,11 +80,12 @@ export const CollectionsView : FC  = () =>{
         }
     }
 
-    return <div className="text-left p-4"> <button 
+    return <div className="text-left p-4">{(viewType === ViewType.NONE || 
+        viewType === ViewType.LIST || viewType === undefined) && <button 
     style={{width:"200px"}}
     className="bg-gray-600 rounded-3xl p-2 mb-4" onClick={(e)=>{
         e.preventDefault();
         setViewType(ViewType.CREATE);
-    }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>
+    }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>}
         {switchView()}</div>;
 }

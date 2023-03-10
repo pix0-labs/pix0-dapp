@@ -12,6 +12,8 @@ type props = {
 
     collection : Collection,
 
+    index? : number, 
+
     setViewType?: (viewType: ViewType, param? : any) => void,
 
     refreshCollection? : () => void, 
@@ -21,7 +23,7 @@ type props = {
 }
 
 export const CollectionRow : FC <props> = ({
-    collection, setViewType, refreshCollection, setTxHashOrError
+    collection, setViewType, refreshCollection, setTxHashOrError, index 
 }) =>{
 
     const {getItemsCount, removeCollection, updateCollection} = useCollectionContract();
@@ -157,6 +159,7 @@ export const CollectionRow : FC <props> = ({
 
 
     return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer">
+        <td className="px-4 py-2 text-center">{((index ?? 0) +1)}</td>
         <td className="px-4 py-2 text-left">{collection.name}</td>
         <td className="px-4 py-2">{collection.symbol}</td>
         <td className="px-4 py-2">{collection.description}</td>

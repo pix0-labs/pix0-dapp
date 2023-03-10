@@ -91,7 +91,8 @@ export const CollectionsListView : FC <props> = ({
             ?
             <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
             <thead>
-            <tr className="bg-gray-700">    
+            <tr className="bg-gray-700">  
+            <td className="px-4 py-2 text-center">No</td>
             <th className="px-4 py-2 text-left">Name</th>
             <th className="px-4 py-2">Symbol</th>
             <th className="px-4 py-2">Description</th>
@@ -103,7 +104,7 @@ export const CollectionsListView : FC <props> = ({
             <tbody>{
             collections.map((c,i)=>{
                 return <CollectionRow collection={c} key={`col_${i}`} setViewType={setViewType} 
-                refreshCollection={refreshCollection} setTxHashOrError={setTxHashOrError}/>
+                refreshCollection={refreshCollection} setTxHashOrError={setTxHashOrError} index={i}/>
             })}
             </tbody>
             </table>
