@@ -103,7 +103,7 @@ export const ItemForm : FC <props>= ({
             item.collection_owner = forCollection.owner ?? "";
             item.collection_symbol = forCollection.symbol;
 
-            console.log("Going to create item::", item);
+            //console.log("Going to create item::", item);
 
             let tx = await createItem(item);
             
