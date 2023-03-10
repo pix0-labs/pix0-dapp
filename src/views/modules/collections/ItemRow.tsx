@@ -66,7 +66,7 @@ export const ItemRow : FC <props> = ({
             item.links.filter(i=> {return i.link_type ===1} )[0].value
         } style={{maxWidth:"36px"}}/></td>
         <td className="px-4 py-2 text-left">{item.name}</td>
-        <td className="px-4 py-2">{item.description}</td>
+        <td className="px-4 py-2 text-left">{item.description}</td>
         <td className="px-4 py-2 text-center">
         {menu}
         </td>

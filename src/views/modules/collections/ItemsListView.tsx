@@ -3,7 +3,6 @@ import useCollectionContract from "pix0-react2-arch-test";
 import { Item } from "pix0-js-arch-test";
 import { PulseLoader} from 'react-spinners';
 import { TxHashDiv } from "../../components/TxHashDiv";
-import { FcCancel} from 'react-icons/fc';
 import { ItemRow } from "./ItemRow";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
@@ -73,21 +72,13 @@ export const ItemsListView : FC <props> = ({
             items.length > 0 
             ?
             <>
-            <div className="text-left">  
-            <button className="rounded-3xl bg-gray-700 text-gray-100 p-2 text-center mb-2"
-            style={{minWidth:"120px"}}
-            onClick={(e)=>{
-                e.preventDefault();
-                if ( setViewType)
-                    setViewType(ViewType.LIST);
-            }}><FcCancel className="mr-2 inline mb-1"/>Close</button></div>
             <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
             <thead>
             <tr className="bg-gray-700">    
             <th className="px-4 py-2">No</th>
             <th className="px-4 py-2 text-left">Image</th>
             <th className="px-4 py-2 text-left">Name</th>
-            <th className="px-4 py-2">Description</th>
+            <th className="px-4 py-2 text-left">Description</th>
             <th className="px-4 py-2 text-center">Action</th>
             </tr>
             </thead>

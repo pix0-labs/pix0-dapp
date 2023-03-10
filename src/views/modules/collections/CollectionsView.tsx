@@ -4,6 +4,7 @@ import { CollectionForm } from "./CollectionForm";
 import { ItemForm } from "./ItemForm";
 import { ItemsListView } from "./ItemsListView";
 import { FiPlusCircle} from 'react-icons/fi';
+import { FcCancel} from 'react-icons/fc';
 
 export enum ViewType {
 
@@ -80,12 +81,31 @@ export const CollectionsView : FC  = () =>{
         }
     }
 
-    return <div className="text-left p-4">{(viewType === ViewType.NONE || 
-        viewType === ViewType.LIST || viewType === undefined) && <button 
-    style={{width:"200px"}}
-    className="bg-gray-600 rounded-3xl p-2 mb-4" onClick={(e)=>{
-        e.preventDefault();
-        setViewType(ViewType.CREATE);
-    }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>}
+    const button = () => {
+
+        if (viewType === ViewType.NONE || 
+            viewType === ViewType.LIST || viewType === undefined) 
+             return <button 
+            style={{width:"200px"}}
+            className="bg-gray-600 rounded-3xl p-2 mb-4" onClick={(e)=>{
+                e.preventDefault();
+                setViewType(ViewType.CREATE);
+            }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>
+    
+        else if (viewType === ViewType.ITEMS_LIST)
+
+            return <button className="rounded-3xl bg-gray-700 text-gray-100 p-2 text-center mb-2"
+            style={{minWidth:"120px"}}
+            onClick={(e)=>{
+                e.preventDefault();
+                if ( setViewType)
+                    setViewType(ViewType.LIST);
+            }}><FcCancel className="mr-2 inline mb-1"/>Close</button>
+
+        else 
+            return <></>;
+
+    } 
+    return <div className="text-left p-4">{button()}
         {switchView()}</div>;
 }
