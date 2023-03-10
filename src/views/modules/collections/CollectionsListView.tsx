@@ -71,42 +71,39 @@ export const CollectionsListView : FC <props> = ({
 
     return <CommonAnimatedDiv className="text-center"><div className="w-10/2 p-2 overflow-x-auto">
     {txHash && <TxHashDiv txHash={txHash}/>}
-    <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
-        <thead>
-        <tr className="bg-gray-700">    
-        <th className="px-4 py-2 text-left">Name</th>
-        <th className="px-4 py-2">Symbol</th>
-        <th className="px-4 py-2">Description</th>
-        <th className="px-4 py-2">Number Of Items</th>
-        <th className="px-4 py-2">Status</th>
-        <th className="px-4 py-2 text-center">Action</th>
-        </tr>
-        </thead>
-        <tbody>
+   
         {
             collections === undefined ?
 
-            <tr>
-                <td colSpan={6} className="text-center">
-                    <PulseLoader color="#eee" margin={2}/>
-                </td>
-            </tr>
+            <div className="text-left">   
+                <PulseLoader color="#eee" margin={2}/>
+            </div>
             :
 
             collections.length > 0 
             ?
+            <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
+            <thead>
+            <tr className="bg-gray-700">    
+            <th className="px-4 py-2 text-left">Name</th>
+            <th className="px-4 py-2">Symbol</th>
+            <th className="px-4 py-2">Description</th>
+            <th className="px-4 py-2">Number Of Items</th>
+            <th className="px-4 py-2">Status</th>
+            <th className="px-4 py-2 text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>{
             collections.map((c,i)=>{
                 return <CollectionRow collection={c} key={`col_${i}`} setViewType={setViewType} 
                 refreshCollection={refreshCollection}/>
-            })
-
+            })}
+            </tbody>
+            </table>
             : 
-            <tr>
-                <td colSpan={6} className="text-center">
+            <div>   
                 <CommonMessageDiv>No collection found, add one!</CommonMessageDiv>
-                </td>
-            </tr>
+            </div>
         }
-        </tbody>
-    </table></div></CommonAnimatedDiv>
+        </div></CommonAnimatedDiv>
 }

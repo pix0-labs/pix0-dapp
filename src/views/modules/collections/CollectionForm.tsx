@@ -156,7 +156,7 @@ export const CollectionForm : FC <props>= ({
     </div>
     <div className="mb-4 bg-gray-700 p-2 rounded">
     <button className="mr-2 bg-blue-900 rounded-3xl p-2" 
-    style={{width:"150px"}}
+    style={{width:"150px"}} disabled={processing}
     onClick={async (e)=>{
         e.preventDefault();
         await saveCollection();
@@ -164,7 +164,7 @@ export const CollectionForm : FC <props>= ({
     : <>{isEditMode ? "Update" : "Create"}</>}</button>
 
     <button className="ml-2 bg-red-900 rounded-3xl p-2" 
-    style={{width:"150px"}}
+    style={{width:"150px"}} disabled={processing}
     onClick={(e)=>{
         e.preventDefault();
 
