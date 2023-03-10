@@ -5,7 +5,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
 import { RoyaltiesForm } from "./RoyaltiesForm";
-import { Loader} from 'pix0-react2-arch-test';
+import { PulseLoader} from 'react-spinners';
 import { TreasuriesForm } from "./TreasuriesForm";
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
@@ -160,7 +160,8 @@ export const CollectionForm : FC <props>= ({
     onClick={async (e)=>{
         e.preventDefault();
         await saveCollection();
-    }}>{processing ? <Loader/> : <>{isEditMode ? "Update" : "Create"}</>}</button>
+    }}>{processing ? <PulseLoader color="#eee" margin={2}/> 
+    : <>{isEditMode ? "Update" : "Create"}</>}</button>
 
     <button className="ml-2 bg-red-900 rounded-3xl p-2" 
     style={{width:"150px"}}

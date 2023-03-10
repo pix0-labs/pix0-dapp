@@ -1,7 +1,7 @@
 import { FC, useEffect, useCallback, useState } from "react";
 import useCollectionContract from "pix0-react2-arch-test";
 import { Collection } from "pix0-js-arch-test";
-import { Loader} from 'pix0-react2-arch-test';
+import { PulseLoader} from 'react-spinners';
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { CollectionRow } from "./CollectionRow";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
@@ -88,7 +88,7 @@ export const CollectionsListView : FC <props> = ({
 
             <tr>
                 <td colSpan={6} className="text-center">
-                    <Loader/>
+                    <PulseLoader color="#eee" margin={2}/>
                 </td>
             </tr>
             :
