@@ -14,20 +14,32 @@ type props = {
 
     setViewType?: (viewType: ViewType, param? : any) => void,
 
+    refreshCollection? : () => void, 
+
 }
 
 export const CollectionRow : FC <props> = ({
-    collection, setViewType
+    collection, setViewType, refreshCollection
 }) =>{
 
-    const {getItemsCount} = useCollectionContract();
+    const {getItemsCount, removeCollection} = useCollectionContract();
 
-    const[itemsCount, setItemsCount] = useState(0);
+    const [itemsCount, setItemsCount] = useState(0);
 
     const fetchItemsCount = useCallback(async () =>{
         let cnt = await getItemsCount(collection.name, collection.symbol);
         setItemsCount(cnt);
     },[collection]);
+
+    const removeCollectionNow = async () =>{
+
+        if ( window.confirm('Are you sure you want to delete the selected collection?')){
+            await removeCollection(collection.name, collection.symbol);
+            if ( refreshCollection ){
+                refreshCollection();
+            }
+        }
+    }
 
     useEffect(()=>{
         fetchItemsCount();
@@ -49,7 +61,10 @@ export const CollectionRow : FC <props> = ({
         }}
         ><FiEdit className="mr-2 inline mb-1"/>Edit Collection</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2"><FiTrash className="mr-2 inline mb-1"/>Remove Collection?</div>
+        bg-gray-800 text-gray-200 p-2" onClick={async (e)=>{
+            e.preventDefault();
+            await removeCollectionNow();
+        }}><FiTrash className="mr-2 inline mb-1"/>Remove Collection?</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2" onClick={(e)=>{
             e.preventDefault();

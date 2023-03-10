@@ -43,9 +43,13 @@ export const CollectionsListView : FC <props> = ({
     const [collections, setCollections] = useState<Collection[]>();
 
     const fetchCollections = useCallback(async ()=>{
+        await refreshCollection();
+    },[]);
+
+    const refreshCollection = async () =>{
         let c = await getCollections();
         setCollections(c);
-    },[]);
+    }
 
     useEffect(()=>{
         fetchCollections();
@@ -77,7 +81,8 @@ export const CollectionsListView : FC <props> = ({
             collections.length > 0 
             ?
             collections.map((c,i)=>{
-                return <CollectionRow collection={c} key={`col_${i}`} setViewType={setViewType}/>
+                return <CollectionRow collection={c} key={`col_${i}`} setViewType={setViewType} 
+                refreshCollection={refreshCollection}/>
             })
 
             : 
