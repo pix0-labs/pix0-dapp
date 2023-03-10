@@ -92,11 +92,11 @@ export const CollectionForm : FC <props>= ({
 
     return <CommonAnimatedDiv className="text-center">
     <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
-    {txHash && <TxHashDiv txHash={txHash}/>}
     <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
     <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded">
     {isEditMode ? "Update" : "Create"} Your Collection
     </div>
+    {txHash && <TxHashDiv txHash={txHash}/>}
     <div className="mb-4">
         <TextField label="Name:" labelInline={true} id="name" type="text" placeholder="Name"
         labelRightMargin={"64px"} className={commonTextfieldClassName("w-1/2 inline-block")}
