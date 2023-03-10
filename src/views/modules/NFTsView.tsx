@@ -1,6 +1,6 @@
 import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionContract from "pix0-react2-arch-test";
-import { Loader} from 'pix0-react2-arch-test';
+import { PulseLoader as Loader} from 'react-spinners';
 import { NFTView } from "./NFTView";
 import { CommonMessageDiv } from "../components/CommonMessageDiv";
 
@@ -30,7 +30,8 @@ export const NFTsView : FC = () =>{
 
         tokens === undefined ?
 
-        <div className="mx-auto w-2/5 mt-20 bg-gray-500 rounded-3xl p-4 text-center"><Loader/></div>
+        <div className="text-left p-2"><Loader
+        color="#eee"/></div>
         :
 
         tokens.length > 0 ?
