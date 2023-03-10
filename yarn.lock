@@ -3902,6 +3902,11 @@ crypto-browserify@^3.12.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+
 crypto-random-string@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
@@ -7614,14 +7619,15 @@ pix0-js-arch-test@^1.0.41:
     "@cosmjs/proto-signing" "^0.29.5"
     "@cosmjs/stargate" "^0.29.5"
 
-pix0-react2-arch-test@^1.7.9:
-  version "1.7.9"
-  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.7.9.tgz#8d9a5807770932c377aea0c0e8cecd94bf4a7f11"
-  integrity sha512-JboP76Bds4rhjnSBdpEqg3sVm1qvkjFOJWhoPKSoUnlozKa+iKHAIyBxAFerIcdrq9aHjjTzDGrnXVI4bjoEZA==
+pix0-react2-arch-test@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/pix0-react2-arch-test/-/pix0-react2-arch-test-1.8.0.tgz#c59081c5b537d7e3553d9160d7fe6319c7a39003"
+  integrity sha512-Xan0qpfjlVYvPV7tYBm0zzj9ZMLC0SJMDeXdAwftXh3umtVH2vHfaitEW7ZaTZ2lYNy4RkDh2A/tjYfRMt2Mjw==
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
     crypto-browserify "^3.12.0"
+    crypto-js "^4.1.1"
     css-loader "^6.7.3"
     dotenv-webpack "^8.0.1"
     framer-motion "^10.0.1"
