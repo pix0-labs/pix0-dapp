@@ -60,7 +60,7 @@ export const ItemRow : FC <props> = ({
   </Popup>
 
 
-    return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer">
+    return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer border-b border-gray-500">
         <td className="px-4 py-2 text-center">{((index ?? 0) +1)}</td>
         <td className="px-4 py-2 text-left"><img src={
             item.links.filter(i=> {return i.link_type ===1} )[0].value
