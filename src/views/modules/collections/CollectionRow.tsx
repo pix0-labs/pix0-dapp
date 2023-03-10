@@ -3,7 +3,7 @@ import { Collection } from "pix0-js-arch-test";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
 import useCollectionContract from "pix0-react2-arch-test";
-import {FiPlusCircle,FiTrash,FiEdit, FiTool} from 'react-icons/fi';
+import {FiPlusCircle,FiTrash,FiEdit, FiTool,FiFolder} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { ViewType } from "./CollectionsView";
@@ -152,7 +152,7 @@ export const CollectionRow : FC <props> = ({
                 setViewType(ViewType.ITEMS_LIST, collection);
             }
         }}
-        ><FiPlusCircle className="mr-2 inline mb-1"/>Manage Items</div>
+        ><FiFolder className="mr-2 inline mb-1"/>Manage Items</div>
   </Popup>
 
 
