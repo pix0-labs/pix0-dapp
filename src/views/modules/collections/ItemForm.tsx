@@ -1,9 +1,10 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { Item, Collection} from "pix0-js-arch-test";
+import { UploadField } from "../../components/UploadField";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
-import { Loader} from 'pix0-react2-arch-test';
+import { PulseLoader as Loader} from 'react-spinners';
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
 
@@ -35,6 +36,13 @@ export const ItemForm : FC <props>= ({
     }
 
     const [processing, setProcessing] = useState(false);
+
+    const setMediaCallback = (_media: {mediaDataUrl? : string,contentType?: string,
+        fileName?: string }, _index? : number ) => 
+    {
+    
+    }
+    
 
     const saveItem = async () =>{
 
@@ -100,6 +108,10 @@ export const ItemForm : FC <props>= ({
         onChange={(e)=>{
             setItem({...item, description : e.target.value});
         }} value={item.description}/>
+    </div>
+    <div className="mb-4">
+        <UploadField label="Upload Image/Media" withImagePreview={true}
+            setMediaCallback={setMediaCallback}/>
     </div>
     <div className="mb-4 bg-gray-700 p-2 rounded">
     <button className="mr-2 bg-blue-900 rounded-3xl p-2" 
