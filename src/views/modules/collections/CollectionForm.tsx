@@ -155,7 +155,7 @@ export const CollectionForm : FC <props>= ({
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
     </div>
     <div className="mb-4 bg-gray-700 p-2 rounded">
-    <button className="mr-2 bg-blue-900 rounded-3xl p-2" 
+    <button className="mr-2 bg-cyan-900 rounded-3xl p-2" 
     style={{width:"150px"}} disabled={processing}
     onClick={async (e)=>{
         e.preventDefault();
@@ -163,7 +163,7 @@ export const CollectionForm : FC <props>= ({
     }}>{processing ? <PulseLoader color="#eee" margin={2}/> 
     : <>{isEditMode ? "Update" : "Create"}</>}</button>
 
-    <button className="ml-2 bg-red-900 rounded-3xl p-2" 
+    <button className="ml-2 bg-gray-600 rounded-3xl p-2" 
     style={{width:"150px"}} disabled={processing}
     onClick={(e)=>{
         e.preventDefault();

@@ -114,14 +114,14 @@ export const ItemForm : FC <props>= ({
             setMediaCallback={setMediaCallback}/>
     </div>
     <div className="mb-4 bg-gray-700 p-2 rounded">
-    <button className="mr-2 bg-blue-900 rounded-3xl p-2" 
+    <button className="mr-2 bg-cyan-900 rounded-3xl p-2" 
     style={{width:"150px"}}
     onClick={async (e)=>{
         e.preventDefault();
         await saveItem();
     }}>{processing ? <Loader/> : <>{isEditMode ? "Update" : "Add Item"}</>}</button>
 
-    <button className="ml-2 bg-red-900 rounded-3xl p-2" 
+    <button className="ml-2 bg-gray-600 rounded-3xl p-2" 
     style={{width:"150px"}}
     onClick={(e)=>{
         e.preventDefault();
