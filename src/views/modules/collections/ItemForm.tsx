@@ -85,6 +85,7 @@ export const ItemForm : FC <props>= ({
                 if (tx instanceof Error) {
 
                     setTxHash(tx);
+                    setProcessing(false);
                     return; 
                 }
 
