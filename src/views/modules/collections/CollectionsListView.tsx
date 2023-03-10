@@ -2,6 +2,7 @@ import { FC, useEffect, useCallback, useState } from "react";
 import useCollectionContract from "pix0-react2-arch-test";
 import { Collection } from "pix0-js-arch-test";
 import { Loader} from 'pix0-react2-arch-test';
+import { TxHashDiv } from "../../components/TxHashDiv";
 import { CollectionRow } from "./CollectionRow";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
@@ -42,13 +43,26 @@ export const CollectionsListView : FC <props> = ({
 
     const [collections, setCollections] = useState<Collection[]>();
 
+    const [txHash, setTxHash] = useState<string|Error>();
+
     const fetchCollections = useCallback(async ()=>{
         await refreshCollection();
     },[]);
 
-    const refreshCollection = async () =>{
+    const unsetTxHash = () =>{
+
+        setTimeout(()=>{
+            setTxHash(undefined);
+        },10000);
+    }
+
+    const refreshCollection = async (txHash? : string|Error) =>{
         let c = await getCollections();
         setCollections(c);
+        if (txHash){
+            setTxHash(txHash);
+            unsetTxHash();
+        }
     }
 
     useEffect(()=>{
@@ -56,6 +70,7 @@ export const CollectionsListView : FC <props> = ({
     },[]);
 
     return <CommonAnimatedDiv className="text-center"><div className="w-10/2 p-2 overflow-x-auto">
+    {txHash && <TxHashDiv txHash={txHash}/>}
     <table className="table-auto w-10/12 mr-2 border-collapse border rounded-2xl overflow-hidden">
         <thead>
         <tr className="bg-gray-700">    

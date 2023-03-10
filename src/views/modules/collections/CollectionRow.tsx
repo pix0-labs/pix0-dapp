@@ -14,7 +14,7 @@ type props = {
 
     setViewType?: (viewType: ViewType, param? : any) => void,
 
-    refreshCollection? : () => void, 
+    refreshCollection? : (txHash? : string|Error) => void, 
 
 }
 
@@ -34,9 +34,9 @@ export const CollectionRow : FC <props> = ({
     const removeCollectionNow = async () =>{
 
         if ( window.confirm('Are you sure you want to delete the selected collection?')){
-            await removeCollection(collection.name, collection.symbol);
+            let tx = await removeCollection(collection.name, collection.symbol);
             if ( refreshCollection ){
-                refreshCollection();
+                refreshCollection(tx);
             }
         }
     }
