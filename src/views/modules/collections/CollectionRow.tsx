@@ -3,7 +3,7 @@ import { Collection } from "pix0-js-arch-test";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
 import useCollectionContract from "pix0-react2-arch-test";
-import {FiPlusCircle,FiTrash,FiEdit} from 'react-icons/fi';
+import {FiPlusCircle,FiTrash,FiEdit, FiTool} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { ViewType } from "./CollectionsView";
@@ -22,7 +22,7 @@ export const CollectionRow : FC <props> = ({
     collection, setViewType, refreshCollection
 }) =>{
 
-    const {getItemsCount, removeCollection} = useCollectionContract();
+    const {getItemsCount, removeCollection, updateCollection} = useCollectionContract();
 
     const [itemsCount, setItemsCount] = useState(0);
 
@@ -45,6 +45,46 @@ export const CollectionRow : FC <props> = ({
         fetchItemsCount();
     },[fetchItemsCount]);
 
+
+    const collectionActionText = (status : number) : string =>{
+
+        if ( status === 0 || status === 2){
+            return "Activate Collection";
+        }
+        else {
+
+            return "Deactivate Collection";
+        }
+    }
+
+
+    const updateCollectionStatus = async () =>{
+
+        if ( collection.status === 0 || collection.status === 2){
+            
+            let tx = await updateCollection({
+                name : collection.name,
+                symbol : collection.symbol,
+                status : 1, 
+            });
+
+            if ( refreshCollection ){
+                refreshCollection(tx);
+            }
+        }
+        else {
+            let tx = await updateCollection({
+                name : collection.name,
+                symbol : collection.symbol,
+                status : 2, 
+            });
+
+            if ( refreshCollection ){
+                refreshCollection(tx);
+            }
+        }
+    }
+
     const menu =  <Popup contentStyle={{background:"#222",minWidth:"240px"}} 
     arrowStyle={{color:"#222", border:"1px"}}
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
@@ -63,8 +103,17 @@ export const CollectionRow : FC <props> = ({
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2" onClick={async (e)=>{
             e.preventDefault();
+            await updateCollectionStatus();
+        }}><FiTool className="mr-2 inline mb-1"/>
+        {collectionActionText(collection.status ?? 0)}
+        </div>
+        
+        <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        bg-gray-800 text-gray-200 p-2" onClick={async (e)=>{
+            e.preventDefault();
             await removeCollectionNow();
         }}><FiTrash className="mr-2 inline mb-1"/>Remove Collection?</div>
+
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2" onClick={(e)=>{
             e.preventDefault();
