@@ -2,6 +2,7 @@ import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { Item, Collection} from "pix0-js-arch-test";
 import { UploadField } from "../../components/UploadField";
+import { TraitsForm } from "./TraitsForm";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { PulseLoader as Loader} from 'react-spinners';
@@ -163,6 +164,10 @@ export const ItemForm : FC <props>= ({
                 setMedia(undefined);
             }}/>
     </div>
+    <div className="mb-4">
+        <TraitsForm item={item} setItem={setItem}/>
+    </div>
+   
     <div className="mb-4 bg-gray-700 p-2 rounded">
     <button className="mr-2 bg-cyan-900 rounded-3xl p-2" 
     style={{width:"150px"}}  disabled={processing}
