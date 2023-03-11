@@ -1,6 +1,8 @@
 import { FC, useState } from "react";
 import { Collection } from "pix0-js-arch-test";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
+import { FcDeleteRow } from "react-icons/fc";
+import * as ATTB_NAMES from './const';
 
 interface Link {
     
@@ -12,12 +14,12 @@ interface Link {
 }
 
 const LINKS  : Link[] = [
-    {attribute_name : "WEBSITE", display_name : "Website",
+    {attribute_name : ATTB_NAMES.COLL_ATTRB_WEBSITE, display_name : "Website",
     info : `This can be the external website of the NFT artist or creator, 
     a gallery or museum where the NFT is being exhibited, or any other 
     website that provides more information about the NFT`},
 
-    {attribute_name : "YOUTUBE_URL", display_name : "Youtube URL",
+    {attribute_name : ATTB_NAMES.COLL_ATTRB_YOUTUBE, display_name : "Youtube URL",
     info : `This is the YouTube Video URL that is related to this NFT collection,
     you can also add on each item, if it's not provided in each item then this will
     be used as the general YouTubde about this NFT collection`},
@@ -94,17 +96,30 @@ export const CollectionLinksForm : FC <props> = ({
     const addLink = () =>{
 
         if (links === undefined) {
-
             setLinks([LINKS[0]]);
         }
         else {
 
+            if (links.length === 0) {
+                setLinks([LINKS[0]]);
+            }
+            else
             if (links.length < LINKS.length) {
 
                 setLinks([...links, LINKS[1]]);
             }
         }
     }
+
+    const removeLinkAt = (index : number) => {
+
+        if (links ) {
+            const newLnks = [...links];
+            newLnks.splice(index, 1);
+            setLinks(newLnks);
+        }
+    }
+
 
     return <div className="p-1">
     <button 
@@ -119,19 +134,26 @@ export const CollectionLinksForm : FC <props> = ({
     <table className="table-auto mt-4 w-3/5"> 
         <tbody> 
             {
-                links.map (l=>{
+                links.map ((l,i)=>{
 
-                    return <tr>
-                        <td className="px-4 py-2 text-left"><b>{l.display_name}</b></td>
+                    return <tr key={`link_${i}`}>
+                        <td className="px-4 py-2 text-left w-36"><b>{l.display_name}</b></td>
                         <td className="px-4 py-2 text-left"><TextField labelInline={true} id={l.display_name} type="text" 
                         labelRightMargin={"4px"} placeholder={l.display_name}  
-                        className={commonTextfieldClassName("w-3/4 inline-block")}
+                        className={commonTextfieldClassName("w-11/12 inline-block")}
                         onChange={(e)=>{
 
                             setCollectionAttribute(l.attribute_name,e.target.value, collection, setCollection);
 
                         }} value={collectionAttributeValue(l.attribute_name, collection)}/>
                         </td>
+                        <td className="px-4 py-2">
+                        <FcDeleteRow className="mb-2" 
+                        title="Remove this row!" onClick={(e)=>{
+                            e.preventDefault();
+                            removeLinkAt(i);
+                        }}/>
+                </td>
                     </tr>
                 })
             } 
