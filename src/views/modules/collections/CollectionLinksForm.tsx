@@ -25,7 +25,7 @@ const LINKS  : Link[] = [
     {attribute_name : ATTB_NAMES.COLL_ATTRB_YOUTUBE, display_name : "Youtube URL",
     info : `This is the YouTube Video URL that is related to this NFT collection,
     you can also add on each item, if it's not provided in each item then this will
-    be used as the general YouTubde about this NFT collection`},
+    be used as the default YouTube about this NFT collection`},
 ]
 
 
