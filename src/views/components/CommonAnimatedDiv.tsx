@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC , useEffect, useState} from "react";
 import { motion } from 'framer-motion';
 import { COMMON_PANEL_CLASS_NAME } from "../modules/config";
 
@@ -7,14 +7,41 @@ type props = {
     children : any,
 
     className? : string, 
+
+    visible? : boolean,
+
+    dismissAfterInSeconds? : number, 
 }
 
 export const CommonAnimatedDiv : FC <props> = ({
-    children, className
+    children, className, visible, dismissAfterInSeconds
 }) =>{
 
-    return <motion.div initial={{ opacity: 0, scale: 0.5 }}
+    const [isVisible, setIsVisible] = useState(true);
+
+    useEffect(()=>{
+
+        if ( visible !== undefined) {
+
+            setIsVisible(visible);
+        }
+
+    },[visible]);
+
+
+    const handleDismiss = () => {
+
+        if (dismissAfterInSeconds) {
+
+            setTimeout(()=>{
+                setIsVisible(false);
+            },dismissAfterInSeconds * 1000);
+        }
+    };
+
+
+    return <>{ isVisible && <motion.div initial={{ opacity: 0, scale: 0.5 }}
     className={className ?? COMMON_PANEL_CLASS_NAME}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5 }}>{children}</motion.div>
+    animate={{ opacity: 1, scale: 1 }}  onAnimationComplete={handleDismiss}
+    transition={{ duration: 0.5 }}>{children}</motion.div>}</>
 }

@@ -159,8 +159,8 @@ export const UploadField : FC <Props> = ({
 
 
     return <div className="hover:bg-gray-700 bg-gray-800 hover:cursor-pointer inline-block pt-4 pb-4 pl-2 pr-4 rounded">
-    {error && <CommonAnimatedDiv className="text-red-600 text-xs text-left">
-    <FcDisapprove className="inline-block mr-2"/>{error.message}</CommonAnimatedDiv>}
+    <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
+    dismissAfterInSeconds={10}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
     <div className="inline-block text-white">{label &&<label htmlFor={id ?? "fileInput"} 
     className="form-label inline-block mb-2 text-gray-100 font-bold">{label}</label>}
     <input className="form-control inline w-full px-3 py-1.5 text-base
