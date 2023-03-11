@@ -95,8 +95,8 @@ export const CollectionsListView : FC <props> = ({
             <td className="px-4 py-2 text-center">No</td>
             <th className="px-4 py-2 text-left">Name</th>
             <th className="px-4 py-2">Symbol</th>
-            <th className="px-4 py-2">Description</th>
-            <th className="px-4 py-2">Number Of Items</th>
+            <th className="px-4 py-2 text-left">Description</th>
+            <th className="px-4 py-2">No Of Items</th>
             <th className="px-4 py-2">Status</th>
             <th className="px-4 py-2 text-center">Action</th>
             </tr>
