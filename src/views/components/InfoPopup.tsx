@@ -5,8 +5,9 @@ import 'reactjs-popup/dist/index.css';
 
 const InfoButton = () =>{
 
-    return <button  className="bg-transparent">
-    <FiInfo className="inline m-2"/></button>
+    return <div onClick={(e)=>{
+        e.preventDefault(); }} className="bg-transparent inline">
+    <FiInfo className="inline m-2 cursor-pointer"/></div>
 }
 
 export const Tooltip = (info? : string, arrowPosition?: PopupPosition|PopupPosition[]) => {

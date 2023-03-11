@@ -125,13 +125,13 @@ export const CollectionLinksForm : FC <props> = ({
 
 
     return <div className="p-1">
-    <button 
-    style={{minWidth:"160px"}}
-    className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
+    <div style={{minWidth:"160px", maxWidth:"218px"}}
+    className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4 cursor-pointer"
     onClick={(e)=>{
         e.preventDefault();
         addLink();
-    }}>Add Links/Websites {Tooltip("Add links such as the website of the artist, gallery and the YouTube video URLs etc")} </button>
+    }}>Add Links/Websites {Tooltip("Add links such as the website of the artist, gallery and the YouTube video URLs etc")} 
+    </div>
 
         { (links  && links.length > 0) && 
     <table className="table-auto mt-4 w-3/5"> 
