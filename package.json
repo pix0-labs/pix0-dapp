@@ -1,6 +1,6 @@
 {
-  "name": "pix0-react-examples",
-  "version": "0.1.2",
+  "name": "pix0-dapp",
+  "version": "0.1.5",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -13,7 +13,7 @@
     "@types/react-dom": "^18.0.0",
     "connected-react-router": "^6.9.3",
     "history": "^5.3.0",
-    "pix0-react2-arch-test": "^1.8.0",
+    "pix0-react2-arch-test": "^1.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
