@@ -1,8 +1,11 @@
 import { FC, useState } from "react";
 import { Collection } from "pix0-js-arch-test";
+import { Tooltip } from "../../components/InfoPopup";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { FcDeleteRow } from "react-icons/fc";
 import * as ATTB_NAMES from './const';
+import 'reactjs-popup/dist/index.css';
+
 
 interface Link {
     
@@ -128,7 +131,7 @@ export const CollectionLinksForm : FC <props> = ({
     onClick={(e)=>{
         e.preventDefault();
         addLink();
-    }}>Add Links/Websites</button>
+    }}>Add Links/Websites {Tooltip("Add links such as the website of the artist, gallery and the YouTube video URLs etc")} </button>
 
         { (links  && links.length > 0) && 
     <table className="table-auto mt-4 w-3/5"> 
@@ -146,6 +149,9 @@ export const CollectionLinksForm : FC <props> = ({
                             setCollectionAttribute(l.attribute_name,e.target.value, collection, setCollection);
 
                         }} value={collectionAttributeValue(l.attribute_name, collection)}/>
+                        </td>
+                        <td className="px-4 py-2">
+                        {Tooltip(l.info)}
                         </td>
                         <td className="px-4 py-2">
                         <FcDeleteRow className="mb-2" 

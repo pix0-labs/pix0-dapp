@@ -5,8 +5,9 @@ import { AiOutlineMore} from 'react-icons/ai';
 import useCollectionContract from "pix0-react2-arch-test";
 import {FiPlusCircle,FiTrash,FiEdit, FiTool,FiFolder} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
 import { ViewType } from "./CollectionsView";
+import 'reactjs-popup/dist/index.css';
+
 
 type props = {
 

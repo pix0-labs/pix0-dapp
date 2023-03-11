@@ -81,9 +81,6 @@ export const CollectionForm : FC <props>= ({
         setProcessing(false);
     }
 
-
-    
-
     const [collection, setCollection] = useState<Collection>({
         name : "", symbol : ""
     });
@@ -97,7 +94,6 @@ export const CollectionForm : FC <props>= ({
 
     return <CommonAnimatedDiv className="text-center">
     <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
-    <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
     <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded">
     {isEditMode ? "Update" : "Create"} Your Collection
     </div>
@@ -183,6 +179,5 @@ export const CollectionForm : FC <props>= ({
     }}><FcCancel className="inline mb-1"/> Close</button>
     </div>
 
-    </form>
     </div></CommonAnimatedDiv>
 }
