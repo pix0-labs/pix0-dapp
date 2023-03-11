@@ -7,6 +7,7 @@ import { Select } from "../../components/Select";
 import { RoyaltiesForm } from "./RoyaltiesForm";
 import { PulseLoader} from 'react-spinners';
 import { TreasuriesForm } from "./TreasuriesForm";
+import { CollectionLinksForm } from "./CollectionLinksForm";
 import useCollectionContract from "pix0-react2-arch-test";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { FcCancel } from "react-icons/fc";
@@ -79,51 +80,7 @@ export const CollectionForm : FC <props>= ({
     }
 
 
-    const setCollectionAttribute = (name : string, value : string ) =>  {
-
-        let attbs = collection.attributes;
-
-        if ( attbs === undefined || attbs === null) {
-            attbs = [{
-                name : name,
-                value :value, 
-            }];
-
-            setCollection({...collection, attributes : attbs});
-
-        }
-        else {
-
-            const filtered = attbs.filter((w)=>{
-                return w.name === name;
-            });
-
-            
-            const indexes = filtered.map(item => attbs?.indexOf(item));
-           
-           
-            if ( indexes[0] !== undefined) {
-
-                attbs[indexes[0]] = {
-                    name : name,
-                    value : value 
-                }
-            }   
-            else {
-
-                attbs.push ({
-                    name : "WEBSITE",
-                    value : value,        
-                });
-            }
-
-            setCollection({...collection, attributes : attbs});
-
-        }
-
-      
-    }
-
+    
 
     const [collection, setCollection] = useState<Collection>({
         name : "", symbol : ""
@@ -195,15 +152,9 @@ export const CollectionForm : FC <props>= ({
     </div>
 
     <div className="mb-4">
-        <TextField label="Website:" labelInline={true} id="website" type="text" 
-        labelRightMargin={"48px"} placeholder="URL of website"  
-        className={commonTextfieldClassName("w-3/4 inline-block")}
-        onChange={(e)=>{
-            setCollectionAttribute("WEBSITE", e.target.value);
-        }} value={collection.description}/>
+        <CollectionLinksForm collection={collection} setCollection={setCollection}/>
     </div>
-    
-
+   
     <div className="mb-4">
         <TreasuriesForm collection={collection} setCollection={setCollection}/>
     </div>

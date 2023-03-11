@@ -127,7 +127,7 @@ export const RoyaltiesForm : FC <props> = ({
     }
 
 
-    return <div className="p2">
+    return <div className="p-1">
     <button 
     style={{minWidth:"160px"}}
     className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
