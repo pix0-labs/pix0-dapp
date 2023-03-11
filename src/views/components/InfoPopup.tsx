@@ -11,7 +11,7 @@ const InfoButton = () =>{
 }
 
 export const Tooltip = (info? : string, arrowPosition?: PopupPosition|PopupPosition[]) => {
-    return <Popup contentStyle={{background:"#222",minWidth:"300px"}} 
+    return <Popup contentStyle={{background:"#222",minWidth:"280px", maxWidth:"460px"}} 
     arrowStyle={{color:"#222", border:"1px"}}
     className="bg-gray-800 text-gray-100 w-64 p-4 m-4"
     trigger={InfoButton()} position= {arrowPosition ?? "left center"}>

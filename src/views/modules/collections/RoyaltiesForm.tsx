@@ -17,6 +17,8 @@ export const RoyaltiesForm : FC <props> = ({
 }) =>{
 
 
+    const maxPercentage = 15;
+
     const currentTotalPercentage = () : number  =>{
 
         let royalties = collection.royalties;
@@ -45,7 +47,7 @@ export const RoyaltiesForm : FC <props> = ({
             royalties = [];
             let ro : Royalty = {
                 wallet : "",
-                percentage : 100,    
+                percentage : maxPercentage,    
             };
 
             
@@ -55,7 +57,7 @@ export const RoyaltiesForm : FC <props> = ({
         else {
 
             let tot = currentTotalPercentage();
-            let nv = 100 - tot;
+            let nv = maxPercentage - tot;
             royalties.push({
                 wallet:"",
                 percentage:nv,
@@ -120,7 +122,7 @@ export const RoyaltiesForm : FC <props> = ({
 
             total = +total + +currentValue;
 
-            return (total <= 100);
+            return (total <= maxPercentage);
         }
         else {
 
@@ -140,7 +142,7 @@ export const RoyaltiesForm : FC <props> = ({
     }}>
     <FiPlus className="inline mr-2"/> Add Royalties
     {Tooltip(`You can add a number of wallets here who will receive the percentage 
-    of royalty accordingly upon an item sale on the marketplace!`, "right center")} 
+    of royalty accordingly (up to 15% total) upon an item sale on the marketplace!`, "right center")} 
     </div>
     { (collection.royalties && collection.royalties.length > 0) && 
     <table className="table-auto mt-4 w-3/5">
