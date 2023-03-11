@@ -40,6 +40,8 @@ export const CollectionForm : FC <props>= ({
 
     const saveCollection = async () =>{
 
+        //console.log("coll.x", collection);
+
         setProcessing(true);
 
         if ( isEditMode ) {
