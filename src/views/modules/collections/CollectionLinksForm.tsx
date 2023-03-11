@@ -58,7 +58,7 @@ export const setCollectionAttribute = (name : string, value : string,
         else {
 
             attbs.push ({
-                name : "WEBSITE",
+                name : name,
                 value : value,        
             });
         }
