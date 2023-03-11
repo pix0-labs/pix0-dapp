@@ -1,7 +1,9 @@
 import { FC } from "react";
 import { Collection, Royalty } from "pix0-js-arch-test";
+import { Tooltip } from "../../components/InfoPopup";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import {FcDeleteRow} from 'react-icons/fc';
+import { FiMinusCircle, FiPlus } from "react-icons/fi";
+
 
 type props = {
 
@@ -128,16 +130,18 @@ export const RoyaltiesForm : FC <props> = ({
 
 
     return <div className="p-1">
-    <button 
-    style={{minWidth:"160px"}}
-    className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
+    <div style={{minWidth:"160px", maxWidth:"200px"}}
+    className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4 cursor-pointer"
     onClick={(e)=>{
 
         e.preventDefault();
         addRoyalty();
 
     }}>
-        Add Royalties</button>
+    <FiPlus className="inline mr-2"/> Add Royalties
+    {Tooltip(`You can add a number of wallets here who will receive the percentage 
+    of royalty accordingly upon an item sale on the marketplace!`, "right center")} 
+    </div>
     { (collection.royalties && collection.royalties.length > 0) && 
     <table className="table-auto mt-4 w-3/5">
         <thead>
@@ -172,7 +176,7 @@ export const RoyaltiesForm : FC <props> = ({
                 </td>
 
                 <td className="px-4 py-2">
-                    <FcDeleteRow className="mb-2" 
+                    <FiMinusCircle className="mb-2" 
                     title="Remove this row!" onClick={(e)=>{
                         e.preventDefault();
                         removeRoyaltyAt(i);

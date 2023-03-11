@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Collection, Treasury } from "pix0-js-arch-test";
+import { Tooltip } from "../../components/InfoPopup";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import {FcDeleteRow} from 'react-icons/fc';
+import { FiPlus, FiMinusCircle } from "react-icons/fi";
 
 type props = {
 
@@ -128,15 +129,17 @@ export const TreasuriesForm : FC <props> = ({
 
 
     return <div className="p-1">
-    <button className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4"
-     style={{minWidth:"160px"}}
+    <div className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4 cursor-pointer"
+     style={{minWidth:"160px", maxWidth:"220px"}}
     onClick={(e)=>{
 
         e.preventDefault();
         addTreasury();
 
     }}>
-        Add Treasuries</button>
+    <FiPlus className="inline mr-2"/>Add Treasuries
+    {Tooltip(`You can add a number of wallets here who will receive the split 
+    amount of payment upon an item is minted according to the percentage of each`, "right center")}</div>
     { (collection.treasuries && collection.treasuries.length > 0) && 
     <table className="table-auto mt-4 w-3/5">
         <thead>
@@ -171,7 +174,7 @@ export const TreasuriesForm : FC <props> = ({
                 </td>
 
                 <td className="px-4 py-2">
-                    <FcDeleteRow className="mb-2" title="Remove this row!" onClick={(e)=>{
+                    <FiMinusCircle className="mb-2" title="Remove this row!" onClick={(e)=>{
                         e.preventDefault();
                         removeTreasuryAt(i);
                     }}/>

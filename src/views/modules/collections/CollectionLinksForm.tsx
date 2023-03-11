@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { Collection } from "pix0-js-arch-test";
 import { Tooltip } from "../../components/InfoPopup";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import { FcDeleteRow } from "react-icons/fc";
+import { FiPlus, FiMinusCircle } from "react-icons/fi";
 import * as ATTB_NAMES from './const';
 import 'reactjs-popup/dist/index.css';
 
@@ -125,12 +125,14 @@ export const CollectionLinksForm : FC <props> = ({
 
 
     return <div className="p-1">
-    <div style={{minWidth:"160px", maxWidth:"218px"}}
+    <div style={{minWidth:"160px", maxWidth:"240px"}}
     className="bg-gray-700 text-gray-100 rounded-3xl py-2 px-4 cursor-pointer"
     onClick={(e)=>{
         e.preventDefault();
         addLink();
-    }}>Add Links/Websites {Tooltip("Add links such as the website of the artist, gallery and the YouTube video URLs etc")} 
+    }}><FiPlus className="inline mr-2"/>Add Links/Websites 
+    {Tooltip(`Add links such as the website of the artist, 
+    gallery and the YouTube video URLs etc`, "right center")} 
     </div>
 
         { (links  && links.length > 0) && 
@@ -154,7 +156,7 @@ export const CollectionLinksForm : FC <props> = ({
                         {Tooltip(l.info)}
                         </td>
                         <td className="px-4 py-2">
-                        <FcDeleteRow className="mb-2" 
+                        <FiMinusCircle className="mt-2 mb-2 cursor-pointer" 
                         title="Remove this row!" onClick={(e)=>{
                             e.preventDefault();
                             removeLinkAt(i);
