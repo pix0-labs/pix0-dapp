@@ -141,8 +141,8 @@ export const RoyaltiesForm : FC <props> = ({
 
     }}>
     <FiPlus className="inline mr-2"/> Add Royalties
-    {Tooltip(`You can add a number of wallets here who will receive the percentage 
-    of royalty accordingly (up to 15% total) upon an item sale on the marketplace!`, "right center")} 
+    {Tooltip(`You can add multiple wallets to receive a percentage of the 
+    royalty (up to 15%) when an item is sold on the marketplace`, "right center")} 
     </div>
     { (collection.royalties && collection.royalties.length > 0) && 
     <table className="table-auto mt-4 w-3/5">
