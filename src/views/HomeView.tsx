@@ -9,7 +9,7 @@ export const HomeView : FC = () =>{
         <aside className="sidebar w-0 lg:w32 md:shadow ASideBar">
             <SideBar/>
         </aside>
-        <main className="main flex flex-col grow md:ml-0 h-screen mx-auto">
+        <main className="main flex flex-col grow md:ml-0 h-screen mx-auto bg-black">
             <MainView/>
         </main>
       </div> ;

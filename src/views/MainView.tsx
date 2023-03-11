@@ -4,6 +4,7 @@ import { Page } from "../sm/PageActions";
 import { MintNFTView } from "./modules/MintNFTView";
 import { MarketView } from "./modules/MarketView";
 import { CollectiblesView } from "./modules/CollectiblesView";
+import { TopBar } from "./TopBar";
 import { MainView as CreateCollectionView } from "./modules/collections/MainView";
 
 export const MainView : FC = () =>{
@@ -38,7 +39,8 @@ export const MainView : FC = () =>{
         return <MarketView/>
     }
 
-    return <div className=" bg-gray-900 h-screen">
+    return <div className="bg-gray-900 h-screen">
+    <TopBar/>
     {switchView()}
     </div>
 }
