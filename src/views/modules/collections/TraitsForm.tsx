@@ -123,7 +123,7 @@ export const TraitsForm : FC <props> = ({
                 }} value={t.trait_type ?? ""}/>
                 </td>
                 <td className="px-4 py-2">
-                <TextField id={`perc_${i}`} type="number" placeholder="Value"
+                <TextField id={`perc_${i}`} placeholder="Value"
                 className={commonTextfieldClassName("w-32 block mb-2")}
                 onChange={(e)=>{
                     setTraitAt(i,{value : e.target.value});
