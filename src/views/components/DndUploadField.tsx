@@ -69,9 +69,9 @@ export const DndUploadField : FC <DndProps> = ({
     return  <div className="hover:bg-gray-700 bg-gray-800 
     hover:cursor-pointer inline-block pt-4 pb-4 pl-2 pr-4 rounded">
     <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
-    dismissAfterInSeconds={10}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
+    dismissAfterInSeconds={5}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
          <FileUploader className="bg-gray-800 p-2 block text-gray-100" handleChange={onChange} name="file" 
-         types={allowedFileTypes}
+         types={allowedFileTypes} dropMessageStyle={{color:"white"}}
          multipleUpload={multipleUpload} 
          onClick={(e :any)=>{
             setMediaDataUrl(undefined);
