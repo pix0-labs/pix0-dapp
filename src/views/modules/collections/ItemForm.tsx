@@ -1,6 +1,7 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { Item, Collection} from "pix0-js-arch-test";
+//import { FileUploadField as UploadField } from "../../components/FileUploadField";
 import { UploadField } from "../../components/UploadField";
 import { TraitsForm } from "./TraitsForm";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
@@ -160,6 +161,7 @@ export const ItemForm : FC <props>= ({
     </div>
     <div className="mb-4">
         <UploadField label="Upload Image/Media" withImagePreview={true}
+        useDragAndDrop={true}
             setMediaCallback={setMediaCallback} onClick={()=>{
                 setMedia(undefined);
             }}/>
