@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Item } from "pix0-js-arch-test";
 import { AiOutlineMore} from 'react-icons/ai';
 import {FiTrash,FiEdit} from 'react-icons/fi';
+import { ImageWithPopupView } from "../../components/ImageWithPopupView";
 import { Popup} from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { ViewType } from "./CollectionsView";
@@ -62,9 +63,9 @@ export const ItemRow : FC <props> = ({
 
     return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer border-b border-gray-500">
         <td className="px-4 py-2 text-center">{((index ?? 0) +1)}</td>
-        <td className="px-4 py-2 text-left"><img src={
+        <td className="px-4 py-2 text-left"><ImageWithPopupView src={
             item.links.filter(i=> {return i.link_type ===1} )[0].value
-        } style={{maxWidth:"36px"}}/></td>
+        } arrowPosition="right center"/></td>
         <td className="px-4 py-2 text-left">{item.name}</td>
         <td className="px-4 py-2 text-left">{item.description}</td>
         <td className="px-4 py-2 text-center">
