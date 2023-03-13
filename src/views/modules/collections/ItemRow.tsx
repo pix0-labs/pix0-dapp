@@ -65,7 +65,7 @@ export const ItemRow : FC <props> = ({
         <td className="px-4 py-2 text-center">{((index ?? 0) +1)}</td>
         <td className="px-4 py-2 text-left"><ImageWithPopupView src={
             item.links.filter(i=> {return i.link_type ===1} )[0].value
-        } arrowPosition="right center"/></td>
+        } arrowPosition="right center" on={"hover"}/></td>
         <td className="px-4 py-2 text-left">{item.name}</td>
         <td className="px-4 py-2 text-left">{item.description}</td>
         <td className="px-4 py-2 text-center">
