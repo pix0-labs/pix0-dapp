@@ -46,7 +46,7 @@ export const CollectionRow : FC <props> = ({
             }
         }
 
-        if ( window.confirm('Are you sure you want to delete the selected collection?')){
+        if ( window.confirm(`Are you sure you want to delete the selected collection:\n"${collection.name}"?`)){
             let tx = await removeCollection(collection.name, collection.symbol);
             if ( refreshCollection ){
                 refreshCollection();
