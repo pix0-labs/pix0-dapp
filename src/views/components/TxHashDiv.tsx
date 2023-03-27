@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { CommonMessageDiv } from "./CommonMessageDiv";
-import { shortenStringTo } from "pix0-react2-arch-test";
+import { shortenStringTo } from "pix0-react";
 
 const TX_URL_PREFIX = "https://testnet.mintscan.io/archway-testnet/txs/";
 

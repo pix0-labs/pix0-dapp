@@ -1,6 +1,6 @@
 import { FC, useEffect, useCallback, useState } from "react";
-import useCollectionContract from "pix0-react2-arch-test";
-import { Collection } from "pix0-js-arch-test";
+import useCollectionContract from "pix0-react";
+import { Collection } from "pix0-js";
 import { PulseLoader} from 'react-spinners';
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { CollectionRow } from "./CollectionRow";

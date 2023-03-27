@@ -1,6 +1,7 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import { Collection} from "pix0-js-arch-test";
+import { Collection} from "pix0-js";
+import {toUcoin, toCoinStr} from 'pix0-js';
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
@@ -8,7 +9,7 @@ import { RoyaltiesForm } from "./RoyaltiesForm";
 import { PulseLoader} from 'react-spinners';
 import { TreasuriesForm } from "./TreasuriesForm";
 import { CollectionLinksForm } from "./CollectionLinksForm";
-import useCollectionContract from "pix0-react2-arch-test";
+import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { FcCancel } from "react-icons/fc";
 
@@ -137,17 +138,17 @@ export const CollectionForm : FC <props>= ({
         }} value={collection.description}/>
     </div>
     <div className="mb-4">
-        <TextField label="Minting Price:" labelInline={true} id="price" type="text" 
-        labelRightMargin={"10px"} placeholder="Price"  
+        <TextField label="Minting Price:" labelInline={true} id="price" type="number" 
+        labelRightMargin={"10px"} placeholder="Price" 
         className={commonTextfieldClassName("w-32 inline-block")}
         onChange={(e)=>{
             let prices = collection.prices;
-            prices = [{price_type : 1, value:e.target.value,
-            denom :"uconst" }]
+            prices = [{price_type : 1, value: {amount : `${toUcoin(parseFloat(e.target.value))}`, 
+                denom : "uconst"}}];
         
             setCollection({...collection, prices : prices});
-        }} value={`${collection.prices?.filter(p=> {return p.price_type === 1;})[0].value ?? 1}`}/>
-        <div className="inline-block ml-2 font-bold text-md">uconst</div>
+        }} value={`${toCoinStr(parseFloat(collection.prices?.filter(p=> {return p.price_type === 1;})[0].value.amount ?? '0'))}`}/>
+        <div className="inline-block ml-2 font-bold text-md">CONST</div>
     </div>
 
     <div className="mb-4">

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Collection, Treasury } from "pix0-js-arch-test";
+import { Collection, Treasury } from "pix0-js";
 import { Tooltip } from "../../components/InfoPopup";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { FiPlus, FiMinusCircle } from "react-icons/fi";

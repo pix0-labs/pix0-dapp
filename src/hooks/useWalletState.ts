@@ -2,7 +2,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Dispatch } from "redux";
 import { useCallback, useEffect} from "react";
 import { WalletState } from "../sm/WalletStateReducer";
-import { isWalletConnected } from "pix0-react2-arch-test";
+import { isWalletConnected } from "pix0-react";
 import { setWalletConnected as setWalletConn} from "../sm/WalletActions";
 
 

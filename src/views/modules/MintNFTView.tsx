@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { motion } from 'framer-motion';
 import { COMMON_PANEL_CLASS_NAME } from "./config";
-import { MintButton } from "pix0-react2-arch-test";
+import { MintButton } from "pix0-react";
 
 export const MintNFTView : FC = () =>{
 

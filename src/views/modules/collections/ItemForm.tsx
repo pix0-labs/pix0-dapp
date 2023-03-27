@@ -1,15 +1,15 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import { Item, Collection} from "pix0-js-arch-test";
+import { Item, Collection} from "pix0-js";
 //import { FileUploadField as UploadField } from "../../components/FileUploadField";
 import { UploadField } from "../../components/UploadField";
 import { TraitsForm } from "./TraitsForm";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { PulseLoader as Loader} from 'react-spinners';
-import useCollectionContract from "pix0-react2-arch-test";
+import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
-import { singleUpload } from "pix0-react2-arch-test";
+import { singleUpload } from "pix0-react";
 import { FcCancel } from "react-icons/fc";
 
 export interface Media {

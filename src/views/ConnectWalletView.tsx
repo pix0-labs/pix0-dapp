@@ -1,6 +1,6 @@
 import { FC, useState} from "react";
 import { CommonAnimatedDiv } from "./components/CommonAnimatedDiv";
-import { ConnectButton } from "pix0-react2-arch-test";
+import { ConnectButton } from "pix0-react";
 import useWalletState from "../hooks/useWalletState";
 import logo from '../images/pix0_logo1.png';
 

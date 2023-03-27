@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Collection } from "pix0-js-arch-test";
+import { Collection } from "pix0-js";
 import { Tooltip } from "../../components/InfoPopup";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { FiPlus, FiMinusCircle } from "react-icons/fi";

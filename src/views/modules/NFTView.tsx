@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import useCollectionContract from "pix0-react2-arch-test";
-import  {Nft} from 'pix0-js-arch-test';
+import useCollectionContract from "pix0-react";
+import  {Nft} from 'pix0-js';
 
 type props = {
 

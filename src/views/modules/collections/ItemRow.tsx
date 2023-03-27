@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Item } from "pix0-js-arch-test";
+import { Item } from "pix0-js";
 import { AiOutlineMore} from 'react-icons/ai';
 import {FiTrash,FiEdit} from 'react-icons/fi';
 import { ImageWithPopupView } from "../../components/ImageWithPopupView";

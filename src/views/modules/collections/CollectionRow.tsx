@@ -1,8 +1,8 @@
 import { FC , useCallback, useEffect, useState} from "react";
-import { Collection } from "pix0-js-arch-test";
+import { Collection } from "pix0-js";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
-import useCollectionContract from "pix0-react2-arch-test";
+import useCollectionContract from "pix0-react";
 import {FiPlusCircle,FiTrash,FiEdit, FiTool,FiFolder} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
 import { ViewType } from "./CollectionsView";
