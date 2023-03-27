@@ -1,0 +1,31 @@
+.BalanceView {
+    background:#068;
+    color:wheat;
+    width:220px;
+    font-weight: 600;
+    padding:10px;
+    margin:10px;
+    border-radius:20px;
+    border:0px; 
+    font-size: 10pt;
+    text-align: center;
+    cursor:pointer;
+}
+
+.BalanceView .CopyIcon{
+    cursor: pointer;
+    background-color: transparent;
+    width:25px;
+    height:25px;
+    margin-left:3px;
+    border: 0px;
+}
+
+.BalanceView .CopyIcon img{
+    width:20px;
+    height:20px;
+    filter: invert(100%);
+    margin-left:4px;
+    display: inline-block;
+    background-color: transparent;
+}
