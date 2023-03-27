@@ -2,6 +2,7 @@ import { useEffect, useCallback, useState } from 'react';
 import * as pix0Common from 'pix0-js';
 import { WalletConnectionStorage } from 'pix0-react';
 
+const COIN_DENOM = "CONST";
 
 const COIN_MINIMAL_DENOM = "uconst";
 
@@ -41,7 +42,7 @@ export function useBalanceQuerier(
                         setBalance(b);
 
                 
-                    setBalanceAsStr(`${(b ?? 0).toFixed(coinInfo.displayDecimals ?? 2)} ${COIN_MINIMAL_DENOM}`);
+                    setBalanceAsStr(`${(b ?? 0).toFixed(coinInfo.displayDecimals ?? 2)} ${COIN_DENOM}`);
                 }
                 
             }

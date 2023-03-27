@@ -2456,9 +2456,9 @@
     csstype "^3.0.2"
 
 "@types/react@^18.0.28":
-  version "18.0.29"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.29.tgz#4cead505172c0020c5b51940199e31fc6ff2f63a"
-  integrity sha512-wXHktgUABxplw1+UnljseDq4+uztQyp2tlWZRIxHlpchsCFqiYkvaDS8JR7eKOQm8wziTH/el5qL7D6gYNkYcw==
+  version "18.0.30"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.30.tgz#83944e679fc7aeab3f042b76d63c4d755b56b7c4"
+  integrity sha512-AnME2cHDH11Pxt/yYX6r0w448BfTwQOLEhQEjCdwB7QskEI7EKtxhGUsExTQe/MsY3D9D5rMtu62WRocw9A8FA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -7684,7 +7684,7 @@ pirates@^4.0.4:
     "@cosmjs/stargate" "^0.29.5"
 
 "pix0-react@file:../pix0-react":
-  version "1.9.4"
+  version "1.9.5"
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
@@ -7695,7 +7695,7 @@ pirates@^4.0.4:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-1.9.4-bbf7e69e-1b64-486b-9f15-8027095a7972-1679919497588/js/pix0-js"
+    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-1.9.5-8dd41856-63a7-4656-ba0c-80ea8694d896-1679959073800/js/pix0-js"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"
