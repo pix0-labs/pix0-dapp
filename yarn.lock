@@ -7695,7 +7695,7 @@ pirates@^4.0.4:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js "file:../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.0.3-a1abd398-7210-40a0-a606-d60aba7778dc-1679986097843/js/pix0-js"
+    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.0.3-02b42ff2-82f6-4dd7-8887-86c4383c2619-1680003609739/js/pix0-js"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"
