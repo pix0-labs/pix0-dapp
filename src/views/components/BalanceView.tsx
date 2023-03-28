@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { FC } from "react";
 import useBalanceQuerier from "../../hooks/useBalanceQuerier";
 import { shortenStringTo,copy } from "pix0-react";
+import { UserIconView } from "./UserIconView";
 import './css/BalanceView.css';
 
 type props =  {
@@ -19,11 +20,13 @@ type props =  {
     coinDecimals? : number, 
 
     displayDecimals? : number, 
+
+    profileIconOnClick? : ()=> void, 
 }
 
 export const BalanceView : FC <props> = ({
     style, className, addressLength, copyIcon, 
-    coinDenom, coinDecimals,displayDecimals
+    coinDenom, coinDecimals,displayDecimals, profileIconOnClick
 }) =>{
 
     const {balanceAsStr, address} = useBalanceQuerier({
@@ -39,6 +42,14 @@ export const BalanceView : FC <props> = ({
         e.preventDefault();
         copy(address);
     }}>{copyIcon}</button>}
+    <button className="ProfileImage" 
+    onClick={(e)=>{
+        e.preventDefault();
+        if ( profileIconOnClick)   
+            profileIconOnClick(); 
+    }}
+    title="Click to view user profile">
+    <UserIconView/></button>
     </div>
 }
 

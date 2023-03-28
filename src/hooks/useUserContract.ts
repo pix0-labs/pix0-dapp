@@ -5,10 +5,19 @@ import {useUserContract as useUserContractReact} from 'pix0-react';
 
 export function useUserContract()  {
 
-    const {getUser, createUser, updateUser} = useUserContractReact();
+    const {getUser, createUser, updateUser, getUserProfileImageUrl} = useUserContractReact();
 
     const [currentUser, setCurrentUser] = useState<pix0.User>();
 
+
+    const fetchCurrentUserProfileImage = async () : Promise<string|undefined>=>{
+
+        let w = WalletConnectionStorage.get();
+
+        let img = await getUserProfileImageUrl(w?.accounts[0].address);
+
+        return img; 
+    };
 
     const fetchCurrentUser = useCallback(async ()=>{
 
@@ -27,7 +36,7 @@ export function useUserContract()  {
 
     },[fetchCurrentUser]);
 
-    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser};
+    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser, fetchCurrentUserProfileImage};
 
 }
 
