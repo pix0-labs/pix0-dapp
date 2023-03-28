@@ -8,6 +8,7 @@ import { TxHashDiv } from '../../components/TxHashDiv';
 import { PulseLoader } from 'react-spinners';
 import { FcCancel } from 'react-icons/fc';
 import { Page } from '../../../sm/PageActions';
+import { encrypt, decrypt } from 'pix0-react';
 
 
 type props = {
@@ -118,10 +119,10 @@ export const UserForm : FC <props> = ({
                 }} />
             </div>
             <div className="mb-4">
-                <TextField label="Email (Optional)" value={user.email} id="email"
+                <TextField label="Email (Optional)" value={decrypt(user.email ?? "")} id="email"
                 className={commonTextfieldClassName("w-10/12")}
                 onChange={(e)=>{
-                    setUser({...user, email : e.target.value});
+                    setUser({...user, email :  encrypt(e.target.value)});
                 }} />
             </div>
             <div className="mb-4">
