@@ -90,7 +90,7 @@ export const UserForm : FC <props> = ({
     },[isEditMode, userToEdit]);
 
     return <CommonAnimatedDiv className="text-center">
-    <div className="ml-4 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
+    <div className="ml-4 p-2 mt-4 border border-gray-600 rounded-2xl w-11/12 text-left shadow-md">
         <div className="m-2 font-bold bg-transparent p-2 rounded">
         <div className="mb-2 font-bold p-2 rounded-2xl text-gray-200 bg-gray-600">
         {isEditMode ? "Update" : "Create"} Your User Profile
