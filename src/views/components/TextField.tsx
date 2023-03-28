@@ -27,6 +27,8 @@ type Props = {
     labelRightMargin? : string,
 
     value? : string, 
+
+    readOnly? : boolean,
  
 }
 
@@ -39,7 +41,8 @@ export const commonTextfieldClassName = (w? : string ) =>{
 
 export const TextField : FC <Props>= ({
     className, id, type, placeholder, label, defaultValue,
-    onChange, onClick, onDoubleClick, autoComplete, labelInline, value, labelRightMargin
+    onChange, onClick, onDoubleClick, autoComplete, labelInline, 
+    value, labelRightMargin, readOnly
 }) =>{
 
     return  <><label style={labelRightMargin ? {marginRight:labelRightMargin} : undefined}
@@ -47,6 +50,6 @@ export const TextField : FC <Props>= ({
     htmlFor={id}>{label}</label><input className={ className ?? 
     commonTextfieldClassName()} defaultValue={defaultValue} value={value}
     id={id} type={type ?? "text"} placeholder={placeholder ?? ""} autoComplete={autoComplete}
-    onChange={onChange} onClick={onClick} onDoubleClick={onDoubleClick}/></>
+    onChange={onChange} onClick={onClick} onDoubleClick={onDoubleClick} readOnly={readOnly}/></>
 
 }

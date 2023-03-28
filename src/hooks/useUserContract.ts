@@ -21,13 +21,17 @@ export function useUserContract()  {
 
     const fetchCurrentUser = useCallback(async ()=>{
 
-        let w = WalletConnectionStorage.get();
+        if ( currentUser === undefined) {
 
-        let u = await getUser(w?.accounts[0].address);
-        console.log("fetch user for ", w?.accounts[0].address, u);
+            let w = WalletConnectionStorage.get();
 
-        setCurrentUser(u);
-
+            let u = await getUser(w?.accounts[0].address);
+            //console.log("fetch user for ", w?.accounts[0].address, u);
+    
+            setCurrentUser(u);
+    
+        }
+     
     },[WalletConnectionStorage.get()]);
 
     useEffect(()=>{

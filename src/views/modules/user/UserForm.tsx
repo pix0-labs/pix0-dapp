@@ -1,8 +1,13 @@
 import {FC, useState, useEffect} from 'react';
 import { User } from 'pix0-js';
+import usePage from '../../../hooks/usePage';
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
+import useUserContract from '../../../hooks/useUserContract';
 import { TxHashDiv } from '../../components/TxHashDiv';
+import { PulseLoader } from 'react-spinners';
+import { FcCancel } from 'react-icons/fc';
+import { Page } from '../../../sm/PageActions';
 
 
 type props = {
@@ -20,6 +25,63 @@ export const UserForm : FC <props> = ({
     
     const [txHash, setTxHash] = useState<Error|string>();
 
+    const [processing, setProcessing] = useState(false);
+
+    const {createUser, updateUser} = useUserContract();
+
+    const unsetTxHash = () =>{
+
+        setTimeout(()=>{
+            setTxHash(undefined);
+        },7000);
+    }
+
+    const saveUser = async () =>{
+
+        console.log("coll.x::user::", user);
+
+        setProcessing(true);
+
+        if ( isEditMode ) {
+
+            let tx = await updateUser(user);
+            setTxHash(tx);
+
+            if ( tx instanceof Error){
+                unsetTxHash();
+            }
+        }
+        else {
+
+            if ( user.first_name?.trim() === "") {
+                setTxHash(new Error('First Name is blank!'));
+                unsetTxHash();
+                setProcessing(false);
+                return;
+            }
+
+            if ( user.last_name?.trim() === "") {
+                setTxHash(new Error('Last name is blank!'));
+                unsetTxHash();
+                setProcessing(false);
+                return;
+            }
+
+            let tx = await createUser(user);
+            
+            setTxHash(tx);
+
+            if ( tx instanceof Error){
+                unsetTxHash();
+            }
+        }
+
+        setProcessing(false);
+    }
+
+    const {setPage} = usePage();
+
+
     useEffect(()=>{
         if ( isEditMode && userToEdit){
             setUser(userToEdit);
@@ -34,8 +96,15 @@ export const UserForm : FC <props> = ({
         </div>
         {txHash && <TxHashDiv txHash={txHash}/>}
 
-        <div className="mb-4">
-                <TextField label="First Name" value={user.first_name}
+            <div className="mb-4">
+                <TextField label="User Name" id="user_name" value={user.user_name}
+                className={commonTextfieldClassName("w-5/12")} readOnly={isEditMode}
+                onChange={(e)=>{
+                    setUser({...user, user_name : e.target.value});
+                }} />
+            </div>
+            <div className="mb-4">
+                <TextField label="First Name" id="first_name" value={user.first_name}
                 className={commonTextfieldClassName("w-9/12")}
                 onChange={(e)=>{
                     setUser({...user, first_name : e.target.value});
@@ -49,13 +118,38 @@ export const UserForm : FC <props> = ({
                 }} />
             </div>
             <div className="mb-4">
-                <TextField label="Email" value={user.email} id="email"
+                <TextField label="Email (Optional)" value={user.email} id="email"
                 className={commonTextfieldClassName("w-10/12")}
                 onChange={(e)=>{
-                    setUser({...user, last_name : e.target.value});
+                    setUser({...user, email : e.target.value});
+                }} />
+            </div>
+            <div className="mb-4">
+                <TextField label="Mobile (Optional)" value={user.mobile} id="mobile"
+                className={commonTextfieldClassName("w-6/12")}
+                onChange={(e)=>{
+                    setUser({...user, mobile : e.target.value});
                 }} />
             </div>
 
+            <div className="mb-4 bg-gray-700 p-2 rounded">
+            <button className="mr-2 bg-cyan-900 rounded-3xl p-2 text-gray-200" 
+            style={{width:"150px"}} disabled={processing}
+            onClick={async (e)=>{
+                e.preventDefault();
+                await saveUser();
+            }}>{processing ? <PulseLoader color="#eee" margin={2}/> 
+            : <>{isEditMode ? "Update" : "Create"}</>}</button>
+
+            <button className="ml-2 bg-gray-600 rounded-3xl p-2 text-gray-200" 
+            style={{width:"150px"}} disabled={processing}
+            onClick={(e)=>{
+                e.preventDefault();
+
+                setPage(Page.CreateCollection);
+
+            }}><FcCancel className="inline mb-1"/> Close</button>
+            </div>
         
         </div>
     </div>
