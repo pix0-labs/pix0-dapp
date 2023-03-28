@@ -38,7 +38,7 @@ export const BalanceView : FC <props> = ({
 
     return <div className={className ?? "BalanceView"} style={ style }>    
     {balanceAsStr}&nbsp;{shortenStringTo(address, addressLength ?? 8)} 
-    { copyIcon && <button className="CopyIcon" onClick={(e)=>{
+    { copyIcon && <button className="CopyIcon" title="Copy" onClick={(e)=>{
         e.preventDefault();
         copy(address);
     }}>{copyIcon}</button>}
