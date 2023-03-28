@@ -1,13 +1,5 @@
 import { useEffect, useCallback, useState } from 'react';
-import * as pix0Common from 'pix0-js';
-import { WalletConnectionStorage } from 'pix0-react';
-
-const COIN_DENOM = "CONST";
-
-const COIN_MINIMAL_DENOM = "uconst";
-
-const COIN_DECIMALS = 6;
-
+import { WalletConnectionStorage, useBalanceQuerier as useBalanceQuerierReact } from 'pix0-react';
 
 export function useBalanceQuerier(
    coinInfo: {
@@ -18,44 +10,28 @@ export function useBalanceQuerier(
     displayDecimals? : number, 
 })  {
 
+
+    const {fetchBalance} = useBalanceQuerierReact(coinInfo);
+
     const [balance, setBalance] = useState(0);
 
     const [balanceAsStr, setBalanceAsStr] = useState("");
 
     const [address, setAddress] = useState("");
 
-    const fetchBalance = useCallback(async (denom? : string, coinDecimals?: number  )=>{
+    const fetchBalanceNow = useCallback(async (denom? : string, coinDecimals?: number  )=>{
 
-        try {
-            let w = WalletConnectionStorage.get();
-            if (w!== undefined) {
-    
-                if (w.accounts && w.accounts.length > 0) {
-    
-                    let addr = w.accounts[0].address;
-                    setAddress(addr);
-    
-                    let b = await pix0Common.getAddressBalance(addr, 
-                        denom ?? COIN_MINIMAL_DENOM, coinDecimals ?? COIN_DECIMALS);
-                     
-                    if (b !== undefined)
-                        setBalance(b);
-
-                
-                    setBalanceAsStr(`${(b ?? 0).toFixed(coinInfo.displayDecimals ?? 2)} ${COIN_DENOM}`);
-                }
-                
-            }
-        }
-        catch(e : any){
-
-            console.error("Error@fetchBalance::", e);
+        let binfo = await fetchBalance(denom, coinDecimals);
+        if ( binfo ) {
+            setAddress(binfo.address);
+            setBalanceAsStr(binfo.balanceAsStr);
+            setBalance(binfo.balance);
         }
        
     },[WalletConnectionStorage.get()]);
 
     useEffect(()=>{
-        fetchBalance(coinInfo.coinDenom,coinInfo.coinDecimals);
+        fetchBalanceNow(coinInfo.coinDenom,coinInfo.coinDecimals);
     },[fetchBalance]);
 
 
