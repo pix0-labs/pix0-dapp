@@ -1,23 +1,14 @@
 import {useCallback, useState, useEffect} from 'react';
 import * as pix0 from 'pix0-js';
 import { WalletConnectionStorage } from 'pix0-react';
-
+import {useUserContract as useUserContractReact} from 'pix0-react';
 
 export function useUserContract()  {
 
+    const {getUser, createUser, updateUser} = useUserContractReact();
 
     const [currentUser, setCurrentUser] = useState<pix0.User>();
 
-
-    const getUser = async (owner? : string ) : Promise<pix0.User> =>{
-        
-        let w = WalletConnectionStorage.get();
-        if (w !== undefined) {
-            return await pix0.getUser( owner ?? w.accounts[0].address , w.queryHandler);
-        }
-
-        return await pix0.getUser(owner ?? "");
-    }
 
     const fetchCurrentUser = useCallback(async ()=>{
 
@@ -36,7 +27,7 @@ export function useUserContract()  {
 
     },[fetchCurrentUser]);
 
-    return {getUser, currentUser, fetchCurrentUser};
+    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser};
 
 }
 

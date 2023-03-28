@@ -9,6 +9,9 @@ export const MarketView : FC = () =>{
 
     return <CommonAnimatedDiv>NFT Marketplace
         <p>User :{currentUser?.owner}</p>
+        <p>First Name :{currentUser?.first_name}</p>
+        <p>Last Name :{currentUser?.last_name}</p>
+        
 
     </CommonAnimatedDiv>
 }
