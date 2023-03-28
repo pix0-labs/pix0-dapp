@@ -126,10 +126,10 @@ export const UserForm : FC <props> = ({
                 }} />
             </div>
             <div className="mb-4">
-                <TextField label="Mobile (Optional)" value={user.mobile} id="mobile"
+                <TextField label="Mobile (Optional)" value={decrypt(user.mobile ?? "")} id="mobile"
                 className={commonTextfieldClassName("w-6/12")}
                 onChange={(e)=>{
-                    setUser({...user, mobile : e.target.value});
+                    setUser({...user, mobile : encrypt(e.target.value)});
                 }} />
             </div>
 
