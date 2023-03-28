@@ -9,6 +9,8 @@ export enum Page {
     Market,
 
     Collectibles,
+
+    UserProfile, 
 }
 
 export const SET_PAGE = "SET_PAGE";

@@ -1,9 +1,11 @@
 import React, { ReactElement } from "react";
 import { FC } from "react";
+import usePage from "../../hooks/usePage";
 import useBalanceQuerier from "../../hooks/useBalanceQuerier";
 import { shortenStringTo,copy } from "pix0-react";
 import { UserIconView } from "./UserIconView";
 import './css/BalanceView.css';
+import { Page } from "../../sm/PageActions";
 
 type props =  {
 
@@ -21,12 +23,11 @@ type props =  {
 
     displayDecimals? : number, 
 
-    profileIconOnClick? : ()=> void, 
 }
 
 export const BalanceView : FC <props> = ({
     style, className, addressLength, copyIcon, 
-    coinDenom, coinDecimals,displayDecimals, profileIconOnClick
+    coinDenom, coinDecimals,displayDecimals,
 }) =>{
 
     const {balanceAsStr, address} = useBalanceQuerier({
@@ -35,6 +36,7 @@ export const BalanceView : FC <props> = ({
         displayDecimals : displayDecimals, 
     });
 
+    const {setPage} = usePage();
 
     return <div className={className ?? "BalanceView"} style={ style }>    
     {balanceAsStr}&nbsp;{shortenStringTo(address, addressLength ?? 8)} 
@@ -45,8 +47,7 @@ export const BalanceView : FC <props> = ({
     <button className="ProfileImage" 
     onClick={(e)=>{
         e.preventDefault();
-        if ( profileIconOnClick)   
-            profileIconOnClick(); 
+        setPage(Page.UserProfile);
     }}
     title="Click to view user profile">
     <UserIconView/></button>

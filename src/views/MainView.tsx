@@ -4,6 +4,7 @@ import { Page } from "../sm/PageActions";
 import { MintNFTView } from "./modules/MintNFTView";
 import { MarketView } from "./modules/MarketView";
 import { CollectiblesView } from "./modules/CollectiblesView";
+import { MainView as UserView } from "./modules/user/MainView";
 import { TopBar } from "./TopBar";
 import { MainView as CreateCollectionView } from "./modules/collections/MainView";
 
@@ -31,6 +32,10 @@ export const MainView : FC = () =>{
 
                 case Page.Market :
                     return <MarketView/>
+
+                case Page.UserProfile :
+                    return <UserView/>
+
                 default :
                     return <MarketView/>
 
