@@ -43,7 +43,9 @@ export const SimpleMintForm : FC = () =>{
         </div>
 
         <div className="mb-4">
-            { useUpload ? <UploadField withImagePreview={true} setMediaCallback={setMediaCallback}/> :
+            { useUpload ? <UploadField withImagePreview={true} 
+            useDragAndDrop={true}
+            setMediaCallback={setMediaCallback}/> :
             <TextField label="Media URI" id="mediaURI" type="text" placeholder="Media URI"
             className={commonTextfieldClassName('w-3/6')}
             onChange={(e)=>{
