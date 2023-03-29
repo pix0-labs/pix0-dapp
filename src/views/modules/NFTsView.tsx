@@ -30,15 +30,13 @@ export const NFTsView : FC = () =>{
 
         tokens === undefined ?
 
-        <div className="text-left p-2"><Loader
-        color="#eee"/></div>
+        <div className="text-left p-2"><Loader color="#eee"/></div>
         :
-
         tokens.length > 0 ?
 
         <div className="flex flex-wrap text-center">{
             tokens?.map((t, _i)=>{
-                return <NFTView token_id={t}/>
+                return <NFTView key={`Nft_${t}`} token_id={t} index={_i}/>
             })
         }</div>
         
