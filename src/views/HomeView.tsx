@@ -8,7 +8,7 @@ import './css/SideBar.css';
 export const HomeView : FC = () =>{
 
 
-    const [sideBarVisible, setSideBarVisible] = useState(false);
+    const [sideBarVisible, setSideBarVisible] = useState(true);
 
 
     const hideOrExpandSideBar = () =>{

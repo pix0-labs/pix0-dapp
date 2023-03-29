@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { FiGift, FiImage, FiShoppingCart, FiTool} from 'react-icons/fi';
+import { FiGift, FiShoppingCart, FiTool} from 'react-icons/fi';
+import { IoCreateOutline} from 'react-icons/io5';
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import logo from '../images/pix0_logo1.png';
@@ -25,19 +26,20 @@ export const SideBar : FC = () =>{
             </div>
 
             <a onClick={()=>{
+                setPage(Page.CreateCollection);
+            }} className={classNamesIfPageIs(Page.CreateCollection)}>
+                   <div className="inline-flex text-left pl-2">
+                   <IoCreateOutline className="mr-2 mt-1"/>For Creators</div>
+            </a>
+
+            <a onClick={()=>{
                 setPage(Page.Collectibles);
             }} className={classNamesIfPageIs(Page.Collectibles)}>
                 <div className="inline-flex text-left pl-2">
                 <FiGift className="mr-2 mt-1"/>For Collectors</div>
             </a>
 
-            <a onClick={()=>{
-                setPage(Page.CreateCollection);
-            }} className={classNamesIfPageIs(Page.CreateCollection)}>
-                   <div className="inline-flex text-left pl-2">
-                   <FiImage className="mr-2 mt-1"/>For Creators</div>
-            </a>
-
+           
             <a onClick={()=>{
                 setPage(Page.MintNFT);
             }} className={ 

@@ -16,7 +16,7 @@ export const AnimatedDiv2 : FC <props> = ({
 
 
     return  <motion.div className="bg-transparent" 
-    animate={{ opacity: isVisible ? 1 : 0, display : isVisible ? "block" : "none" }}
+    animate={{ opacity: isVisible ? 1 : 0.2, display : isVisible ? "block" : "none" }}
     transition={{ duration: 0.8 }} id={id ?? "animatedDiv"}> 
     {children}
     </motion.div>
