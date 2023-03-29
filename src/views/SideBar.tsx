@@ -11,14 +11,13 @@ export const SideBar : FC = () =>{
 
     const classNamesIfPageIs = ( page : Page) => {
 
-        return isPage(page) ? "text-sky-300 bg-gray-600 w-32 rounded ml-2 py-1" : 
-        "cursor-pointer text-gray-400 hover:text-orange-300 p-2"
+        return isPage(page) ? "text-sky-300 bg-gray-600 px-2 round mx-1 rounded-2xl" : 
+        "cursor-pointer text-gray-400 hover:text-orange-300 px-2 bg-gray-800 mx-1 rounded-2xl"
 
     }
 
     return <div className="h-auto flex-1 flex overflow-hidden">
-    <nav aria-label="Sidebar" 
-    className="hidden lg:block flex-shrink-0 bg-zinc-900 h-screen">
+    <nav aria-label="Sidebar" className="hidden lg:block flex-shrink-0 bg-zinc-900 h-screen">
         <div className="w-64 flex space-y-16 flex-col p-1">
 
             <div className="m-1">
@@ -28,7 +27,7 @@ export const SideBar : FC = () =>{
             <a onClick={()=>{
                 setPage(Page.Collectibles);
             }} className={classNamesIfPageIs(Page.Collectibles)}>
-                <div className="inline-flex text-left w-32 pl-2">
+                <div className="inline-flex text-left pl-2">
                 <FiGift className="mr-2 mt-1"/>Collectibles</div>
             </a>
 
@@ -36,21 +35,21 @@ export const SideBar : FC = () =>{
                 setPage(Page.MintNFT);
             }} className={ 
                 classNamesIfPageIs(Page.MintNFT)}>
-                <div className="inline-flex text-left w-32 pl-2">
+                <div className="inline-flex text-left pl-2">
                 <FiImage className="mr-2 mt-1"/>Mint NFT</div>
             </a>
 
             <a onClick={()=>{
                 setPage(Page.CreateCollection);
             }} className={classNamesIfPageIs(Page.CreateCollection)}>
-                   <div className="inline-flex text-left w-32 pl-2">
+                   <div className="inline-flex text-left pl-2">
                     <FiTool className="mr-2 mt-1"/>Create</div>
             </a>
 
             <a onClick={()=>{
                 setPage(Page.Market);
             }} className={classNamesIfPageIs(Page.Market)}>
-                <div className="inline-flex text-left w-32 pl-2">
+                <div className="inline-flex text-left pl-2">
                 <FiShoppingCart className="mr-2 mt-1"/>Market</div>
             </a>
         </div>
