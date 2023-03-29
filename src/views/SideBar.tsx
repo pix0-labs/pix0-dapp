@@ -32,18 +32,18 @@ export const SideBar : FC = () =>{
             </a>
 
             <a onClick={()=>{
+                setPage(Page.CreateCollection);
+            }} className={classNamesIfPageIs(Page.CreateCollection)}>
+                   <div className="inline-flex text-left pl-2">
+                   <FiImage className="mr-2 mt-1"/>For Creators</div>
+            </a>
+
+            <a onClick={()=>{
                 setPage(Page.MintNFT);
             }} className={ 
                 classNamesIfPageIs(Page.MintNFT)}>
                 <div className="inline-flex text-left pl-2">
-                <FiImage className="mr-2 mt-1"/>Mint NFT</div>
-            </a>
-
-            <a onClick={()=>{
-                setPage(Page.CreateCollection);
-            }} className={classNamesIfPageIs(Page.CreateCollection)}>
-                   <div className="inline-flex text-left pl-2">
-                    <FiTool className="mr-2 mt-1"/>For Creators</div>
+                <FiTool className="mr-2 mt-1"/>Tools</div>
             </a>
 
             <a onClick={()=>{

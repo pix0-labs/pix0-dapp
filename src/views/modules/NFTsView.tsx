@@ -25,7 +25,7 @@ export const NFTsView : FC = () =>{
 
     return <div className="w-full p-2 text-center">
 
-    <div className="bg-gray-700 p-2 text-left w-3/5 shadow-md rounded-xl">Your NFTs</div>
+    <div className="bg-gray-700 p-2 text-left w-3/5 shadow-md rounded-xl">Your Collectibles</div>
     {
 
         tokens === undefined ?
