@@ -28,7 +28,7 @@ export const SideBar : FC = () =>{
                 setPage(Page.Collectibles);
             }} className={classNamesIfPageIs(Page.Collectibles)}>
                 <div className="inline-flex text-left pl-2">
-                <FiGift className="mr-2 mt-1"/>Collectibles</div>
+                <FiGift className="mr-2 mt-1"/>For Collectors</div>
             </a>
 
             <a onClick={()=>{
@@ -43,7 +43,7 @@ export const SideBar : FC = () =>{
                 setPage(Page.CreateCollection);
             }} className={classNamesIfPageIs(Page.CreateCollection)}>
                    <div className="inline-flex text-left pl-2">
-                    <FiTool className="mr-2 mt-1"/>Create</div>
+                    <FiTool className="mr-2 mt-1"/>For Creators</div>
             </a>
 
             <a onClick={()=>{
