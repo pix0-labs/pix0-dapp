@@ -3,6 +3,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { UploadField } from "../../components/UploadField";
 import { Item } from 'pix0-js';
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
+import { TraitsForm } from "../creator/TraitsForm";
 
 
 export const SimpleMintForm : FC = () =>{
@@ -79,7 +80,10 @@ export const SimpleMintForm : FC = () =>{
                 setItem( {...item, collection_symbol: e.target.value});
         }}/>
         </div>
-
+        <div className="mb-4">
+            <TraitsForm item={item} setItem={setItem}/>
+        </div>
+   
     </form>
     </div></CommonAnimatedDiv>
 
