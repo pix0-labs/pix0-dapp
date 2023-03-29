@@ -11,8 +11,8 @@ export const SideBar : FC = () =>{
 
     const classNamesIfPageIs = ( page : Page) => {
 
-        return isPage(page) ? "text-sky-300 bg-gray-600 px-2 round mx-1 rounded-2xl" : 
-        "cursor-pointer text-gray-400 hover:text-orange-300 px-2 bg-gray-800 mx-1 rounded-2xl"
+        return isPage(page) ? "text-sky-300 bg-gray-800 px-2 round mx-1 rounded-2xl" : 
+        "cursor-pointer text-gray-400 hover:text-orange-300 px-2 bg-stone-800 mx-1 rounded-2xl"
 
     }
 
