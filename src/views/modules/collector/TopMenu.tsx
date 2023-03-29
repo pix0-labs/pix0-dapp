@@ -16,7 +16,7 @@ export const TopMenu : FC <props> = ({
 
     const bgc = (vtype : ViewType) => {
 
-        return vtype === viewType ? "bg-gray-800" : "bg-gray-500";
+        return vtype === viewType ? "bg-gray-500" : "bg-gray-800";
     }   
 
 
