@@ -2,7 +2,7 @@ import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionContract from "pix0-react";
 import { PulseLoader as Loader} from 'react-spinners';
 import { NFTView } from "./NFTView";
-import { CommonMessageDiv } from "../components/CommonMessageDiv";
+import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
 export const NFTsView : FC = () =>{
 

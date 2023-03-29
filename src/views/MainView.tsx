@@ -3,7 +3,7 @@ import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import { MintNFTView } from "./modules/MintNFTView";
 import { MarketView } from "./modules/MarketView";
-import { CollectiblesView } from "./modules/CollectiblesView";
+import { CollectiblesView } from "./modules/collector/CollectiblesView";
 import { MainView as UserView } from "./modules/user/MainView";
 import { TopBar } from "./TopBar";
 import { MainView as CreateCollectionView } from "./modules/creator/MainView";
