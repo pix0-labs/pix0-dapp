@@ -23,10 +23,8 @@ export const NFTsView : FC = () =>{
         fetchTokens();
     },[fetchTokens]);
 
-    return <div className="w-full p-2 text-center">
-
-    <div className="bg-gray-700 p-2 text-left w-3/5 shadow-md rounded-xl">Your Collectibles</div>
-    {
+    return <div className="w-full p-2 text-center mx-auto">
+     {
 
         tokens === undefined ?
 

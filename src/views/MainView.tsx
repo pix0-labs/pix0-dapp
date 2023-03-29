@@ -6,7 +6,7 @@ import { MarketView } from "./modules/MarketView";
 import { CollectiblesView } from "./modules/CollectiblesView";
 import { MainView as UserView } from "./modules/user/MainView";
 import { TopBar } from "./TopBar";
-import { MainView as CreateCollectionView } from "./modules/collections/MainView";
+import { MainView as CreateCollectionView } from "./modules/creator/MainView";
 
 export const MainView : FC = () =>{
 
