@@ -38,7 +38,7 @@ export const TopMenu : FC <props> = ({
         if (setViewType)
             setViewType(ViewType.SIMPLE_MINT);
      }}   
-     transition={{ duration: 0.8, type: "tween" }}>Mint From Neighborhood</motion.div>
+     transition={{ duration: 0.8, type: "tween" }}>Simple Mint</motion.div>
  
  
    </div>
