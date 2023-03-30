@@ -67,8 +67,8 @@ export const DndUploadField : FC <DndProps> = ({
 
 
     return  <div className="hover:bg-gray-900 bg-gray-800 text-gray-100 
-    hover:cursor-pointer inline-block pt-4 pb-4 pl-4 pr-4 rounded-2xl mb-6" 
-    style={{minWidth:"320px", color:"white", maxHeight:"80px", display:"inline-block"}}>
+    hover:cursor-pointer w-2/5 inline-block pt-1 pb-4 pl-4 pr-4 mr-2 rounded-md mb-2" 
+    style={{minWidth:"320px", color:"white", maxHeight:"60px", display:"inline-block"}}>
         <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
         dismissAfterInSeconds={5}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
         
@@ -82,9 +82,9 @@ export const DndUploadField : FC <DndProps> = ({
          }}/>
         
          { withImagePreview  && <img id={`img_${id}`} placeholder={placeholder}
-            className={`inline-block ml-2 object-scale-down w-10 h-10 mb-8 bg-gray-200 
-            opacity-${mediaDataUrl ? "100" : "0"}`}
-            src={mediaDataUrl ?? placeholder} />}
+            className={`inline-block ml-2 object-scale-down relative
+            w-10 h-10 bg-gray-200 float-right mt-1 opacity-${mediaDataUrl ? "100" : "0"}`}
+            src={mediaDataUrl ?? placeholder} style={{display:"inline-block"}} />}
 
    
     </div>

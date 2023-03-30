@@ -1,11 +1,10 @@
 .dropArea {
     padding:4px 4px 4px 10px;
-    display:inline-block;
     color:white;
-    margin-bottom: 4px;
-    margin-left: 4px;
+    margin: 2px 2px 3px 2px;
     border:1px dashed #ccc;
-    min-height :50px;
-    max-width: 120px;
+    min-height:40px;
+    width:80%;
+    float: left;
 }
 

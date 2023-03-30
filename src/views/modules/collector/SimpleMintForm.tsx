@@ -71,6 +71,7 @@ export const SimpleMintForm : FC <props> = ({
         let iurl = itemImageUri();
 
         let v =  iurl ? (isHttpOrHttpsUrl(iurl) ? iurl : "") : "";
+      //  console.log("vvv:::", v, isValidUrl(v));
         return v; 
     }
 
@@ -125,17 +126,17 @@ export const SimpleMintForm : FC <props> = ({
             useDragAndDrop={true}
             setMediaCallback={setMediaCallback}/> :
             <TextField label="Media URI" id="mediaURI" type="text" placeholder="Media URI"
-            className={commonTextfieldClassName('w-3/6')} value={obtainImageUriForTF()}
+            className={commonTextfieldClassName('w-3/6 inline-block')} value={obtainImageUriForTF()}
             onChange={(e)=>{
                 setMediaURI(e.target.value);
             }}/>} 
-            <span className="mr-4">or<button disabled={processing}
+            <span className="float-right">or<button disabled={processing}
             onClick={(e)=>{
                 e.preventDefault();
                 let useUpl = !useUpload;
                 setUseUpload(useUpl);
             }}
-            className="ml-2 bg-gray-500 text-gray-100 p-1 w-32 rounded-2xl inline-block">
+            className="ml-2 bg-gray-500 text-gray-100 p-1 w-32 rounded-2xl">
             {useUpload? "input the URL?" : "upload a file?"}</button></span>
         </div>
 
