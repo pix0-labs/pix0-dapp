@@ -32,7 +32,7 @@ export const CollectiblesView : FC = () =>{
                 return <MintFromNBH/>
 
             case ViewType.SIMPLE_MINT :
-                return <SimpleMintForm/>
+                return <SimpleMintForm setViewType={setViewType}/>
 
             default :
                 return <NFTsView/>

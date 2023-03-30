@@ -11,7 +11,7 @@ import { TreasuriesForm } from "./TreasuriesForm";
 import { CollectionLinksForm } from "./CollectionLinksForm";
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
-import { ProceedOrCancerButtons } from "../../components/ProceedOrCancelButtons";
+import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 
 
 type props = CollectionViewProps & {
@@ -161,7 +161,7 @@ export const CollectionForm : FC <props>= ({
     <div className="mb-4">
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
     </div>
-    <ProceedOrCancerButtons proceedAction={saveCollection} cancelAction={()=>{
+    <ProceedOrCancelButtons proceedAction={saveCollection} cancelAction={()=>{
         if ( setViewType)setViewType(ViewType.NONE);
     }} processing={processing} proceedButtonText={isEditMode ? "Edit" : "Create"}/>
     </form>

@@ -11,10 +11,12 @@ type props = {
     proceedAction?: () =>void,
 
     cancelAction? : () => void, 
+
+    cancelButtonText? : string, 
 }
 
-export const ProceedOrCancerButtons : FC <props> = ({
-    processing, proceedAction, cancelAction, proceedButtonText, 
+export const ProceedOrCancelButtons : FC <props> = ({
+    processing, proceedAction, cancelAction, proceedButtonText, cancelButtonText
 }) =>{
 
     return   <div className="mb-4 bg-gray-700 p-2 rounded">
@@ -34,7 +36,7 @@ export const ProceedOrCancerButtons : FC <props> = ({
 
         if (cancelAction)cancelAction();
 
-    }}><FcCancel className="inline mb-1"/> Close</button>
+    }}><FcCancel className="inline mb-1"/> { cancelButtonText?? "Close"}</button>
     </div>
 
 }

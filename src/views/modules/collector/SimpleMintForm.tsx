@@ -4,9 +4,18 @@ import { UploadField } from "../../components/UploadField";
 import { Item } from 'pix0-js';
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { TraitsForm } from "../creator/TraitsForm";
+import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
+import { ViewType } from "./CollectiblesView";
+
+type props = {
+
+    setViewType?: (vType: ViewType) => void, 
+}
 
 
-export const SimpleMintForm : FC = () =>{
+export const SimpleMintForm : FC <props> = ({
+    setViewType
+}) =>{
 
 
     const [useUpload, setUseUpload] = useState(false);
@@ -83,7 +92,11 @@ export const SimpleMintForm : FC = () =>{
         <div className="mb-4">
             <TraitsForm item={item} setItem={setItem}/>
         </div>
-   
+        <ProceedOrCancelButtons proceedAction={()=>{
+
+        }} cancelButtonText="Cancel" cancelAction={()=>{
+        if ( setViewType)setViewType(ViewType.COLLECTIBLES);
+    }} processing={processing} proceedButtonText={ "Mint NFT"}/>
     </form>
     </div></CommonAnimatedDiv>
 

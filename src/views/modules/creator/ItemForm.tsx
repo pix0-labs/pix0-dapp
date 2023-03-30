@@ -10,7 +10,7 @@ import { PulseLoader as Loader} from 'react-spinners';
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { singleUpload } from "pix0-react";
-import { FcCancel } from "react-icons/fc";
+import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 
 export interface Media {
 
@@ -169,26 +169,9 @@ export const ItemForm : FC <props>= ({
     <div className="mb-4">
         <TraitsForm item={item} setItem={setItem}/>
     </div>
-   
-    <div className="mb-4 bg-gray-700 p-2 rounded">
-    <button className="mr-2 bg-cyan-900 rounded-3xl p-2" 
-    style={{width:"150px"}}  disabled={processing}
-    onClick={async (e)=>{
-        e.preventDefault();
-        await saveItem();
-    }}>{processing ? <Loader color="#eee"/> : <>{isEditMode ? "Update" : "Add Item"}</>}</button>
-
-    <button className="ml-2 bg-gray-600 rounded-3xl p-2" 
-    style={{width:"150px"}} disabled={processing}
-    onClick={(e)=>{
-        e.preventDefault();
-        setMedia(undefined);
-        if ( setViewType)
-            setViewType(ViewType.NONE);
-
-    }}><FcCancel className="inline mb-1"/> Close</button>
-    </div>
-
+    <ProceedOrCancelButtons proceedAction={saveItem} cancelAction={()=>{
+        if ( setViewType)setViewType(ViewType.NONE);
+    }} processing={processing} proceedButtonText={isEditMode ? "Edit" : "Create"}/>
     </form>
     </div></CommonAnimatedDiv>
 }
