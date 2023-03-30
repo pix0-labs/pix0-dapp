@@ -6,7 +6,6 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
 import { RoyaltiesForm } from "./RoyaltiesForm";
-import { PulseLoader} from 'react-spinners';
 import { TreasuriesForm } from "./TreasuriesForm";
 import { CollectionLinksForm } from "./CollectionLinksForm";
 import useCollectionContract from "pix0-react";

@@ -2,10 +2,13 @@ import { FC , useState} from "react";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { UploadField } from "../../components/UploadField";
 import { Item } from 'pix0-js';
+import useCollectionContract from "pix0-react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { TraitsForm } from "../creator/TraitsForm";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 import { ViewType } from "./CollectiblesView";
+import { TxHashDiv } from "../../components/TxHashDiv";
+
 
 type props = {
 
@@ -20,12 +23,10 @@ export const SimpleMintForm : FC <props> = ({
 
     const [useUpload, setUseUpload] = useState(false);
 
-    const [mediaURI, setMediaURI] = useState<string>();
-
-    const [mediaDataUrl, setMediaDataUrl] = useState<{mediaDataUrl? : string,
-        contentType?: string,fileName? : string, }>();
-
     const [processing, setProcessing] = useState(false);
+
+    const {simpleMint} = useCollectionContract();
+
 
     const [item, setItem] = useState<Item>({
         collection_name : "Simple Mint",
@@ -37,12 +38,64 @@ export const SimpleMintForm : FC <props> = ({
     });
 
 
+    const setMediaURI = (uri : string) :void =>{
+
+        setItem({...item, links: [{link_type: 1, value: uri}]});
+    }
+
+
     const setMediaCallback = (media: {
         mediaDataUrl? : string,
         contentType?: string,
         fileName? : string, }, _index? : number ) => {
+        setMediaURI(media.mediaDataUrl ?? "");
+    }
 
-        setMediaDataUrl(media);
+    const [txHash, setTxHash] = useState<Error|string>();
+
+    const unsetTxHash = () =>{
+
+        setTimeout(()=>{
+            setTxHash(undefined);
+        },7000);
+    }
+
+    const itemImageUri = () : string|undefined => {
+
+        return item.links.filter(i=>{return i.link_type === 1})[0]?.value;
+
+    }
+
+
+    const mintItem =async () =>{
+
+        if (itemImageUri() === undefined){
+            
+            setTxHash(new Error("You must specify a media URI or upload a media for the item!"));
+            return; 
+        }
+        if (item.name.trim() === ""){
+            
+            setTxHash(new Error("Item name cannot be blank!"));
+            return; 
+        }
+        
+        if (item.collection_symbol.trim() === ""){
+            
+            setTxHash(new Error("Item symbol cannot be blank!"));
+            return; 
+        }
+
+        setProcessing(true);
+
+        console.log("Item...mint:::", item);
+
+        let tx = await simpleMint(item, true);
+
+        setTxHash(tx);
+
+        setProcessing(false);
+        
     }
 
     return <CommonAnimatedDiv className="text-center">
@@ -51,13 +104,13 @@ export const SimpleMintForm : FC <props> = ({
         <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded-3xl pl-4">
         Simple Mint lets you quickly mint a piece of art that you own as an NFT into your wallet 
         </div>
-
+        {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="mb-4">
             { useUpload ? <UploadField withImagePreview={true} 
             useDragAndDrop={true}
             setMediaCallback={setMediaCallback}/> :
             <TextField label="Media URI" id="mediaURI" type="text" placeholder="Media URI"
-            className={commonTextfieldClassName('w-3/6')}
+            className={commonTextfieldClassName('w-3/6')} value={itemImageUri()}
             onChange={(e)=>{
                 setMediaURI(e.target.value);
             }}/>} 
@@ -66,9 +119,6 @@ export const SimpleMintForm : FC <props> = ({
                 e.preventDefault();
                 let useUpl = !useUpload;
                 setUseUpload(useUpl);
-                if (!useUpl){
-                    setMediaDataUrl(undefined);
-                }
             }}
             className="ml-2 bg-gray-500 text-gray-100 p-1 w-32 rounded-2xl inline-block">
             {useUpload? "input the URL?" : "upload a file?"}</button></span>
@@ -92,8 +142,8 @@ export const SimpleMintForm : FC <props> = ({
         <div className="mb-4">
             <TraitsForm item={item} setItem={setItem}/>
         </div>
-        <ProceedOrCancelButtons proceedAction={()=>{
-
+        <ProceedOrCancelButtons proceedAction={async ()=>{
+            await mintItem();
         }} cancelButtonText="Cancel" cancelAction={()=>{
         if ( setViewType)setViewType(ViewType.COLLECTIBLES);
     }} processing={processing} proceedButtonText={ "Mint NFT"}/>
