@@ -11,7 +11,7 @@ import { TreasuriesForm } from "./TreasuriesForm";
 import { CollectionLinksForm } from "./CollectionLinksForm";
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
-import { FcCancel } from "react-icons/fc";
+import { ProceedOrCancerButtons } from "../../components/ProceedOrCancelButtons";
 
 
 type props = CollectionViewProps & {
@@ -161,25 +161,9 @@ export const CollectionForm : FC <props>= ({
     <div className="mb-4">
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
     </div>
-    <div className="mb-4 bg-gray-700 p-2 rounded">
-    <button className="mr-2 bg-cyan-900 rounded-3xl p-2" 
-    style={{width:"150px"}} disabled={processing}
-    onClick={async (e)=>{
-        e.preventDefault();
-        await saveCollection();
-    }}>{processing ? <PulseLoader color="#eee" margin={2}/> 
-    : <>{isEditMode ? "Update" : "Create"}</>}</button>
-
-    <button className="ml-2 bg-gray-600 rounded-3xl p-2" 
-    style={{width:"150px"}} disabled={processing}
-    onClick={(e)=>{
-        e.preventDefault();
-
-        if ( setViewType)
-            setViewType(ViewType.NONE);
-
-    }}><FcCancel className="inline mb-1"/> Close</button>
-    </div>
+    <ProceedOrCancerButtons proceedAction={saveCollection} cancelAction={()=>{
+        if ( setViewType)setViewType(ViewType.NONE);
+    }} processing={processing} proceedButtonText={isEditMode ? "Edit" : "Create"}/>
     </form>
     </div></CommonAnimatedDiv>
 }
