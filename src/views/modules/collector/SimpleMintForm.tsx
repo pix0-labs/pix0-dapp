@@ -8,7 +8,7 @@ import { TraitsForm } from "../creator/TraitsForm";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 import { ViewType } from "./CollectiblesView";
 import { TxHashDiv } from "../../components/TxHashDiv";
-
+import { isHttpOrHttpsUrl } from "../../../utils";
 
 type props = {
 
@@ -66,35 +66,50 @@ export const SimpleMintForm : FC <props> = ({
 
     }
 
+    const obtainImageUriForTF = () : string =>{
+
+        let iurl = itemImageUri();
+
+        let v =  iurl ? (isHttpOrHttpsUrl(iurl) ? iurl : "") : "";
+        return v; 
+    }
+
 
     const mintItem =async () =>{
 
         if (itemImageUri() === undefined){
             
             setTxHash(new Error("You must specify a media URI or upload a media for the item!"));
+            unsetTxHash();
+        
             return; 
         }
         if (item.name.trim() === ""){
             
             setTxHash(new Error("Item name cannot be blank!"));
+            unsetTxHash();
+        
             return; 
         }
         
         if (item.collection_symbol.trim() === ""){
             
             setTxHash(new Error("Item symbol cannot be blank!"));
+            unsetTxHash();
+        
             return; 
         }
 
         setProcessing(true);
-
-        console.log("Item...mint:::", item);
 
         let tx = await simpleMint(item, true);
 
         setTxHash(tx);
 
         setProcessing(false);
+
+        if ( tx instanceof Error)
+            unsetTxHash();
         
     }
 
@@ -110,7 +125,7 @@ export const SimpleMintForm : FC <props> = ({
             useDragAndDrop={true}
             setMediaCallback={setMediaCallback}/> :
             <TextField label="Media URI" id="mediaURI" type="text" placeholder="Media URI"
-            className={commonTextfieldClassName('w-3/6')} value={itemImageUri()}
+            className={commonTextfieldClassName('w-3/6')} value={obtainImageUriForTF()}
             onChange={(e)=>{
                 setMediaURI(e.target.value);
             }}/>} 
