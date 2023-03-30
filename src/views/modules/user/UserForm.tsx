@@ -5,9 +5,8 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import useUserContract from '../../../hooks/useUserContract';
 import { TxHashDiv } from '../../components/TxHashDiv';
-import { PulseLoader } from 'react-spinners';
-import { FcCancel } from 'react-icons/fc';
 import { Page } from '../../../sm/PageActions';
+import { ProceedOrCancelButtons } from '../../components/ProceedOrCancelButtons';
 import { encrypt, decrypt } from 'pix0-react';
 
 
@@ -133,24 +132,9 @@ export const UserForm : FC <props> = ({
                 }} />
             </div>
 
-            <div className="mb-4 bg-gray-700 p-2 rounded">
-            <button className="mr-2 bg-cyan-900 rounded-3xl p-2 text-gray-200" 
-            style={{width:"150px"}} disabled={processing}
-            onClick={async (e)=>{
-                e.preventDefault();
-                await saveUser();
-            }}>{processing ? <PulseLoader color="#eee" margin={2}/> 
-            : <>{isEditMode ? "Update" : "Create"}</>}</button>
-
-            <button className="ml-2 bg-gray-600 rounded-3xl p-2 text-gray-200" 
-            style={{width:"150px"}} disabled={processing}
-            onClick={(e)=>{
-                e.preventDefault();
-
-                setPage(Page.CreateCollection);
-
-            }}><FcCancel className="inline mb-1"/> Close</button>
-            </div>
+            <ProceedOrCancelButtons proceedAction={saveUser} cancelAction={()=>{
+                setPage(Page.Collectibles)
+            }} processing={processing} proceedButtonText={isEditMode ? "Update" : "Create"}/>
         
         </div>
     </div>

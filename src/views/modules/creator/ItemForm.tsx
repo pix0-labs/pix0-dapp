@@ -6,7 +6,6 @@ import { UploadField } from "../../components/UploadField";
 import { TraitsForm } from "./TraitsForm";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
-import { PulseLoader as Loader} from 'react-spinners';
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { singleUpload } from "pix0-react";

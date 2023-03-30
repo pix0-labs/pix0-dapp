@@ -20,7 +20,7 @@ export const ProceedOrCancelButtons : FC <props> = ({
 }) =>{
 
     return   <div className="mb-4 bg-gray-700 p-2 rounded">
-    <button className="mr-2 bg-blue-900 rounded-3xl p-2 inline-block" 
+    <button className="mr-2 bg-blue-900 rounded-3xl p-2 inline-block text-gray-100" 
     style={{width:"150px"}} disabled={processing}
     onClick={async (e)=>{
         e.preventDefault();
@@ -29,7 +29,7 @@ export const ProceedOrCancelButtons : FC <props> = ({
     }}>{processing ? <PulseLoader color="#eee" margin={2}/> 
     : <>{proceedButtonText ?? "Proceed"}</>}</button>
 
-    <button className="ml-2 bg-gray-600 rounded-3xl p-2 inline-block" 
+    <button className="ml-2 bg-gray-600 rounded-3xl p-2 inline-block text-gray-100" 
     style={{width:"150px"}} disabled={processing}
     onClick={(e)=>{
         e.preventDefault();
