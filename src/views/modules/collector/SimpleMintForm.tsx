@@ -52,7 +52,7 @@ export const SimpleMintForm : FC = () =>{
             onChange={(e)=>{
                 setMediaURI(e.target.value);
             }}/>} 
-            or<button disabled={processing}
+            <span className="mr-4">or<button disabled={processing}
             onClick={(e)=>{
                 e.preventDefault();
                 let useUpl = !useUpload;
@@ -62,7 +62,7 @@ export const SimpleMintForm : FC = () =>{
                 }
             }}
             className="ml-2 bg-gray-500 text-gray-100 p-1 w-32 rounded-2xl inline-block">
-            {useUpload? "input the URL?" : "upload a file?"}</button>
+            {useUpload? "input the URL?" : "upload a file?"}</button></span>
         </div>
 
         <div className="mb-4">
