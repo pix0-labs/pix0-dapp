@@ -144,16 +144,16 @@ export const ItemForm : FC <props>= ({
     </div>
     {txHash && <TxHashDiv txHash={txHash}/>}
     <div className="mb-4">
-        <TextField label="Name:" labelInline={true} id="name" type="text" placeholder="Name"
-        labelRightMargin={"64px"} className={commonTextfieldClassName("w-1/2 inline-block")}
+        <TextField label="Name:" id="name" type="text" placeholder="Name"
+        className={commonTextfieldClassName("w-1/2 inline-block")}
         onChange={(e)=>{
             setItem({...item, name : e.target.value});
         }} value={item.name}/>
     
     </div>
     <div className="mb-4">
-        <TextField label="Description:" labelInline={true} id="description" type="text" 
-        labelRightMargin={"22px"} placeholder="Description"  
+        <TextField label="Description:" id="description" type="text" 
+        placeholder="Description"  
         className={commonTextfieldClassName("w-3/4 inline-block")}
         onChange={(e)=>{
             setItem({...item, description : e.target.value});

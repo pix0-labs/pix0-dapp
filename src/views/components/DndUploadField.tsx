@@ -5,7 +5,7 @@ import { FileUploader } from "react-drag-drop-files";
 import { checkIfFileValid } from './FileUploadField';
 import { Props } from './FileUploadField';
 import placeholder from '../../images/placeholder100.svg';
-
+import './css/Dnd.css';
 
 export type DndProps = Props & {
 
@@ -67,13 +67,13 @@ export const DndUploadField : FC <DndProps> = ({
 
 
     return  <div className="hover:bg-gray-900 bg-gray-800 text-gray-100 
-    hover:cursor-pointer inline-block pt-4 pb-4 pl-2 pr-4 rounded" 
-    style={{minWidth:"280px", color:"white"}}>
+    hover:cursor-pointer inline-block pt-4 pb-4 pl-4 pr-4 rounded-2xl mb-6" 
+    style={{minWidth:"280px", color:"white", maxHeight:"90px"}}>
     <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
     dismissAfterInSeconds={5}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
-         <FileUploader handleChange={onChange} 
+        
+         <FileUploader handleChange={onChange} classes="dropZone dropArea"
          name={`file_${id}`} types={allowedFileTypes} 
-         dropMessageStyle={{color:"white"}}
          multipleUpload={multipleUpload} 
          onClick={(e :any)=>{
             setMediaDataUrl(undefined);
@@ -81,10 +81,12 @@ export const DndUploadField : FC <DndProps> = ({
             if ( onClick )
                 onClick(e);
          }}/>
-          { withImagePreview  && <img id={`img_${id}`} placeholder={placeholder}
-            className={`object-scale-down w-14 h-14 mt-2 block bg-gray-200 
+        
+         { withImagePreview  && <img id={`img_${id}`} placeholder={placeholder}
+            className={`inline-block ml-2 object-scale-down w-10 h-10 mb-8 block bg-gray-200 
             opacity-${mediaDataUrl ? "100" : "0"}`} 
             src={mediaDataUrl ?? placeholder} />}
+
    
     </div>
 }

@@ -1,0 +1,18 @@
+.dropArea {
+    padding:10px;
+    display: inline-block;
+    color:antiquewhite;
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+.dropZone {
+    padding:4px 4px 4px 10px;
+    display: inline-block;
+    color:white;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    width: 120px;
+    border: 1px dashed #ddd;
+    min-height :60px;
+}
