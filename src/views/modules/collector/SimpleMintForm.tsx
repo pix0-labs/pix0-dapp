@@ -61,7 +61,7 @@ export const SimpleMintForm : FC = () =>{
                     setMediaDataUrl(undefined);
                 }
             }}
-            className="ml-2 bg-gray-500 text-gray-100 p-1 w-32 rounded-2xl inline">
+            className="ml-2 bg-gray-500 text-gray-100 p-1 w-32 rounded-2xl inline-block">
             {useUpload? "input the URL?" : "upload a file?"}</button>
         </div>
 

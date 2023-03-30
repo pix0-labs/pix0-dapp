@@ -68,14 +68,13 @@ export const DndUploadField : FC <DndProps> = ({
 
     return  <div className="hover:bg-gray-900 bg-gray-800 text-gray-100 
     hover:cursor-pointer inline-block pt-4 pb-4 pl-4 pr-4 rounded-2xl mb-6" 
-    style={{minWidth:"280px", color:"white", maxHeight:"90px"}}>
-    <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
-    dismissAfterInSeconds={5}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
+    style={{minWidth:"320px", color:"white", maxHeight:"80px", display:"inline-block"}}>
+        <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
+        dismissAfterInSeconds={5}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
         
-         <FileUploader handleChange={onChange} classes="dropZone dropArea"
-         name={`file_${id}`} types={allowedFileTypes} 
-         multipleUpload={multipleUpload} 
-         onClick={(e :any)=>{
+         <FileUploader handleChange={onChange} classes="dropArea"
+         name={`file_${id}`} types={allowedFileTypes}
+         multipleUpload={multipleUpload} onClick={(e :any)=>{
             setMediaDataUrl(undefined);
             setContentType(undefined);
             if ( onClick )
@@ -83,8 +82,8 @@ export const DndUploadField : FC <DndProps> = ({
          }}/>
         
          { withImagePreview  && <img id={`img_${id}`} placeholder={placeholder}
-            className={`inline-block ml-2 object-scale-down w-10 h-10 mb-8 block bg-gray-200 
-            opacity-${mediaDataUrl ? "100" : "0"}`} 
+            className={`inline-block ml-2 object-scale-down w-10 h-10 mb-8 bg-gray-200 
+            opacity-${mediaDataUrl ? "100" : "0"}`}
             src={mediaDataUrl ?? placeholder} />}
 
    
