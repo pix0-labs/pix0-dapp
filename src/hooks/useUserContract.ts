@@ -9,6 +9,7 @@ export function useUserContract()  {
 
     const [currentUser, setCurrentUser] = useState<pix0.User>();
 
+    const [loading, setLoading] = useState(false);
 
     const fetchCurrentUserProfileImage = async () : Promise<string|undefined>=>{
 
@@ -23,6 +24,8 @@ export function useUserContract()  {
 
         if ( currentUser === undefined) {
 
+            setLoading(true);
+
             let w = WalletConnectionStorage.get();
 
             let u = await getUser(w?.accounts[0].address);
@@ -30,6 +33,9 @@ export function useUserContract()  {
     
             setCurrentUser(u);
     
+            setTimeout(()=>{
+                setLoading(false);
+            }, 300);
         }
      
     },[WalletConnectionStorage.get()]);
@@ -40,7 +46,7 @@ export function useUserContract()  {
 
     },[fetchCurrentUser]);
 
-    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser, fetchCurrentUserProfileImage};
+    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser, fetchCurrentUserProfileImage, loading};
 
 }
 

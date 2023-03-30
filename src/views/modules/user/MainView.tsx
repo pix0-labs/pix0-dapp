@@ -4,13 +4,13 @@ import { UserForm } from "./UserForm";
 
 export const MainView : FC = () =>{
 
-    const {currentUser} = useUserContract();
+    const {currentUser, loading} = useUserContract();
 
     const switchView = () =>{
 
         if ( currentUser !== undefined){
 
-            return <UserForm userToEdit={currentUser} isEditMode={true}/>
+            return <UserForm userToEdit={currentUser} isEditMode={true} loading={loading}/>
         }
         else {
 
