@@ -32,7 +32,7 @@ export const CollectionsView : FC = () =>{
     (collResponse?.collections?.length ?? 0) > 0 ?
     
     <div className="table-responsive">
-       <table className="text-left w-11/12 mt-4" cellPadding={3} cellSpacing={3}>
+       <table className="text-left w-11/12 mt-4" cellPadding={5} cellSpacing={3}>
         <thead>
             <tr className="bg-gray-800">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>

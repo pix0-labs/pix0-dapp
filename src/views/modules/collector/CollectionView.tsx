@@ -36,7 +36,7 @@ export const CollectionView : FC <props> = ({
     target="_blank"><img src={img} style={{maxHeight:"40px"}} placeholder={placeholder}/></a> :
     <img src={placeholder} style={{maxHeight:"40px"}} placeholder={placeholder}/>;
 
-    return <tr className="border-b border-slate-600 hover:bg-gray-700">
+    return <tr className="border-b border-slate-600 hover:bg-gray-700 p-2">
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
         <td className="block sm:table-cell">{imgView}</td>
         <td className="block sm:table-cell text-overflow:ellipsis">{collection.name}</td>
