@@ -36,8 +36,7 @@ export const CollectionsView : FC = () =>{
         <thead>
             <tr className="bg-gray-800">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
-                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
-                <th className="sticky top-0" style={{width:"65%"}}>Name</th>
+                <th className="sticky top-0" style={{width:"75%"}} colSpan={2}>Collection</th>
             </tr>
         </thead>
         <tbody>

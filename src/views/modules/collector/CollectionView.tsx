@@ -33,12 +33,13 @@ export const CollectionView : FC <props> = ({
 
 
     const imgView = img ? <a href={img}
-    target="_blank"><img src={img} style={{maxHeight:"40px"}} placeholder={placeholder}/></a> :
-    <img src={placeholder} style={{maxHeight:"40px"}} placeholder={placeholder}/>;
+    target="_blank"><img className="ml-2" src={img} style={{maxHeight:"40px", display:"inline-block"}}  
+    placeholder={placeholder}/></a> :
+    <img src={placeholder} className="ml-2" style={{maxHeight:"40px",display:"inline-block"}} placeholder={placeholder}/>;
 
     return <tr className="border-b border-slate-600 hover:bg-gray-700 p-2">
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
-        <td className="block sm:table-cell">{imgView}</td>
-        <td className="block sm:table-cell text-overflow:ellipsis">{collection.name}</td>
+        <td className="block sm:table-cell text-left">{collection.symbol}{imgView}</td>
+        <td className="block sm:table-cell text-overflow:ellipsis text-left">{collection.name}</td>
     </tr>
 }
