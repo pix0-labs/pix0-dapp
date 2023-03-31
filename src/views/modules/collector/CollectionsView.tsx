@@ -31,14 +31,22 @@ export const CollectionsView : FC = () =>{
     :
     (collResponse?.collections?.length ?? 0) > 0 ?
     
-    <div>
-        <div className="text-left text-gray-200 mb-4 ml-2">Available collections</div>    
-        <div className="flex flex-wrap text-center">
+    <div className="table-responsive">
+       <table className="text-left w-11/12 mt-4" cellPadding={3} cellSpacing={3}>
+        <thead>
+            <tr className="bg-gray-800">
+                <th className="sticky top-0" style={{width:"5%"}}>No.</th>
+                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
+                <th className="sticky top-0" style={{width:"65%"}}>Name</th>
+            </tr>
+        </thead>
+        <tbody>
         {
             collResponse?.collections?.map((c, _i)=>{
                 return <CollectionView key={`Collection_${_i}`} collection={c} index={_i}/>
             })
-        }</div>
+        }</tbody>
+    </table>
     </div>
     : <CommonMessageDiv>NO Active collections from neighborhood...</CommonMessageDiv>
     }
