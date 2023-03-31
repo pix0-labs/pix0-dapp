@@ -34,7 +34,7 @@ export const NFTsView : FC = () =>{
 
         <div className="flex flex-wrap text-center">{
             tokens?.map((t, _i)=>{
-                return <NFTView key={`Nft_${t}`} token_id={t} index={_i}/>
+                return <NFTView key={`Nft_${_i}`} token_id={t} index={_i}/>
             })
         }</div>
         
