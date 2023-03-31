@@ -1,6 +1,8 @@
 import { FC, useEffect, useCallback, useState } from "react";
 import {Collection, randomNumber, LINK_TYPE_IMAGE_URL} from 'pix0-js';
 import useCollectionContract from "pix0-react";
+import { shortenStringTo } from "pix0-react";
+import { FcNext } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
 
 type props = {
@@ -41,5 +43,7 @@ export const CollectionView : FC <props> = ({
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
         <td className="block sm:table-cell text-left">{imgView}{collection.symbol}</td>
         <td className="block sm:table-cell text-overflow:ellipsis text-left">{collection.name}</td>
+        <td className="block sm:table-cell text-left">{shortenStringTo(collection.owner ?? "", 8)}</td>
+        <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
 }

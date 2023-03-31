@@ -31,12 +31,14 @@ export const CollectionsView : FC = () =>{
     :
     (collResponse?.collections?.length ?? 0) > 0 ?
     
-    <div className="table-responsive">
-       <table className="text-left w-11/12 mt-4" cellPadding={5} cellSpacing={3}>
+    <div className="table-responsive pr-4">
+       <table className="text-left w-11/12 mt-4 mr-4" cellPadding={5} cellSpacing={3}>
         <thead>
             <tr className="bg-gray-800">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
-                <th className="sticky top-0" style={{width:"75%"}} colSpan={2}>Collection</th>
+                <th className="sticky top-0" style={{width:"65%"}} colSpan={2}>Collection</th>
+                <th className="sticky top-0" style={{width:"20%"}}>Creator</th>
+                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
