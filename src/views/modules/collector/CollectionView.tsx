@@ -41,8 +41,10 @@ export const CollectionView : FC <props> = ({
 
     return <tr className="border-b border-slate-600 hover:bg-gray-700 p-2">
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
-        <td className="block sm:table-cell text-left font-bold">{imgView}{collection.symbol}</td>
-        <td className="block sm:table-cell text-overflow:ellipsis text-left">{collection.name}</td>
+        <td className="block sm:table-cell text-left">{imgView}
+        <span className="font-bold text-sm">{collection.symbol}</span>
+        </td>
+        <td className="ml-2 text-overflow:ellipsis text-left">{collection.name}</td>
         <td className="block sm:table-cell text-left">{shortenStringTo(collection.owner ?? "", 8)}</td>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
