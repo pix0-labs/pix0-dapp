@@ -12,21 +12,28 @@ export function useCollectionInfo(collection : Collection )  {
 
     const [itemsCount, setItemsCount] = useState(0);
 
-    const {getItemsCount, getCollectionMintingPrice} = useCollectionContract();
+    const {getItemsCount, getCollectionMintingPrice, getMintingFee} = useCollectionContract();
 
     const fetchItemsCount = useCallback(async ()=>{
         let c = await getItemsCount(collection.name, collection.symbol, collection.owner);
         setItemsCount(c);
     },[collection]);
 
+    const fetchMintingAdminFee = useCallback( async () =>{
+        let a = await getMintingFee();
+        setAdminFee(a);    
+    },[]);
+
     useEffect(()=>{
         fetchItemsCount();
 
+        fetchMintingAdminFee();
+
         let p = getCollectionMintingPrice(collection);
         if (p) setPrice(p.value);
+        
+    },[fetchItemsCount, fetchMintingAdminFee]);
 
-    },[fetchItemsCount]);
-
-    return {itemsCount, price}
+    return {itemsCount, price, adminFee}
 
 }
