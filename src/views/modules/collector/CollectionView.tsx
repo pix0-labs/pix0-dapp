@@ -1,7 +1,7 @@
-import { FC, useEffect, useCallback, useState } from "react";
-import {Collection, randomNumber, LINK_TYPE_IMAGE_URL} from 'pix0-js';
-import useCollectionContract from "pix0-react";
+import { FC } from "react";
+import useCollectionRandomImg from "../../../hooks/useCollectionRandomImg";
 import { shortenStringTo } from "pix0-react";
+import { Collection} from 'pix0-js';
 import { FcNext } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
 
@@ -16,23 +16,7 @@ export const CollectionView : FC <props> = ({
     collection, index 
 }) =>{
 
-    const {getItems} = useCollectionContract();
-
-    const [img, setImg] = useState<string>();
-
-    const fetchRandomImage = useCallback(async ()=>{
-
-        let items = await getItems(collection.name, collection.symbol, collection.owner);
-        let idx = randomNumber(0, items.length -1 );
-        let image = items[idx].links.filter(l => {return l.link_type === LINK_TYPE_IMAGE_URL})[0]?.value;
-        setImg(image);
-
-    },[]);
-
-    useEffect(()=>{
-        fetchRandomImage();
-    },[fetchRandomImage]);
-
+    const {img} = useCollectionRandomImg(collection);
 
     const imgView = img ? <a href={img}
     target="_blank"><img className="mr-3" src={img} style={{height:"40px",width:"40px",display:"inline-block"}}  
