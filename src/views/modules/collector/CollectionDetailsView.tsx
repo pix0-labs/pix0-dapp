@@ -7,6 +7,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import placeholder from '../../../images/placeholder2.png';
 import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import useCollectionContract from "pix0-react";
+import {useBalanceQuerier} from "../../../hooks/useBalanceQuerier";
 import { PulseLoader as Loader  } from "react-spinners";
 import {toCoinStr} from 'pix0-js';
 
@@ -24,13 +25,16 @@ export const CollectionDetailsView : FC <props> = ({
 
     const {img} = useCollectionRandomImg(collection);
 
-    const {price,adminFee} = useCollectionInfo(collection);
+    const {totalFee,adminFee} = useCollectionInfo(collection);
 
     const [txHash, setTxHash] = useState<Error|string>();
 
     const {mintItem} = useCollectionContract();
 
     const [processing, setProcessing] = useState(false);
+
+    const {fetchBalance} = useBalanceQuerier({});
+
 
     const setTxHashNow = (tx : Error|string) => {
 
@@ -45,6 +49,16 @@ export const CollectionDetailsView : FC <props> = ({
     }
 
     const mintNow = async () =>{
+
+        let bal = await fetchBalance("uconst", 6);
+        let tot =  parseInt(totalFee().amount);
+        if ( (bal?.balance ?? 0) < tot){
+
+            setTxHashNow(new Error(`Insufficient funds! Required ${toCoinStr(tot)} 
+            CONST but has only ${toCoinStr(bal?.balance ?? 0)} CONST`));
+
+            return; 
+        }
 
         setProcessing(true);
 
@@ -87,8 +101,7 @@ export const CollectionDetailsView : FC <props> = ({
         </div>}
 
         <div className="border-t-8 border-b-8 border-double border-gray-500 p-4 w-64 mx-auto mb-4">
-            Price :<span className="ml-2 font-bold">{toCoinStr(parseInt(price?.amount ?? "0")
-            + parseInt(adminFee?.amount ?? "0"), 4)} CONST</span>
+            Price :<span className="ml-2 font-bold">{toCoinStr(parseInt(totalFee().amount), 4)} CONST</span>
             <div className="text-xs">+ Admin Fee :<span className="ml-2 font-bold">
             ≈{toCoinStr(parseInt(adminFee?.amount ?? "0"), 5)} CONST   
             </span></div>

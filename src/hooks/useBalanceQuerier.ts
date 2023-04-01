@@ -19,6 +19,7 @@ export function useBalanceQuerier(
 
     const [address, setAddress] = useState("");
 
+
     const fetchBalanceNow = useCallback(async (denom? : string, coinDecimals?: number  )=>{
 
         let binfo = await fetchBalance(denom, coinDecimals);

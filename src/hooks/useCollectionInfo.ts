@@ -24,6 +24,15 @@ export function useCollectionInfo(collection : Collection )  {
         setAdminFee(a);    
     },[]);
 
+
+    const totalFee = () : Coin => {
+
+        let t = parseInt(price?.amount ?? "0")
+        + parseInt(adminFee?.amount ?? "0");
+
+        return {amount : `${t}`, denom : price?.denom ?? "uconst"};
+    }
+
     useEffect(()=>{
         fetchItemsCount();
 
@@ -34,6 +43,6 @@ export function useCollectionInfo(collection : Collection )  {
         
     },[fetchItemsCount, fetchMintingAdminFee]);
 
-    return {itemsCount, price, adminFee}
+    return {itemsCount, price, adminFee, totalFee}
 
 }
