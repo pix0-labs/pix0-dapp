@@ -19,9 +19,9 @@ export const CollectionDetailsView : FC <props> = ({
     const {img} = useCollectionRandomImg(collection);
 
     const imgView = img ? <a href={img}
-    target="_blank"><img className="mx-auto" src={img} style={{maxHeight:"260px",maxWidth:"260px",display:"block"}}  
+    target="_blank"><img className="mx-auto rounded-full" src={img} style={{height:"200px",width:"200px",display:"block"}}  
     placeholder={placeholder}/></a> :
-    <img src={placeholder} className="mx-auto" style={{maxHeight:"260px",maxWidth:"260px",display:"block"}} 
+    <img src={placeholder} className="mx-auto rounded-full" style={{height:"200px",width:"200px",display:"block"}} 
     placeholder={placeholder}/>;
 
     return <div className="w-4/5 text-left pt-2 bg-gray-900 text-center rounded-3xl p-4 mt-4 ml-2">
