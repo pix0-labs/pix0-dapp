@@ -3,6 +3,7 @@ import { TxHashDiv } from "../../components/TxHashDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { useNftLoader } from "../../../hooks/useNftLoader";
 import { TfiClose} from 'react-icons/tfi';
+import { PulseLoader as Loader } from "react-spinners";
 import placeholder from '../../../images/placeholder2.png';
 
 type props = {
@@ -17,7 +18,7 @@ export const NFTDetailsView : FC <props>= ({
     tokenId, backToList
 }) =>{
 
-    const {token} = useNftLoader(tokenId);
+    const {token,loading} = useNftLoader(tokenId);
 
     const [txHash, setTxHash] = useState<Error|string>();
 
@@ -37,6 +38,9 @@ export const NFTDetailsView : FC <props>= ({
                 e.preventDefault();
                 backToList();
             }}><TfiClose className="mr-4"/></button>}
+
+            {loading && <Loader color="white" size="10"/>}
+
         </div>
         <div className="mb-4">
             {imgView}
