@@ -51,11 +51,14 @@ export const CollectionDetailsView : FC <props> = ({
     const mintNow = async () =>{
 
         let bal = await fetchBalance("uconst", 6);
-        let tot =  parseInt(totalFee().amount);
-        if ( (bal?.balance ?? 0) < tot){
+        
+        let balv = (bal?.balance ?? 0) * Math.pow(10,6);
+        let tot =  parseFloat(totalFee().amount);
+
+        if (balv < tot){
 
             setTxHashNow(new Error(`Insufficient funds! Required ${toCoinStr(tot)} 
-            CONST but has only ${toCoinStr(bal?.balance ?? 0)} CONST`));
+            CONST but has only ${toCoinStr(balv)} CONST`));
 
             return; 
         }
