@@ -5,7 +5,17 @@ import { NFTView } from "./NFTView";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
-export const NFTListView : FC = () =>{
+export type NProps = {
+
+    toNftDetails?: (tokenId : string) =>void, 
+
+    backToList? : () => void, 
+}
+
+
+export const NFTListView : FC <NProps> = ({
+    toNftDetails, backToList
+}) =>{
 
     const [tokens, setTokens] = useState<string[]>();
 
@@ -35,7 +45,7 @@ export const NFTListView : FC = () =>{
 
         <div className="flex flex-wrap text-center">{
             tokens?.map((t, _i)=>{
-                return <NFTView key={`Nft_${_i}`} tokenId={t} index={_i}/>
+                return <NFTView key={`Nft_${_i}`} tokenId={t} index={_i} toNftDetails={toNftDetails}/>
             })
         }</div>
         

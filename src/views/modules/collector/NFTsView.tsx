@@ -1,7 +1,4 @@
 import { FC, useState } from "react";
-import { PulseLoader as Loader} from 'react-spinners';
-import { NFTView } from "./NFTView";
-import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { NFTListView } from "./NFTListView";
 import { NFTDetailsView } from "./NFTDetailsView";
 
@@ -21,17 +18,28 @@ export const NFTsView : FC = () =>{
 
     const [tokenId, setTokenId] = useState<string>("");
 
+
+    const toNftDetails = (tokenId : string ) =>{
+
+        setTokenId(tokenId);
+        setViewType(ViewType.DETAIL);
+    }
+
+    const backToList = () =>{
+        setViewType(ViewType.LIST);
+    }
+
     const switchView = () =>{
 
         switch (+viewType) {
 
             case ViewType.LIST :
 
-                return <NFTListView/>;
+                return <NFTListView toNftDetails={toNftDetails}/>;
 
             case ViewType.DETAIL :
 
-                return <NFTDetailsView tokenId={tokenId}/>
+                return <NFTDetailsView tokenId={tokenId} backToList={backToList}/>
         }
 
     }

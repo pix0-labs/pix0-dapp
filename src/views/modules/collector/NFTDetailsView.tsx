@@ -42,7 +42,7 @@ export const NFTDetailsView : FC <props>= ({
             {imgView}
         </div>
         {token?.extension.description && 
-        <div className="pl-10 p-2 text-gray-200 mb-4 mx-auto w-3/5 text-left">
+        <div className="pl-10 p-2 text-gray-200 mb-4 mx-auto w-3/5 text-center">
             {token.extension.description}
         </div>}
 
