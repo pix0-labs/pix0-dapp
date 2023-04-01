@@ -4,12 +4,12 @@ import { Collection } from "pix0-js";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { TfiClose} from 'react-icons/tfi';
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
-import placeholder from '../../../images/placeholder2.png';
 import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import useCollectionContract from "pix0-react";
 import {useBalanceQuerier} from "../../../hooks/useBalanceQuerier";
 import { PulseLoader as Loader  } from "react-spinners";
 import {toCoinStr} from 'pix0-js';
+import placeholder from '../../../images/placeholder2.png';
 
 type props = {
 

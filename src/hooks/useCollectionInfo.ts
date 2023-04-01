@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
-import { Collection, randomNumber, LINK_TYPE_IMAGE_URL} from 'pix0-js';
+import { Collection} from 'pix0-js';
 import { Coin } from 'pix0-js';
 import useCollectionContract from "pix0-react";
 
