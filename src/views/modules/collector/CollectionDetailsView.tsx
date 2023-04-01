@@ -39,7 +39,7 @@ export const CollectionDetailsView : FC <props> = ({
         </div>
 
         {collection.description && 
-        <div className="p-2 rounded-2xl bg-gray-700 text-gray-200 mb-10">
+        <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-10">
             {collection.description}
         </div>}
        
