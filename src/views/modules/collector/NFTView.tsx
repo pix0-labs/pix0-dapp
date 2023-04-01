@@ -1,6 +1,7 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import useCollectionContract from "pix0-react";
 import  {Nft} from 'pix0-js';
+import '../../css/c.css';
 
 type props = {
 
@@ -28,11 +29,12 @@ export const NFTView : FC <props> = ({
         fetchToken();
     },[fetchToken]);
 
-    return <div style={{maxWidth:"220px"}} className="bg-gray-700 hover:bg-stone-800 rounded-2xl 
-    text-left w-11/12 sm:w-1/3 lg:w-1/4 px-2 py-2 mt-4 mr-6 shadow-3xl min-h-200">
-        <div className="m-2 text-overflow:ellipsis">{`${(index ?? 0) + 1}.`} {token?.extension.name}</div>
-        <div className="m-2"><a href={token?.extension.image}
-        target="_blank"><img src={token?.extension.image} style={{maxWidth:"190px"}}/></a></div>
-        <div className="m-2 text-overflow:ellipsis">{token?.extension.description}</div>
+    return <div className="bg-gray-700 hover:bg-stone-800 rounded-2xl 
+    text-center py-2 mt-4 mr-6 shadow-3xl min-h-200 IndDiv">
+        <div className="pl-4 mt-2 mb-4 text-overflow:ellipsis font-bold bg-gray-800 p-2 text-left">
+        {`${(index ?? 0) + 1}.`} {token?.extension.name}</div>
+        <div className="m-2 pl-2"><a href={token?.extension.image}
+        target="_blank"><img style={{maxWidth:"200px"}} src={token?.extension.image}/></a></div>
+        <div className="m-2 text-overflow:ellipsis pl-2 text-left">{token?.extension.description}</div>
     </div>
 }
