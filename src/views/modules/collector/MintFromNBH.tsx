@@ -1,5 +1,4 @@
 import { FC , useState } from "react";
-import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionDetailsView } from "./CollectionDetailsView";
 import { CollectionsView } from "./CollectionsView";
 import { Collection } from "pix0-js";
@@ -49,7 +48,7 @@ export const MintFromNBH : FC = () =>{
         
     }
 
-    return <CommonAnimatedDiv className="text-center">
+    return <div className="text-center">
         {switchView()}
-    </CommonAnimatedDiv>
+    </div>
 }

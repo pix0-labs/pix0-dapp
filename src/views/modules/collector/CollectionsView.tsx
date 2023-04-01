@@ -3,6 +3,7 @@ import useCollectionContract from "pix0-react";
 import { CollectionsWithParamsResponse} from 'pix0-js';
 import { PulseLoader as Loader } from "react-spinners";
 import { CollectionView } from "./CollectionView";
+import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { Collection } from "pix0-js";
 
@@ -35,7 +36,7 @@ export const CollectionsView : FC <CProps> = ({
          fetchCollections();
      },[fetchCollections]);
 
-    return <div className="w-full p-2 text-center mx-auto">
+    return <CommonAnimatedDiv className="w-full p-2 text-center mx-auto">
     {
     loading ? <div className="text-left p-2"><Loader color="#eee"/></div>
     :
@@ -62,5 +63,5 @@ export const CollectionsView : FC <CProps> = ({
     </div>
     : <CommonMessageDiv>NO Active collections from neighborhood...</CommonMessageDiv>
     }
-    </div>
+    </CommonAnimatedDiv>
 }
