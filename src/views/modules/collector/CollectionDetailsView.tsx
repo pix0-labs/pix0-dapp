@@ -24,7 +24,7 @@ export const CollectionDetailsView : FC <props> = ({
     <img src={placeholder} className="mx-auto" style={{maxHeight:"260px",maxWidth:"260px",display:"block"}} 
     placeholder={placeholder}/>;
 
-    return <div className="w-4/5 text-left pt-2 bg-gray-900 text-center rounded-3xl p-4 mt-4">
+    return <div className="w-4/5 text-left pt-2 bg-gray-900 text-center rounded-3xl p-4 mt-4 ml-2">
         <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-10">
             {collection.name} {backToList && <button className="float-right"
             onClick={(e)=>{
