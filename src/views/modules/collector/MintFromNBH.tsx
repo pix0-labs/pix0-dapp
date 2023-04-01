@@ -20,6 +20,10 @@ export const MintFromNBH : FC = () =>{
         name : "", symbol : "", 
     });
 
+    const backToList = () =>{
+
+        setViewType(ViewType.COLLECTIONS);
+    }
 
     const toCollectionDetails = (_collection : Collection) => {
 
@@ -37,7 +41,7 @@ export const MintFromNBH : FC = () =>{
 
             case ViewType.DETAIL :
 
-                return <CollectionDetailsView collection={collection}/>
+                return <CollectionDetailsView collection={collection} backToList={backToList}/>
 
             default :
                 return <CollectionsView toCollectionDetails={toCollectionDetails}/>
