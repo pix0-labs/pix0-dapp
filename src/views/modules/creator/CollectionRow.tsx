@@ -3,6 +3,7 @@ import { Collection } from "pix0-js";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
 import useCollectionContract from "pix0-react";
+import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import {FiPlusCircle,FiTrash,FiEdit, FiTool,FiFolder} from 'react-icons/fi';
 import { Popup} from 'reactjs-popup';
 import { ViewType } from "./CollectionsView";
@@ -27,15 +28,10 @@ export const CollectionRow : FC <props> = ({
     collection, setViewType, refreshCollection, setTxHashOrError, index 
 }) =>{
 
-    const {getItemsCount, removeCollection, updateCollection} = useCollectionContract();
+    const {removeCollection, updateCollection} = useCollectionContract();
 
-    const [itemsCount, setItemsCount] = useState(0);
-
-    const fetchItemsCount = useCallback(async () =>{
-        let cnt = await getItemsCount(collection.name, collection.symbol);
-        setItemsCount(cnt);
-    },[collection]);
-
+    const {itemsCount} = useCollectionInfo(collection);
+    
     const removeCollectionNow = async () =>{
 
         if (collection.status === 1){
@@ -57,11 +53,7 @@ export const CollectionRow : FC <props> = ({
         }
     }
 
-    useEffect(()=>{
-        fetchItemsCount();
-    },[fetchItemsCount]);
-
-
+    
     const collectionActionText = (status : number) : string =>{
 
         if ( status === 0 || status === 2){

@@ -48,7 +48,8 @@ export const CollectionsView : FC <CProps> = ({
             <tr className="bg-gray-800">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"35%"}} colSpan={2}>Collection</th>
-                <th className="sticky top-0" style={{width:"40%"}}>Creator</th>
+                <th className="sticky top-0" style={{width:"20%"}}>Creator</th>
+                <th className="sticky top-0 text-center" style={{width:"20%"}}>Available Items</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import useCollectionRandomImg from "../../../hooks/useCollectionRandomImg";
+import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import { shortenStringTo } from "pix0-react";
 import { Collection} from 'pix0-js';
 import { CProps } from "./CollectionsView";
@@ -21,6 +22,8 @@ export const CollectionView : FC <props> = ({
 
     const {img} = useCollectionRandomImg(collection);
 
+    const {itemsCount} = useCollectionInfo(collection);
+
 
     const imgView = img ? <a href={img}
     target="_blank"><img className="mr-3" src={img} style={{height:"40px",width:"40px",display:"inline-block"}}  
@@ -39,6 +42,7 @@ export const CollectionView : FC <props> = ({
         </td>
         <td className="ml-2 text-overflow:ellipsis text-left">{collection.name}</td>
         <td className="block sm:table-cell text-left">{shortenStringTo(collection.owner ?? "", 8)}</td>
+        <td className="ml-2 text-center">{itemsCount}</td>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
 }
