@@ -4,7 +4,6 @@ import { shortenStringTo } from "pix0-react";
 import { Collection} from 'pix0-js';
 import { CProps } from "./CollectionsView";
 import { FcNext } from "react-icons/fc";
-import { ViewType } from "./MintFromNBH";
 import placeholder from '../../../images/placeholder2.png';
 
 
@@ -21,7 +20,6 @@ export const CollectionView : FC <props> = ({
 }) =>{
 
     const {img} = useCollectionRandomImg(collection);
-
 
 
     const imgView = img ? <a href={img}
