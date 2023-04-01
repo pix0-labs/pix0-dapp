@@ -141,11 +141,13 @@ export const CollectionForm : FC <props>= ({
         labelRightMargin={"10px"} placeholder="Price" 
         className={commonTextfieldClassName("w-32 inline-block")}
         onChange={(e)=>{
-            let prices = collection.prices;
-            prices = [{price_type : 1, value: {amount : `${toUcoin(parseFloat(e.target.value))}`, 
+            let v = parseFloat(e.target.value);
+            if ( v >= 0 ) {
+                let prices = collection.prices;
+                prices = [{price_type : 1, value: {amount : `${toUcoin(v)}`, 
                 denom : "uconst"}}];
-        
-            setCollection({...collection, prices : prices});
+               setCollection({...collection, prices : prices});
+            }
         }} value={`${toCoinStr(parseFloat(collection.prices?.filter(p=> {return p.price_type === 1;})[0].value.amount ?? '0'))}`}/>
         <div className="inline-block ml-2 font-bold text-md">CONST</div>
     </div>

@@ -80,7 +80,7 @@ export const CollectionDetailsView : FC <props> = ({
 
     const imgView = img ? <a href={img}
     target="_blank"><img className="mx-auto rounded-full" src={img} 
-    style={{height:"200px",width:"200px",display:"block",border:"10px solid rgba(220,220,230,.45)"}}  
+    style={{height:"200px",width:"200px",display:"block",border:"10px solid rgba(240,240,250,.35)"}}  
     placeholder={placeholder}/></a> :
     <img src={placeholder} className="mx-auto rounded-full" style={{height:"200px",width:"200px",display:"block"}} 
     placeholder={placeholder}/>;
@@ -99,7 +99,7 @@ export const CollectionDetailsView : FC <props> = ({
         </div>
 
         {collection.description && 
-        <div className="p-2 text-gray-200 mb-4 mx-auto w-3/5">
+        <div className="pl-10 p-2 text-gray-200 mb-4 mx-auto w-3/5 text-left">
             {collection.description}
         </div>}
 
