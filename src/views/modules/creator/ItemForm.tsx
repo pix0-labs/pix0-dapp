@@ -8,7 +8,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
-import { singleUpload } from "pix0-react";
+import { mediaUpload } from "pix0-react";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 
 export interface Media {
@@ -81,7 +81,7 @@ export const ItemForm : FC <props>= ({
 
             if ( media.mediaDataUrl) {
 
-                let tx = await singleUpload(media.mediaDataUrl);
+                let tx = await mediaUpload(media.mediaDataUrl);
 
                 if (tx instanceof Error) {
 

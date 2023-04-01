@@ -161,9 +161,9 @@ export const CollectionRow : FC <props> = ({
 
     return <tr className="bg-gray-800 hover:bg-gray-900 hover:cursor-pointer border-b border-gray-500">
         <td className="px-4 py-2 text-center">{((index ?? 0) +1)}</td>
-        <td className="px-4 py-2 text-left">{collection.name}</td>
+        <td className="px-4 py-2 text-left text-overflow:ellipsis">{collection.name}</td>
         <td className="px-4 py-2">{collection.symbol}</td>
-        <td className="px-4 py-2 text-left truncate">{collection.description}</td>
+        <td className="px-4 py-2 text-left text-overflow:ellipsis">{collection.description}</td>
         <td className="px-4 py-2">{itemsCount}</td>
         <td className="px-4 py-2">{statusText(collection.status ?? 0)}</td>
         <td className="px-4 py-2 text-center">
