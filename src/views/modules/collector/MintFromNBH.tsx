@@ -20,18 +20,27 @@ export const MintFromNBH : FC = () =>{
         name : "", symbol : "", 
     });
 
+
+    const toCollectionDetails = (_collection : Collection) => {
+
+        setCollection(_collection);
+        setViewType(ViewType.DETAIL)
+    }
+
     const switchView = () =>{
 
         switch(+viewType) {
 
             case ViewType.COLLECTIONS:
 
-                return <CollectionsView/>
+                return <CollectionsView toCollectionDetails={toCollectionDetails}/>
 
             case ViewType.DETAIL :
 
                 return <CollectionDetailsView collection={collection}/>
 
+            default :
+                return <CollectionsView toCollectionDetails={toCollectionDetails}/>
         }
         
     }

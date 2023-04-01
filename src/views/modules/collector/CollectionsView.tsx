@@ -4,8 +4,18 @@ import { CollectionsWithParamsResponse} from 'pix0-js';
 import { PulseLoader as Loader } from "react-spinners";
 import { CollectionView } from "./CollectionView";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
+import { Collection } from "pix0-js";
 
-export const CollectionsView : FC = () =>{
+export type CProps = {
+
+    toCollectionDetails?: (collection : Collection) =>void, 
+
+    backToList? : () => void, 
+}
+
+export const CollectionsView : FC <CProps> = ({
+    toCollectionDetails
+}) =>{
 
     const {getActiveCollections} = useCollectionContract();
 
@@ -44,7 +54,8 @@ export const CollectionsView : FC = () =>{
         <tbody>
         {
             collResponse?.collections?.map((c, _i)=>{
-                return <CollectionView key={`Collection_${_i}`} collection={c} index={_i}/>
+                return <CollectionView key={`Collection_${_i}`} collection={c} index={_i} 
+                toCollectionDetails={toCollectionDetails}/>
             })
         }</tbody>
     </table>
