@@ -8,9 +8,11 @@ export function useCollectionInfo(collection : Collection )  {
 
     const [price, setPrice] = useState<Coin>();
 
+    const [adminFee, setAdminFee] = useState<Coin>();
+
     const [itemsCount, setItemsCount] = useState(0);
 
-    const {getItemsCount} = useCollectionContract();
+    const {getItemsCount, getCollectionMintingPrice} = useCollectionContract();
 
     const fetchItemsCount = useCallback(async ()=>{
         let c = await getItemsCount(collection.name, collection.symbol, collection.owner);
@@ -19,6 +21,10 @@ export function useCollectionInfo(collection : Collection )  {
 
     useEffect(()=>{
         fetchItemsCount();
+
+        let p = getCollectionMintingPrice(collection);
+        if (p) setPrice(p.value);
+
     },[fetchItemsCount]);
 
     return {itemsCount, price}
