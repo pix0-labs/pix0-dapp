@@ -49,6 +49,18 @@ export const NFTDetailsView : FC <props>= ({
         <div className="pl-10 p-2 text-gray-200 mb-4 mx-auto w-3/5 text-center">
             {token.extension.description}
         </div>}
-
+        <div className="mb-4">
+            <button className="bg-green-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
+            disabled={loading}>
+                Send 
+            </button>
+        </div>
+        <div className="mb-4">
+            <button className="bg-blue-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
+            disabled={loading}>
+                Create Sell Offer
+            </button>
+        </div>
+      
    </CommonAnimatedDiv>
 }
