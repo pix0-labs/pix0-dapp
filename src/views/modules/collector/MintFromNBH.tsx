@@ -48,7 +48,7 @@ export const MintFromNBH : FC = () =>{
         
     }
 
-    return <div className="text-center">
+    return <div className="items-center w-full">
         {switchView()}
     </div>
 }

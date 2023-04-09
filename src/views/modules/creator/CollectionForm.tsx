@@ -100,18 +100,15 @@ export const CollectionForm : FC <props>= ({
     </div>
     {txHash && <TxHashDiv txHash={txHash}/>}
     <div className="mb-4">
-        <TextField label="Name:" labelInline={true} id="name" type="text" placeholder="Name"
-        labelRightMargin={"64px"} className={commonTextfieldClassName("w-1/2 inline-block")}
+        <TextField label="Name:" id="name" type="text" placeholder="Name"
+        className={commonTextfieldClassName("w-1/2 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, name : e.target.value});
         }} value={collection.name}/>
     
     </div>
     <div className="mb-4">
-        <TextField label="Symbol:" labelInline={true} 
-        labelRightMargin={"52px"}
-       
-        id="symbol" type="text" placeholder="Symbol"
+        <TextField label="Symbol:" id="symbol" type="text" placeholder="Symbol"
         className={commonTextfieldClassName("w-32 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, symbol : e.target.value});
@@ -129,17 +126,15 @@ export const CollectionForm : FC <props>= ({
         ]} value={`${collection.status ?? '0'}`}></Select></div>
     </div>
     <div className="mb-4">
-        <TextField label="Description:" labelInline={true} id="description" type="text" 
-        labelRightMargin={"22px"} placeholder="Description"  
-        className={commonTextfieldClassName("w-3/4 inline-block")}
+        <TextField label="Description:" id="description" type="text" 
+        placeholder="Description" className={commonTextfieldClassName("w-3/4 inline-block")}
         onChange={(e)=>{
             setCollection({...collection, description : e.target.value});
         }} value={collection.description}/>
     </div>
     <div className="mb-4">
-        <TextField label="Minting Price:" labelInline={true} id="price" type="number" 
-        labelRightMargin={"10px"} placeholder="Price" 
-        className={commonTextfieldClassName("w-32 inline-block")}
+        <TextField label="Minting Price:" id="price" type="number" 
+        placeholder="Price" className={commonTextfieldClassName("w-32 inline-block")}
         onChange={(e)=>{
             let v = parseFloat(e.target.value);
             if ( v >= 0 ) {

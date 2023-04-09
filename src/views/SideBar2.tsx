@@ -14,14 +14,17 @@ export const SideBar : FC = () =>{
         const submenu = document.getElementById(id);
 
         submenu?.classList.toggle("hidden");
-       
     }
+
+
+    const {setPage} = usePage();
+
 
     const submenuClasses = "block text-gray-300 w-48 hover:text-gray-100 hover:bg-gray-600 p-2 text-sm";
 
-    const subUlClasses = "mt-2 w-64 p-4 space-y-2 hidden";
+    const subUlClasses = "mt-2 w-64 p-4 space-y-2 hidden cursor-pointer";
 
-    return  <nav className="px-4 py-6 bg-gradient-to-r from-gray-600 to-gray-700 h-full">
+    return  <nav className="px-4 py-6 bg-gradient-to-r from-gray-600 to-gray-700 h-screen">
 
     <div className="m-1">
         <img src={logo} style={{width:"120px"}} className="h-auto ml-4"/>
@@ -39,7 +42,9 @@ export const SideBar : FC = () =>{
 
             <ul id="for_creators" className={subUlClasses}>
                 <li>
-                    <a href="#" className={submenuClasses}>Create/Manage Collections</a>
+                    <a onClick={()=>{
+                        setPage(Page.CreateCollection);
+                    }} className={submenuClasses}>Create/Manage Collections</a>
                 </li>
             </ul>
         </li>

@@ -89,7 +89,7 @@ export const CollectionsListView : FC <props> = ({
 
             collections.length > 0 
             ?
-            <table style={{width:"88%"}} className="table-auto mr-2 border-collapse border rounded-2xl overflow-hidden">
+            <table className="table-auto mr-2 border-collapse border rounded-2xl overflow-hidden">
             <thead>
             <tr className="bg-gray-700">  
             <td className="px-4 py-2 text-center">No</td>

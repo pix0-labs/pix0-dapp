@@ -114,8 +114,8 @@ export const SimpleMintForm : FC <props> = ({
         
     }
 
-    return <CommonAnimatedDiv className="text-center">
-    <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
+    return <CommonAnimatedDiv className="items-center">
+    <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-11/12 text-left shadow-md">
     <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
         <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded-3xl pl-4">
         Simple Mint lets you quickly mint a piece of art that you own as an NFT into your wallet 

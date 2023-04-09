@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { SideBar } from "./SideBar2";
 import { MainView } from "./MainView";
 import './css/Home2.css';
@@ -21,28 +21,7 @@ export const HomeView : FC = () =>{
         }
     }
 
-    const activateSubmenus = () =>{
-        const submenus = document.querySelectorAll(".relative");
-        submenus.forEach((submenu) => {
-            const submenuLink = submenu.querySelector("a");
-            const submenuList = submenu.querySelector("ul");
-
-            if (submenuLink !== null) {
-                submenuLink.addEventListener("click", (event) => {
-                    event.preventDefault();
-                    
-                    if (submenuList !== null)
-                        submenuList.classList.toggle("hidden");
-                });
-            }
-             
-        });
-    }
-
-    useEffect(()=>{
-        activateSubmenus();
-    },[]);
-
+   
     const toggleButton =  <button id="menu-toggle" className="text-white lg:hidden"
     onClick={(e)=>{
         e.preventDefault();
@@ -56,15 +35,14 @@ export const HomeView : FC = () =>{
 
     return <div className="flex">
             <div className="fixed z-10 inset-y-0 left-0 w-64 bg-gray-900 overflow-y-auto 
-            transition duration-300 transform translate-x-[-100%] lg:translate-x-0 lg:static lg:inset-0">
+            transition duration-300 transform translate-x-[-100%] lg:translate-x-0 lg:static lg:inset-0 items-stretch">
                 <SideBar/>
             </div>
         
             <div className="flex-1">
-                <div className="flex items-center justify-center h-screen">
+                <div className="flex items-center justify-center h-screen w-full">
                 {toggleButton}
                 <MainView/>
-                  
                 </div>
             </div>
         </div>
