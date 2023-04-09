@@ -8,17 +8,17 @@ import { FcCancel} from 'react-icons/fc';
 
 export enum ViewType {
 
-    LIST,
+    LIST = 1,
 
-    CREATE,
+    CREATE = 2 ,
 
-    EDIT,
+    EDIT = 3,
 
-    ADD_ITEM,
+    ADD_ITEM = 4,
 
-    ITEMS_LIST,
+    ITEMS_LIST =5,
 
-    NONE,
+    NONE = 0,
 }
 
 export type CollectionViewProps = {

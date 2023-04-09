@@ -93,7 +93,7 @@ export const CollectionForm : FC <props>= ({
 
 
     return <CommonAnimatedDiv className="text-center">
-    <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-5/6 text-left shadow-md">
+    <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-2xl w-full text-left shadow-md">
     <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
     <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded">
     {isEditMode ? "Update" : "Create"} Your Collection
@@ -114,16 +114,16 @@ export const CollectionForm : FC <props>= ({
             setCollection({...collection, symbol : e.target.value});
         }} value={collection.symbol}/>
 
-        <div className="inline-block ml-2 font-bold text-md">Status: 
-        <Select
-        onChange={(e)=>{
+    </div>
+    <div className="mb-4">
+    Status:<br/><Select onChange={(e)=>{
             setCollection({...collection, status : e.target.value});
         }}
         items={[
             {name: "Draft", value : "0"},
             {name: "Active", value : "1"},
             {name: "Deactivated", value : "2"},
-        ]} value={`${collection.status ?? '0'}`}></Select></div>
+        ]} value={`${collection.status ?? '0'}`}></Select>
     </div>
     <div className="mb-4">
         <TextField label="Description:" id="description" type="text" 

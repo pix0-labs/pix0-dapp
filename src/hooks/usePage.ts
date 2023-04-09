@@ -21,8 +21,15 @@ export default function usePage() {
     const param : any | undefined = pageState.param;
 
 
-    const isPage = (_page : Page) : boolean =>{
+    const isPage = (_page : Page, _param? : any ) : boolean =>{
+        
+        if (_param){
+
+            return (_page === page && _param === param); 
+        }
+
         return _page === page;
+
     }
 
     return {page, setPage,isPage, param} as const;

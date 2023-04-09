@@ -1,18 +1,19 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 import { NFTsView } from "./NFTsView";
 import { TopMenu } from "./TopMenu";
 import { COMMON_PANEL_CLASS_NAME } from "../config";
 import { MintFromNBH } from "./MintFromNBH";
+import usePage from "../../../hooks/usePage";
 import { SimpleMintForm } from "./SimpleMintForm";
 
 export enum ViewType {
 
-    COLLECTIBLES, 
+    COLLECTIBLES = 1, 
 
-    MINT_FROM_NBH,
+    MINT_FROM_NBH = 2,
 
-    SIMPLE_MINT,
+    SIMPLE_MINT = 3,
 }
 
 
@@ -20,6 +21,7 @@ export const CollectiblesView : FC = () =>{
 
     const [viewType, setViewType] = useState<ViewType>(ViewType.COLLECTIBLES);
 
+    const {param} = usePage();
 
     const switchView = () =>{
 
@@ -38,6 +40,10 @@ export const CollectiblesView : FC = () =>{
                 return <NFTsView/>
         }
     }
+
+    useEffect(()=>{
+        setViewType(param);
+    },[param]);
 
     return <motion.div 
     className={COMMON_PANEL_CLASS_NAME}
