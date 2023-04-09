@@ -27,7 +27,7 @@ export const SideBar : FC = () =>{
 
     const submenuClassesSel = "block text-gray-300 w-48 hover:text-gray-100 bg-gray-600 p-2 text-sm";
 
-    const subUlClasses = "mt-2 w-64 p-4 space-y-2 hidden cursor-pointer";
+    const subUlClasses = "mt-1 w-64 p-4 space-y-2 hidden cursor-pointer";
 
     const submenuCl = (page : Page, param? : any ) =>{
 
