@@ -34,7 +34,7 @@ export const NFTListView : FC <NProps> = ({
         fetchTokens();
     },[fetchTokens]);
 
-    return <CommonAnimatedDiv className="w-full p-2 text-center mx-auto">
+    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto">
      {
 
         tokens === undefined ?
