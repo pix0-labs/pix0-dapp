@@ -16,7 +16,7 @@ export const NFTView : FC <props> = ({
 
     const {token} = useNftLoader(tokenId);
 
-    return <div className="cursor-pointer bg-gray-700 hover:bg-stone-800 rounded-2xl 
+    return <div className="cursor-pointer bg-gray-700 hover:bg-stone-900 rounded-md 
     text-center py-2 mt-4 mr-6 shadow-3xl min-h-200 IndDiv"
     onClick={()=>{
         if (toNftDetails) toNftDetails(tokenId);
