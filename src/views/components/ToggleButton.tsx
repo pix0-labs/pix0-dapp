@@ -16,8 +16,9 @@ export const ToggleButton : FC <props> = ({
     size, x, y, onClick
 }) =>{
 
-    return  <button className={`fixed ${x?.direction ?? "top"}-${x?.margin ?? 10} 
-    ${y?.direction ?? "left"}-${y?.margin ?? 20} ml-2 p-2 bg-gray-400 
+    return  <button style={{marginTop:"6px", minWidth:"24px",
+    minHeight:"24px", marginLeft:"220px"}} className={`fixed ${x?.direction ?? "top"}-${x?.margin ?? 10} 
+    ${y?.direction ?? "left"}-${y?.margin ?? 20} ml-2 p-2 bg-gray-800 
     text-white rounded`}
     onClick={(e)=>{
         e.preventDefault();

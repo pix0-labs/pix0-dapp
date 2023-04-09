@@ -24,9 +24,9 @@ export const HomeView : FC = () =>{
         </aside>
         </AnimatedDiv2>
         <main className="main flex flex-col grow md:ml-0 h-screen mx-auto bg-black text-center overflow-y-auto">
-            <ToggleButton onClick={hideOrExpandSideBar}/>
             <MainView/>
         </main>
+        <ToggleButton onClick={hideOrExpandSideBar}/>
         
       </div> ;
 }
