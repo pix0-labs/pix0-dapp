@@ -1,0 +1,7 @@
+.menu {
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-open {
+    transform: rotate(90deg);
+}

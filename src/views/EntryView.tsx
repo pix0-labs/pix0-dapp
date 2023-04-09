@@ -1,7 +1,7 @@
 import { FC } from "react";
 import useWalletState from "../hooks/useWalletState";
 import { ConnectWalletView } from "./ConnectWalletView";
-import { HomeView } from "./HomeView";
+import { HomeView } from "./HomeView2";
 
 export const EntryView : FC = () =>{
 
