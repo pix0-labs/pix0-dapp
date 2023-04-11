@@ -10,7 +10,9 @@ import { TreasuriesForm } from "./TreasuriesForm";
 import { CollectionLinksForm } from "./CollectionLinksForm";
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
+import { Page } from "../../../sm/PageActions";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
+import usePage from "../../../hooks/usePage";
 import './css/CollectionForm.css';
 
 type props = CollectionViewProps & {
@@ -37,6 +39,9 @@ export const CollectionForm : FC <props>= ({
     }
 
     const [processing, setProcessing] = useState(false);
+
+    const {setPage} = usePage();
+
 
     const saveCollection = async () =>{
 
@@ -164,7 +169,9 @@ export const CollectionForm : FC <props>= ({
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
     </div>
     <ProceedOrCancelButtons proceedAction={saveCollection} cancelAction={()=>{
-        if ( setViewType)setViewType(ViewType.NONE);
+        if ( setViewType)setViewType(ViewType.LIST);
+        setPage(Page.CreateCollection, ViewType.LIST);
+
     }} processing={processing} proceedButtonText={isEditMode ? "Edit" : "Create"}/>
     </form>
     </div></CommonAnimatedDiv>

@@ -1,10 +1,12 @@
-import { FC , useState} from "react";
+import { FC , useState, useEffect} from "react";
 import { CollectionsListView } from "./CollectionsListView";
 import { CollectionForm } from "./CollectionForm";
 import { ItemForm } from "./ItemForm";
 import { ItemsListView } from "./ItemsListView";
 import { FiPlusCircle} from 'react-icons/fi';
 import { FcCancel} from 'react-icons/fc';
+import { Page } from "../../../sm/PageActions";
+import usePage from "../../../hooks/usePage";
 
 export enum ViewType {
 
@@ -33,6 +35,8 @@ export const CollectionsView : FC  = () =>{
     const [viewType, setViewType] = useState<ViewType>();
 
     const [viewTypeParam, setViewTypeParam] = useState<any>();
+
+    const {param, setPage} = usePage();
 
     const setViewTypeForEdit = (viewType : ViewType, param : any) => {
 
@@ -90,7 +94,10 @@ export const CollectionsView : FC  = () =>{
             className="bg-gray-600 rounded-3xl p-2 mb-4" onClick={(e)=>{
                 e.preventDefault();
                 setViewType(ViewType.CREATE);
-            }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Add Collection</button>
+
+                setPage(Page.CreateCollection, ViewType.CREATE);
+
+            }}><FiPlusCircle style={{marginRight:"4px",display:"inline",marginBottom:"4px"}}/>Create Collection</button>
     
         else if (viewType === ViewType.ITEMS_LIST)
 
@@ -100,12 +107,21 @@ export const CollectionsView : FC  = () =>{
                 e.preventDefault();
                 if ( setViewType)
                     setViewType(ViewType.LIST);
+                
+                setPage(Page.CreateCollection, ViewType.LIST);
             }}><FcCancel className="mr-2 inline mb-1"/>Close</button>
 
         else 
             return <></>;
 
     } 
+
+    
+    useEffect(()=>{
+        setViewType(param);
+    },[param]);
+
+
     return <div className="text-left p-4">{button()}
         {switchView()}</div>;
 }

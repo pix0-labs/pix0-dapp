@@ -69,7 +69,14 @@ export const SideBar : FC = () =>{
                     <a onClick={()=>{
                         setPage(Page.CreateCollection, CollectionViewType.LIST);
                     }} className={submenuCl(Page.CreateCollection, 
-                    CollectionViewType.LIST)}>Create/Manage Collections</a>
+                    CollectionViewType.LIST)}>Manage Collections</a>
+                </li>
+
+                <li>
+                    <a onClick={()=>{
+                        setPage(Page.CreateCollection, CollectionViewType.CREATE);
+                    }} className={submenuCl(Page.CreateCollection, 
+                    CollectionViewType.CREATE)}>Create Collection</a>
                 </li>
             </ul>
         </li>
@@ -111,7 +118,7 @@ export const SideBar : FC = () =>{
             }} className="block text-gray-400 hover:text-white cursor-pointer">
                 <div className="inline-flex text-left p-2 bg-gray-800 w-full">    
                 <FiShoppingCart className="mr-2 mt-1"/>Market
-                <FcNext style={{width:"16px",height:"16px"}} className="ml-8 mr-2 mt-1"/>
+                <FcNext style={{width:"16px",height:"16px"}} className="ml-20 mr-2 mt-1"/>
             </div>
             </a>
 
