@@ -10,13 +10,15 @@ type props = {
     transitionDuration? : number, 
 
     className? : string, 
+
+    style? : React.CSSProperties, 
 }
 
 export const CommonMessageDiv : FC <props> = ({
-    children, transitionDuration, className
+    children, transitionDuration, className, style 
 }) =>{
 
-    return <motion.div 
+    return <motion.div style={style}
     className= { className ?? "bg-cyan-900 rounded-3xl p-4 w-3/5 mx-auto mt-20"}
     initial={{ opacity: 0, scale: 0.5 }}
     animate={{ opacity: 1, scale: 1 }}

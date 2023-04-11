@@ -30,7 +30,8 @@ export const NFTDetailsView : FC <props>= ({
     placeholder={placeholder}/>;
 
 
-    return <CommonAnimatedDiv className="w-11/12 text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 ml-2">
+    return <CommonAnimatedDiv style={{width:"99%"}}
+    className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 ml-2">
           {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4">
             {token?.extension.name} {backToList && <button className="float-right"

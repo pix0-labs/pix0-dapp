@@ -8,13 +8,15 @@ type props = {
 
     className? : string, 
 
+    style? : React.CSSProperties,
+
     visible? : boolean,
 
     dismissAfterInSeconds? : number, 
 }
 
 export const CommonAnimatedDiv : FC <props> = ({
-    children, className, visible, dismissAfterInSeconds
+    children, className, visible, dismissAfterInSeconds, style 
 }) =>{
 
     const [isVisible, setIsVisible] = useState(true);
@@ -41,7 +43,7 @@ export const CommonAnimatedDiv : FC <props> = ({
 
 
     return <>{ isVisible && <motion.div initial={{ opacity: 0, scale: 0.5 }}
-    className={className ?? COMMON_PANEL_CLASS_NAME}
+    className={className ?? COMMON_PANEL_CLASS_NAME} style={style}
     animate={{ opacity: 1, scale: 1 }}  onAnimationComplete={handleDismiss}
     transition={{ duration: 0.5 }}>{children}</motion.div>}</>
 }

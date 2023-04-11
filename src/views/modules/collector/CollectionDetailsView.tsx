@@ -85,7 +85,8 @@ export const CollectionDetailsView : FC <props> = ({
     <img src={placeholder} className="mx-auto rounded-full" style={{height:"200px",width:"200px",display:"block"}} 
     placeholder={placeholder}/>;
 
-    return <CommonAnimatedDiv className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 mr-4">
+    return <CommonAnimatedDiv style={{width:"99%"}}
+    className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 mr-4">
          {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4">
             {collection.name} {backToList && <button className="float-right"
