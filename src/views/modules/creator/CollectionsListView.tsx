@@ -76,7 +76,7 @@ export const CollectionsListView : FC <props> = ({
         fetchCollections();
     },[]);
 
-    return <CommonAnimatedDiv className="text-center"><div className="w-10/2 p-2 overflow-x-auto">
+    return <CommonAnimatedDiv className="text-center"><div className="w-full p-2 overflow-x-hidden">
     {txHash && <TxHashDiv txHash={txHash}/>}
    
         {

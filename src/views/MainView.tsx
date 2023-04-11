@@ -2,7 +2,7 @@ import { FC } from "react";
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import { MintNFTView } from "./modules/MintNFTView";
-import { MarketView } from "./modules/MarketView";
+import { MainView as MarketView } from "./modules/market/MainView";
 import { CollectiblesView } from "./modules/collector/CollectiblesView";
 import { MainView as UserView } from "./modules/user/MainView";
 import { TopBar } from "./TopBar";

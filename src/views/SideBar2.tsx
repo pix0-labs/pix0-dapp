@@ -4,6 +4,7 @@ import { FcNext } from "react-icons/fc";
 import { IoCreateOutline} from 'react-icons/io5';
 import { ViewType as CollectionViewType } from "./modules/creator/CollectionsView";
 import { ViewType as CollectiblesViewType} from "./modules/collector/CollectiblesView";
+import { ViewType as MarketViewType } from "./modules/market/MainView";
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import logo from '../images/pix0_logo1.png';
@@ -89,6 +90,36 @@ export const SideBar : FC = () =>{
                     }} className={submenuCl(Page.Collectibles, CollectiblesViewType.SIMPLE_MINT)}>Simple Mint</a>
                 </li>
  
+            </ul>
+     
+        </li>
+
+        <li className="mt-4 mb-4 p-2">
+            <a onClick={()=>{
+                expandSubMenu("market");
+            }} className="block text-gray-400 hover:text-white cursor-pointer">
+                <div className="inline-flex text-left p-2 bg-gray-800 w-full">    
+                <FiShoppingCart className="mr-2 mt-1"/>Market
+                <FcNext style={{width:"16px",height:"16px"}} className="ml-8 mr-2 mt-1"/>
+            </div>
+            </a>
+
+            <ul id="market"  className={subUlClasses}>
+                <li>
+                    <a onClick={()=>{
+                        setPage(Page.Market, MarketViewType.MARKET);
+                    }} className={submenuCl(Page.Market, MarketViewType.MARKET)}>Buy NFT</a>
+                </li>
+                <li>
+                    <a onClick={()=>{
+                        setPage(Page.Market, MarketViewType.YOUR_BUY_OFFERS);
+                    }} className={submenuCl(Page.Market, MarketViewType.YOUR_BUY_OFFERS)}>Your Buy Offers</a>
+                </li>
+                <li>
+                    <a onClick={()=>{
+                        setPage(Page.Market, MarketViewType.YOUR_SELL_OFFERS);
+                    }} className={submenuCl(Page.Market, MarketViewType.YOUR_SELL_OFFERS)}>Your Sell Offers</a>
+                </li>
             </ul>
      
         </li>
