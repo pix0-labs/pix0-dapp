@@ -47,7 +47,7 @@ export const SideBar : FC = () =>{
         submenuClassesSel : submenuClasses
     }
 
-    return  <nav className="px-4 py-6 bg-gradient-to-r from-gray-600 to-gray-700 h-screen">
+    return  <nav className="px-4 py-6 bg-gradient-to-r from-gray-600 to-gray-700 h-full">
 
     <div className="m-1">
         <img src={logo} style={{width:"120px"}} className="h-auto ml-4"/>

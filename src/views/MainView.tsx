@@ -44,7 +44,7 @@ export const MainView : FC = () =>{
         return <MarketView/>
     }
 
-    return <div className="bg-gray-900 h-screen w-full">
+    return <div className="bg-gray-900 h-full w-full">
     <TopBar/>
     {switchView()}
     </div>
