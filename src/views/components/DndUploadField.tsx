@@ -66,8 +66,8 @@ export const DndUploadField : FC <DndProps> = ({
     }
 
 
-    return  <div className="hover:bg-gray-900 bg-gray-800 text-gray-100 
-    hover:cursor-pointer w-2/5 inline-block pt-1 pb-4 pl-4 pr-4 mr-2 rounded-md mb-2" 
+    return  <div className="hover:bg-gray-900 bg-stone-900 text-gray-100 
+    hover:cursor-pointer w-2/5 inline-block pt-1 pb-4 pl-4 pr-4 mr-2 rounded mb-2" 
     style={{minWidth:"320px", color:"white", maxHeight:"60px", display:"inline-block"}}>
         <CommonAnimatedDiv className="text-red-400 text-xs text-left" visible={error!==undefined}
         dismissAfterInSeconds={5}><FcDisapprove className="inline-block mr-2"/>{error?.message}</CommonAnimatedDiv>
