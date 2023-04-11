@@ -44,7 +44,7 @@ export const MainView : FC = () =>{
         }
     }
 
-    return <CommonAnimatedDiv className="text-gray-100">
+    return <CommonAnimatedDiv className="text-gray-100 rounded bg-gray-800 h-full p-2">
         <TopMenu viewType={viewType} setViewType={setViewType}/>
         {switchView()}
     </CommonAnimatedDiv>

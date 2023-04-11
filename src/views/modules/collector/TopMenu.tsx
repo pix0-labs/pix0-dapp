@@ -20,7 +20,7 @@ export const TopMenu : FC <props> = ({
     }   
 
 
-    return <div className="bg-gray-700 p-2 text-left w-full shadow-md rounded-md mr-2">
+    return <div className="bg-gray-700 p-2 text-left w-full shadow-xl rounded mr-2">
     <motion.div className={`cursor-pointer inline-block p-2 rounded-3xl ${bgc(ViewType.COLLECTIBLES)} mx-2`}
      onClick={()=>{
         if (setViewType)
