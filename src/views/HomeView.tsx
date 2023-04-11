@@ -17,9 +17,9 @@ export const HomeView : FC = () =>{
     }
 
 
-    return  <div className="flex flex-row min-h-screen bg-gray-100 text-gray-800">
+    return  <div className="flex flex-row min-h-screen text-gray-800">
         <AnimatedDiv2 isVisible={sideBarVisible}> 
-        <aside id="sideBarId" className="sidebar w-0 lg:w-32 md:shadow ASideBar overflow-y-auto">
+        <aside id="sideBarId" className="w-0 lg:w-32 md:shadow ASideBar overflow-y-auto overflow-x-hidden">
         <SideBar/>
         </aside>
         </AnimatedDiv2>

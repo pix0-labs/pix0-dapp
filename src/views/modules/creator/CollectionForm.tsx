@@ -11,7 +11,7 @@ import { CollectionLinksForm } from "./CollectionLinksForm";
 import useCollectionContract from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
-
+import './css/CollectionForm.css';
 
 type props = CollectionViewProps & {
 
@@ -85,6 +85,16 @@ export const CollectionForm : FC <props>= ({
         name : "", symbol : ""
     });
 
+    const statusSel = <Select onChange={(e)=>{
+        setCollection({...collection, status : e.target.value});
+    }}
+    items={[
+        {name: "Draft", value : "0"},
+        {name: "Active", value : "1"},
+        {name: "Deactivated", value : "2"},
+    ]} value={`${collection.status ?? '0'}`}></Select>;
+
+
     useEffect(()=>{
         if ( isEditMode && collectionToEdit){
             setCollection(collectionToEdit);
@@ -114,16 +124,12 @@ export const CollectionForm : FC <props>= ({
             setCollection({...collection, symbol : e.target.value});
         }} value={collection.symbol}/>
 
+        <div className="lgSel">
+            <div className="inline-block mr-2 font-bold">Status:</div>{statusSel}
+        </div>
     </div>
-    <div className="mb-4">
-    Status:<br/><Select onChange={(e)=>{
-            setCollection({...collection, status : e.target.value});
-        }}
-        items={[
-            {name: "Draft", value : "0"},
-            {name: "Active", value : "1"},
-            {name: "Deactivated", value : "2"},
-        ]} value={`${collection.status ?? '0'}`}></Select>
+    <div className="mb-4 smSel">
+    <div className="mb-2 font-bold">Status:</div>{statusSel}
     </div>
     <div className="mb-4">
         <TextField label="Description:" id="description" type="text" 
