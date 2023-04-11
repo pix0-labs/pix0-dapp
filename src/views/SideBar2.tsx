@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC , useState, useEffect} from "react";
 import { FiGift, FiShoppingCart} from 'react-icons/fi';
 import { FcNext } from "react-icons/fc";
 import { IoCreateOutline} from 'react-icons/io5';
@@ -21,7 +21,18 @@ export const SideBar : FC = () =>{
     }
 
 
-    const {setPage, isPage} = usePage();
+    const {setPage, isPage, page, param} = usePage();
+
+    const [currentPage, setCurrentPage] = useState<{page? : Page, param? : any}>();
+
+    useEffect(()=>{
+
+        setCurrentPage({
+            page : page ,
+            param : param, 
+        })
+        //console.log(page, param);
+    },[page, param]);
 
 
     const submenuClasses = "block text-gray-300 w-48 hover:text-gray-100 hover:bg-gray-600 p-2 text-sm";
@@ -32,7 +43,7 @@ export const SideBar : FC = () =>{
 
     const submenuCl = (page : Page, param? : any ) =>{
 
-        return isPage(page, param) ? 
+        return  (isPage(page, param) || (currentPage &&  currentPage.page && (page === currentPage.page && param === currentPage.param)) )? 
         submenuClassesSel : submenuClasses
     }
 
