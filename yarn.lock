@@ -2456,9 +2456,9 @@
     csstype "^3.0.2"
 
 "@types/react@^18.0.28":
-  version "18.0.31"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.31.tgz#a69ef8dd7bfa849734d258c793a8fe343a338205"
-  integrity sha512-EEG67of7DsvRDU6BLLI0p+k1GojDLz9+lZsnCpCRTa/lOokvyPBvp8S5x+A24hME3yyQuIipcP70KJ6H7Qupww==
+  version "18.0.34"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.34.tgz#e553444a578f023e6e1ac499514688fb80b0a984"
+  integrity sha512-NO1UO8941541CJl1BeOXi8a9dNKFK09Gnru5ZJqkm4Q3/WoQJtHvmwt0VX0SB9YCEwe7TfSSxDuaNmx6H2BAIQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -5316,9 +5316,9 @@ fraction.js@^4.2.0:
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
 framer-motion@^10.0.1:
-  version "10.10.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.10.0.tgz#929f3d3ca653af9885e162a979fc941acfa2ce7a"
-  integrity sha512-eCsyOcJimIRbx9KOzBTO3j9u1rF/H8/o/ybizYqdrzHkEeHx9L2NcEfGWfV0OHTc1JV17ECVzuZpomupEJ4+dw==
+  version "10.11.2"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.11.2.tgz#0c423acbc3be232b364365b84cf3fd8a519c1044"
+  integrity sha512-IrwuC9regNOU99JoM/Z62CAMA3awGV6AcF7e3bcgXk/ZoNlGSt5aVq0J7UAwtLmCkwVlRvBkiMnvv2mZ1GW2pg==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -7699,14 +7699,14 @@ pirates@^4.0.4:
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
 "pix0-js@file:../../js/pix0-js":
-  version "1.0.80"
+  version "1.0.94"
   dependencies:
     "@archwayhq/arch3.js" "^0.1.0"
     "@cosmjs/proto-signing" "^0.29.5"
     "@cosmjs/stargate" "^0.29.5"
 
 "pix0-react@file:../pix0-react":
-  version "2.1.4"
+  version "2.1.9"
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
@@ -7718,7 +7718,7 @@ pirates@^4.0.4:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.1.4-c479a77e-112f-4fcc-8344-03c209cbe30b-1680320209360/js/pix0-js"
+    pix0-js "file:../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.1.9-36cf3cd9-0ce2-48ca-bfad-71e45bcf01c2-1681184654313/js/pix0-js"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"

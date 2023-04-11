@@ -43,7 +43,7 @@ export const CollectionsView : FC <CProps> = ({
     (collResponse?.collections?.length ?? 0) > 0 ?
     
     <div className="table-responsive pr-4">
-       <table className="text-left w-full mt-4 mr-4" cellPadding={5} cellSpacing={3}>
+       <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
             <tr className="bg-gray-800">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
