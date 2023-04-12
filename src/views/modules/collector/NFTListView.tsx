@@ -14,7 +14,7 @@ export type NProps = {
 
 
 export const NFTListView : FC <NProps> = ({
-    toNftDetails, backToList
+    toNftDetails
 }) =>{
 
     const [tokens, setTokens] = useState<string[]>();
@@ -43,7 +43,7 @@ export const NFTListView : FC <NProps> = ({
         :
         tokens.length > 0 ?
 
-        <div className="flex flex-wrap text-center">{
+        <div className="flex flex-wrap items-center">{
             tokens?.map((t, _i)=>{
                 return <NFTView key={`Nft_${_i}`} tokenId={t} index={_i} toNftDetails={toNftDetails}/>
             })

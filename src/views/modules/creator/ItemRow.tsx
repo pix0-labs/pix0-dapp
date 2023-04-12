@@ -22,7 +22,7 @@ type props = {
 }
 
 export const ItemRow : FC <props> = ({
-    item, setViewType, refreshItem, setTxHashOrError, index 
+    item, setViewType, refreshItem, index 
 }) =>{
 
  
