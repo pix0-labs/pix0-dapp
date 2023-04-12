@@ -11,7 +11,7 @@ const testSos = () =>{
 
     let sos : SellOffer[] = [];
 
-    for (var r =0; r< 12; r ++){
+    for (var r =0; r< 15; r ++){
 
         let amt = (r+2) * 7250;
         sos.push({
