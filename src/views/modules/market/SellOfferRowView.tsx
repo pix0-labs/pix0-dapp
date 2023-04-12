@@ -36,7 +36,9 @@ export const SellOfferRowView : FC <props> = ({
         <span className="font-bold text-sm truncate" 
         style={{maxWidth:"100px"}}>{token?.extension.name}</span>
         </td>
-        <th className="sticky top-0" style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)}</th>
+        <th title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0" 
+        
+        style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)}</th>
         <th className="sticky top-0" style={{width:"20%"}}>{offer.owner}</th>
         <th className="sticky top-0" style={{width:"20%"}}>{collectionName}</th>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>

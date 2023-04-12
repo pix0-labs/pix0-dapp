@@ -13,15 +13,17 @@ const testSos = () =>{
 
     for (var r =0; r< 12; r ++){
 
+        let amt = (r+2) * 7250;
         sos.push({
             token_id : `Tok_00${r}`,
-            owner : `Alice ${r}`,
-            price : {amount : `${(r+1) * 10}`, denom : "uconst"},
+            owner : `Alice_${r}`,
+            price : {amount : `${amt}`, denom : "uconst"},
             allowed_direct_buy : true, 
             status: 0,
         });
     }
 
+    //console.log("sos::", sos);
     return sos; 
 }
 
