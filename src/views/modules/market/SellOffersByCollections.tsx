@@ -63,20 +63,22 @@ export const SellOffersByCollections : FC = () =>{
         fetchCollectionIndexes();
     },[fetchCollectionIndexes]);
 
-    return <div className="items-center p-2 overflow-x-hidden overflow-y-hidden" style={{maxHeight:"360px",maxWidth:"99%"}}>
+    return <div className="items-center pt-2">
     { loading ?
 
         <div className="text-left p-2"><Loader color="#eee"/></div>
         :
         indexes.length > 0 ?
 
-        <div className="items-center">
-        <div className="text-gray-100 font-bold">Available collections for sales</div>    
+        <div className="text-left rounded bg-gray-600 overflow-x-hidden overflow-y-hidden w-full" style={{maxHeight:"320px"}}>
+        <div className="ml-6 text-gray-100 font-bold mb-2">Available collections for sales</div>    
         {
             indexes?.map((c, _i)=>{
                 return <CollectionIndexView key={`CollIdx_${_i}`} collectionIndex={c} index={_i}/>
             })
-        }</div>
+        }
+        <button className="bg-green-900 rounded-3xl fixed px-4 font-bold text-sm text-white right-20">More...</button>
+        </div>
 
         : <CommonMessageDiv>No collection available for sales</CommonMessageDiv>
     }

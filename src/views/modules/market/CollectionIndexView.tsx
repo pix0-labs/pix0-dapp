@@ -14,7 +14,7 @@ export const CollectionIndexView : FC <props> = ({
 }) =>{
 
     return <div className="cursor-pointer bg-gray-700 hover:bg-gray-900 rounded-md 
-    text-center py-2 mt-8 ml-4 mr-4 shadow-3xl min-h-200 IndDiv inline-block"
+    text-center py-2 mt-1 mb-10 ml-4 mr-4 shadow-3xl min-h-200 IndDiv inline-block"
     onClick={()=>{
 
     }}>
