@@ -25,6 +25,6 @@ export const NFTView : FC <props> = ({
         {`${(index ?? 0) + 1}.`} {token?.extension.name}</div>
         <div className="m-2 pl-2">
         <img style={{maxWidth:"200px"}} src={token?.extension.image}/></div>
-        <div className="m-2 text-overflow:ellipsis pl-2 text-left">{token?.extension.description}</div>
+        <div className="m-2 truncate pl-2 text-left">{token?.extension.description}</div>
     </div>
 }
