@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { Nft, SimpleCollectionInfo } from 'pix0-js';
 import useCollectionContract from "pix0-react";
-import placeholder from '../../../images/placeholder2.png';
+import placeholder from '../images/placeholder2.png';
 
 
 export function useNftLoader (tokenId : string) {
@@ -12,26 +12,32 @@ export function useNftLoader (tokenId : string) {
 
     const [image, setImage] = useState(placeholder);
 
-    const [collectionName, setCollectionName] = useState("");
+    const [collectionName, setCollectionName] = useState("Test Collection");
 
     const {getNftTokenInfo} = useCollectionContract();
 
     const fetchToken = useCallback(async ()=>{
 
-        setLoading(true);
-        let tk = await getNftTokenInfo(tokenId);
-        setToken(tk);
-        setLoading(false);
+        try {
+            setLoading(true);
+            let tk = await getNftTokenInfo(tokenId);
+            setToken(tk);
+            
+            let sis =  token?.extension.attributes?.filter(a=>{return a.trait_type === "collection-info"});
+            if (sis && sis.length  > 0 ){
+    
+                let sis0 = JSON.parse(sis[0].value) as SimpleCollectionInfo;
+                setCollectionName(sis0.collection_name);
+            }
+    
+            setImage(tk.extension.image ?? placeholder);
+            setLoading(false);
 
-        let sis =  token?.extension.attributes?.filter(a=>{return a.trait_type === "collection-info"});
-        if (sis && sis.length  > 0 ){
-
-            let sis0 = JSON.parse(sis[0].value) as SimpleCollectionInfo;
-            setCollectionName(sis0.collection_name);
         }
+        catch(e  : any) {
 
-        setImage(tk.extension.image ?? placeholder);
-
+            setLoading(false);
+        }
     },[tokenId]);
 
     useEffect(()=>{

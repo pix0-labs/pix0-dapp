@@ -1,9 +1,10 @@
-import { FC, useState, useEffect, useCallback } from "react";
-import { SellOffer, Nft} from 'pix0-js';
+import { FC} from "react";
+import { SellOffer, toCoinStr} from 'pix0-js';
 import { useNftLoader } from "../../../hooks/useNftLoader";
 import { CProps } from "./SellOffersListView";
 import { FcNext } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
+import { off } from "process";
 
 
 type props = CProps & {
@@ -35,8 +36,9 @@ export const SellOfferRowView : FC <props> = ({
         <span className="font-bold text-sm truncate" 
         style={{maxWidth:"100px"}}>{token?.extension.name}</span>
         </td>
-        <th className="sticky top-0" style={{width:"20%"}}>By</th>
-        <th className="sticky top-0 text-center" style={{width:"20%"}}>{collectionName}</th>
+        <th className="sticky top-0" style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)}</th>
+        <th className="sticky top-0" style={{width:"20%"}}>{offer.owner}</th>
+        <th className="sticky top-0" style={{width:"20%"}}>{collectionName}</th>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
 }

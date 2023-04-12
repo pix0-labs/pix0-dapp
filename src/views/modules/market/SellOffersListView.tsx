@@ -44,10 +44,15 @@ export const SellOffersListView : FC <CProps> = ({
     const[loading, setLoading] = useState(false);
 
     const fetchSellOffers = useCallback (async () =>{
-        setLoading(true);
-        let res = await getSellOffers(1);
-        setSos(res.offers);
-        setLoading(false);
+        try {
+            setLoading(true);
+            let res = await getSellOffers(1);
+            setSos(res.offers);
+            setLoading(false);    
+        }
+        catch(e: any){
+            setLoading(false);
+        }
      }, []);
  
 
@@ -55,21 +60,22 @@ export const SellOffersListView : FC <CProps> = ({
          fetchSellOffers();
      },[fetchSellOffers]);
 
-    return <CommonAnimatedDiv className="w-full p-2 text-center mx-auto">
+    return <CommonAnimatedDiv className="w-full p-2 text-center mx-auto h-full">
     {
     loading ? <div className="text-left p-2"><Loader color="#eee"/></div>
     :
     (sos?.length ?? 0) > 0 ?
     
-    <div className="table-responsive pr-4">
-       <div className="text-gray-100 font-bold">Latest Sell Offers</div>
+    <div className="table-responsive pr-4 mt-10">
+       <div className="text-gray-100 font-bold text-left">Latest Sell Offers</div>
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
-            <tr className="bg-gray-800">
+            <tr className="bg-gray-700">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
-                <th className="sticky top-0" style={{width:"35%"}} colSpan={2}>NFT</th>
+                <th className="sticky top-0" style={{width:"20%"}}>NFT</th>
+                <th className="sticky top-0" style={{width:"15%"}}>Price</th>
                 <th className="sticky top-0" style={{width:"20%"}}>By</th>
-                <th className="sticky top-0 text-center" style={{width:"20%"}}>In Collection</th>
+                <th className="sticky top-0" style={{width:"20%"}}>In Collection</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>
