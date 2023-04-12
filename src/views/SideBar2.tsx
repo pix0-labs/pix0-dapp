@@ -141,6 +141,18 @@ export const SideBar : FC = () =>{
             </ul>
      
         </li>
+
+        <li className="mt-4 mb-4 p-2">
+            <a className="block text-gray-400 hover:text-white cursor-pointer">
+                Documentations
+            </a>
+        </li>
+
+        <li className="mt-4 mb-4 p-2">
+            <a href ="https://github.com/pix0-labs" target="_blank" className="block text-gray-400 hover:text-white cursor-pointer">
+                GitHub
+            </a>
+        </li>
     </ul>
 
     </nav>
