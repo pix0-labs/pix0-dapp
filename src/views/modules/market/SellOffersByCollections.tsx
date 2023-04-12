@@ -15,7 +15,7 @@ const getTestCollectionIndexes = () => {
         indexes.push ({
             collection_info : {
                 owner : `Alice_${r}`,
-                collection_name : `Alice Collection ${r}`,
+                collection_name : `Alice Collection 000000${r}`,
                 collection_symbol : `AC${r}`,
 
 
@@ -71,13 +71,14 @@ export const SellOffersByCollections : FC = () =>{
         indexes.length > 0 ?
 
         <div className="text-left rounded bg-gray-600 overflow-x-hidden overflow-y-hidden w-full" style={{maxHeight:"320px"}}>
-        <div className="ml-6 text-gray-100 font-bold mb-2">Available collections for sales</div>    
+        <div className="ml-6 text-gray-100 font-bold mb-2 mt-2">Available collections for sales
+        <button className="bg-green-900 rounded-3xl px-4 font-bold text-sm text-white float-right mr-10 mt-2">More</button></div>    
         {
             indexes?.map((c, _i)=>{
                 return <CollectionIndexView key={`CollIdx_${_i}`} collectionIndex={c} index={_i}/>
             })
         }
-        <button className="bg-green-900 rounded-3xl fixed px-4 font-bold text-sm text-white right-20">More...</button>
+      
         </div>
 
         : <CommonMessageDiv>No collection available for sales</CommonMessageDiv>

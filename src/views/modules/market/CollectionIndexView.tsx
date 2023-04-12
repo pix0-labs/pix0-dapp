@@ -18,7 +18,7 @@ export const CollectionIndexView : FC <props> = ({
     onClick={()=>{
 
     }}>
-        <div className="pl-4 mt-2 mb-4 text-overflow:ellipsis font-bold bg-gray-800 p-2 text-left">
+        <div className="pl-4 mt-2 mb-4 truncate font-bold bg-gray-800 p-2 text-left" style={{maxWidth:"220px"}}>
         {`${(index ?? 0) + 1}.`} {collectionIndex.collection_info?.collection_name}</div>
         <div className="m-2 pl-2">
         <img style={{maxHeight:"180px"}} src={placeholder}/>
