@@ -32,12 +32,12 @@ export const SellOfferDetailsView : FC <props> = ({
     return <CommonAnimatedDiv style={{width:"99%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 ml-2">
           {txHash && <TxHashDiv txHash={txHash}/>}
-        <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4">
-            {backToList && <button style={{minWidth:"160px"}} 
-            className="float-left rounded border-gray-50" onClick={(e)=>{
+        <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4" style={{minHeight:"40px"}}>
+            {backToList && <button style={{minWidth:"70px",border:"1px solid #ccc"}} 
+            className="float-right rounded-3xl ml-2 text-sm" onClick={(e)=>{
                 e.preventDefault();
                 backToList();
-            }}><TfiClose className="mr-2 inline h-4 w-4"/>Close</button>}
+            }}><TfiClose className="mr-2 inline h-3 w-3"/>Close</button>}
 
             {loading && <Loader color="white" size="10"/>}
 

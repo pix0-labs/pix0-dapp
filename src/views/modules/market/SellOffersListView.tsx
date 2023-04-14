@@ -61,7 +61,7 @@ export const SellOffersListView : FC <CProps> = ({
          fetchSellOffers();
      },[fetchSellOffers]);
 
-    return <CommonAnimatedDiv className="w-full p-2 text-center mx-auto h-full">
+    return <CommonAnimatedDiv className="w-full pt-2 pb-2 text-center mx-auto h-full">
     {
     loading ? <div className="text-left p-2"><Loader color="#eee"/></div>
     :
