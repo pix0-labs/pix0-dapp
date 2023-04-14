@@ -43,7 +43,7 @@ export const SellOffersByCollections : FC = () =>{
         try {
 
             setLoading(true);
-            let c = await getCollectionIndexes (undefined,0,10);
+            let c = await getCollectionIndexes (undefined, 3 ,0,10);
             if (c.collection_indexes.length > 0 ){
                 setIndexes(c.collection_indexes);
             }

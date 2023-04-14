@@ -23,17 +23,20 @@ export type PageAction = {
 
     param? : any, 
 
+    param2? : any, 
+
     dateUpdated? : Date, 
 
 }
 
 
-export function setPage(page : Page, param? : any ) {
+export function setPage(page : Page, param? : any, param2?: any ) {
 
     const action: PageAction = {
         type: SET_PAGE,
         page: page,
         param : param, 
+        param2 : param2, 
         dateUpdated : new Date(), 
     } 
     return action;

@@ -9,8 +9,8 @@ export default function usePage() {
 
     const dispatch: Dispatch<any> = useDispatch();
 
-    const setPage = useCallback((page : Page, param? : any) => 
-    {dispatch(setPageAs(page, param)); },[dispatch]);
+    const setPage = useCallback((page : Page, param? : any, param2? : any ) => 
+    {dispatch(setPageAs(page, param, param2)); },[dispatch]);
 
     const pageState : PageState =  useSelector(
         (_state: any) => {return _state.pageReducer;}, shallowEqual
@@ -20,6 +20,7 @@ export default function usePage() {
 
     const param : any | undefined = pageState.param;
 
+    const param2 : any | undefined = pageState.param2;
 
     const isPage = (_page : Page, _param? : any ) : boolean =>{
         
@@ -32,6 +33,6 @@ export default function usePage() {
 
     }
 
-    return {page, setPage,isPage, param} as const;
+    return {page, setPage,isPage, param, param2} as const;
     
 }

@@ -7,6 +7,8 @@ export type PageState = {
 
     param? : any, 
 
+    param2? : any, 
+
     dateUpdated? : Date, 
 
 }
@@ -26,7 +28,8 @@ export const PageReducer = (state : PageState = INIT_STATE, action : PageActions
 
         case PageActions.SET_PAGE :
           
-            return {...state, page : action.page, param : action.param, dateUpdated : action.dateUpdated};
+            return {...state, page : action.page, param : action.param, param2 : action.param2,
+                 dateUpdated : action.dateUpdated};
   
         default :
 

@@ -5,8 +5,6 @@ import { CProps } from "./SellOffersListView";
 import { FcNext } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
 
-
-
 type props = CProps & {
 
     offer : SellOffer, 

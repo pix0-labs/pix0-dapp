@@ -1,6 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import {useMarketContract} from "pix0-react";
-import { SellOffersWithParamsResponse } from 'pix0-js';
 import { PulseLoader as Loader } from "react-spinners";
 import { SellOfferRowView } from "./SellOfferRowView";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
@@ -36,7 +35,7 @@ export type CProps = {
 }
 
 export const SellOffersListView : FC <CProps> = ({
-    toSellOfferDetails
+    toSellOfferDetails, backToList
 }) =>{
 
     const {getSellOffers} = useMarketContract();
@@ -85,7 +84,7 @@ export const SellOffersListView : FC <CProps> = ({
         {
             sos?.map((o, _i)=>{
                 return <SellOfferRowView key={`SellOfferRow_${_i}`} offer={o} index={_i} 
-                toSellOfferDetails ={toSellOfferDetails}/>
+                toSellOfferDetails ={toSellOfferDetails} backToList={backToList}/>
             })
         }</tbody>
     </table>

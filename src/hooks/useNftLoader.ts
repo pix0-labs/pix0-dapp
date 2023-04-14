@@ -12,7 +12,7 @@ export function useNftLoader (tokenId : string) {
 
     const [image, setImage] = useState(placeholder);
 
-    const [collectionName, setCollectionName] = useState("Test Collection");
+    const [collectionName, setCollectionName] = useState<string>();
 
     const {getNftTokenInfo} = useCollectionContract();
 
