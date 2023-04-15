@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 
 type Props = {
 
@@ -10,7 +10,7 @@ type Props = {
     
     placeholder?: string, 
  
-    label? : string, 
+    label? : string| ReactElement, 
 
     defaultValue? : string,
 
