@@ -21,7 +21,7 @@ export const NFTView : FC <props> = ({
     onClick={()=>{
         if (toNftDetails) toNftDetails(tokenId);
     }}>
-        <div className="pl-4 mt-2 mb-4 text-overflow:ellipsis font-bold bg-gray-800 p-2 text-left">
+        <div className="pl-4 mt-2 mb-4 truncate font-bold bg-gray-800 p-2 text-left">
         {`${(index ?? 0) + 1}.`} {token?.extension.name}</div>
         <div className="m-2 pl-2">
         <img style={{maxWidth:"200px"}} src={token?.extension.image}/></div>
