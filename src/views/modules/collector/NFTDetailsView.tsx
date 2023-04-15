@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { useNftLoader } from "../../../hooks/useNftLoader";
+import { NFTTraitsView } from "./NFTTraitsView";
 import { TfiClose} from 'react-icons/tfi';
 import { PulseLoader as Loader } from "react-spinners";
 import placeholder from '../../../images/placeholder2.png';
@@ -46,6 +47,10 @@ export const NFTDetailsView : FC <props>= ({
         <div className="mb-4">
             {imgView}
         </div>
+        { token && 
+        <div className="mb-4">
+            <NFTTraitsView nft={token}/>
+        </div>}
         {token?.extension.description && 
         <div className="pl-10 p-2 text-gray-200 mb-4 mx-auto w-3/5 text-center">
             {token.extension.description}
