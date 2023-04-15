@@ -14,7 +14,7 @@ export const NFTTraitsView : FC <props> = ({
 
     const traitName = (t : Trait) =>{
 
-        return `${t.display_type ?? t.trait_type}:`;
+        return `${(t.display_type !== undefined && t.display_type.trim() !== "") ? t.display_type : t.trait_type}:`;
     }
 
     const traitValue = (t : Trait) =>{
@@ -51,9 +51,9 @@ export const NFTTraitsView : FC <props> = ({
         onClick={()=>{
             toggleMetadataDetails();
         }}/></div>
-        <div className="hidden w-3/5 mx-auto" id="MetadataDetails">
+        <div className="hidden w-3/5 mx-auto text-left" id="MetadataDetails">
         {
-            nft.extension.attributes?.map(t =>{
+            nft.extension.attributes?.sort((a, b) => a.trait_type.localeCompare(b.trait_type)).map(t =>{
 
                 return <div className="border-b border-gray-500 p-2 hover:bg-gray-700 rounded">
                     <div className="inline-block font-bold mr-2">
