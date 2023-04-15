@@ -30,11 +30,11 @@ export const CreateSellOfferPopup : FC <props> = ({
         <div className="mb-1">{imgView}</div>
         <div className="mb-6 font-bold text-sm">{token?.extension.name}</div>
         <div className="mb-6"><TextField label={<span className="mr-2 font-bold text-base">Price:</span>} 
-        className={commonTextfieldClassName('w-2/12 text-base font-bold')}
-        type="number" labelInline={true}/> CONST</div>    
+        className={commonTextfieldClassName('w-2/12 text-base font-bold min-w-32')}
+        type="number" labelInline={true}/><span className="ml-1 font-bold">CONST</span></div>    
 
          <div className="mb-4"><button className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"
-         style={{minWidth:"180px"}}>Create</button></div>
+         style={{minWidth:"120px"}}>Create</button></div>
         
     </div>
     </div>;
