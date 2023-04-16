@@ -13,5 +13,6 @@ export const CreateSellOfferPopup : FC <props> = ({
     trigger, token 
 }) =>{
 
-    return <Popup modal nested trigger={trigger}><CreateSellOfferForm token={token}/></Popup>
+    return <Popup modal nested trigger={trigger}
+    closeOnEscape={true}><CreateSellOfferForm token={token}/></Popup>
 }

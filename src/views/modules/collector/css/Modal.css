@@ -1,3 +1,11 @@
+.popup-content {
+    margin: auto;
+    background: rgb(80, 80, 80);
+    width: 60%;
+    padding: 3px;
+    border: 0;
+}
+
 .modal {
     font-size: 12px;
     background-color: #223;
