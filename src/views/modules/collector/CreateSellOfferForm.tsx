@@ -68,13 +68,16 @@ export const CreateSellOfferForm : FC <props> = ({
             }, allowed_direct_buy : allowedDirectBuy, nft : token
         });
 
+        /*
         if (tx instanceof Error) {
 
             setError(tx.message);
         }
         else {
             setTxHash(tx);
-        }
+        }*/
+
+        setTxHash(tx);
        
         setProcessing(false);
     }
