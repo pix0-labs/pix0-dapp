@@ -19,6 +19,7 @@ const testSos = () =>{
             price : {amount : `${amt}`, denom : "uconst"},
             allowed_direct_buy : true, 
             status: 0,
+            contract_addr : "xxx",
         });
     }
 

@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import { Nft,toUcoin} from 'pix0-js';
 import { useMarketContract } from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
+import { PulseLoader as Loader} from 'react-spinners';
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import placeholder from '../../../images/placeholder2.png';
 
@@ -23,6 +24,8 @@ export const CreateSellOfferForm : FC <props> = ({
     const [allowedDirectBuy, setAllowedDirectBuy] = useState(true);
 
     const [txHash, setTxHash] = useState<Error|string>();
+
+    const [processing, setProcessing] = useState(false);
 
     const {createSellOfferFrom} = useMarketContract();
 
@@ -47,6 +50,7 @@ export const CreateSellOfferForm : FC <props> = ({
             return;
         }
 
+        setProcessing(true);
         let tx = await createSellOfferFrom({
             token_id : tokenId, price : {
                 amount : `${toUcoin(price)}`,
@@ -54,7 +58,15 @@ export const CreateSellOfferForm : FC <props> = ({
             }, allowed_direct_buy : allowedDirectBuy, nft : token
         });
 
-        setTxHash(tx);
+        if (tx instanceof Error) {
+
+            setError(tx.message);
+        }
+        else {
+            setTxHash(tx);
+        }
+       
+        setProcessing(false);
     }
 
 
@@ -87,12 +99,14 @@ export const CreateSellOfferForm : FC <props> = ({
             setAllowedDirectBuy(e.target.checked);}}/>
         </div> 
 
-         <div className="mb-4"><button className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"
+         <div className="mb-4"><button 
+         disabled={processing}
+         className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"
          style={{minWidth:"120px"}} onClick={async (e)=>{
 
             await createSellOffer();
 
-         }}>Create</button></div>
+         }}>{processing ? <Loader color="#eee" margin={2} size={8}/> : <>Create</>}</button></div>
         
     </div>
     </div>;
