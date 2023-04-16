@@ -65,7 +65,7 @@ export const NFTDetailsView : FC <props>= ({
         <div className="mb-4">
             <CreateSellOfferPopup trigger={<button className="bg-blue-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
             disabled={loading}>Create Sell Offer</button>} token={token}
-            />
+            tokenId={tokenId}/>
         </div>
       
    </CommonAnimatedDiv>
