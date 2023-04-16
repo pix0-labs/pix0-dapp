@@ -68,7 +68,7 @@ export const CreateSellOfferForm : FC <props> = ({
 
     return <div className="modal rounded bg-gray-800 w-full text-center text-gray-100 p-2">
     <div className="mb-2 header">Create Sell Offer For</div>
-    {txHash && <TxHashDiv txHash={txHash}/>}
+    {txHash && <div className="p-2"><TxHashDiv txHash={txHash}/></div>}
     <div className="content">
         <div className="mb-1">{imgView}</div>
         <div className="mb-6 font-bold text-sm">{token?.extension.name}</div>
