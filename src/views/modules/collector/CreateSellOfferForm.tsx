@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { Nft,toUcoin} from 'pix0-js';
+import { FC, useState, useEffect } from "react";
+import { Nft,toUcoin, toCoinStr, Coin} from 'pix0-js';
 import { useMarketContract } from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { PulseLoader as Loader} from 'react-spinners';
@@ -27,7 +27,17 @@ export const CreateSellOfferForm : FC <props> = ({
 
     const [processing, setProcessing] = useState(false);
 
-    const {createSellOfferFrom} = useMarketContract();
+    const {createSellOfferFrom, getCreateSellOfferFee} = useMarketContract();
+
+    const [adminFee, setAdminFee] = useState<Coin>();
+
+    useEffect(()=>{
+        getCreateSellOfferFee()
+        .then(c=>{
+            setAdminFee(c);
+        });
+
+    },[token]);
 
     const setError = (msg : string) =>{
 
@@ -107,6 +117,11 @@ export const CreateSellOfferForm : FC <props> = ({
             await createSellOffer();
 
          }}>{processing ? <Loader color="#eee" margin={2} size={8}/> : <>Create</>}</button></div>
+
+        <div className="text-xs border-t-8 border-b-8 border-double border-gray-500 w-64 mx-auto">
+        + Admin Fee :<span className="ml-2 font-bold">≈{toCoinStr(parseInt(adminFee?.amount ?? "0"), 5)} CONST   
+        </span></div>
+    
         
     </div>
     </div>;
