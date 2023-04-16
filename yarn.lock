@@ -7699,14 +7699,14 @@ pirates@^4.0.4:
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
 "pix0-js@file:../../js/pix0-js":
-  version "1.0.97"
+  version "1.0.98"
   dependencies:
     "@archwayhq/arch3.js" "^0.1.0"
     "@cosmjs/proto-signing" "^0.29.5"
     "@cosmjs/stargate" "^0.29.5"
 
-"pix0-react@file:../pix0-react":
-  version "2.2.6"
+pix0-react@../pix0-react:
+  version "2.2.7"
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
@@ -7718,7 +7718,7 @@ pirates@^4.0.4:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.2.6-d9b5b7bd-789b-49e0-a594-0cee97fe0ad3-1681610585098/js/pix0-js"
+    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.2.7-c47c9a20-e651-4794-91de-16c5571979f9-1681611273745/js/pix0-js"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"
