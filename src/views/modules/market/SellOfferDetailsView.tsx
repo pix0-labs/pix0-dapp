@@ -29,8 +29,8 @@ export const SellOfferDetailsView : FC <props> = ({
     placeholder={placeholder}/>;
 
 
-    return <CommonAnimatedDiv style={{width:"99%"}}
-    className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 ml-2">
+    return <CommonAnimatedDiv style={{width:"100%"}}
+    className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4">
           {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4" style={{minHeight:"40px"}}>
             {backToList && <button style={{minWidth:"70px",border:"1px solid #ccc"}} 
