@@ -6,6 +6,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TfiClose} from 'react-icons/tfi';
 import { PulseLoader as Loader } from "react-spinners";
 import placeholder from '../../../images/placeholder2.png';
+import './css/Img.css';
 
 type props = {
     offer : SellOffer, 
@@ -17,16 +18,13 @@ export const SellOfferDetailsView : FC <props> = ({
     offer, backToList 
 }) =>{
 
-    const {image, token, collectionName, loading} = useNftLoader(offer.token_id);
+    const {image, token, getCollectionName, loading} = useNftLoader(offer.token_id);
 
     const [txHash, setTxHash] = useState<Error|string>();
 
-    const imgView = token?.extension.image ? <a href={token.extension.image}
-    target="_blank"><img className="mx-auto rounded" src={token.extension.image} 
-    style={{height:"200px",width:"200px",display:"block",border:"10px solid rgba(240,240,250,.35)"}}  
-    placeholder={placeholder}/></a> :
-    <img src={placeholder} className="mx-auto rounded-full" style={{height:"200px",width:"200px",display:"block"}} 
-    placeholder={placeholder}/>;
+    const imgView = token?.extension.image ? <div className="img_container mx-auto"><a href={token.extension.image}
+    target="_blank"><img src={token.extension.image} placeholder={placeholder}/></a></div> :
+    <div className="img_container mx-auto"><img src={placeholder} placeholder={placeholder}/></div>;
 
 
     return <CommonAnimatedDiv style={{width:"100%"}}
@@ -42,14 +40,14 @@ export const SellOfferDetailsView : FC <props> = ({
             {loading && <Loader color="white" size="10"/>}
 
         </div>
-        <div className="mb-4">
+        <div className="mb-1">
             {imgView}
-            {token?.extension.name && <p>{token?.extension.name}</p>}
         </div>
-        {collectionName && 
-        <div className="pl-10 p-2 text-gray-200 mb-4 mx-auto w-3/5 text-center">
-            {collectionName}
-        </div>}
+        {token?.extension.name && <div className="mb-1 font-bold">{token?.extension.name}</div>}
+       
+        <div className="pl-10 p-2 text-gray-200 mb-1 mx-auto w-3/5 text-center font-bold">
+            {getCollectionName()}
+        </div>
       
    </CommonAnimatedDiv>
 }

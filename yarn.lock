@@ -2456,9 +2456,9 @@
     csstype "^3.0.2"
 
 "@types/react@^18.0.28":
-  version "18.0.35"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.35.tgz#192061cb1044fe01f2d3a94272cd35dd50502741"
-  integrity sha512-6Laome31HpetaIUGFWl1VQ3mdSImwxtFZ39rh059a1MNnKGqBpC88J6NJ8n/Is3Qx7CefDGLgf/KhN/sYCf7ag==
+  version "18.0.37"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.37.tgz#7a784e2a8b8f83abb04dc6b9ed9c9b4c0aee9be7"
+  integrity sha512-4yaZZtkRN3ZIQD3KSEwkfcik8s0SWV+82dlJot1AbGYHCzJkWP3ENBY6wYeDRmKZ6HkrgoGAmR2HqdwYGp6OEw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3048,9 +3048,9 @@ array.prototype.tosorted@^1.1.1:
     get-intrinsic "^1.1.3"
 
 arweave@^1.10.13, arweave@^1.13.5:
-  version "1.13.5"
-  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.5.tgz#0bd28aae9d0e9fc66df45217661b08f57658c090"
-  integrity sha512-bxXoxmQF1OVXw2QFjD9m29Oo+lwUSvb2mzli494BRFGCfSSTBpE5Fp9f65HmmGEUURCL4xS17J6wBjLm1efrig==
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.6.tgz#f98056bd2322a84919f7636ae1883fd680b3cbc1"
+  integrity sha512-8IP0SQhithb+n/lu9Vfyyem97F+twQaELm+DspWC520X0DBwm2eMYI7lwT+eCzI2HjP/tsyc0lDxhokkFgo4IQ==
   dependencies:
     arconnect "^0.4.2"
     asn1.js "^5.4.1"
@@ -7706,7 +7706,7 @@ pirates@^4.0.4:
     "@cosmjs/stargate" "^0.29.5"
 
 pix0-react@../pix0-react:
-  version "2.3.1"
+  version "2.3.2"
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
@@ -7718,7 +7718,7 @@ pix0-react@../pix0-react:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.3.1-432f4002-765d-48b8-b574-014fd2950336-1681732461733/js/pix0-js"
+    pix0-js "file:../../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.3.2-69db40b0-2155-4cf1-a65f-ccd8a3514281-1681772363280/js/pix0-js"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"

@@ -17,7 +17,7 @@ export const SellOfferRowView : FC <props> = ({
     offer, index, toSellOfferDetails 
 }) =>{
 
-    const {image, token, collectionName} = useNftLoader(offer.token_id);
+    const {image, token, getCollectionName} = useNftLoader(offer.token_id);
 
     const imgView = image ? <a href={image}
     target="_blank"><img className="mr-3" src={image} style={{height:"40px",width:"40px",display:"inline-block"}}  
@@ -39,8 +39,9 @@ export const SellOfferRowView : FC <props> = ({
         
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</th>
         <th className="sticky top-0" style={{width:"15%"}}>{shortenStringTo(offer.owner, 10)}</th>
-        <th className="sticky top-0" style={{width:"15%"}}>{collectionName}</th>
-        <th className="sticky top-0" style={{width:"10%"}}>{timestampToTimeAgo(offer.date_created ?? 0).short}</th>
+        <th className="sticky top-0 truncate" title={getCollectionName()} style={{width:"15%", maxWidth:"80px"}}>{getCollectionName()}</th>
+        <th className="sticky top-0" style={{width:"10%"}} 
+        title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</th>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
 }

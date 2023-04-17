@@ -12,9 +12,19 @@ export function useNftLoader (tokenId : string) {
 
     const [image, setImage] = useState(placeholder);
 
-    const [collectionName, setCollectionName] = useState<string>();
-
+   
     const {getNftTokenInfo} = useCollectionContract();
+
+    const getCollectionName = () =>{
+        let sis =  token?.extension.attributes?.filter(a=>{return a.trait_type === "collection-info"});
+        if (sis && sis.length  > 0 ){
+
+            let sis0 = JSON.parse(sis[0].value) as SimpleCollectionInfo;
+            return sis0.collection_name;
+        }
+
+        return "";
+    }
 
     const fetchToken = useCallback(async ()=>{
 
@@ -23,13 +33,7 @@ export function useNftLoader (tokenId : string) {
             let tk = await getNftTokenInfo(tokenId);
             setToken(tk);
             
-            let sis =  token?.extension.attributes?.filter(a=>{return a.trait_type === "collection-info"});
-            if (sis && sis.length  > 0 ){
-    
-                let sis0 = JSON.parse(sis[0].value) as SimpleCollectionInfo;
-                setCollectionName(sis0.collection_name);
-            }
-    
+         
             setImage(tk.extension.image ?? placeholder);
             setLoading(false);
 
@@ -44,5 +48,5 @@ export function useNftLoader (tokenId : string) {
         fetchToken();
     },[fetchToken]);
 
-    return {token,fetchToken,loading, collectionName, image};
+    return {token,fetchToken,loading, image, getCollectionName};
 } 
