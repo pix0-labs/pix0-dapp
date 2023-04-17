@@ -76,8 +76,9 @@ export const SellOffersListView : FC <CProps> = ({
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"20%"}}>NFT</th>
                 <th className="sticky top-0" style={{width:"15%"}}>Price</th>
-                <th className="sticky top-0" style={{width:"20%"}}>By</th>
-                <th className="sticky top-0" style={{width:"20%"}}>In Collection</th>
+                <th className="sticky top-0" style={{width:"15%"}}>By</th>
+                <th className="sticky top-0" style={{width:"15%"}}>In Collection</th>
+                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>

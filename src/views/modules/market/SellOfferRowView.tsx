@@ -4,7 +4,7 @@ import { useNftLoader } from "../../../hooks/useNftLoader";
 import { CProps } from "./SellOffersListView";
 import { FcNext } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
-import { shortenStringTo } from "pix0-react";
+import { shortenStringTo, timestampToTimeAgo } from "pix0-react";
 
 type props = CProps & {
 
@@ -38,8 +38,9 @@ export const SellOfferRowView : FC <props> = ({
         <th title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0" 
         
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</th>
-        <th className="sticky top-0" style={{width:"20%"}}>{shortenStringTo(offer.owner, 10)}</th>
-        <th className="sticky top-0" style={{width:"20%"}}>{collectionName}</th>
+        <th className="sticky top-0" style={{width:"15%"}}>{shortenStringTo(offer.owner, 10)}</th>
+        <th className="sticky top-0" style={{width:"15%"}}>{collectionName}</th>
+        <th className="sticky top-0" style={{width:"10%"}}>{timestampToTimeAgo(offer.date_created ?? 0).short}</th>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
 }
