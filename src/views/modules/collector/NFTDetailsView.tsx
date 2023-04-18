@@ -6,7 +6,8 @@ import { NFTTraitsView } from "./NFTTraitsView";
 import { TfiClose} from 'react-icons/tfi';
 import { CreateSellOfferPopup } from "./CreateSellOfferPopup";
 import { PulseLoader as Loader } from "react-spinners";
-import placeholder from '../../../images/placeholder2.png';
+import { TokenImageView } from "../../components/TokenImageView";
+import '../../css/Img.css';
 
 type props = {
 
@@ -24,14 +25,6 @@ export const NFTDetailsView : FC <props>= ({
 
     const [txHash, setTxHash] = useState<Error|string>();
 
-    const imgView = token?.extension.image ? <a href={token.extension.image}
-    target="_blank"><img className="mx-auto rounded" src={token.extension.image} 
-    style={{height:"200px",width:"200px",display:"block",border:"10px solid rgba(240,240,250,.35)"}}  
-    placeholder={placeholder}/></a> :
-    <img src={placeholder} className="mx-auto rounded-full" style={{height:"200px",width:"200px",display:"block"}} 
-    placeholder={placeholder}/>;
-
-
     return <CommonAnimatedDiv style={{width:"100%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 mr-2">
           {txHash && <TxHashDiv txHash={txHash}/>}
@@ -46,7 +39,7 @@ export const NFTDetailsView : FC <props>= ({
 
         </div>
         <div className="mb-4">
-            {imgView}
+            <TokenImageView image={token?.extension.image}/>
         </div>
         { token && 
         <div className="mb-4">

@@ -5,8 +5,8 @@ import { TxHashDiv } from "../../components/TxHashDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TfiClose} from 'react-icons/tfi';
 import { PulseLoader as Loader } from "react-spinners";
-import placeholder from '../../../images/placeholder2.png';
-import './css/Img.css';
+import { TokenImageView } from "../../components/TokenImageView";
+import '../../css/Img.css';
 
 type props = {
     offer : SellOffer, 
@@ -21,10 +21,6 @@ export const SellOfferDetailsView : FC <props> = ({
     const {image, token, getCollectionName, loading} = useNftLoader(offer.token_id);
 
     const [txHash, setTxHash] = useState<Error|string>();
-
-    const imgView = token?.extension.image ? <div className="img_container mx-auto"><a href={token.extension.image}
-    target="_blank"><img src={token.extension.image} placeholder={placeholder}/></a></div> :
-    <div className="img_container mx-auto"><img src={placeholder} placeholder={placeholder}/></div>;
 
 
     return <CommonAnimatedDiv style={{width:"100%"}}
@@ -41,7 +37,7 @@ export const SellOfferDetailsView : FC <props> = ({
 
         </div>
         <div className="mb-1">
-            {imgView}
+            <TokenImageView image={token?.extension.image}/>
         </div>
         {token?.extension.name && <div className="mb-1 font-bold">{token?.extension.name}</div>}
        

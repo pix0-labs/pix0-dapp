@@ -10,6 +10,10 @@
     border: 1px solid #aaa;
 }
 
+.img_container:hover {
+    background-color: #223;
+}
+
 .img_container img {
     object-fit: cover;
     width: 100%;
