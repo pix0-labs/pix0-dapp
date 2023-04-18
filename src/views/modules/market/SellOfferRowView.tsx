@@ -5,6 +5,8 @@ import { CProps } from "./SellOffersListView";
 import { FcNext } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
 import { shortenStringTo, timestampToTimeAgo } from "pix0-react";
+import { TokenImageView } from "../../components/TokenImageView";
+import './css/SmallImg.css';
 
 type props = CProps & {
 
@@ -19,11 +21,6 @@ export const SellOfferRowView : FC <props> = ({
 
     const {image, token, getCollectionName} = useNftLoader(offer.token_id);
 
-    const imgView = image ? <a href={image}
-    target="_blank"><img className="mr-3" src={image} style={{height:"40px",width:"40px",display:"inline-block"}}  
-    placeholder={placeholder}/></a> :
-    <img src={placeholder} className="mr-3" style={{height:"40px",width:"40px",display:"inline-block"}} placeholder={placeholder}/>;
-
     return <tr className="border-b border-slate-600 hover:bg-gray-700 p-2 cursor-pointer"
     onClick={()=>{
         if (toSellOfferDetails) {
@@ -31,9 +28,10 @@ export const SellOfferRowView : FC <props> = ({
         }
     }}>
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
-        <td className="block sm:table-cell text-left">{imgView}
-        <span className="font-bold text-sm truncate" 
-        style={{maxWidth:"100px"}}>{token?.extension.name}</span>
+        <td className="block sm:table-cell text-left">
+        <TokenImageView image={image} className="sm_img_container"/>
+        <div className="font-bold text-sm truncate inline-block ml-2" 
+        style={{maxWidth:"100px"}}>{token?.extension.name}</div>
         </td>
         <th title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0" 
         
