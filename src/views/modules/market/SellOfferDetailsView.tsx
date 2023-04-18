@@ -57,7 +57,7 @@ export const SellOfferDetailsView : FC <props> = ({
           {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4" style={{minHeight:"40px"}}>
             {backToList && <button style={{minWidth:"70px",border:"1px solid #ccc"}} 
-            className="float-right rounded-3xl ml-2 text-sm" onClick={(e)=>{
+            className="float-right rounded-3xl ml-2 text-sm" disabled={processing} onClick={(e)=>{
                 e.preventDefault();
                 backToList();
             }}><TfiClose className="mr-2 inline h-3 w-3"/>Close</button>}
@@ -78,7 +78,7 @@ export const SellOfferDetailsView : FC <props> = ({
             <NFTTraitsView nft={token}/>
         </div>}
 
-        {isConnectedWallet(offer.owner) && <div className="mt-4 mb-1">
+        {(isConnectedWallet(offer.owner) && !loading) && <div className="mt-4 mb-1">
             <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold" style={{minWidth:"220px"}}
             disabled={processing} onClick={async (e)=>{
                 e.preventDefault();

@@ -8,8 +8,7 @@ export const MainView : FC = () =>{
 
     const switchView = () =>{
 
-        console.log("c.user::",currentUser);
-
+        //console.log("c.user::",currentUser);
         if ( currentUser !== undefined){
 
             return <UserForm userToEdit={currentUser} isEditMode={true} loading={loading}/>

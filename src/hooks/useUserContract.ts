@@ -27,18 +27,26 @@ export function useUserContract()  {
             setLoading(true);
 
             let w = WalletConnectionStorage.get();
+            try {
 
-            let u = await getUser(w?.accounts[0].address);
-            console.log("fetch user for ", w?.accounts[0].address, u);
-    
-            setCurrentUser(u);
-    
-            setTimeout(()=>{
-                setLoading(false);
-            }, 300);
+                console.log("going to fetch user for ", w?.accounts[0].address);
+        
+                let u = await getUser(w?.accounts[0].address);
+                //console.log("fetch user for ", w?.accounts[0].address, u);
+        
+                setCurrentUser(u);
+        
+                setTimeout(()=>{
+                    setLoading(false);
+                }, 300);
+            }
+            catch(e : any){
+                console.log("fetch.user.error::", e);
+            }
+           
         }
      
-    },[WalletConnectionStorage.get()]);
+    },[WalletConnectionStorage.get(), currentUser]);
 
     useEffect(()=>{
 
