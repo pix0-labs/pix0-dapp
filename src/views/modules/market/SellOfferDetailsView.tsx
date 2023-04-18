@@ -31,11 +31,25 @@ export const SellOfferDetailsView : FC <props> = ({
 
     const {cancelSellOffer} = useMarketContract();
 
+    const setTxHashNow = ( tx : Error|string) =>{
+
+        setTxHash(tx);
+
+        if ( tx instanceof Error){
+            setTimeout(()=>{
+                setTxHash(undefined)
+            },6000);
+        }
+       
+    }
+
     const cancelSellOfferNow = async () =>{
 
         setProcessing(true);
         let tx = await cancelSellOffer(offer.token_id, offer.contract_addr);
-        setTxHash(tx);
+        
+        setTxHashNow(tx);
+
         setProcessing(false);
     }
 
@@ -67,7 +81,7 @@ export const SellOfferDetailsView : FC <props> = ({
         </div>}
 
         {isConnectedWallet(offer.owner) && <div className="mt-4 mb-1">
-            <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold" style={{minWidth:"120px"}}
+            <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold" style={{minWidth:"220px"}}
             disabled={processing} onClick={async (e)=>{
                 e.preventDefault();
                 await cancelSellOfferNow();
