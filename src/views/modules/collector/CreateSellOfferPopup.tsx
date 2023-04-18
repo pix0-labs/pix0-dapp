@@ -1,7 +1,7 @@
 import { FC , ReactElement} from "react";
 import Popup from "reactjs-popup";
 import { CreateSellOfferForm, props as cprops } from "./CreateSellOfferForm";
-import "./css/Modal.css";
+import "../../css/Modal.css";
 
 type props = cprops & {
 

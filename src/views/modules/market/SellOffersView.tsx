@@ -17,7 +17,6 @@ export const SellOffersView : FC = () =>{
     
     const backToList = () =>{
         setPage(Page.Market, ViewType.YOUR_SELL_OFFERS);
-        console.log("b.to.lst....");
     }
        
 

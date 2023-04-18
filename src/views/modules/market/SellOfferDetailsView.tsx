@@ -9,6 +9,7 @@ import { TfiClose} from 'react-icons/tfi';
 import { PulseLoader as Loader } from "react-spinners";
 import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
+import { BuyOffersListView } from "./BuyOffersListView";
 import '../../css/Img.css';
 
 type props = {
@@ -51,6 +52,8 @@ export const SellOfferDetailsView : FC <props> = ({
         setProcessing(false);
     }
 
+    const isOwnerConnectedWallet = isConnectedWallet(offer.owner);
+
 
     return <CommonAnimatedDiv style={{width:"100%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4">
@@ -66,6 +69,9 @@ export const SellOfferDetailsView : FC <props> = ({
 
         </div>
         <div className="mb-1">
+        Sell Offer : <span className="font-bold">{offer.offer_id}</span>
+        </div>
+        <div className="mb-1">
             <TokenImageView image={token?.extension.image}/>
         </div>
         {token?.extension.name && <div className="mb-1 font-bold">{token?.extension.name}</div>}
@@ -77,8 +83,13 @@ export const SellOfferDetailsView : FC <props> = ({
         {token && <div className="mb-1">
             <NFTTraitsView nft={token}/>
         </div>}
+        
+        <div className="mb-1">
+            <BuyOffersListView sell_offer_id={offer.offer_id} withCreateBuyOfferButton={!isOwnerConnectedWallet} 
+            noBuyOfferClassName="mt-2 text-gray-100"/>
+        </div>
 
-        {(isConnectedWallet(offer.owner) && !loading) && <div className="mt-4 mb-1">
+        {(isOwnerConnectedWallet && !loading) && <div className="mt-4 mb-1">
             <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold" style={{minWidth:"220px"}}
             disabled={processing} onClick={async (e)=>{
                 e.preventDefault();
@@ -87,6 +98,8 @@ export const SellOfferDetailsView : FC <props> = ({
             {processing ? <Loader size="8" color="white"/> : <>Cancel This Sell Offer</>}
             </button>    
         </div>}
+
+        
 
       
    </CommonAnimatedDiv>

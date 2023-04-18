@@ -20,6 +20,8 @@ export enum ViewType {
 
     SELL_OFFER_DETAILS = 4, 
     
+    BUY_OFFER_DETAILS = 5, 
+
 }
 
 
