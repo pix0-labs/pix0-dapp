@@ -1,3 +1,5 @@
+import { WalletConnectionStorage } from 'pix0-react';
+
 export const isValidUrl = (url: string): boolean =>{
     try 
     {
@@ -19,4 +21,19 @@ export const isHttpOrHttpsUrl= (url: string): boolean =>{
     catch (e) {
       return false;
     }
+}
+
+  /**
+   * A function used to check if the owner is the connected wallet
+   * @param owner 
+   */
+export const isConnectedWallet = (owner : string ) : boolean =>{
+
+    let w = WalletConnectionStorage.get();
+
+    if (w !== undefined){
+        return w.accounts[0].address === owner;
+    }
+
+    return false; 
 }

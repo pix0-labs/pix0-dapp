@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { SellOffer} from 'pix0-js';
 import { useNftLoader } from "../../../hooks/useNftLoader";
-import useUserContract from "../../../hooks/useUserContract";
+import { isConnectedWallet } from "../../../utils";
 import { useMarketContract } from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
@@ -26,8 +26,6 @@ export const SellOfferDetailsView : FC <props> = ({
     const [txHash, setTxHash] = useState<Error|string>();
 
     const [processing, setProcessing] = useState(false);
-
-    const {isConnectedWallet} = useUserContract();
 
     const {cancelSellOffer} = useMarketContract();
 

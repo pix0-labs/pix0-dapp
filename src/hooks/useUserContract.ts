@@ -29,7 +29,7 @@ export function useUserContract()  {
             let w = WalletConnectionStorage.get();
 
             let u = await getUser(w?.accounts[0].address);
-            //console.log("fetch user for ", w?.accounts[0].address, u);
+            console.log("fetch user for ", w?.accounts[0].address, u);
     
             setCurrentUser(u);
     
@@ -47,23 +47,8 @@ export function useUserContract()  {
     },[fetchCurrentUser]);
 
 
-     /**
-     * A function used to check if the owner is the connected wallet
-     * @param owner 
-     */
-     const isConnectedWallet = (owner : string ) : boolean =>{
 
-        let w = WalletConnectionStorage.get();
-
-        if (w !== undefined){
-            return w.accounts[0].address === owner;
-        }
-
-        return false; 
-    }
-
-
-    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser, fetchCurrentUserProfileImage, loading, isConnectedWallet};
+    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser, fetchCurrentUserProfileImage, loading};
 
 }
 
