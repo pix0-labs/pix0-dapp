@@ -19,8 +19,6 @@ export const CreateBuyOfferForm : FC <props> = ({
 
     const [price, setPrice] = useState<number>(1);
 
-    const [allowedDirectBuy, setAllowedDirectBuy] = useState(true);
-
     const [txHash, setTxHash] = useState<Error|string>();
 
     const [processing, setProcessing] = useState(false);
@@ -91,12 +89,7 @@ export const CreateBuyOfferForm : FC <props> = ({
             }
         }}/><span className="ml-1 font-bold">CONST</span></div>    
 
-        <div className="mb-6">
-        <span className="font-bold mr-2">Allowed Direct Buy?</span>
-        <input type="checkbox" checked={allowedDirectBuy} onChange={(e)=>{
-            setAllowedDirectBuy(e.target.checked);}}/>
-        </div> 
-
+       
          <div className="mb-4"><button 
          disabled={processing}
          className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"
