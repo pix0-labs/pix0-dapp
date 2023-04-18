@@ -7706,7 +7706,7 @@ pirates@^4.0.4:
     "@cosmjs/stargate" "^0.29.5"
 
 pix0-react@../pix0-react:
-  version "2.3.2"
+  version "2.3.3"
   dependencies:
     "@types/react" "^18.0.28"
     "@types/react-dom" "^18.0.11"
@@ -7718,7 +7718,7 @@ pix0-react@../pix0-react:
     framer-motion "^10.0.1"
     https-browserify "^1.0.0"
     node-polyfill-webpack-plugin "^2.0.1"
-    pix0-js "file:../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.3.2-3c3f985e-977d-44d7-af7f-1b4c3403f164-1681785298914/js/pix0-js"
+    pix0-js "file:../../../../Library/Caches/Yarn/v6/npm-pix0-react-2.3.3-a2369729-505b-421e-bad6-d3cb300b6685-1681789067605/js/pix0-js"
     react "^18.2.0"
     react-dom "^18.2.0"
     stream-browserify "^3.0.0"

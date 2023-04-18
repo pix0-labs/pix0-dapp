@@ -30,7 +30,7 @@
     "stream-http": "^3.2.0",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0",
-    "pix0-react":"../pix0-react"
+    "pix0-react": "../pix0-react"
   },
   "scripts": {
     "start": "react-app-rewired start",
