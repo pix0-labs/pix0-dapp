@@ -6,6 +6,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TfiClose} from 'react-icons/tfi';
 import { PulseLoader as Loader } from "react-spinners";
 import { TokenImageView } from "../../components/TokenImageView";
+import { NFTTraitsView } from "../collector/NFTTraitsView";
 import '../../css/Img.css';
 
 type props = {
@@ -18,7 +19,7 @@ export const SellOfferDetailsView : FC <props> = ({
     offer, backToList 
 }) =>{
 
-    const {image, token, getCollectionName, loading} = useNftLoader(offer.token_id);
+    const {token, getCollectionName, loading} = useNftLoader(offer.token_id);
 
     const [txHash, setTxHash] = useState<Error|string>();
 
@@ -44,6 +45,10 @@ export const SellOfferDetailsView : FC <props> = ({
         <div className="pl-10 p-2 text-gray-200 mb-1 mx-auto w-3/5 text-center font-bold">
             {getCollectionName()}
         </div>
+
+        {token && <div className="mb-1">
+            <NFTTraitsView nft={token}/>
+        </div>}
       
    </CommonAnimatedDiv>
 }
