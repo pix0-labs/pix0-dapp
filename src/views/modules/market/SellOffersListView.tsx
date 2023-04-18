@@ -1,54 +1,37 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import {useMarketContract} from "pix0-react";
+import { connectedWallet } from "../../../utils";
 import { PulseLoader as Loader } from "react-spinners";
 import { SellOfferRowView } from "./SellOfferRowView";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { SellOffer } from "pix0-js";
 
-const testSos = () =>{
-
-    let sos : SellOffer[] = [];
-
-    for (var r =0; r< 15; r ++){
-
-        let amt = (r+2) * 7250;
-        sos.push({
-            token_id : `Tok_00${r}`,
-            owner : `Alice_${r}`,
-            price : {amount : `${amt}`, denom : "uconst"},
-            allowed_direct_buy : true, 
-            status: 0,
-            contract_addr : "xxx",
-        });
-    }
-
-    //console.log("sos::", sos);
-    return sos; 
-}
-
-
 export type CProps = {
 
     toSellOfferDetails?: (offer : SellOffer) =>void, 
 
     backToList? : () => void, 
+
+    forConnectedWallet? : boolean,
+
+    title? : string, 
 }
 
 export const SellOffersListView : FC <CProps> = ({
-    toSellOfferDetails, backToList
+    toSellOfferDetails, backToList, forConnectedWallet, title
 }) =>{
 
-    const {getSellOffers} = useMarketContract();
+    const {getSellOffers, getSellOffersOf} = useMarketContract();
 
-    const [sos, setSos] = useState<SellOffer[]>(testSos());
+    const [sos, setSos] = useState<SellOffer[]>();
 
     const[loading, setLoading] = useState(false);
 
     const fetchSellOffers = useCallback (async () =>{
         try {
             setLoading(true);
-            let res = await getSellOffers(1);
+            let res = forConnectedWallet ? await getSellOffersOf(1,undefined, undefined, connectedWallet()) : await getSellOffers(1);
             setSos(res.offers);
             setLoading(false);    
         }
@@ -69,7 +52,7 @@ export const SellOffersListView : FC <CProps> = ({
     (sos?.length ?? 0) > 0 ?
     
     <div className="table-responsive pr-4 mt-10">
-       <div className="text-gray-100 font-bold text-left">Latest Sell Offers</div>
+       <div className="text-gray-100 font-bold text-left">{ title ?? "Latest Sell Offers"}</div>
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
             <tr className="bg-gray-900">

@@ -37,3 +37,13 @@ export const isConnectedWallet = (owner : string ) : boolean =>{
 
     return false; 
 }
+
+export const connectedWallet = () : string |undefined =>{
+
+  let w = WalletConnectionStorage.get();
+
+  if (w !== undefined){
+      return w.accounts[0].address ;
+  }
+
+}

@@ -22,6 +22,7 @@ export enum ViewType {
     
 }
 
+
 export const MainView : FC  = () =>{
 
    
@@ -31,12 +32,11 @@ export const MainView : FC  = () =>{
 
         setPage(Page.Market, ViewType.SELL_OFFER_DETAILS, offer);
     }
-
+    
     const backToList = () =>{
         setPage(Page.Market, ViewType.MARKET);
     }
-
-
+       
 
     const switchView = () =>{
 
