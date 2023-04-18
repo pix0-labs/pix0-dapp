@@ -3,10 +3,9 @@ import { SellOffer, toCoinStr} from 'pix0-js';
 import { useNftLoader } from "../../../hooks/useNftLoader";
 import { CProps } from "./SellOffersListView";
 import { FcNext } from "react-icons/fc";
-import placeholder from '../../../images/placeholder2.png';
 import { shortenStringTo, timestampToTimeAgo } from "pix0-react";
 import { TokenImageView } from "../../components/TokenImageView";
-import './css/SmallImg.css';
+import '../../css/SmallImg.css';
 
 type props = CProps & {
 

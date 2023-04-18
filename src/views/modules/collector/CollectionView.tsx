@@ -5,9 +5,8 @@ import { shortenStringTo } from "pix0-react";
 import { Collection} from 'pix0-js';
 import { CProps } from "./CollectionsView";
 import { FcNext } from "react-icons/fc";
-import placeholder from '../../../images/placeholder2.png';
-
-
+import { TokenImageView } from "../../components/TokenImageView";
+import '../../css/SmallImg.css';
 
 type props = CProps & {
 
@@ -24,12 +23,6 @@ export const CollectionView : FC <props> = ({
 
     const {itemsCount} = useCollectionInfo(collection);
 
-
-    const imgView = img ? <a href={img}
-    target="_blank"><img className="mr-3" src={img} style={{height:"40px",width:"40px",display:"inline-block"}}  
-    placeholder={placeholder}/></a> :
-    <img src={placeholder} className="mr-3" style={{height:"40px",width:"40px",display:"inline-block"}} placeholder={placeholder}/>;
-
     return <tr className="border-b border-slate-600 hover:bg-gray-700 p-2 cursor-pointer"
     onClick={()=>{
         if (toCollectionDetails) {
@@ -37,8 +30,9 @@ export const CollectionView : FC <props> = ({
         }
     }}>
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
-        <td className="block sm:table-cell text-left">{imgView}
-        <span className="font-bold text-sm">{collection.symbol}</span>
+        <td className="block sm:table-cell text-left">
+        <TokenImageView image={img} className="sm_img_container" style={{width:"30px",height:"30px"}}/>
+        <div className="font-bold text-sm float-left mt-2 mr-2">{collection.symbol}</div>    
         </td>
         <td className="ml-2 text-overflow:ellipsis text-left">{collection.name}</td>
         <td className="block sm:table-cell text-left">{shortenStringTo(collection.owner ?? "", 8)}</td>

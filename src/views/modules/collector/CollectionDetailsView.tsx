@@ -9,6 +9,7 @@ import useCollectionContract from "pix0-react";
 import {useBalanceQuerier} from "../../../hooks/useBalanceQuerier";
 import { PulseLoader as Loader  } from "react-spinners";
 import {toCoinStr} from 'pix0-js';
+import { FcInfo } from "react-icons/fc";
 import placeholder from '../../../images/placeholder2.png';
 
 type props = {
@@ -119,6 +120,7 @@ export const CollectionDetailsView : FC <props> = ({
             }}>
              {processing ? <Loader size={"10"} color="white"/> :<>Mint NFT</>}
             </button>
+            <p className="text-xs mt-4"><FcInfo className="mr-2 inline w-4 h-4 mb-1"/>You'll randomly mint any item from this collection</p>
         </div>
     </CommonAnimatedDiv>
 }
