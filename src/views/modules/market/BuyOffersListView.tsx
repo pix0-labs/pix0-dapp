@@ -43,13 +43,15 @@ export const BuyOffersListView : FC <CProps> = ({
             let res = forConnectedWallet ? await getBuyOffersOf(undefined, undefined, undefined,
                 connectedWallet()) : await getBuyOffersBy(sell_offer_id ?? "" );
 
+            console.log("res::", res, sell_offer_id);
             setBos(res.offers);
             setLoading(false);    
         }
         catch(e: any){
             setLoading(false);
+            console.log("ex...",e);
         }
-     }, []);
+     }, [sell_offer_id]);
  
 
      useEffect(()=>{
@@ -75,6 +77,7 @@ export const BuyOffersListView : FC <CProps> = ({
         <thead>
             <tr className="bg-gray-900">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
+                <th className="sticky top-0" style={{width:"25%"}}>Sell Offer</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Price</th>
                 <th className="sticky top-0" style={{width:"30%"}}>By</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 

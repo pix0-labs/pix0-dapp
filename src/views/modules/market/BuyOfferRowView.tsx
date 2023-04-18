@@ -24,6 +24,7 @@ export const BuyOfferRowView : FC <props> = ({
         }
     }}>
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
+        <td className="block sm:table-cell">{offer.sell_offer_id}</td>
         <td title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0"   
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</td>
         <td className="sticky top-0" style={{width:"30%"}}>{shortenStringTo(offer.owner, 10)}</td>
