@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { SellOffer} from 'pix0-js';
+import { SellOffer, toCoinStr} from 'pix0-js';
 import { useNftLoader } from "../../../hooks/useNftLoader";
 import { isConnectedWallet } from "../../../utils";
 import { useMarketContract } from "pix0-react";
@@ -83,6 +83,10 @@ export const SellOfferDetailsView : FC <props> = ({
         {token && <div className="mb-1">
             <NFTTraitsView nft={token}/>
         </div>}
+
+        <div className="mb-1">
+        Price : <span className="font-bold">{toCoinStr(parseInt(offer.price.amount))} CONST</span>
+        </div>
         
         <div className="mb-1">
             <BuyOffersListView sell_offer_id={offer.offer_id} withCreateBuyOfferButton={!isOwnerConnectedWallet} 
