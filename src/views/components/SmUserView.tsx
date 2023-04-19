@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useState } from "react";
 import {useUserContract} from "pix0-react";
 import { User} from 'pix0-js';
 import { shortenStringTo } from "pix0-react";
+import { isConnectedWallet } from "../../utils";
 
 type props = {
 
@@ -28,7 +29,8 @@ export const SmUserView : FC <props> = ({
     },[fetchUser]);
 
     return <div className={className ?? "inline-block font-bold"}>
-        {user && <div className="text-sm">{`@${user.user_name}`}</div>}
-        <div className="text-sm">{shortenStringTo(address,10)}</div>
+        {isConnectedWallet(address) ? <>You</> : 
+        <>{user && <div className="text-sm">{`@${user.user_name}`}</div>}
+        <div className="text-sm">{shortenStringTo(address,10)}</div></>}
     </div>
 }
