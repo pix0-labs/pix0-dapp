@@ -5,6 +5,7 @@ import { useNftLoader } from "../../../hooks/useNftLoader";
 import { NFTTraitsView } from "./NFTTraitsView";
 import { TfiClose} from 'react-icons/tfi';
 import { SellOfferFormPopup } from "./SellOfferFormPopup";
+import { TxNftFormPopup } from "./TxNftFormPopup";
 import { PulseLoader as Loader } from "react-spinners";
 import useCollectionContract from "pix0-react";
 import useTxHash from "../../../hooks/useTxHash";
@@ -81,10 +82,11 @@ export const NFTDetailsView : FC <props>= ({
             tokenId={tokenId}/>
         </div>
         <div className="mb-4">
+            <TxNftFormPopup trigger={ 
             <button className="bg-green-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
-            disabled={loading}>
-                Send 
-            </button>
+            disabled={loading}>Send</button>}
+            token={token} tokenId={tokenId}
+            />
         </div>
         <div className="mb-4">
             <button className="bg-red-900 w-64 font-bold 
