@@ -41,6 +41,11 @@ export const NFTDetailsView : FC <props>= ({
 
         setProcessing(false);
 
+        setTimeout(()=>{
+            if ( backToList )
+                backToList();
+        }, 5000);
+
     }
 
 
