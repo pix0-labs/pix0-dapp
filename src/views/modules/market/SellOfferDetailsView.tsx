@@ -93,7 +93,7 @@ export const SellOfferDetailsView : FC <props> = ({
         
         <div className="mb-1">
             <BuyOffersListView sell_offer_id={offer.offer_id} withCreateBuyOfferButton={!isOwnerConnectedWallet} 
-            noBuyOfferClassName="mt-2 text-gray-100"/>
+            noBuyOfferClassName="mt-2 text-gray-100" withAcceptButton={isConnectedWallet(offer.owner)}/>
         </div>
 
         {(isOwnerConnectedWallet && !loading) && <div className="mt-4 mb-1">

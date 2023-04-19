@@ -23,12 +23,14 @@ export type CProps = {
     withCreateBuyOfferButton? : boolean, 
 
     noBuyOfferClassName? : string, 
+
+    withAcceptButton? : boolean, 
 }
 
 export const BuyOffersListView : FC <CProps> = ({
     toBuyOfferDetails, backToList, forConnectedWallet, 
     title, sell_offer_id, withCreateBuyOfferButton,
-    noBuyOfferClassName
+    noBuyOfferClassName, withAcceptButton
 }) =>{
 
     const {getBuyOffersOf, getBuyOffersBy} = useMarketContract();
@@ -89,7 +91,7 @@ export const BuyOffersListView : FC <CProps> = ({
             bos?.map((o, _i)=>{
                 return <BuyOfferRowView key={`BuyOfferRow_${_i}`} offer={o} index={_i} 
                 toBuyOfferDetails ={toBuyOfferDetails} backToList={backToList} 
-                forConnectedWallet={forConnectedWallet}/>
+                forConnectedWallet={forConnectedWallet} withAcceptButton={withAcceptButton}/>
             })
         }</tbody>
     </table>

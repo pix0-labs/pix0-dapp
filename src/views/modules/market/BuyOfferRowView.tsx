@@ -13,7 +13,7 @@ type props = CProps & {
 }
 
 export const BuyOfferRowView : FC <props> = ({
-    offer, index, toBuyOfferDetails, forConnectedWallet
+    offer, index, toBuyOfferDetails, forConnectedWallet, withAcceptButton
 }) =>{
 
 
@@ -31,6 +31,10 @@ export const BuyOfferRowView : FC <props> = ({
         style={{width:"30%"}}>{shortenStringTo(offer.owner, 10)}</td>}
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>
-        <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
+        <td className="block sm:table-cell">
+        {withAcceptButton ? <button style={{minWidth:"100px"}}
+        className="bg-green-700 font-bold p-1 text-gray-100 rounded-3xl">
+        Accept
+        </button> : <FcNext style={{width:"30px",height:"30px"}}/>}</td>
     </tr>
 }
