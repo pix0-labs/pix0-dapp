@@ -45,13 +45,13 @@ export const SellOffersListView : FC <CProps> = ({
          fetchSellOffers();
      },[fetchSellOffers]);
 
-    return <CommonAnimatedDiv className="w-full pt-2 pb-2 text-center mx-auto h-full">
+    return <CommonAnimatedDiv className="w-full pt-2 pb-2 text-center mx-auto mb-2">
     {
     loading ? <div className="text-left p-2"><Loader color="#eee"/></div>
     :
     (sos?.length ?? 0) > 0 ?
     
-    <div className="table-responsive pr-4 mt-1">
+    <div className="table-responsive pr-4 mt-1 overflow-y-auto">
        <div className="text-gray-100 font-bold text-left">{ title ?? "Latest Sell Offers"}</div>
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>

@@ -3,7 +3,8 @@ import { SellOffer, toCoinStr} from 'pix0-js';
 import { useNftLoader } from "../../../hooks/useNftLoader";
 import { CProps } from "./SellOffersListView";
 import { FcNext } from "react-icons/fc";
-import { shortenStringTo, timestampToTimeAgo } from "pix0-react";
+import { SmUserView } from "../../components/SmUserView";
+import { timestampToTimeAgo } from "pix0-react";
 import { TokenImageView } from "../../components/TokenImageView";
 import '../../css/SmallImg.css';
 
@@ -36,7 +37,7 @@ export const SellOfferRowView : FC <props> = ({
         
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</td>
         {!forConnectedWallet && <td className="sticky top-0" 
-        style={{width:"15%"}}>{shortenStringTo(offer.owner, 10)}</td>}
+        style={{width:"15%"}}><SmUserView address={offer.owner}/></td>}
         <td className="sticky top-0 truncate" title={getCollectionName()} style={{width:"15%", maxWidth:"80px"}}>{getCollectionName()}</td>
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>

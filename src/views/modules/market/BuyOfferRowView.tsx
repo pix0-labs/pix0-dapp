@@ -2,7 +2,8 @@ import { FC} from "react";
 import { BuyOffer, toCoinStr} from 'pix0-js';
 import { CProps } from "./BuyOffersListView";
 import { FcNext } from "react-icons/fc";
-import { shortenStringTo, timestampToTimeAgo } from "pix0-react";
+import { SmUserView } from "../../components/SmUserView";
+import { timestampToTimeAgo } from "pix0-react";
 import '../../css/SmallImg.css';
 
 type props = CProps & {
@@ -28,7 +29,7 @@ export const BuyOfferRowView : FC <props> = ({
         <td title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0"   
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</td>
         { !forConnectedWallet && <td className="sticky top-0" 
-        style={{width:"30%"}}>{shortenStringTo(offer.owner, 10)}</td>}
+        style={{width:"30%"}}><SmUserView address={offer.owner}/></td>}
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>
         <td className="block sm:table-cell">
