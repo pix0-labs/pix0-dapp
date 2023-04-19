@@ -13,7 +13,7 @@ type props = CProps & {
 }
 
 export const BuyOfferRowView : FC <props> = ({
-    offer, index, toBuyOfferDetails 
+    offer, index, toBuyOfferDetails, forConnectedWallet
 }) =>{
 
 
@@ -27,7 +27,8 @@ export const BuyOfferRowView : FC <props> = ({
         <td className="block sm:table-cell">{offer.sell_offer_id}</td>
         <td title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0"   
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</td>
-        <td className="sticky top-0" style={{width:"30%"}}>{shortenStringTo(offer.owner, 10)}</td>
+        { !forConnectedWallet && <td className="sticky top-0" 
+        style={{width:"30%"}}>{shortenStringTo(offer.owner, 10)}</td>}
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>

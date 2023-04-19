@@ -59,7 +59,7 @@ export const SellOffersListView : FC <CProps> = ({
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"20%"}}>NFT</th>
                 <th className="sticky top-0" style={{width:"15%"}}>Price</th>
-                <th className="sticky top-0" style={{width:"15%"}}>By</th>
+                {!forConnectedWallet && <th className="sticky top-0" style={{width:"15%"}}>By</th>}
                 <th className="sticky top-0" style={{width:"15%"}}>In Collection</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
@@ -69,7 +69,8 @@ export const SellOffersListView : FC <CProps> = ({
         {
             sos?.map((o, _i)=>{
                 return <SellOfferRowView key={`SellOfferRow_${_i}`} offer={o} index={_i} 
-                toSellOfferDetails ={toSellOfferDetails} backToList={backToList}/>
+                toSellOfferDetails ={toSellOfferDetails} backToList={backToList}
+                forConnectedWallet={forConnectedWallet}/>
             })
         }</tbody>
     </table>

@@ -10,8 +10,8 @@ export const MarketView : FC <CProps> = ({
 }) =>{
 
     return <CommonAnimatedDiv className="ml-0 h-full">
-    <SellOffersByCollections/>
     <SellOffersListView toSellOfferDetails={toSellOfferDetails} backToList={backToList}/>
+    <SellOffersByCollections/>
     <div className="h-32">&nbsp;</div>
     </CommonAnimatedDiv>
 }

@@ -79,7 +79,7 @@ export const BuyOffersListView : FC <CProps> = ({
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Sell Offer</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Price</th>
-                <th className="sticky top-0" style={{width:"30%"}}>By</th>
+                {!forConnectedWallet && <th className="sticky top-0" style={{width:"30%"}}>By</th>}
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
@@ -88,7 +88,8 @@ export const BuyOffersListView : FC <CProps> = ({
         {
             bos?.map((o, _i)=>{
                 return <BuyOfferRowView key={`BuyOfferRow_${_i}`} offer={o} index={_i} 
-                toBuyOfferDetails ={toBuyOfferDetails} backToList={backToList}/>
+                toBuyOfferDetails ={toBuyOfferDetails} backToList={backToList} 
+                forConnectedWallet={forConnectedWallet}/>
             })
         }</tbody>
     </table>

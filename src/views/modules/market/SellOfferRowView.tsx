@@ -15,7 +15,7 @@ type props = CProps & {
 }
 
 export const SellOfferRowView : FC <props> = ({
-    offer, index, toSellOfferDetails 
+    offer, index, toSellOfferDetails, forConnectedWallet
 }) =>{
 
     const {image, token, getCollectionName} = useNftLoader(offer.token_id);
@@ -35,7 +35,8 @@ export const SellOfferRowView : FC <props> = ({
         <td title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0" 
         
         style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</td>
-        <td className="sticky top-0" style={{width:"15%"}}>{shortenStringTo(offer.owner, 10)}</td>
+        {!forConnectedWallet && <td className="sticky top-0" 
+        style={{width:"15%"}}>{shortenStringTo(offer.owner, 10)}</td>}
         <td className="sticky top-0 truncate" title={getCollectionName()} style={{width:"15%", maxWidth:"80px"}}>{getCollectionName()}</td>
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>
