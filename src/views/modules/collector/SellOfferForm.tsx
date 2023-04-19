@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react";
-import { Nft,toUcoin, toCoinStr, Coin} from 'pix0-js';
+import { Nft,toUcoin, toCoinStr, Coin, SellOffer} from 'pix0-js';
 import { useMarketContract } from "pix0-react";
 import useTxHash from "../../../hooks/useTxHash";
 import { TxHashDiv } from "../../components/TxHashDiv";
@@ -15,11 +15,13 @@ export type props = {
     tokenId? : string, 
 
     isEditMode? : boolean,
+
+    sell_offer? : SellOffer,
 }
 
 
-export const CreateSellOfferForm : FC <props> = ({
-    token, tokenId, isEditMode
+export const SellOfferForm : FC <props> = ({
+    token, tokenId, isEditMode, sell_offer
 }) =>{
 
     const [price, setPrice] = useState<number>(1);
@@ -30,7 +32,7 @@ export const CreateSellOfferForm : FC <props> = ({
 
     const [processing, setProcessing] = useState(false);
 
-    const {createSellOfferFrom, getCreateSellOfferFee} = useMarketContract();
+    const {createSellOfferFrom, getCreateSellOfferFee, updateSellOffer} = useMarketContract();
 
     const [adminFee, setAdminFee] = useState<Coin>();
 
@@ -41,6 +43,16 @@ export const CreateSellOfferForm : FC <props> = ({
         });
 
     },[token]);
+
+    useEffect(()=>{
+    
+      if ( sell_offer && isEditMode){
+
+          setPrice(parseFloat(toCoinStr(parseFloat(sell_offer.price.amount))));
+          setAllowedDirectBuy(sell_offer.allowed_direct_buy);
+      }
+
+    },[sell_offer,isEditMode]);
 
 
     const createSellOffer = async () => {
@@ -71,10 +83,45 @@ export const CreateSellOfferForm : FC <props> = ({
     }
 
 
+    const createOrUpdateSo = async () =>{
 
+        if ( isEditMode){
+            await updateSellOfferNow();
+        }
+        else {
+            await createSellOffer();
+        }
+    }
+
+    const updateSellOfferNow = async () => {
+
+        if (price === 0) {
+            setError( 'Price must be greater than zero!' );
+            return; 
+        }
+
+  
+        if (sell_offer !== undefined) {
+
+            sell_offer.price = { amount : `${price}`, denom : sell_offer.price.denom};
+            sell_offer.allowed_direct_buy = allowedDirectBuy;
+
+            setProcessing(true);
+            let tx = await updateSellOffer(sell_offer);
+    
+            setTxHash(tx);
+           
+            setProcessing(false);   
+        }
+        else {
+
+            setError('Undefined sell offer');
+        }
+
+    }
 
     return <div className="modal rounded bg-gray-800 w-full text-center text-gray-100 p-2">
-    <div className="mb-2 header">Create Sell Offer For</div>
+    <div className="mb-2 header">{isEditMode ? <>Update Sell Offer</> : <>Create Sell Offer For</>}</div>
     {txHash && <div className="p-2"><TxHashDiv txHash={txHash}/></div>}
     <div className="content">
         <div className="mb-1"><TokenImageView image={token?.extension.image}/></div>
@@ -99,13 +146,13 @@ export const CreateSellOfferForm : FC <props> = ({
          className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"
          style={{minWidth:"120px"}} onClick={async (e)=>{
 
-            await createSellOffer();
+            await createOrUpdateSo;
 
-         }}>{processing ? <Loader color="#eee" margin={2} size={8}/> : <>Create</>}</button></div>
+         }}>{processing ? <Loader color="#eee" margin={2} size={8}/> : <>{isEditMode ? "Update" : "Create"}</>}</button></div>
 
-        <div className="text-xs border-t-8 border-b-8 border-double border-gray-500 w-64 mx-auto">
+        { !isEditMode && <div className="text-xs border-t-8 border-b-8 border-double border-gray-500 w-64 mx-auto">
         + Admin Fee :<span className="ml-2 font-bold">≈{toCoinStr(parseInt(adminFee?.amount ?? "0"), 5)} CONST   
-        </span></div>
+        </span></div>}
     
         
     </div>

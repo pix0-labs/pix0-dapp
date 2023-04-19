@@ -4,7 +4,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { useNftLoader } from "../../../hooks/useNftLoader";
 import { NFTTraitsView } from "./NFTTraitsView";
 import { TfiClose} from 'react-icons/tfi';
-import { CreateSellOfferPopup } from "./CreateSellOfferPopup";
+import { SellOfferFormPopup } from "./SellOfferFormPopup";
 import { PulseLoader as Loader } from "react-spinners";
 import { TokenImageView } from "../../components/TokenImageView";
 import '../../css/Img.css';
@@ -57,7 +57,7 @@ export const NFTDetailsView : FC <props>= ({
             </button>
         </div>
         <div className="mb-4">
-            <CreateSellOfferPopup trigger={<button className="bg-blue-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
+            <SellOfferFormPopup trigger={<button className="bg-blue-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
             disabled={loading}>Create Sell Offer</button>} token={token}
             tokenId={tokenId}/>
         </div></>}

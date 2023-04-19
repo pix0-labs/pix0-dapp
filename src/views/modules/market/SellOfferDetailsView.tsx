@@ -6,6 +6,7 @@ import { useMarketContract } from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TfiClose} from 'react-icons/tfi';
+import { SellOfferFormPopup } from "../collector/SellOfferFormPopup";
 import { PulseLoader as Loader } from "react-spinners";
 import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
@@ -97,13 +98,13 @@ export const SellOfferDetailsView : FC <props> = ({
 
         {(isOwnerConnectedWallet && !loading) && <div className="mt-4 mb-1">
 
-            <button className="rounded-3xl p-2 bg-blue-600 text-gray-100 font-bold mr-2" style={{minWidth:"120px"}}
+            <SellOfferFormPopup trigger={<button className="rounded-3xl p-2 bg-blue-600 text-gray-100 font-bold mr-2" style={{minWidth:"120px"}}
             disabled={processing} onClick={async (e)=>{
                 e.preventDefault();
                 await cancelSellOfferNow();
             }}>
             <FaEdit className="mr-2 inline mb-1"/><span className="mt-2">Edit</span>
-            </button>    
+            </button>} sell_offer={offer} isEditMode={true} token={token}/>  
 
             <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold ml-2" style={{minWidth:"120px"}}
             disabled={processing} onClick={async (e)=>{
