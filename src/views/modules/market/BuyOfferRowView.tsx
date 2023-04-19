@@ -4,6 +4,7 @@ import { CProps } from "./BuyOffersListView";
 import { FcNext } from "react-icons/fc";
 import { SmUserView } from "../../components/SmUserView";
 import { timestampToTimeAgo } from "pix0-react";
+import { AcceptBuyOfferPopup } from "./AcceptBuyOfferPopup";
 import '../../css/SmallImg.css';
 
 type props = CProps & {
@@ -33,9 +34,7 @@ export const BuyOfferRowView : FC <props> = ({
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>
         <td className="block sm:table-cell">
-        {withAcceptButton ? <button style={{minWidth:"100px"}}
-        className="bg-green-700 font-bold p-1 text-gray-100 rounded-3xl">
-        Accept
-        </button> : <FcNext style={{width:"30px",height:"30px"}}/>}</td>
+        {withAcceptButton ? <AcceptBuyOfferPopup buy_offer={offer}/> : 
+        <FcNext style={{width:"30px",height:"30px"}}/>}</td>
     </tr>
 }
