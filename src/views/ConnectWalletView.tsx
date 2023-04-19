@@ -17,7 +17,9 @@ export const ConnectWalletView : FC = () =>{
     className="mx-auto bg-red-600 text-gray-100 rounded-3xl 
     p-2 w-11/12 m-2 font-bold">{error?.message}</CommonAnimatedDiv>
     <img src={logo} className="h-auto mx-auto mb-4 mt-10" style={{minWidth:"220px"}}/>
-    <ConnectButton className="p-2 mt-10 mb-10 bg-gray-800 w-3/5 hover:bg-cyan-900 rounded-3xl mx-auto text-gray-100 font-bold"
+    <ConnectButton experimental={true}
+    className="p-2 mt-10 mb-10 bg-gray-800 w-3/5 hover:bg-cyan-900 
+    rounded-3xl mx-auto text-gray-100 font-bold"
     onError={(e)=>{
         setError(e);
 
