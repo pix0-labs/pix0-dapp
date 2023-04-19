@@ -53,9 +53,9 @@ export const NFTTraitsView : FC <props> = ({
         }}/></div>
         <div className="hidden w-3/5 mx-auto text-left" id="MetadataDetails">
         {
-            nft.extension.attributes?.sort((a, b) => a.trait_type.localeCompare(b.trait_type)).map(t =>{
+            nft.extension.attributes?.sort((a, b) => a.trait_type.localeCompare(b.trait_type)).map((t,i) =>{
 
-                return <div className="border-b border-gray-500 p-2 hover:bg-gray-700 rounded">
+                return <div key={`Nft_trait_${i}`} className="border-b border-gray-500 p-2 hover:bg-gray-700 rounded">
                     <div className="inline-block font-bold mr-2">
                     {
                         traitName(t)

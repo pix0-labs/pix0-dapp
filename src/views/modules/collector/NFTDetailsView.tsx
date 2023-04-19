@@ -6,6 +6,8 @@ import { NFTTraitsView } from "./NFTTraitsView";
 import { TfiClose} from 'react-icons/tfi';
 import { SellOfferFormPopup } from "./SellOfferFormPopup";
 import { PulseLoader as Loader } from "react-spinners";
+import useCollectionContract from "pix0-react";
+import useTxHash from "../../../hooks/useTxHash";
 import { TokenImageView } from "../../components/TokenImageView";
 import '../../css/Img.css';
 
@@ -23,7 +25,24 @@ export const NFTDetailsView : FC <props>= ({
 
     const {token,loading} = useNftLoader(tokenId);
 
-    const [txHash, setTxHash] = useState<Error|string>();
+    const {txHash, setTxHash} = useTxHash();
+
+    const {burnNft} = useCollectionContract();
+
+    const [processing, setProcessing] = useState(false);
+
+    const burn = async () =>{
+
+        setProcessing(true);
+
+        let tx = await burnNft(tokenId);
+
+        setTxHash(tx);
+
+        setProcessing(false);
+
+    }
+
 
     return <CommonAnimatedDiv style={{width:"100%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 mr-2">
@@ -50,17 +69,29 @@ export const NFTDetailsView : FC <props>= ({
             {token.extension.description}
         </div>}
         {!loading && 
-        <><div className="mb-4">
+        <>
+        <div className="mb-4">
+            <SellOfferFormPopup trigger={<button className="bg-blue-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
+            disabled={loading}>Create Sell Offer</button>} token={token}
+            tokenId={tokenId}/>
+        </div>
+        <div className="mb-4">
             <button className="bg-green-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
             disabled={loading}>
                 Send 
             </button>
         </div>
         <div className="mb-4">
-            <SellOfferFormPopup trigger={<button className="bg-blue-900 w-64 font-bold text-gray-200 p-2 rounded-3xl"
-            disabled={loading}>Create Sell Offer</button>} token={token}
-            tokenId={tokenId}/>
-        </div></>}
+            <button className="bg-red-900 w-64 font-bold 
+            text-gray-200 p-2 rounded-3xl" 
+            disabled={loading || processing}
+            onClick={async (e)=>{
+                e.preventDefault();
+                await burn();
+            }}>{processing ? <Loader size={8} color="white"/> : <>Burn</>}</button>
+        </div>
+        
+        </>}
       
    </CommonAnimatedDiv>
 }
