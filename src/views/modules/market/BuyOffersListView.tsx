@@ -71,7 +71,7 @@ export const BuyOffersListView : FC <CProps> = ({
    
     {(bos?.length ?? 0) > 0 ?
     
-    <div className="table-responsive pr-4 mt-10">
+    <div className="table-responsive pr-4 mt-1">
        <div className="text-gray-100 font-bold text-left">{ title ?? "Latest Buy Offers"}</div>
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
