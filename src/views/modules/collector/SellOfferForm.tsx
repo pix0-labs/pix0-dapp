@@ -17,11 +17,13 @@ export type props = {
     isEditMode? : boolean,
 
     sell_offer? : SellOffer,
+
+    createOrUpdateCompletion? : () => void, 
 }
 
 
 export const SellOfferForm : FC <props> = ({
-    token, tokenId, isEditMode, sell_offer
+    token, tokenId, isEditMode, sell_offer, createOrUpdateCompletion
 }) =>{
 
     const [price, setPrice] = useState<number>(1);
@@ -91,6 +93,10 @@ export const SellOfferForm : FC <props> = ({
         else {
             await createSellOffer();
         }
+
+        if ( createOrUpdateCompletion)
+            createOrUpdateCompletion();
+
     }
 
     const updateSellOfferNow = async () => {
@@ -103,7 +109,7 @@ export const SellOfferForm : FC <props> = ({
   
         if (sell_offer !== undefined) {
 
-            sell_offer.price = { amount : `${price}`, denom : sell_offer.price.denom};
+            sell_offer.price = { amount : `${toUcoin(price)}`, denom : sell_offer.price.denom};
             sell_offer.allowed_direct_buy = allowedDirectBuy;
 
             setProcessing(true);
@@ -112,6 +118,7 @@ export const SellOfferForm : FC <props> = ({
             setTxHash(tx);
            
             setProcessing(false);   
+
         }
         else {
 
@@ -146,7 +153,7 @@ export const SellOfferForm : FC <props> = ({
          className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"
          style={{minWidth:"120px"}} onClick={async (e)=>{
 
-            await createOrUpdateSo;
+            await createOrUpdateSo();
 
          }}>{processing ? <Loader color="#eee" margin={2} size={8}/> : <>{isEditMode ? "Update" : "Create"}</>}</button></div>
 

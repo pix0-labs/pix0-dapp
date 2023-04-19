@@ -104,7 +104,12 @@ export const SellOfferDetailsView : FC <props> = ({
                 await cancelSellOfferNow();
             }}>
             <FaEdit className="mr-2 inline mb-1"/><span className="mt-2">Edit</span>
-            </button>} sell_offer={offer} isEditMode={true} token={token}/>  
+            </button>} sell_offer={offer} isEditMode={true} token={token} 
+            createOrUpdateCompletion={()=>{
+                setTimeout(()=>{
+                    if ( backToList ) backToList();
+                },5000);
+            }}/>  
 
             <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold ml-2" style={{minWidth:"120px"}}
             disabled={processing} onClick={async (e)=>{

@@ -12,12 +12,14 @@ type props = cprops & {
 
     sell_offer? : SellOffer,
 
+    createOrUpdateCompletion? : () => void, 
+
 }
 
 export const SellOfferFormPopup : FC <props> = ({
-    trigger, token , tokenId, isEditMode, sell_offer
+    trigger, token , tokenId, isEditMode, sell_offer, createOrUpdateCompletion
 }) =>{
     return <Popup modal nested trigger={trigger}
     closeOnEscape={true}><SellOfferForm token={token} tokenId={tokenId}
-    isEditMode={isEditMode} sell_offer={sell_offer}/></Popup>
+    isEditMode={isEditMode} sell_offer={sell_offer} createOrUpdateCompletion={createOrUpdateCompletion}/></Popup>
 }
