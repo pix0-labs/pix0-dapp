@@ -10,6 +10,8 @@ import { PulseLoader as Loader } from "react-spinners";
 import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
 import { BuyOffersListView } from "./BuyOffersListView";
+import { FaEdit} from 'react-icons/fa';
+import { GiCancel } from 'react-icons/gi';
 import '../../css/Img.css';
 
 type props = {
@@ -94,13 +96,24 @@ export const SellOfferDetailsView : FC <props> = ({
         </div>
 
         {(isOwnerConnectedWallet && !loading) && <div className="mt-4 mb-1">
-            <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold" style={{minWidth:"220px"}}
+
+            <button className="rounded-3xl p-2 bg-blue-600 text-gray-100 font-bold mr-2" style={{minWidth:"120px"}}
             disabled={processing} onClick={async (e)=>{
                 e.preventDefault();
                 await cancelSellOfferNow();
             }}>
-            {processing ? <Loader size="8" color="white"/> : <>Cancel This Sell Offer</>}
+            <FaEdit className="mr-2 inline mb-1"/><span className="mt-2">Edit</span>
             </button>    
+
+            <button className="rounded-3xl p-2 bg-red-600 text-gray-100 font-bold ml-2" style={{minWidth:"120px"}}
+            disabled={processing} onClick={async (e)=>{
+                e.preventDefault();
+                await cancelSellOfferNow();
+            }}>
+            {processing ? <Loader size="8" color="white"/> : <><GiCancel className="mr-2 inline mb-1"/>Cancel</>}
+            </button>    
+
+
         </div>}
 
         

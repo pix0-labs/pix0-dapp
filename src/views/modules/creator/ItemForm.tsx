@@ -3,6 +3,7 @@ import { TextField, commonTextfieldClassName } from "../../components/TextField"
 import { Item, Collection} from "pix0-js";
 //import { FileUploadField as UploadField } from "../../components/FileUploadField";
 import { UploadField } from "../../components/UploadField";
+import useTxHash from "../../../hooks/useTxHash";
 import { TraitsForm } from "./TraitsForm";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
@@ -36,16 +37,10 @@ export const ItemForm : FC <props>= ({
 
     const {createItem} = useCollectionContract();
 
-    const [txHash, setTxHash] = useState<Error|string>();
+    const { txHash, setTxHash, setError} = useTxHash();
 
     const [media, setMedia] = useState<Media>();
 
-    const unsetTxHash = () =>{
-
-        setTimeout(()=>{
-            setTxHash(undefined);
-        },7000);
-    }
 
     const [processing, setProcessing] = useState(false);
 
@@ -65,16 +60,14 @@ export const ItemForm : FC <props>= ({
         else {
 
             if ( item.name.trim() === "") {
-                setTxHash(new Error('Name is blank!'));
-                unsetTxHash();
+                setError('Name is blank!');
                 setProcessing(false);
                 return;
             }
 
             if(media === undefined){
 
-                setTxHash(new Error('No image is provided!'));
-                unsetTxHash();
+                setTxHash('No image is provided!');
                 setProcessing(false);
                 return;
             }
@@ -113,10 +106,6 @@ export const ItemForm : FC <props>= ({
             setMedia(undefined);
 
             setTxHash(tx);
-
-            if ( tx instanceof Error){
-                unsetTxHash();
-            }
         }
 
         setProcessing(false);

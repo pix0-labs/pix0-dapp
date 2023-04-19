@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import { Nft,toUcoin, toCoinStr, Coin} from 'pix0-js';
 import { useMarketContract } from "pix0-react";
+import useTxHash from "../../../hooks/useTxHash";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { PulseLoader as Loader} from 'react-spinners';
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
@@ -12,18 +13,20 @@ export type props = {
     token? : Nft,
 
     tokenId? : string, 
+
+    isEditMode? : boolean,
 }
 
 
 export const CreateSellOfferForm : FC <props> = ({
-    token, tokenId
+    token, tokenId, isEditMode
 }) =>{
 
     const [price, setPrice] = useState<number>(1);
 
     const [allowedDirectBuy, setAllowedDirectBuy] = useState(true);
 
-    const [txHash, setTxHash] = useState<Error|string>();
+    const {txHash, setTxHash, setError} = useTxHash();
 
     const [processing, setProcessing] = useState(false);
 
@@ -39,18 +42,11 @@ export const CreateSellOfferForm : FC <props> = ({
 
     },[token]);
 
-    const setError = (msg : string) =>{
-
-        setTxHash( new Error(msg));
-        setTimeout(()=>{
-            setTxHash(undefined);
-        }, 5000);
-    }
 
     const createSellOffer = async () => {
 
         if (price === 0) {
-            setError('Price must be greater than zero!');
+            setError( 'Price must be greater than zero!' );
             return; 
         }
 
@@ -68,14 +64,6 @@ export const CreateSellOfferForm : FC <props> = ({
             }, allowed_direct_buy : allowedDirectBuy, nft : token
         });
 
-        /*
-        if (tx instanceof Error) {
-
-            setError(tx.message);
-        }
-        else {
-            setTxHash(tx);
-        }*/
 
         setTxHash(tx);
        

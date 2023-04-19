@@ -2,6 +2,7 @@ import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { Collection} from "pix0-js";
 import {toUcoin, toCoinStr} from 'pix0-js';
+import useTxHash from "../../../hooks/useTxHash";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CollectionViewProps, ViewType } from "./CollectionsView";
 import { Select } from "../../components/Select";
@@ -29,14 +30,7 @@ export const CollectionForm : FC <props>= ({
 
     const {createCollection, updateCollection} = useCollectionContract();
 
-    const [txHash, setTxHash] = useState<Error|string>();
-
-    const unsetTxHash = () =>{
-
-        setTimeout(()=>{
-            setTxHash(undefined);
-        },7000);
-    }
+    const {txHash, setTxHash, setError} = useTxHash();
 
     const [processing, setProcessing] = useState(false);
 
@@ -53,23 +47,18 @@ export const CollectionForm : FC <props>= ({
 
             let tx = await updateCollection(collection);
             setTxHash(tx);
-
-            if ( tx instanceof Error){
-                unsetTxHash();
-            }
         }
         else {
 
             if ( collection.name.trim() === "") {
-                setTxHash(new Error('Name is blank!'));
-                unsetTxHash();
+                setError('Name is blank!');
                 setProcessing(false);
                 return;
             }
 
             if ( collection.symbol.trim() === "") {
-                setTxHash(new Error('Symbol is blank!'));
-                unsetTxHash();
+                setError('Symbol is blank!');
+                
                 setProcessing(false);
                 return;
             }
@@ -78,9 +67,6 @@ export const CollectionForm : FC <props>= ({
             
             setTxHash(tx);
 
-            if ( tx instanceof Error){
-                unsetTxHash();
-            }
         }
 
         setProcessing(false);
