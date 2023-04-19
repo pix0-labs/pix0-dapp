@@ -70,15 +70,27 @@ export const SellOffersByCollections : FC = () =>{
         :
         indexes.length > 0 ?
 
-        <div className="text-left rounded bg-gray-600 overflow-x-hidden overflow-y-hidden w-full" style={{maxHeight:"320px"}}>
-        <div className="ml-6 text-gray-100 font-bold mb-2 mt-2">Newly listed collections
-        <button className="bg-green-900 rounded-3xl px-4 font-bold text-sm text-white float-right mr-10 mt-2">More</button></div>    
+        <div className="text-left rounded overflow-x-hidden overflow-y-hidden w-full" style={{maxHeight:"320px"}}>
+        <div className="text-gray-100 font-bold mb-2 mt-2">Newly listed collections</div>       
+        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
+        <thead>
+            <tr className="bg-gray-900">
+                <th className="sticky top-0" style={{width:"5%"}}>No.</th>
+                <th className="sticky top-0" style={{width:"25%"}}>Collection</th>
+                <th className="sticky top-0" style={{width:"25%"}}>No of Sell Offers</th>
+                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
+                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+      
         {
             indexes?.map((c, _i)=>{
                 return <CollectionIndexView key={`CollIdx_${_i}`} collectionIndex={c} index={_i}/>
             })
         }
-      
+        </tbody>
+        </table>
         </div>
 
         : <CommonMessageDiv>No collection available for sales</CommonMessageDiv>

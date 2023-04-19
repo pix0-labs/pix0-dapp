@@ -27,7 +27,7 @@ export const AcceptBuyOfferForm : FC <props> = ({
 
         setProcessing(true);
 
-        let tx = await acceptBuyOffer(buy_offer.sell_offer_id, buy_offer.owner);
+        let tx = await acceptBuyOffer(buy_offer.sell_offer_id, buy_offer.owner, 450_000);
 
         setTxHash(tx);
        
