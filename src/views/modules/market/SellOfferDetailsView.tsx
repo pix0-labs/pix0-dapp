@@ -4,6 +4,7 @@ import { useNftLoader } from "../../../hooks/useNftLoader";
 import { isConnectedWallet } from "../../../utils";
 import { useMarketContract } from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
+import useTxHash from "../../../hooks/useTxHash";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TfiClose} from 'react-icons/tfi';
 import { SellOfferFormPopup } from "../collector/SellOfferFormPopup";
@@ -27,36 +28,39 @@ export const SellOfferDetailsView : FC <props> = ({
 
     const {token, getCollectionName, loading} = useNftLoader(offer.token_id);
 
-    const [txHash, setTxHash] = useState<Error|string>();
+    const {txHash, setTxHash, setError} = useTxHash();
 
     const [processing, setProcessing] = useState(false);
 
-    const {cancelSellOffer} = useMarketContract();
-
-    const setTxHashNow = ( tx : Error|string) =>{
-
-        setTxHash(tx);
-
-        if ( tx instanceof Error){
-            setTimeout(()=>{
-                setTxHash(undefined)
-            },6000);
-        }
-       
-    }
+    const {cancelSellOffer, directBuy} = useMarketContract();
 
     const cancelSellOfferNow = async () =>{
 
         setProcessing(true);
         let tx = await cancelSellOffer(offer.token_id, offer.contract_addr);
         
-        setTxHashNow(tx);
+        setTxHash(tx);
 
         setProcessing(false);
     }
 
+    const directBuyNow = async () =>{
+
+        if ( offer.offer_id === undefined){
+            setError('Undefined offer id');
+            return;
+        }
+        setProcessing(true);
+        let tx = await directBuy(offer.offer_id);
+        setTxHash(tx);
+
+        setProcessing(false);
+    }
+
+
     const isOwnerConnectedWallet = isConnectedWallet(offer.owner);
 
+    const priceForDisplay = `${toCoinStr(parseInt(offer.price.amount))} CONST`;
 
     return <CommonAnimatedDiv style={{width:"100%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4">
@@ -88,9 +92,17 @@ export const SellOfferDetailsView : FC <props> = ({
         </div>}
 
         <div className="mb-1">
-        Price : <span className="font-bold">{toCoinStr(parseInt(offer.price.amount))} CONST</span>
+        Price : <span className="font-bold">{priceForDisplay}</span>
         </div>
         
+        <button className="p-2 rounded-3xl bg-blue-800 text-gray-100 font-bold mb-2" 
+        disabled={processing} style={{minWidth:"220px"}} onClick={async (e)=>{
+            e.preventDefault();
+            await directBuyNow();
+        }}
+        title={`Direct Buy This NFT @${priceForDisplay}`}>{processing ? <Loader size={8} color="white"/> 
+        : <>Buy @{priceForDisplay}</>}</button>
+
         <div className="mb-1">
             <BuyOffersListView sell_offer_id={offer.offer_id} withCreateBuyOfferButton={!isOwnerConnectedWallet} 
             noBuyOfferClassName="mt-2 text-gray-100" withAcceptButton={isConnectedWallet(offer.owner)}/>
