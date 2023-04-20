@@ -38,7 +38,7 @@ export const SellOfferDetailsView : FC <props> = ({
     const cancelSellOfferNow = async () =>{
 
         setProcessing(true);
-        let tx = await cancelSellOffer(offer.token_id, offer.contract_addr);
+        let tx = await cancelSellOffer(offer.token_id, offer.contract_addr, 400_000);
         
         setTxHash(tx);
 
