@@ -51,7 +51,7 @@ export const SellOfferDetailsView : FC <props> = ({
             return;
         }
         setProcessing(true);
-        let tx = await directBuy(offer.offer_id, offer.price);
+        let tx = await directBuy(offer.offer_id, offer.price, 450_000);
         setTxHash(tx);
 
         setProcessing(false);
