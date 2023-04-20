@@ -8,11 +8,13 @@ import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CreateBuyOfferPopup } from "./CreateBuyOfferPopup";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import useTxHash from "../../../hooks/useTxHash";
-import { BuyOffer } from "pix0-js";
+import { BuyOffer, SellOffer } from "pix0-js";
 
 export type CProps = {
 
     toBuyOfferDetails?: (offer : BuyOffer) =>void, 
+
+    toSellOfferDetails?: (offer : SellOffer) =>void, 
 
     backToList? : () => void, 
 
@@ -32,7 +34,7 @@ export type CProps = {
 export const BuyOffersListView : FC <CProps> = ({
     toBuyOfferDetails, backToList, forConnectedWallet, 
     title, sell_offer_id, withCreateBuyOfferButton,
-    noBuyOfferClassName, withAcceptButton
+    noBuyOfferClassName, withAcceptButton, toSellOfferDetails
 }) =>{
 
     const {getBuyOffersOf, getBuyOffersBy} = useMarketContract();
@@ -84,7 +86,7 @@ export const BuyOffersListView : FC <CProps> = ({
        {processing && <Loader color="white" size={8} className="float-left"/>}
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
-            <tr className="bg-gray-800">
+            <tr className="bg-gray-900">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Sell Offer</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Price</th>
@@ -96,7 +98,7 @@ export const BuyOffersListView : FC <CProps> = ({
         <tbody>
         {
             bos?.map((o, _i)=>{
-                return <BuyOfferRowView key={`BuyOfferRow_${_i}`} offer={o} index={_i} 
+                return <BuyOfferRowView key={`BuyOfferRow_${_i}`} offer={o} index={_i} toSellOfferDetails={toSellOfferDetails}
                 toBuyOfferDetails ={toBuyOfferDetails} backToList={backToList} setProcessing={setProcessing}
                 setTxHash={setTxHash} forConnectedWallet={forConnectedWallet} withAcceptButton={withAcceptButton}/>
             })

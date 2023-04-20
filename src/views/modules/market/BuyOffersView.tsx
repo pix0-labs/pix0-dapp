@@ -3,10 +3,16 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { BuyOffersListView } from "./BuyOffersListView";
 import usePage from "../../../hooks/usePage";
 import { Page } from "../../../sm/PageActions";
-import { BuyOffer} from 'pix0-js';
+import { BuyOffer, SellOffer} from 'pix0-js';
 import { ViewType } from "./MainView";
 
-export const BuyOffersView : FC = () =>{
+type props = {
+    toSellOfferDetails?: (offer : SellOffer) =>void, 
+}
+
+export const BuyOffersView : FC <props> = ({
+    toSellOfferDetails
+}) =>{
 
     const {setPage} = usePage();
 
@@ -19,6 +25,8 @@ export const BuyOffersView : FC = () =>{
         setPage(Page.Market, ViewType.YOUR_SELL_OFFERS);
     }
    
-    return <CommonAnimatedDiv className="ml-0"><BuyOffersListView forConnectedWallet={true} toBuyOfferDetails={toBuyOfferDetails} backToList={backToList}/>
+    return <CommonAnimatedDiv className="ml-0"><BuyOffersListView forConnectedWallet={true} 
+    toSellOfferDetails={toSellOfferDetails}
+    toBuyOfferDetails={toBuyOfferDetails} backToList={backToList}/>
     </CommonAnimatedDiv>
 }

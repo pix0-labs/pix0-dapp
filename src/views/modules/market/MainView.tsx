@@ -51,7 +51,7 @@ export const MainView : FC  = () =>{
                 return <SellOffersView/>
 
             case ViewType.YOUR_BUY_OFFERS :
-                return <BuyOffersView/>
+                return <BuyOffersView toSellOfferDetails={toSellOfferDetails}/>
 
             case ViewType.SELL_OFFER_DETAILS :
 
