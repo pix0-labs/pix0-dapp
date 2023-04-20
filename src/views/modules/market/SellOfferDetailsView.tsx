@@ -12,6 +12,7 @@ import { PulseLoader as Loader } from "react-spinners";
 import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
 import { BuyOffersListView } from "./BuyOffersListView";
+import { SmUserView } from "../../components/SmUserView";
 import { FaEdit} from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
 import '../../css/Img.css';
@@ -75,26 +76,30 @@ export const SellOfferDetailsView : FC <props> = ({
             {loading && <Loader color="white" size="10"/>}
 
         </div>
-        <div className="mb-1">
+        <div className="mb-1 items-start">
         Sell Offer : <span className="font-bold">{offer.offer_id}</span>
         </div>
-        <div className="mb-1">
-            <TokenImageView image={token?.extension.image}/>
+        <div className="mb-1 items-start">
+        By : <SmUserView address={offer.owner} flat={true}/>
         </div>
-        {token?.extension.name && <div className="mb-1 font-bold">{token?.extension.name}</div>}
-       
-        <div className="pl-10 p-2 text-gray-200 mb-1 mx-auto w-3/5 text-center font-bold">
-            {getCollectionName()}
-        </div>
-
-        {token && <div className="mb-1">
-            <NFTTraitsView nft={token}/>
-        </div>}
-
-        <div className="mb-1">
-        Price : <span className="font-bold">{priceForDisplay}</span>
-        </div>
+        <div className="rounded p-2 bg-gray-700 mb-2">
+            <div className="mb-1">
+                <TokenImageView image={token?.extension.image}/>
+            </div>
+            {token?.extension.name && <div className="mb-1 font-bold">{token?.extension.name}</div>}
         
+            <div className="pl-10 p-2 text-gray-200 mb-1 mx-auto w-3/5 text-center font-bold">
+                {getCollectionName()}
+            </div>
+
+            {token && <div className="mb-1">
+                <NFTTraitsView nft={token}/>
+            </div>}
+
+            <div className="mb-1">
+            Price : <span className="font-bold">{priceForDisplay}</span>
+            </div>
+        </div>
         {(!isConnectedWallet(offer.owner) && offer.allowed_direct_buy) 
         && <button className="p-2 rounded-3xl bg-blue-800 text-gray-100 font-bold mb-4" 
         disabled={processing} style={{minWidth:"220px"}} onClick={async (e)=>{
