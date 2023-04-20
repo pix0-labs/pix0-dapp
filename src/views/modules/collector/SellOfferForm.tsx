@@ -76,7 +76,7 @@ export const SellOfferForm : FC <props> = ({
                 amount : `${toUcoin(price)}`,
                 denom : "uconst",
             }, allowed_direct_buy : allowedDirectBuy, nft : token
-        });
+        }, 400_000);
 
 
         setTxHash(tx);
