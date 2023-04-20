@@ -51,7 +51,7 @@ export const SellOfferDetailsView : FC <props> = ({
             return;
         }
         setProcessing(true);
-        let tx = await directBuy(offer.offer_id);
+        let tx = await directBuy(offer.offer_id, offer.price);
         setTxHash(tx);
 
         setProcessing(false);
@@ -95,13 +95,14 @@ export const SellOfferDetailsView : FC <props> = ({
         Price : <span className="font-bold">{priceForDisplay}</span>
         </div>
         
-        {!isConnectedWallet(offer.owner) && <button className="p-2 rounded-3xl bg-blue-800 text-gray-100 font-bold mb-2" 
+        {(!isConnectedWallet(offer.owner) && offer.allowed_direct_buy) 
+        && <button className="p-2 rounded-3xl bg-blue-800 text-gray-100 font-bold mb-4" 
         disabled={processing} style={{minWidth:"220px"}} onClick={async (e)=>{
             e.preventDefault();
             await directBuyNow();
         }}
         title={`Direct Buy This NFT @${priceForDisplay}`}>{processing ? <Loader size={8} color="white"/> 
-        : <>Buy @{priceForDisplay}</>}</button>}
+        : <>Buy @ {priceForDisplay}</>}</button>}
 
         <div className="mb-1">
             <BuyOffersListView sell_offer_id={offer.offer_id} withCreateBuyOfferButton={!isOwnerConnectedWallet} 
