@@ -28,7 +28,7 @@ export const SmUserView : FC <props> = ({
         fetchUser();
     },[fetchUser]);
 
-    return <div className={className ?? "inline-block font-bold"}>
+    return <div className={className ?? "inline-block font-bold"} title={`${user?.first_name} ${user?.last_name}`}>
         {isConnectedWallet(address) ? <>You</> : 
         <>{user && <div className="text-sm">{`@${user.user_name}`}</div>}
         <div className="text-sm">{shortenStringTo(address,10)}</div></>}

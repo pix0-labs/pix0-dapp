@@ -1,7 +1,7 @@
 import { FC } from "react";
 import useCollectionRandomImg from "../../../hooks/useCollectionRandomImg";
 import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
-import { shortenStringTo } from "pix0-react";
+import { SmUserView } from "../../components/SmUserView";
 import { Collection} from 'pix0-js';
 import { CProps } from "./CollectionsView";
 import { FcNext } from "react-icons/fc";
@@ -31,11 +31,12 @@ export const CollectionView : FC <props> = ({
     }}>
         <td className="block sm:table-cell">{(index ?? 0)+1}</td>
         <td className="block sm:table-cell text-left">
-        <TokenImageView image={img} className="sm_img_container" style={{width:"30px",height:"30px"}}/>
+        <TokenImageView image={img} className="sm_img_container" 
+        style={{width:"30px",height:"30px", float:"left", marginRight:"2px"}}/>
         <div className="font-bold text-sm float-left mt-2 mr-2">{collection.symbol}</div>    
         </td>
         <td className="ml-2 text-overflow:ellipsis text-left">{collection.name}</td>
-        <td className="block sm:table-cell text-left">{shortenStringTo(collection.owner ?? "", 8)}</td>
+        <td className="block sm:table-cell text-left"><SmUserView address={collection.owner ?? ""}/></td>
         <td className="ml-2 text-center">{itemsCount}</td>
         <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
