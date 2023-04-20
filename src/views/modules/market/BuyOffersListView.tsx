@@ -6,6 +6,8 @@ import { BuyOfferRowView } from "./BuyOfferRowView";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { CreateBuyOfferPopup } from "./CreateBuyOfferPopup";
+import { TxHashDiv } from "../../components/TxHashDiv";
+import useTxHash from "../../../hooks/useTxHash";
 import { BuyOffer } from "pix0-js";
 
 export type CProps = {
@@ -38,6 +40,10 @@ export const BuyOffersListView : FC <CProps> = ({
     const [bos, setBos] = useState<BuyOffer[]>();
 
     const[loading, setLoading] = useState(false);
+
+    const {txHash, setTxHash} = useTxHash();
+
+    const [processing, setProcessing] = useState(false);
 
     const fetchBuyOffers = useCallback (async () =>{
         try {
@@ -74,6 +80,8 @@ export const BuyOffersListView : FC <CProps> = ({
     
     <div className="table-responsive pr-4 mt-1">
        <div className="text-gray-100 font-bold text-left">{ title ?? "Latest Buy Offers"}</div>
+       {txHash && <TxHashDiv txHash={txHash}/>}
+       {processing && <Loader color="white" size={8} className="float-left"/>}
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
             <tr className="bg-gray-800">
@@ -89,8 +97,8 @@ export const BuyOffersListView : FC <CProps> = ({
         {
             bos?.map((o, _i)=>{
                 return <BuyOfferRowView key={`BuyOfferRow_${_i}`} offer={o} index={_i} 
-                toBuyOfferDetails ={toBuyOfferDetails} backToList={backToList} 
-                forConnectedWallet={forConnectedWallet} withAcceptButton={withAcceptButton}/>
+                toBuyOfferDetails ={toBuyOfferDetails} backToList={backToList} setProcessing={setProcessing}
+                setTxHash={setTxHash} forConnectedWallet={forConnectedWallet} withAcceptButton={withAcceptButton}/>
             })
         }</tbody>
     </table>
