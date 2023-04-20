@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { CollectionIndex} from 'pix0-js';
 import { timestampToTimeAgo } from "pix0-react";
 import { FcNext } from "react-icons/fc";

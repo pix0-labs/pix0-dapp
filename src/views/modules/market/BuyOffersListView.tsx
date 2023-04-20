@@ -45,7 +45,6 @@ export const BuyOffersListView : FC <CProps> = ({
             let res = forConnectedWallet ? await getBuyOffersOf(undefined, undefined, undefined,
                 connectedWallet()) : await getBuyOffersBy(sell_offer_id ?? "" );
 
-            console.log("res::", res, sell_offer_id);
             setBos(res.offers);
             setLoading(false);    
         }
