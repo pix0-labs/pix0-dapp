@@ -21,8 +21,6 @@ export const MainView : FC <props> = ({
     const switchView = () =>{
 
         let pg = defaultPage ?? page;
-
-        console.log("pg::", pg);
         
         if ( pg ) {
 

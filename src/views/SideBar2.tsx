@@ -5,12 +5,19 @@ import { IoCreateOutline} from 'react-icons/io5';
 import { ViewType as CollectionViewType } from "./modules/creator/CollectionsView";
 import { ViewType as CollectiblesViewType} from "./modules/collector/CollectiblesView";
 import { ViewType as MarketViewType } from "./modules/market/MainView";
+import { useRoute} from 'wouter';
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import logo from '../images/pix0_logo1.png';
 
 
 export const SideBar : FC = () =>{
+
+
+    const [matchCreator] = useRoute("/creator");
+    const [matchCollector] = useRoute("/collector");
+    const [matchMarket] = useRoute("/market");
+    const [matchHome] = useRoute("/");
 
 
     const expandSubMenu = (id : string) =>{
@@ -54,6 +61,7 @@ export const SideBar : FC = () =>{
     </div>
 
     <ul className="space-y-4">
+        {(matchHome || matchCreator) &&
         <li className="mt-4 mb-4 p-2">
             <a onClick={()=>{
                 expandSubMenu("for_creators");
@@ -79,8 +87,9 @@ export const SideBar : FC = () =>{
                     CollectionViewType.CREATE)}>Create Collection</a>
                 </li>
             </ul>
-        </li>
+        </li>}
 
+        {(matchHome || matchCollector) && 
         <li className="mt-4 mb-4 p-2">
             <a onClick={()=>{
                 expandSubMenu("for_collectors");
@@ -109,9 +118,9 @@ export const SideBar : FC = () =>{
                 </li>
  
             </ul>
-     
-        </li>
+        </li>}
 
+        {(matchHome || matchMarket) &&
         <li className="mt-4 mb-4 p-2">
             <a onClick={()=>{
                 expandSubMenu("market");
@@ -139,8 +148,7 @@ export const SideBar : FC = () =>{
                     }} className={submenuCl(Page.Market, MarketViewType.YOUR_SELL_OFFERS)}>Your Sell Offers</a>
                 </li>
             </ul>
-     
-        </li>
+        </li>}
 
         <li className="mt-4 mb-4 p-2">
             <a target="_blank" href ="https://docs.pix0.xyz" className="block text-gray-400 hover:text-white cursor-pointer">
