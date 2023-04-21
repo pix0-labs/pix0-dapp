@@ -20,6 +20,20 @@ export function useUserContract()  {
         return img; 
     };
 
+
+    const isProfileImageUsing = (tokenId : string, _contractAddr? : string ) : boolean =>{
+
+        if (currentUser?.profile_image !== undefined && currentUser.profile_image.pic_type === pix0.USE_NFT_AS_PROFILE_IMG){
+
+            return currentUser.profile_image.value === tokenId;
+        }
+        else {
+
+            return false;
+        }
+
+    }
+
     const fetchCurrentUser = useCallback(async ()=>{
 
         if ( currentUser === undefined) {
@@ -29,11 +43,8 @@ export function useUserContract()  {
             let w = WalletConnectionStorage.get();
             try {
 
-                console.log("going to fetch user for ", w?.accounts[0].address);
-        
                 let u = await getUser(w?.accounts[0].address);
-                //console.log("fetch user for ", w?.accounts[0].address, u);
-        
+             
                 setCurrentUser(u);
         
                 setTimeout(()=>{
@@ -56,7 +67,8 @@ export function useUserContract()  {
 
 
 
-    return {getUser, currentUser, fetchCurrentUser, createUser, updateUser, fetchCurrentUserProfileImage, loading};
+    return {getUser, currentUser, fetchCurrentUser, createUser, 
+        updateUser, fetchCurrentUserProfileImage, loading, isProfileImageUsing};
 
 }
 

@@ -39,7 +39,7 @@ export const NFTsSelector: FC <NProps> = ({
         :
         tokens.length > 0 ?
 
-        <div className="p-1 overflow-y-auto bg-gray-800" style={{maxHeight:"360px"}}>
+        <div className="p-1 overflow-y-auto bg-gray-800 rounded" style={{maxHeight:"360px"}}>
             <div className="font-bold text-gray-100 pl-4">Choose an NFT as your profile picture</div>
             <div className="flex flex-wrap items-stretch">{
                 tokens?.map((t, _i)=>{
