@@ -4,6 +4,7 @@ import usePage from '../../../hooks/usePage';
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import useUserContract from '../../../hooks/useUserContract';
+import { NFTsSelPopup } from './NFTsSelPopup';
 import { TxHashDiv } from '../../components/TxHashDiv';
 import { Page } from '../../../sm/PageActions';
 import { ProceedOrCancelButtons } from '../../components/ProceedOrCancelButtons';
@@ -97,6 +98,9 @@ export const UserForm : FC <props> = ({
         style={{display:"inline-block", marginLeft:"4px", marginTop:"2px"}} color="white"/>}
         </div>
         {txHash && <TxHashDiv txHash={txHash}/>}
+            <div className="mb-4" title="Click to change profile icon">
+                <NFTsSelPopup/>
+            </div>
 
             <div className="mb-4">
                 <TextField label="User Name" id="user_name" value={user.user_name}

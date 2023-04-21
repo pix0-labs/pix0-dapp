@@ -1,14 +1,16 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import { useUserContract } from "../../hooks/useUserContract";
 import { FcBusinessman} from 'react-icons/fc';
 
 type props = {
 
     className? : string ,
+
+    style? : React.CSSProperties,
 }
 
 export const UserIconView : FC <props> = ({
-    className
+    className, style 
 }) =>{
 
     const {fetchCurrentUserProfileImage} = useUserContract();
@@ -24,6 +26,6 @@ export const UserIconView : FC <props> = ({
         fetchImage();
     },[]);
 
-    return (imageUrl ? <img src={imageUrl} className={className}/> :
-    <FcBusinessman className={className}/>);
+    return (imageUrl ? <img src={imageUrl} className={className} style={style}/> :
+    <FcBusinessman className={className} style={style}/>);
 }
