@@ -143,7 +143,7 @@ export const SideBar : FC = () =>{
         </li>
 
         <li className="mt-4 mb-4 p-2">
-            <a className="block text-gray-400 hover:text-white cursor-pointer">
+            <a target="_blank" href ="https://docs.pix0.xyz" className="block text-gray-400 hover:text-white cursor-pointer">
                 Documentations
             </a>
         </li>
@@ -151,6 +151,12 @@ export const SideBar : FC = () =>{
         <li className="mt-4 mb-4 p-2">
             <a href ="https://github.com/pix0-labs" target="_blank" className="block text-gray-400 hover:text-white cursor-pointer">
                 GitHub
+            </a>
+        </li>
+
+        <li className="mt-4 mb-4 p-2">
+            <a href ="https://twitter.com/techchee" target="_blank" className="block text-gray-400 hover:text-white cursor-pointer">
+               Twitter
             </a>
         </li>
     </ul>
