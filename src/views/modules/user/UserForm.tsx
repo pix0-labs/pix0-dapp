@@ -7,6 +7,7 @@ import useUserContract from '../../../hooks/useUserContract';
 import { NFTsSelPopup } from './NFTsSelPopup';
 import { TxHashDiv } from '../../components/TxHashDiv';
 import { Page } from '../../../sm/PageActions';
+import { USE_NFT_AS_PROFILE_IMG} from 'pix0-js';
 import { ProceedOrCancelButtons } from '../../components/ProceedOrCancelButtons';
 import { encrypt, decrypt } from 'pix0-react';
 import { PulseLoader } from 'react-spinners';
@@ -89,6 +90,13 @@ export const UserForm : FC <props> = ({
         }
     },[isEditMode, userToEdit]);
 
+
+    const selectNft = (tokenId : string, _imageUrl? : string ) =>{
+
+        let pimg = {pic_type : USE_NFT_AS_PROFILE_IMG, value: tokenId};
+        setUser({...user, profile_image : pimg });
+    }
+
     return <CommonAnimatedDiv className="text-center">
     <div className="ml-4 p-2 mt-4 border border-gray-600 rounded-md w-full text-left shadow-md"
     style={{width:"98%"}}>
@@ -99,7 +107,7 @@ export const UserForm : FC <props> = ({
         </div>
         {txHash && <TxHashDiv txHash={txHash}/>}
             <div className="mb-4" title="Click to change profile icon">
-                <NFTsSelPopup/>
+                <NFTsSelPopup selectNft={selectNft}/>
             </div>
 
             <div className="mb-4">

@@ -6,7 +6,7 @@ import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
 export type NProps = {
 
-    selectNft?: (tokenId : string) =>void,  
+    selectNft?: (tokenId : string, imageUrl? : string ) =>void,  
 }
 
 

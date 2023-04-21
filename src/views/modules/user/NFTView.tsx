@@ -20,7 +20,7 @@ export const NFTView : FC <props> = ({
     text-center py-2 mt-8 ml-4 mr-4 shadow-3xl min-h-200 IndDiv"
     onClick={()=>{
         if ( selectNft){
-            selectNft(tokenId);
+            selectNft(tokenId,token?.extension.image);
         }
     }}>
         <div className="m-2 pl-2"><img style={{maxWidth:"200px"}} src={token?.extension.image}/></div>
