@@ -78,9 +78,9 @@ export const NFTDetailsView : FC <props>= ({
         }}>{processing ? <Loader size={8} color="white"/> : <>Burn</>}</button>
     </div>
     </> :
-    <div className="text-gray-100 text-sm bg-red-900 p-2 rounded"><IoInformationCircle 
+    <CommonAnimatedDiv className="text-gray-100 text-sm bg-red-900 p-2 rounded"><IoInformationCircle 
     className="mr-2 inline w-5 h-5"/>This NFT is being used as your profile image, therefore you are 
-    unable to create a sell offer, transfer it, or burn it!</div>;
+    unable to create a sell offer, transfer it, or burn it!</CommonAnimatedDiv>;
 
  
     return <CommonAnimatedDiv style={{width:"100%"}}
