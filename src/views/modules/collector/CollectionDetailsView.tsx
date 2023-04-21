@@ -3,14 +3,16 @@ import useCollectionRandomImg from "../../../hooks/useCollectionRandomImg";
 import { Collection } from "pix0-js";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { TfiClose} from 'react-icons/tfi';
+import { TokenImageView } from "../../components/TokenImageView";
+import useTxHash from "../../../hooks/useTxHash";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import useCollectionContract from "pix0-react";
 import {useBalanceQuerier} from "../../../hooks/useBalanceQuerier";
+import { SmUserView } from "../../components/SmUserView";
 import { PulseLoader as Loader  } from "react-spinners";
 import {toCoinStr} from 'pix0-js';
 import { FcInfo } from "react-icons/fc";
-import placeholder from '../../../images/placeholder2.png';
 
 type props = {
 
@@ -28,26 +30,13 @@ export const CollectionDetailsView : FC <props> = ({
 
     const {totalFee,adminFee} = useCollectionInfo(collection);
 
-    const [txHash, setTxHash] = useState<Error|string>();
+    const {txHash, setTxHash, setError} = useTxHash();
 
     const {mintItem} = useCollectionContract();
 
     const [processing, setProcessing] = useState(false);
 
     const {fetchBalance} = useBalanceQuerier({});
-
-
-    const setTxHashNow = (tx : Error|string) => {
-
-        setTxHash(tx);
-        if ( tx instanceof Error){
-
-            setTimeout(()=>{
-                setTxHash(undefined);
-            },7000);
-        
-        }
-    }
 
     const mintNow = async () =>{
 
@@ -58,8 +47,8 @@ export const CollectionDetailsView : FC <props> = ({
 
         if (balv < tot){
 
-            setTxHashNow(new Error(`Insufficient funds! Required ${toCoinStr(tot)} 
-            CONST but has only ${toCoinStr(balv)} CONST`));
+            setError(`Insufficient funds! Required ${toCoinStr(tot)} 
+            CONST but has only ${toCoinStr(balv)} CONST`);
 
             return; 
         }
@@ -72,20 +61,14 @@ export const CollectionDetailsView : FC <props> = ({
             collection_owner : collection.owner ?? "",
         });
 
-        setTxHashNow(tx);
+        setTxHash(tx);
 
         setProcessing(false);
 
     }
 
 
-    const imgView = img ? <a href={img}
-    target="_blank"><img className="mx-auto rounded-full" src={img} 
-    style={{height:"200px",width:"200px",display:"block",border:"10px solid rgba(240,240,250,.35)"}}  
-    placeholder={placeholder}/></a> :
-    <img src={placeholder} className="mx-auto rounded-full" style={{height:"200px",width:"200px",display:"block"}} 
-    placeholder={placeholder}/>;
-
+    
     return <CommonAnimatedDiv style={{width:"99%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4 mr-4">
          {txHash && <TxHashDiv txHash={txHash}/>}
@@ -97,8 +80,14 @@ export const CollectionDetailsView : FC <props> = ({
             }}><TfiClose className="mr-4"/></button>}
         </div>
         <div className="mb-4">
-            {imgView}
+            <TokenImageView image={img}/>
         </div>
+
+        {collection.owner &&
+        <div className="mb-4 items-start">
+        <div className="font-bold mb-1 text-sm">Creator:</div><SmUserView address={collection.owner}
+        className="p-2 bg-slate-700 rounded w-3/12 mx-auto"/>
+        </div>}
 
         {collection.description && 
         <div className="pt-2 pb-2 text-gray-200 mb-4 mx-auto w-3/5 text-center">
