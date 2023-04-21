@@ -30,13 +30,15 @@ export const UserView : FC <props> = ({
 
         setLoading(true);
 
-        let u = await getUser(address);
-        setUser(u);
-
-        if ( u.profile_image?.pic_type === USE_NFT_AS_PROFILE_IMG) {
-            setProfileImage(u.profile_image.value);
+        try {
+            let u = await getUser(address);
+            setUser(u);    
+       
+            if ( u.profile_image?.pic_type === USE_NFT_AS_PROFILE_IMG) {
+                setProfileImage(u.profile_image.value);
+            }
         }
-
+        catch(e: any){}
         setLoading(false);
     },[address]);
 
