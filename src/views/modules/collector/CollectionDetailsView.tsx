@@ -10,6 +10,7 @@ import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import useCollectionContract from "pix0-react";
 import {useBalanceQuerier} from "../../../hooks/useBalanceQuerier";
 import { SmUserView } from "../../components/SmUserView";
+import { UserViewPopup} from "../user/UserViewPopup";
 import { PulseLoader as Loader  } from "react-spinners";
 import {toCoinStr} from 'pix0-js';
 import { FcInfo } from "react-icons/fc";
@@ -85,8 +86,7 @@ export const CollectionDetailsView : FC <props> = ({
 
         {collection.owner &&
         <div className="mb-4 items-start">
-        <div className="font-bold mb-1 text-sm">Creator:</div><SmUserView address={collection.owner}
-        className="p-2 bg-slate-700 rounded w-3/12 mx-auto"/>
+        <div className="font-bold mb-1 text-sm">Creator:</div><UserViewPopup address={collection.owner}/>
         </div>}
 
         {collection.description && 

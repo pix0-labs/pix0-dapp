@@ -137,6 +137,15 @@ export const UserForm : FC <props> = ({
                     setUser({...user, last_name : e.target.value});
                 }} />
             </div>
+
+            <div className="mb-4">
+                <TextField label="Bio" value={user.bio ?? ""} id="bio"
+                className={commonTextfieldClassName("w-10/12")}
+                onChange={(e)=>{
+                    setUser({...user, bio : e.target.value});
+                }} />
+            </div>
+
             <div className="mb-4">
                 <TextField label="Email (Optional)" value={decrypt(user.email ?? "")} id="email"
                 className={commonTextfieldClassName("w-10/12")}
