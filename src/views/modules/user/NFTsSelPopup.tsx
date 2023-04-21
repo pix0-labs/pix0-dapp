@@ -11,7 +11,7 @@ type props = NProps & {
 }
 
 export const NFTsSelPopup : FC <props> = ({
-    trigger, selectNft
+    trigger, selectNft, selectedTokenId
 }) =>{
 
     const [chosenImageUrl, setChosenImageUrl] = useState<string>();
@@ -25,5 +25,5 @@ export const NFTsSelPopup : FC <props> = ({
         if (selectNft) 
             selectNft(tokenId, imageUrl);
 
-    }}/></Popup>
+    }} selectedTokenId={selectedTokenId}/></Popup>
 }

@@ -27,6 +27,8 @@ export const UserForm : FC <props> = ({
 
     const [user, setUser] = useState<User>({});
     
+    const [selectedTokenId, setSelectedTokenId] = useState<string>();
+
     const [txHash, setTxHash] = useState<Error|string>();
 
     const [processing, setProcessing] = useState(false);
@@ -87,6 +89,9 @@ export const UserForm : FC <props> = ({
     useEffect(()=>{
         if ( isEditMode && userToEdit){
             setUser(userToEdit);
+            if ( userToEdit.profile_image?.pic_type === USE_NFT_AS_PROFILE_IMG) {
+                setSelectedTokenId(userToEdit.profile_image.value);
+            }
         }
     },[isEditMode, userToEdit]);
 
@@ -95,6 +100,7 @@ export const UserForm : FC <props> = ({
 
         let pimg = {pic_type : USE_NFT_AS_PROFILE_IMG, value: tokenId};
         setUser({...user, profile_image : pimg });
+        setSelectedTokenId(tokenId);
     }
 
     return <CommonAnimatedDiv className="text-center">
@@ -107,7 +113,7 @@ export const UserForm : FC <props> = ({
         </div>
         {txHash && <TxHashDiv txHash={txHash}/>}
             <div className="mb-4" title="Click to change profile icon">
-                <NFTsSelPopup selectNft={selectNft}/>
+                <NFTsSelPopup selectNft={selectNft} selectedTokenId={selectedTokenId}/>
             </div>
 
             <div className="mb-4">

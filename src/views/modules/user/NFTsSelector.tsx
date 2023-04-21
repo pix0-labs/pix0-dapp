@@ -7,11 +7,13 @@ import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 export type NProps = {
 
     selectNft?: (tokenId : string, imageUrl? : string ) =>void,  
+
+    selectedTokenId? : string, 
 }
 
 
 export const NFTsSelector: FC <NProps> = ({
-    selectNft
+    selectNft, selectedTokenId
 }) =>{
 
     const [tokens, setTokens] = useState<string[]>();
@@ -43,7 +45,8 @@ export const NFTsSelector: FC <NProps> = ({
             <div className="font-bold text-gray-100 pl-4">Choose an NFT as your profile picture</div>
             <div className="flex flex-wrap items-stretch">{
                 tokens?.map((t, _i)=>{
-                    return <NFTView key={`Nft_${_i}`} tokenId={t} index={_i} selectNft={selectNft}/>
+                    return <NFTView key={`Nft_${_i}`} tokenId={t} index={_i} selectNft={selectNft}
+                    selectedTokenId={selectedTokenId}/>
                 })
             }</div>
         </div>
