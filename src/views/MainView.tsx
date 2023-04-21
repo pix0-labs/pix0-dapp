@@ -20,7 +20,7 @@ export const MainView : FC <props> = ({
 
     const switchView = () =>{
 
-        let pg = defaultPage ?? page;
+        let pg = (page === Page.UserProfile) ? page  : (defaultPage ?? page);
         
         if ( pg ) {
 
