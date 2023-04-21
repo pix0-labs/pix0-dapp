@@ -13,10 +13,12 @@ type props = {
     visible? : boolean,
 
     dismissAfterInSeconds? : number, 
+
+    duration? : number,
 }
 
 export const CommonAnimatedDiv : FC <props> = ({
-    children, className, visible, dismissAfterInSeconds, style 
+    children, className, visible, dismissAfterInSeconds, style, duration 
 }) =>{
 
     const [isVisible, setIsVisible] = useState(true);
@@ -45,5 +47,5 @@ export const CommonAnimatedDiv : FC <props> = ({
     return <>{ isVisible && <motion.div initial={{ opacity: 0, scale: 0.5 }}
     className={className ?? COMMON_PANEL_CLASS_NAME} style={style}
     animate={{ opacity: 1, scale: 1 }}  onAnimationComplete={handleDismiss}
-    transition={{ duration: 0.5 }}>{children}</motion.div>}</>
+    transition={{ duration: duration ?? 0.5 }}>{children}</motion.div>}</>
 }
