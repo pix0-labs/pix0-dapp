@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import { MainView as MarketView } from "./modules/market/MainView";
@@ -7,15 +7,26 @@ import { MainView as UserView } from "./modules/user/MainView";
 import { TopBar } from "./TopBar";
 import { MainView as CreateCollectionView } from "./modules/creator/MainView";
 
-export const MainView : FC = () =>{
+type props = {
+
+    defaultPage? : Page, 
+}
+
+export const MainView : FC <props> = ({
+    defaultPage
+}) =>{
 
     const {page} = usePage();
 
     const switchView = () =>{
 
-        if ( page ) {
+        let pg = defaultPage ?? page;
 
-            switch (+page) {
+        console.log("pg::", pg);
+        
+        if ( pg ) {
+
+            switch (+pg) {
 
                 case Page.Collectibles :
 

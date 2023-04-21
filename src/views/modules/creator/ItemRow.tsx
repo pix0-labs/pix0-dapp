@@ -3,6 +3,7 @@ import { Item } from "pix0-js";
 import { AiOutlineMore} from 'react-icons/ai';
 import {FiTrash,FiEdit} from 'react-icons/fi';
 import { ImageWithPopupView } from "../../components/ImageWithPopupView";
+//import useCollectionContract from "pix0-react";
 import { Popup} from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { ViewType } from "./CollectionsView";
@@ -25,7 +26,7 @@ export const ItemRow : FC <props> = ({
     item, setViewType, refreshItem, index 
 }) =>{
 
- 
+
     const removeItemNow = async () =>{
 
         if ( window.confirm('Are you sure you want to delete the selected item?')){
@@ -33,6 +34,8 @@ export const ItemRow : FC <props> = ({
             if ( refreshItem ){
                 refreshItem();
             }
+            window.alert("Feature coming soon...");
+            
         }
     }
 
@@ -46,10 +49,7 @@ export const ItemRow : FC <props> = ({
         bg-gray-800 text-gray-200 p-2"
         onClick={(e)=>{
             e.preventDefault();
-            if ( setViewType )
-            {
-                setViewType(ViewType.EDIT, item);
-            }
+            window.alert("Feature coming soon...");
         }}
         ><FiEdit className="mr-2 inline mb-1"/>Edit Item</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 

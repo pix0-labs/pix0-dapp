@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { SideBar } from "./SideBar2";
-import { MainView } from "./MainView";
+//import { MainView } from "./MainView";
+import { AllRoutes } from "./AllRoutes";
 import { AnimatedDiv2 } from "./components/AnimatedDiv2";
 import { ToggleButton } from "./components/ToggleButton";
 import './css/SideBar.css';
@@ -24,7 +25,7 @@ export const HomeView : FC = () =>{
         </aside>
         </AnimatedDiv2>
         <main className="main flex flex-col grow md:ml-0 h-screen mx-auto bg-black text-center overflow-y-auto overflow-x-hidden">
-            <MainView/>
+            <AllRoutes/>
         </main>
         <ToggleButton onClick={hideOrExpandSideBar}/>
         
