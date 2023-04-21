@@ -46,8 +46,11 @@ export const SideBar : FC = () =>{
 
     const submenuClassesSel = "block text-gray-300 w-48 hover:text-gray-100 bg-gray-600 p-2 text-sm";
 
-    const subUlClasses = "mt-1 w-64 p-4 space-y-2 hidden cursor-pointer";
+    const subUlClasses = (show : boolean = true) =>{
 
+        return `mt-1 w-64 p-4 space-y-2 cursor-pointer${show ? "" : " hidden"}`;
+
+    } 
     const submenuCl = (page : Page, param? : any ) =>{
 
         return  (isPage(page, param) || (currentPage &&  currentPage.page && (page === currentPage.page && param === currentPage.param)) )? 
@@ -72,7 +75,7 @@ export const SideBar : FC = () =>{
                 </div>
             </a>
 
-            <ul id="for_creators" className={subUlClasses}>
+            <ul id="for_creators" className={subUlClasses(matchCreator)}>
                 <li>
                     <a onClick={()=>{
                         setPage(Page.CreateCollection, CollectionViewType.LIST);
@@ -100,7 +103,7 @@ export const SideBar : FC = () =>{
             </div>
             </a>
 
-            <ul id="for_collectors"  className={subUlClasses}>
+            <ul id="for_collectors"  className={subUlClasses(matchCollector)}>
                 <li>
                     <a onClick={()=>{
                         setPage(Page.Collectibles, CollectiblesViewType.COLLECTIBLES);
@@ -131,7 +134,7 @@ export const SideBar : FC = () =>{
             </div>
             </a>
 
-            <ul id="market"  className={subUlClasses}>
+            <ul id="market"  className={subUlClasses(matchMarket)}>
                 <li>
                     <a onClick={()=>{
                         setPage(Page.Market, MarketViewType.MARKET);
