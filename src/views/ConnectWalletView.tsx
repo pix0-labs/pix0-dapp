@@ -31,7 +31,7 @@ export const ConnectWalletView : FC = () =>{
         setWalletConnected();
     }}/>
     <CommonAnimatedDiv className="mt-4 text-gray-100 text-sm font-bold"
-    duration={2.5}>Now Live On Arhcway Testnet</CommonAnimatedDiv>
+    duration={3}>Now Live On Arhcway Testnet</CommonAnimatedDiv>
     <div className="mt-4 text-gray-100 text-xs"><a href="https://docs.pix0.xyz" 
     target="_blank">Documentations</a></div>
     </CommonAnimatedDiv>
