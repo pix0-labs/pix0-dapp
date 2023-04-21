@@ -77,8 +77,8 @@ export const SellOffersByCollections : FC = () =>{
             <tr className="bg-gray-900">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Collection</th>
-                <th className="sticky top-0" style={{width:"25%"}}>No of Sell Offers</th>
-                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
+                <th className="sticky top-0 text-center" style={{width:"25%"}}>Sell Offers</th>
+                <th className="sticky top-0 text-center" style={{width:"10%"}}>Date</th> 
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>
