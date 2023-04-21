@@ -23,14 +23,16 @@ export const UserIconView : FC <props> = ({
         let img = await fetchCurrentUserProfileImage();
         setImageUrl(img);
     },[]);
+    
 
     useEffect(()=>{
-        fetchImage();
-    },[]);
 
-
-    useEffect(()=>{
-        setImageUrl(chosenImageUrl);
+        if ( chosenImageUrl === undefined) {
+            fetchImage();
+        }
+        else {
+            setImageUrl(chosenImageUrl);
+        }
     },[chosenImageUrl])
 
     return (imageUrl ? <img src={imageUrl} className={className} style={style}/> :

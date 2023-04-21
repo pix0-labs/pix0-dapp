@@ -12,8 +12,13 @@ export function useNftLoader (tokenId : string) {
 
     const [image, setImage] = useState(placeholder);
 
-   
     const {getNftTokenInfo} = useCollectionContract();
+
+
+    const isImagePlaceHolder = () : boolean =>{
+
+        return image === placeholder;
+    }
 
     const getCollectionName = () =>{
         let sis =  token?.extension.attributes?.filter(a=>{return a.trait_type === "collection-info"});
@@ -48,5 +53,5 @@ export function useNftLoader (tokenId : string) {
         fetchToken();
     },[fetchToken]);
 
-    return {token,fetchToken,loading, image, getCollectionName};
+    return {token,fetchToken,loading, image, getCollectionName, isImagePlaceHolder};
 } 
