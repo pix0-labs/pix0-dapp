@@ -49,7 +49,7 @@ export const ConnectWalletView : FC = () =>{
     <img src={logo} className="h-auto mx-auto mb-4 mt-10" style={{minWidth:"220px"}}/>
     <CommonAnimatedDiv className="mt-4 text-gray-100 text-sm font-bold w-3/5 mx-auto p-2"
     duration={2.5}>A mini decentralized social network built on the Archway blockchain that 
-    connects NFT creators or artists with NFT collectors</CommonAnimatedDiv>
+    connects NFT creators and collectors</CommonAnimatedDiv>
     <ConnectButton experimental={true}
     className="p-2 mt-10 mb-10 bg-gray-800 w-3/5 hover:bg-cyan-900 
     rounded-3xl mx-auto text-gray-100 font-bold"
