@@ -11,3 +11,5 @@ The application provides an easy-to-use collectibles section where NFT collector
 NFT owners or collectors can sell their NFTs easily by creating sell offers. The marketplace provides a list of recently created sell offers and collections of listed sell offers. Sellers can manage their sell offers by viewing a list of their created sell offers and accepting buy offers from buyers or canceling their sell offers. Buyers can also manage their buy offers easily, with a list of their buy offers that they can cancel or edit as necessary.
 
 [Demo on Archway Testnet](https://test.pix0.xyz)
+
+[License MIT](https://github.com/pix0-labs/pix0-dapp/blob/main/LICENSE)
