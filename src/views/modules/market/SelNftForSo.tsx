@@ -45,11 +45,10 @@ export const SelNftForSo : FC = () =>{
         tokens.length > 0 ?
         <>
         <div className="ml-1 rounded text-gray-100 p-2 font-bold bg-gray-900">Your Collectibales</div>    
-        <div className="text-sm text-gray-100 ml-1 text-left">Please note that we only list the
-        NFTs owned by you by our COLLECTION CONTRACT. If you own NFTs from different contract,
-        click <a href="#" onClick={()=>{
+        <div className="text-sm text-gray-100 ml-1 text-left">Please note that we only list the NFTs owned by you through our COLLECTION CONTRACT. 
+        If you own NFTs from a different contract, please click <a href="#" onClick={()=>{
             showOrHideContractAddr();
-        }}>here</a> to specify the contract address</div>
+        }}>here</a> to specify the contract address and fetch them.</div>
         <div className="hidden p-2 text-left" id="nft_contract_addr_id">
         <TextField label="NFT Contract Address:" id="contract_addr" type="text" 
         placeholder="NFT Contract Address" className={commonTextfieldClassName("w-9/12 inline-block")}
