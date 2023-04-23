@@ -39,7 +39,7 @@ export const BuyOffersListView : FC <CProps> = ({
 
     const {getBuyOffersOf, getBuyOffersBy} = useMarketContract();
 
-    const [bos, setBos] = useState<BuyOffer[]>();
+    const [bos, setBos] = useState<BuyOffer[]>([]);
 
     const[loading, setLoading] = useState(false);
 
@@ -58,9 +58,38 @@ export const BuyOffersListView : FC <CProps> = ({
         }
         catch(e: any){
             setLoading(false);
-            console.log("ex...",e);
+            //console.log("ex...",e);
         }
      }, [sell_offer_id]);
+
+
+     const [dateSortAsc, setDateSortAsc] = useState(true);
+
+     const [priceSortAsc, setPriceSortAsc] = useState(true);
+
+     const sortByDate = () =>{
+        if (dateSortAsc) {
+
+            setBos(prevBos => [...prevBos].sort((a, b) => (b.date_created ?? 0) - (a.date_created ?? 0)));
+            setDateSortAsc(false);
+        }
+        else {
+            setBos(prevBos => [...prevBos].sort((a, b) => (a.date_created ?? 0) - (b.date_created ?? 0)));
+            setDateSortAsc(true);
+        }
+     }
+ 
+     const sortByPrice = () =>{
+        if (priceSortAsc) {
+
+            setBos(prevBos => [...prevBos].sort((a, b) => parseInt(b.price.amount) - parseInt(a.price.amount)));
+            setPriceSortAsc(false);
+        }
+        else {
+            setBos(prevBos => [...prevBos].sort((a, b) => parseInt(a.price.amount) - parseInt(b.price.amount)));
+            setPriceSortAsc(true);
+        }
+    }
  
 
      useEffect(()=>{
@@ -89,9 +118,14 @@ export const BuyOffersListView : FC <CProps> = ({
             <tr className="bg-gray-900">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Sell Offer</th>
-                <th className="sticky top-0" style={{width:"25%"}}>Price</th>
+                <th className="sticky top-0 cursor-pointer" 
+                style={{width:"25%"}} onClick={()=>{
+                    sortByPrice();
+                }}>Price</th>
                 {!forConnectedWallet && <th className="sticky top-0" style={{width:"30%"}}>By</th>}
-                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
+                <th className="sticky top-0 cursor-pointer" style={{width:"10%"}} onClick={()=>{
+                    sortByDate();
+                }}>Date</th> 
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>

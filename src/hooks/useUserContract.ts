@@ -52,7 +52,7 @@ export function useUserContract()  {
                 }, 300);
             }
             catch(e : any){
-                console.log("fetch.user.error::", e);
+                //console.log("fetch.user.error::", e);
             }
            
         }
