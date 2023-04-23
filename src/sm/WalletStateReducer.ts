@@ -27,6 +27,17 @@ export const WalletReducer = (state : WalletState = INIT_STATE,
         
             return {...state, connected : action.connected, 
                 dateUpdated : new Date() };
+        case WalletActions.SET_CONNECTED :
+    
+            let stat = {...state, connected : true, 
+                dateUpdated : new Date() };
+            //console.log("set.connected::", stat);
+            
+            return stat; 
+
+        case WalletActions.SET_DISCONNECTED :
+            return {...state, connected : false, 
+            dateUpdated : new Date() };
 
         default :
         

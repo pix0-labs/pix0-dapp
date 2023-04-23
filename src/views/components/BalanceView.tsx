@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import usePage from "../../hooks/usePage";
 import useBalanceQuerier from "../../hooks/useBalanceQuerier";
 import useWalletState from "../../hooks/useWalletState";
@@ -55,6 +55,14 @@ export const BalanceView : FC <props> = ({
         },500);
     }}/>;
 
+    useEffect(()=>{
+
+        if ( walletConnected  && (balanceAsStr === "" || address === "")){
+
+            fetchBalanceNow();
+        }
+
+    },[walletConnected])
 
     const menu =  <Popup contentStyle={{background:"#222",minWidth:"160px"}} 
     arrowStyle={{display:"none"}}

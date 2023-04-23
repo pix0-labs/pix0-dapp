@@ -61,7 +61,7 @@ export const ConnectWalletView : FC = () =>{
         },5000);
     }}
     connectedCallback={()=>{    
-        setWalletConnected();
+        setWalletConnected();   
     }}/>
     <div className="mb-2 mt-2 text-sm">{connectAsMenu}</div>   
     <CommonAnimatedDiv className="mt-4 text-gray-100 text-sm font-bold"

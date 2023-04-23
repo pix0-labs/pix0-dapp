@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { useCallback, useEffect} from "react";
 import { WalletState } from "../sm/WalletStateReducer";
 import { isWalletConnected } from "pix0-react";
-import { setWalletConnected as setWalletConn} from "../sm/WalletActions";
+import { setWalletConnected as setWalletConn, setWalletDisconnected as setWalletDisconn} from "../sm/WalletActions";
 
 
 export default function useWalletState() {
@@ -11,11 +11,11 @@ export default function useWalletState() {
     const dispatch: Dispatch<any> = useDispatch();
 
     const setWalletConnected = useCallback(() => {
-        dispatch(setWalletConn(true));
+        dispatch(setWalletConn());
     },[dispatch]);
 
     const setWalletDisconnected = useCallback(() => {
-        dispatch(setWalletConn(false));
+        dispatch(setWalletDisconn());
     },[dispatch]);
 
     const walletState : WalletState =  useSelector(
@@ -29,12 +29,13 @@ export default function useWalletState() {
       if (isWalletConnected()){
         setWalletConnected();
       }
+      /*
       else {
         setWalletDisconnected();
-      }
+      }*/
 
     },[isWalletConnected()]);
-
+   
     return {walletConnected, setWalletConnected, setWalletDisconnected} as const;
 
 }
