@@ -1,0 +1,48 @@
+import { FC, useState, useCallback, useEffect } from "react";
+import useCollectionContract from "pix0-react";
+import { PulseLoader as Loader} from 'react-spinners';
+import { SmNftView } from "./SmNftView";
+import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
+import { CommonMessageDiv } from "../../components/CommonMessageDiv";
+
+export const SelNftForSo : FC = () =>{
+
+    const [tokens, setTokens] = useState<string[]>();
+
+    const {getMintedTokensByOwner} = useCollectionContract();
+
+   
+    const fetchTokens = useCallback (async () =>{
+        
+       let nfts = await getMintedTokensByOwner({});
+        setTokens(nfts);
+    }, []);
+
+
+    useEffect(()=>{
+        fetchTokens();
+    },[fetchTokens]);
+
+    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto bg-gray-800 rounded">
+     {
+
+        tokens === undefined ?
+
+        <div className="text-left p-2"><Loader color="#eee"/></div>
+        :
+        tokens.length > 0 ?
+
+        <div className="flex flex-wrap items-stretch">
+        <div className="ml-2 text-gray-100 font-bold">Your Collectibales</div>    
+        {
+            tokens?.map((t, _i)=>{
+                return <SmNftView key={`Nft_${_i}`} tokenId={t} index={_i}/>
+            })
+        }</div>
+        
+        : <CommonMessageDiv>You do NOT have any collectibles yet. Go Mint or Buy some NFTs</CommonMessageDiv>
+    }
+
+    </CommonAnimatedDiv>
+
+}
