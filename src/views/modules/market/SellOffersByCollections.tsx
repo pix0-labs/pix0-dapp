@@ -1,7 +1,7 @@
 import { FC, useState, useCallback, useEffect } from "react";
 import { useMarketContract } from 'pix0-react';
 import { CollectionIndex} from 'pix0-js';
-import { CollectionIndexView } from "./CollectionIndexView";
+import { CollectionIndexRow } from "./CollectionIndexRow";
 import { PulseLoader as Loader} from 'react-spinners';
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
@@ -86,7 +86,7 @@ export const SellOffersByCollections : FC = () =>{
       
         {
             indexes?.map((c, _i)=>{
-                return <CollectionIndexView key={`CollIdx_${_i}`} collectionIndex={c} index={_i}/>
+                return <CollectionIndexRow key={`CollIdx_${_i}`} collectionIndex={c} index={_i}/>
             })
         }
         </tbody>

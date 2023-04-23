@@ -8,6 +8,7 @@ import { MarketView } from "./MarketView";
 import { SellOffersView } from "./SellOffersView";
 import { BuyOffersView } from "./BuyOffersView";
 import { SellOfferDetailsView } from "./SellOfferDetailsView";
+import { SOBySelectedCollection } from "./SOBySelectedCollections";
 
 
 export enum ViewType {
@@ -21,6 +22,8 @@ export enum ViewType {
     SELL_OFFER_DETAILS = 4, 
     
     BUY_OFFER_DETAILS = 5, 
+
+    SO_BY_SELECTED_COLLECTION = 6, 
 
 }
 
@@ -56,6 +59,9 @@ export const MainView : FC  = () =>{
             case ViewType.SELL_OFFER_DETAILS :
 
                 return <SellOfferDetailsView offer={param2} backToList={backToList}/>
+
+            case ViewType.SO_BY_SELECTED_COLLECTION :
+                return <SOBySelectedCollection collection_info={param2} toSellOfferDetails={toSellOfferDetails}/>
 
             default :
                 return <MarketView toSellOfferDetails={toSellOfferDetails} backToList={backToList}/>

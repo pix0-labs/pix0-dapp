@@ -19,21 +19,21 @@ export const ConnectWalletView : FC = () =>{
     arrowStyle={{display:"none"}}
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
     trigger={<button className="bg-gray-500 hover:bg-cyan-900 rounded pl-2 pr-2 
-    text-xs font-bold text-gray-100">Connect As/To</button>} position="top center">
+    text-xs font-bold text-gray-100">Go to</button>} position="top center">
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2"
+        bg-gray-800 text-gray-200 p-2 font-bold text-sm"
         onClick={(e)=>{
             e.preventDefault();
             document.location.href ="/creator";
         }}
         >Creator</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2" onClick={async (e)=>{
+        bg-gray-800 text-gray-200 p-2 font-bold text-sm" onClick={async (e)=>{
             e.preventDefault();
             document.location.href ="/collector";
         }}>Collector</div>
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2" onClick={async (e)=>{
+        bg-gray-800 text-gray-200 p-2 font-bold text-sm" onClick={async (e)=>{
             e.preventDefault();
             document.location.href ="/market";
         }}>Marketplace</div>
