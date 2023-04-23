@@ -2,6 +2,7 @@ import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionContract from "pix0-react";
 import { PulseLoader as Loader} from 'react-spinners';
 import { SmNftView } from "./SmNftView";
+import { AiFillCloseCircle } from "react-icons/ai";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
@@ -35,6 +36,7 @@ export const SelNftForSo : FC = () =>{
 
         if (contractAddr && contractAddr.trim() !== "") {
             setLoading(true);
+            setTokens([]);
             let toks = await getTokens({}, contractAddr);
             setTokens(toks);
 
@@ -79,19 +81,17 @@ export const SelNftForSo : FC = () =>{
             await retrieveTokens();
         }}
         >{loading ? <Loader color="white" size={6}/> : <>Retrieve</>}</button>
-        
-        <button className="ml-2 rounded-3xl pl-2 pr-2 font-bold 
-        text-sm text-gray-100 inline bg-gray-500" onClick={async (e)=>{
+         <button className="ml-2" onClick={async (e)=>{
             e.preventDefault();
             showOrHideContractAddr();   
             await fetchDefaultTokens();
-        }}>Close</button>
+        }}><AiFillCloseCircle className="inline w-5 h-5 text-gray-100"/></button>
         
         </div>}
         <div className="flex flex-wrap items-stretch">
         {
             tokens?.map((t, _i)=>{
-                return <SmNftView key={`Nft_${_i}`} tokenId={t} index={_i}/>
+                return <SmNftView key={`Nft_${_i}`} tokenId={t} index={_i} contract_addr={contractAddr}/>
             })
         }</div></>
         

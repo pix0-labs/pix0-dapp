@@ -19,11 +19,14 @@ export type props = {
     sell_offer? : SellOffer,
 
     createOrUpdateCompletion? : () => void, 
+
+    contractAddr? : string, 
 }
 
 
 export const SellOfferForm : FC <props> = ({
-    token, tokenId, isEditMode, sell_offer, createOrUpdateCompletion
+    token, tokenId, isEditMode, 
+    sell_offer, createOrUpdateCompletion, contractAddr
 }) =>{
 
     const [price, setPrice] = useState<number>(1);
@@ -75,7 +78,8 @@ export const SellOfferForm : FC <props> = ({
             token_id : tokenId, price : {
                 amount : `${toUcoin(price)}`,
                 denom : "uconst",
-            }, allowed_direct_buy : allowedDirectBuy, nft : token
+            }, allowed_direct_buy : allowedDirectBuy, nft : token,
+            contract_addr : contractAddr, 
         }, 400_000);
 
 

@@ -29,7 +29,7 @@ export const SmNftView : FC <props> = ({
         <div className="mt-2 mb-2">
             <SellOfferFormPopup trigger={<button
             className="p-2 font-bold bg-green-900 rounded-3xl text-xs text-gray-100">Create Sell Offer</button>}
-            token={token} tokenId={tokenId}/>
+            token={token} tokenId={tokenId} contractAddr={contract_addr}/>
         </div>
     </div>
 }
