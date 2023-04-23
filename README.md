@@ -7,7 +7,7 @@ An easy-to-use web-based NFT collection creation tool that enables NFT creators 
 ## For NFT collectors 
 The application provides an easy-to-use collectibles section where NFT collectors can view their minted or purchased NFTs and mint any NFTs that have been listed by NFT creators from the 'Mint From Neighborhood' feature.
 
-## Marketplace
+## [Marketplace](https://market.pix0.xyz)
 NFT owners or collectors can sell their NFTs easily by creating sell offers. The marketplace provides a list of recently created sell offers and collections of listed sell offers. Sellers can manage their sell offers by viewing a list of their created sell offers and accepting buy offers from buyers ,canceling or editing their sell offers. Buyers can also manage their buy offers easily, with a list of their buy offers that they can cancel or edit as necessary.
 
 ## User Profile
