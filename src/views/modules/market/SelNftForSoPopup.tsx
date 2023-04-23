@@ -13,6 +13,6 @@ export const SelNftForSoPopup : FC <props> = ({
     trigger
 }) =>{
     return <Popup modal nested trigger={trigger ?? <button style={{minWidth:"100px"}}
-    className="bg-green-700 font-bold p-1 text-gray-100 rounded-3xl text-sm">Create Sell Offer</button>}
+    className="bg-blue-700 font-bold p-1 text-gray-100 rounded-3xl text-sm">Create Sell Offer</button>}
     closeOnEscape={true}><SelNftForSo/></Popup>
 }

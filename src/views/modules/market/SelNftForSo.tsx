@@ -23,7 +23,7 @@ export const SelNftForSo : FC = () =>{
         fetchTokens();
     },[fetchTokens]);
 
-    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto bg-gray-800 rounded">
+    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto bg-gray-600 rounded">
      {
 
         tokens === undefined ?
@@ -31,14 +31,13 @@ export const SelNftForSo : FC = () =>{
         <div className="text-left p-2"><Loader color="#eee"/></div>
         :
         tokens.length > 0 ?
-
+        <><div className="ml-2 text-gray-100 p-2 font-bold bg-gray-700">Your Collectibales</div>    
         <div className="flex flex-wrap items-stretch">
-        <div className="ml-2 text-gray-100 font-bold">Your Collectibales</div>    
         {
             tokens?.map((t, _i)=>{
                 return <SmNftView key={`Nft_${_i}`} tokenId={t} index={_i}/>
             })
-        }</div>
+        }</div></>
         
         : <CommonMessageDiv>You do NOT have any collectibles yet. Go Mint or Buy some NFTs</CommonMessageDiv>
     }
