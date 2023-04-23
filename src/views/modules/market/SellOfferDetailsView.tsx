@@ -46,16 +46,21 @@ export const SellOfferDetailsView : FC <props> = ({
     }
 
     const directBuyNow = async () =>{
+        try {
 
-        if ( offer.offer_id === undefined){
-            setError('Undefined offer id');
-            return;
+            if ( offer.offer_id === undefined){
+                setError('Undefined offer id');
+                return;
+            }
+            setProcessing(true);
+            let tx = await directBuy(offer.offer_id, offer.price, 450_000);
+            setTxHash(tx);
+    
+            setProcessing(false);
         }
-        setProcessing(true);
-        let tx = await directBuy(offer.offer_id, offer.price, 450_000);
-        setTxHash(tx);
-
-        setProcessing(false);
+        catch(e : any) {
+            setError(e);
+        }
     }
 
 

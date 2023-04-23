@@ -36,7 +36,7 @@ export function useBalanceQuerier(
     },[fetchBalance]);
 
 
-    return {balance, address, balanceAsStr, fetchBalance};
+    return {balance, address, balanceAsStr, fetchBalance, fetchBalanceNow};
 }
 
 export default useBalanceQuerier;
