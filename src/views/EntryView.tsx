@@ -9,8 +9,8 @@ export const EntryView : FC = () =>{
     const {walletConnected} = useWalletState();
 
     const [matchMarket] = useRoute("/market");
-
+    
     return <>
-    {matchMarket ? <HomeView/> :  walletConnected ? <HomeView/> : <ConnectWalletView/>}
+    {matchMarket ? <HomeView/> :  (walletConnected ? <HomeView/> : <ConnectWalletView/>)}
     </>
 }
