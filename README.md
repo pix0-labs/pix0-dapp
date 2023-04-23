@@ -15,4 +15,6 @@ Users can easily create their user profile and store it on the blockchain. They 
 
 [Demo on Archway Testnet (https://test.pix0.xyz/)](https://test.pix0.xyz)
 
+[Submitted for Dorahacks - Archway Hackaton](https://dorahacks.io/buidl/5381)
+
 [License MIT](https://github.com/pix0-labs/pix0-dapp/blob/main/LICENSE)
