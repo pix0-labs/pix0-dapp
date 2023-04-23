@@ -51,7 +51,7 @@ export const ConnectWalletView : FC = () =>{
     duration={2.5}>A mini decentralized social network built on the Archway blockchain that 
     connects NFT creators and collectors</CommonAnimatedDiv>
     <ConnectButton experimental={true}
-    className="p-2 mt-10 mb-10 bg-gray-800 w-3/5 hover:bg-cyan-900 
+    className="p-2 mt-4 mb-2 bg-gray-800 w-3/5 hover:bg-cyan-900 
     rounded-3xl mx-auto text-gray-100 font-bold"
     onError={(e)=>{
         setError(e);
@@ -63,8 +63,7 @@ export const ConnectWalletView : FC = () =>{
     connectedCallback={()=>{    
         setWalletConnected();
     }}/>
-    <div className="mb-2 text-sm">{connectAsMenu}</div>
-    
+    <div className="mb-2 mt-2 text-sm">{connectAsMenu}</div>   
     <CommonAnimatedDiv className="mt-4 text-gray-100 text-sm font-bold"
     duration={4.5}>Now Live On Archway Testnet</CommonAnimatedDiv>
     <div className="mt-4 text-gray-100 text-xs"><a href="https://docs.pix0.xyz" 
