@@ -115,7 +115,7 @@ export const BuyOffersListView : FC <CProps> = ({
        {processing && <Loader color="white" size={8} className="float-left"/>}
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
-            <tr className="bg-gray-900">
+            <tr className="bg-gray-800">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"25%"}}>Sell Offer</th>
                 <th className="sticky top-0 cursor-pointer" 

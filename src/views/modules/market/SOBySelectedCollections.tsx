@@ -37,7 +37,7 @@ export const SOBySelectedCollection : FC <props> = ({
     },[fetchSellOffers]);
 
 
-    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto">
+    return <CommonAnimatedDiv className="w-full h-full bg-transparent rounded p-2 items-center mx-auto">
     <div className="p-2 text-gray text-left ml-2">
     In Collection <span className="font-bold">{collection_info.collection_name}
     {collection_info.collection_symbol && <span className='ml-2'>({collection_info.collection_symbol})</span>}</span>

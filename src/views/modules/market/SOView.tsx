@@ -36,7 +36,7 @@ export const SOView : FC <props> = ({
             nonClickableForLargerImage={true}/>
         </div>
         <div className="pl-4 mt-2 mb-1 truncate font-bold p-1 align-top text-center text-sm">
-            <div className="inline-block mr-2">Price:</div>{toCoinStr(parseInt(sell_offer.price.amount))} CONST      
+            <div className="inline-block mr-2">Price:</div>{toCoinStr(parseInt(sell_offer.price.amount), 2)} CONST      
         </div>
         
         <div className="pl-4 mt-2 mb-1 truncate font-bold p-1 align-top text-center text-sm">

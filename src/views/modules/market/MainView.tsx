@@ -70,7 +70,7 @@ export const MainView : FC  = () =>{
         }
     }
 
-    return <CommonAnimatedDiv className="text-gray-100 rounded bg-gray-800 h-full p-2">
+    return <CommonAnimatedDiv className="text-gray-100 rounded bg-transparent h-full p-2">
         <TopMenu/>
         {switchView()}
     </CommonAnimatedDiv>
