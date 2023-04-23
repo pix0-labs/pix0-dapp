@@ -5,6 +5,7 @@ import { PulseLoader as Loader } from "react-spinners";
 import { SellOfferRowView } from "./SellOfferRowView";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
+import { AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { SellOffer } from "pix0-js";
 
 export type CProps = {
@@ -24,7 +25,7 @@ export const SellOffersListView : FC <CProps> = ({
 
     const {getSellOffers, getSellOffersOf} = useMarketContract();
 
-    const [sos, setSos] = useState<SellOffer[]>();
+    const [sos, setSos] = useState<SellOffer[]>([]);
 
     const[loading, setLoading] = useState(false);
 
@@ -45,6 +46,21 @@ export const SellOffersListView : FC <CProps> = ({
          fetchSellOffers();
      },[fetchSellOffers]);
 
+     const [priceSortAsc, setPriceSortAsc] = useState(true);
+
+     const sortByPrice = () =>{
+        if (priceSortAsc) {
+
+            setSos(prevSos => [...prevSos].sort((a, b) => parseInt(b.price.amount) - parseInt(a.price.amount)));
+            setPriceSortAsc(false);
+        }
+        else {
+            setSos(prevSos => [...prevSos].sort((a, b) => parseInt(a.price.amount) - parseInt(b.price.amount)));
+            setPriceSortAsc(true);
+        }
+    }
+
+
     return <CommonAnimatedDiv className="w-full pt-2 pb-2 text-center mx-auto mb-2">
     {
     loading ? <div className="text-left p-2"><Loader color="#eee"/></div>
@@ -58,7 +74,9 @@ export const SellOffersListView : FC <CProps> = ({
             <tr className="bg-gray-900">
                 <th className="sticky top-0" style={{width:"5%"}}>No.</th>
                 <th className="sticky top-0" style={{width:"20%"}}>NFT</th>
-                <th className="sticky top-0" style={{width:"15%"}}>Price</th>
+                <th className="sticky top-0 cursor-pointer" style={{width:"15%"}}
+                onClick={()=>{ sortByPrice();}}>Price{priceSortAsc ? 
+                <AiFillCaretDown className="ml-1 w-4 h-4 inline"/> : <AiFillCaretUp className="ml-1 w-4 h-4 inline"/>}</th>
                 {!forConnectedWallet && <th className="sticky top-0" style={{width:"15%"}}>By</th>}
                 <th className="sticky top-0" style={{width:"15%"}}>In Collection</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
