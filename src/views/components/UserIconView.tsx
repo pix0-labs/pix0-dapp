@@ -9,10 +9,12 @@ type props = {
     style? : React.CSSProperties,
 
     chosenImageUrl? : string, 
+
+    refreshAfter? : number, 
 }
 
 export const UserIconView : FC <props> = ({
-    className, style, chosenImageUrl 
+    className, style, chosenImageUrl, refreshAfter 
 }) =>{
 
     const {fetchCurrentUserProfileImage} = useUserContract();
@@ -34,6 +36,17 @@ export const UserIconView : FC <props> = ({
             setImageUrl(chosenImageUrl);
         }
     },[chosenImageUrl])
+
+    useEffect(()=>{
+
+        if ( refreshAfter ) {
+
+            setTimeout(()=>{
+                fetchImage();
+            },refreshAfter);
+        }
+
+    },[refreshAfter]);
 
     return (imageUrl ? <img src={imageUrl} className={className} style={style}/> :
     <FcBusinessman className={className} style={style}/>);

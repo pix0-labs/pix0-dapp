@@ -58,8 +58,9 @@ export const BalanceView : FC <props> = ({
     useEffect(()=>{
 
         if ( walletConnected  && (balanceAsStr === "" || address === "")){
-
-            fetchBalanceNow();
+            setTimeout(async ()=>{
+                await fetchBalanceNow();
+            }, 500);
         }
 
     },[walletConnected])
@@ -67,7 +68,7 @@ export const BalanceView : FC <props> = ({
     const menu =  <Popup contentStyle={{background:"#222",minWidth:"160px"}} 
     arrowStyle={{display:"none"}}
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
-    trigger={ <button className="ProfileImage"><UserIconView/></button>
+    trigger={ <button className="ProfileImage"><UserIconView refreshAfter={500}/></button>
    } position="bottom center">
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2 font-bold text-sm"
