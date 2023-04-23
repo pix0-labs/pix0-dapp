@@ -2,7 +2,7 @@ import { FC, useState, useCallback, useEffect } from "react";
 import useCollectionContract from "pix0-react";
 import { PulseLoader as Loader} from 'react-spinners';
 import { SmNftView } from "./SmNftView";
-import { AiFillCloseCircle } from "react-icons/ai";
+import { AiFillCloseCircle, AiFillInfoCircle } from "react-icons/ai";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
@@ -64,7 +64,8 @@ export const SelNftForSo : FC = () =>{
         tokens.length > 0 ?
         <>
         <div className="ml-1 rounded text-gray-100 p-2 font-bold bg-gray-900">Your Collectibales</div>    
-        {!showContractAddr && <div className="text-sm text-gray-100 ml-1 text-left">Please be aware that we can only display the NFTs you own through our COLLECTION CONTRACT. 
+        {!showContractAddr && <div className="text-sm text-gray-100 ml-1 text-left">
+        <AiFillInfoCircle className="mr-1 w-4 h-4 text-gray-100 inline"/>Please be aware that we can only display the NFTs you own through our COLLECTION CONTRACT. 
         If you own NFTs from a different contract, please click <a href="#" onClick={()=>{
             showOrHideContractAddr();
         }}>here</a> to specify the contract address and retrieve them.</div>}
