@@ -26,7 +26,8 @@ export const SmNftView : FC <props> = ({
         <img style={{maxWidth:"200px"}} src={token?.extension.image}/></div>
         <div className="mt-2 mb-2">
             <SellOfferFormPopup trigger={<button
-            className="p-2 font-bold bg-green-900 rounded-3xl text-sm text-gray-100">Create Sell Offer</button>}/>
+            className="p-2 font-bold bg-green-900 rounded-3xl text-sm text-gray-100">Create Sell Offer</button>}
+            token={token} tokenId={tokenId}/>
         </div>
     </div>
 }

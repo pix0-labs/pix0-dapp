@@ -23,7 +23,7 @@ export const SelNftForSo : FC = () =>{
         fetchTokens();
     },[fetchTokens]);
 
-    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto bg-gray-600 rounded">
+    return <CommonAnimatedDiv className="w-full p-2 items-center mx-auto bg-gray-700 rounded">
      {
 
         tokens === undefined ?
@@ -31,7 +31,7 @@ export const SelNftForSo : FC = () =>{
         <div className="text-left p-2"><Loader color="#eee"/></div>
         :
         tokens.length > 0 ?
-        <><div className="ml-2 text-gray-100 p-2 font-bold bg-gray-700">Your Collectibales</div>    
+        <><div className="ml-1 rounded text-gray-100 p-2 font-bold bg-gray-900">Your Collectibales</div>    
         <div className="flex flex-wrap items-stretch">
         {
             tokens?.map((t, _i)=>{
