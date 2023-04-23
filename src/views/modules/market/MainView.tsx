@@ -61,7 +61,9 @@ export const MainView : FC  = () =>{
                 return <SellOfferDetailsView offer={param2} backToList={backToList}/>
 
             case ViewType.SO_BY_SELECTED_COLLECTION :
-                return <SOBySelectedCollection collection_info={param2} toSellOfferDetails={toSellOfferDetails}/>
+                return <SOBySelectedCollection collection_info={param2} 
+                backToList={backToList}
+                toSellOfferDetails={toSellOfferDetails}/>
 
             default :
                 return <MarketView toSellOfferDetails={toSellOfferDetails} backToList={backToList}/>

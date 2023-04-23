@@ -16,7 +16,7 @@ type props = {
 }
 
 export const SOView : FC <props> = ({
-    sell_offer, index, toSellOfferDetails 
+    sell_offer, index, toSellOfferDetails,
 }) =>{
 
     const {token} = useNftLoader(sell_offer.token_id);

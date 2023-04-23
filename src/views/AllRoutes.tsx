@@ -14,7 +14,7 @@ export const AllRoutes : FC = () =>{
     const pageTitle = () => {
 
         if (matchMarket){
-            return "NFT Market - Pix0";
+            return "NFT Marketplace - Pix0";
         }
         else if (matchCreator){
             return "NFT Creation Tool For Creators - Pix0";
@@ -23,7 +23,7 @@ export const AllRoutes : FC = () =>{
             return "Collect Your Favorite NFTs - Pix0"
         }
         else {
-            return "NFT Market - Pix0";
+            return "NFT Marketplace - Pix0";
         }
         
     }
