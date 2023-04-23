@@ -30,17 +30,23 @@ export const SelNftForSo : FC = () =>{
 
     const fetchTokens = useCallback (async () =>{
         fetchDefaultTokens();
-    }, [fetchDefaultTokens]);
+    }, []);
 
     const retrieveTokens = async () =>{
 
         if (contractAddr && contractAddr.trim() !== "") {
-            setLoading(true);
-            setTokens([]);
-            let toks = await getTokens({}, contractAddr);
-            setTokens(toks);
 
-            setLoading(false);
+            try {
+                setLoading(true);
+                setTokens([]);
+                let toks = await getTokens({}, contractAddr);
+                setTokens(toks);
+                setLoading(false);
+            }
+            catch(e : any){
+                window.alert(`Error:${e.message}`);
+                setLoading(false);      
+            }
         }
         else {
             window.alert('Invalid contract address!');
@@ -85,6 +91,7 @@ export const SelNftForSo : FC = () =>{
          <button className="ml-2" onClick={async (e)=>{
             e.preventDefault();
             showOrHideContractAddr();   
+            setContractAddr(undefined);
             await fetchDefaultTokens();
         }}><AiFillCloseCircle className="inline w-5 h-5 text-gray-100"/></button>
         
@@ -96,7 +103,7 @@ export const SelNftForSo : FC = () =>{
             })
         }</div></>
         
-        : <CommonMessageDiv className="text-gray-100">You do NOT have any collectibles yet. Go Mint or Buy some NFTs</CommonMessageDiv>
+        : <CommonMessageDiv className="text-gray-100">You do NOT have any collectibles yet{contractAddr && <> from the contract address {contractAddr}</>}. Go Mint or Buy some NFTs</CommonMessageDiv>
     }
 
     </CommonAnimatedDiv>
