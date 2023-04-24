@@ -7,7 +7,14 @@ import { TextField, commonTextfieldClassName } from "../../components/TextField"
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
-export const SelNftForSo : FC = () =>{
+type props = {
+
+    closeModal? : () =>void, 
+}
+
+export const SelNftForSo : FC <props> = ({
+    closeModal
+}) =>{
 
     const [tokens, setTokens] = useState<string[]>();
 
@@ -69,7 +76,10 @@ export const SelNftForSo : FC = () =>{
         :
         tokens.length > 0 ?
         <>
-        <div className="ml-1 rounded text-gray-100 p-2 font-bold bg-gray-900">Your Collectibales</div>    
+        <div className="ml-1 rounded text-gray-100 p-2 font-bold bg-gray-900">Your Collectibales
+        {closeModal && <a className="close float-right mr-2 cursor-pointer" onClick={closeModal}>
+            &times;
+        </a>}</div>    
         {!showContractAddr && <div className="text-sm text-gray-100 ml-1 text-left">
         <AiFillInfoCircle className="mr-1 w-4 h-4 text-gray-100 inline"/>Please be aware that we can only display the NFTs you own through our COLLECTION CONTRACT. 
         If you own NFTs from a different contract, please click <a href="#" onClick={()=>{
