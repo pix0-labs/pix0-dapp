@@ -21,7 +21,7 @@ export const SOView : FC <props> = ({
 
     const {token} = useNftLoader(sell_offer.token_id);
 
-    return <div className="cursor-pointer bg-gray-700 hover:bg-gray-900 rounded-md 
+    return <div className="cursor-pointer bg-gray-700 hover:bg-stone-900 rounded-md 
     text-center py-2 mt-8 ml-4 mr-4 shadow-3xl min-h-200 IndDiv"
     onClick={()=>{
         if ( toSellOfferDetails) {
