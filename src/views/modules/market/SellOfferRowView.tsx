@@ -40,6 +40,6 @@ export const SellOfferRowView : FC <props> = ({
         <td className="sticky top-0 truncate" title={getCollectionName()} style={{width:"15%", maxWidth:"80px"}}>{getCollectionName()}</td>
         <td className="sticky top-0" style={{width:"10%"}} 
         title={timestampToTimeAgo( offer.date_created ?? 0).asDate}>{timestampToTimeAgo( offer.date_created ?? 0).short}</td>
-        <td className="block sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
+        <td className="NextArrow sm:table-cell"><FcNext style={{width:"30px",height:"30px"}}/></td>
     </tr>
 }

@@ -81,7 +81,7 @@ export const SellOffersListView : FC <CProps> = ({
                 {!forConnectedWallet && <th className="sticky top-0" style={{width:"15%"}}>By</th>}
                 <th className="sticky top-0" style={{width:"15%"}}>In Collection</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
-                <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th>
+                <th className="sticky top-0 NextArrow" style={{width:"10%"}}>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
