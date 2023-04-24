@@ -8,7 +8,12 @@
 
     .CloseMenuButt {
         display: none;      
-     }
+    }
+
+
+    .toggleButt {
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 1023px) {
@@ -33,7 +38,8 @@
 
     .toggleButt {
         margin-left: 10px;
-        margin-top:30px;
+        margin-top:50px;
+        display: inline-block;
     }
 }
 
