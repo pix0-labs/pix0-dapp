@@ -22,7 +22,7 @@ export const CollectionIndexRow : FC <props> = ({
 
     const dateCreated = timestampToTimeAgo(collectionIndex.date_created ?? 0);
 
-    return <tr className="hover:bg-gray-700 border-b border-slate-600 cursor-pointer"
+    return <tr className="hover:bg-gray-700 border-b border-slate-600 cursor-pointer text-sm"
     onClick={()=>{
         setPage(Page.Market, ViewType.SO_BY_SELECTED_COLLECTION, collectionIndex.collection_info );
     }}>
