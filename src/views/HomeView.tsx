@@ -14,20 +14,35 @@ export const HomeView : FC = () =>{
 
     const hideOrExpandSideBar = () =>{
 
-        setSideBarVisible(!sideBarVisible);
+        let e = document.getElementById("sideBarId");
+        let e2 = document.getElementById("toggleButtId");
+        
+        if (sideBarVisible) {
+
+            setSideBarVisible(false);
+
+            e?.classList.remove("ASideBarShow");
+            e2?.classList.remove("toggleButt"); 
+        }
+        else {
+
+            setSideBarVisible(true);
+            e?.classList.add("ASideBarShow");
+            e2?.classList.add("toggleButt");
+       
+        }
     }
 
 
     return  <div className="flex flex-row min-h-screen text-gray-800">
+        <ToggleButton onClick={hideOrExpandSideBar}/>
         <AnimatedDiv2 isVisible={sideBarVisible}> 
-        <aside id="sideBarId" className="w-0 lg:w-32 md:shadow ASideBar overflow-y-auto overflow-x-hidden">
+        <div id="sideBarId" className="w-0 lg:w-32 md:shadow ASideBar overflow-y-auto overflow-x-hidden">
         <SideBar/>
-        </aside>
+        </div>
         </AnimatedDiv2>
         <main className="main flex flex-col grow md:ml-0 h-screen mx-auto bg-black text-center overflow-y-auto overflow-x-hidden">
             <AllRoutes/>
-        </main>
-        <ToggleButton onClick={hideOrExpandSideBar}/>
-        
+        </main>  
       </div> ;
 }

@@ -5,10 +5,35 @@
         background-color:transparent;
         height: 100%;
     }
+
+    .CloseMenuButt {
+        display: none;      
+     }
 }
 
 @media only screen and (max-width: 1023px) {
     .ASideBar {
         width: 0px;
     }
+    
+    .ASideBarShow {
+        min-width: 260px;
+        padding: 0px 4px 0px 0px;
+        background-color:transparent;
+        height: 100%;
+        z-index : 100;
+        position: absolute;
+        top: 0;
+        left: 0;      
+    }
+
+    .CloseMenuButt {
+       display: inline-block;      
+    }
+
+    .toggleButt {
+        margin-left: 10px;
+        margin-top:30px;
+    }
 }
+

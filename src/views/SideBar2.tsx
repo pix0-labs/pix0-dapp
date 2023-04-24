@@ -57,9 +57,21 @@ export const SideBar : FC = () =>{
         submenuClassesSel : submenuClasses
     }
 
+
+    const closeSideBar = () =>{
+
+        let e = document.getElementById("sideBarId");
+        let e2 = document.getElementById("toggleButtId");
+        e?.classList.remove("ASideBarShow");
+        e2?.classList.remove("toggleButt"); 
+    
+    }
+
     return  <nav className="px-4 py-6 bg-gradient-to-r from-gray-600 to-gray-700 h-full">
 
     <div className="m-1">
+        <a onClick={()=>{closeSideBar()}} className="close float-right mr-2 cursor-pointer CloseMenuButt text-gray-100">
+        &times;</a>
         <img src={logo} style={{width:"120px"}} className="h-auto ml-4"/>
     </div>
 
