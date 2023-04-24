@@ -7,6 +7,7 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { SellOffer } from "pix0-js";
+import './css/so_list.css';
 
 export type CProps = {
 
@@ -72,7 +73,7 @@ export const SellOffersListView : FC <CProps> = ({
        <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
             <tr className="bg-gray-800">
-                <th className="sticky top-0" style={{width:"5%"}}>No.</th>
+                <th className="sticky top-0 NoCol">No.</th>
                 <th className="sticky top-0" style={{width:"20%"}}>NFT</th>
                 <th className="sticky top-0 cursor-pointer" style={{width:"15%"}}
                 onClick={()=>{ sortByPrice();}}>Price{priceSortAsc ? 

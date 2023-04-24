@@ -27,11 +27,10 @@ export const SellOfferRowView : FC <props> = ({
             toSellOfferDetails(offer);
         }
     }}>
-        <td className="block sm:table-cell">{(index ?? 0)+1}</td>
+        <td className="block sm:table-cell NoCol">{(index ?? 0)+1}</td>
         <td className="block sm:table-cell text-left">
         <TokenImageView image={image} className="sm_img_container"/>
-        <div className="font-bold text-sm truncate inline-block ml-2" 
-        style={{maxWidth:"100px"}}>{token?.extension.name}</div>
+        <div className="font-bold text-sm truncate TokName">{token?.extension.name}</div>
         </td>
         <td title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0" 
         

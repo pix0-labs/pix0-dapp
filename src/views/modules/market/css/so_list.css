@@ -1,0 +1,40 @@
+@media only screen and (min-width: 640px) {
+    .NoCol {
+        width:5%;
+        display: table-cell;
+    }
+}
+
+@media only screen and (max-width: 639px) {
+    .NoCol {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .TokName {
+        display: inline-block;
+        margin-left: 4px;
+        max-width: 120px;
+        margin-bottom: 2px;
+    }
+}
+
+
+@media only screen and (max-width: 1023px) {
+    .TokName {
+        display: inline-block;
+        margin-left: 4px;
+        max-width: 70px;
+        margin-bottom: 2px;
+    }
+}
+
+@media only screen and (max-width: 639px) {
+    .TokName {
+        display: block;
+        margin-top: 2px;
+        max-width: 50px;
+        margin-left: 0px;
+    }
+}
