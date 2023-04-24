@@ -113,7 +113,10 @@ export const SelNftForSo : FC <props> = ({
             })
         }</div></>
         
-        : <CommonMessageDiv className="text-gray-100">You do NOT have any collectibles yet{contractAddr && <> from the contract address {contractAddr}</>}. Go Mint or Buy some NFTs</CommonMessageDiv>
+        : <CommonMessageDiv className="text-gray-100">You do NOT have any collectibles yet{contractAddr && <> from the contract address {contractAddr}</>}. Go Mint or Buy some NFTs.
+        {closeModal && <a className="close float-right mr-2 cursor-pointer" onClick={closeModal}>
+            &times;
+        </a>}</CommonMessageDiv>
     }
 
     </CommonAnimatedDiv>
