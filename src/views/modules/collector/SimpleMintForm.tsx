@@ -8,6 +8,7 @@ import { TraitsForm } from "../creator/TraitsForm";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 import { ViewType } from "./CollectiblesView";
 import usePage from "../../../hooks/usePage";
+import { AiFillInfoCircle } from "react-icons/ai";
 import { Page } from "../../../sm/PageActions";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { isHttpOrHttpsUrl } from "../../../utils";
@@ -121,8 +122,10 @@ export const SimpleMintForm : FC <props> = ({
     <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-md w-full text-left shadow-md"
     style={{width:"99%"}}>
     <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
-        <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded-3xl pl-4">
-        Simple Mint lets you quickly mint a piece of art that you own as an NFT into your wallet 
+        <div className="mt-2 mb-4 font-bold bg-gray-600 p-2 rounded pl-4">
+        Simple Mint lets you quickly mint a piece of art that you truly own as an NFT into your wallet
+        <CommonAnimatedDiv duration={2} className="text-xs text-gray-100 mt-1"><AiFillInfoCircle className="inline w-4 h-4 mr-2"/>Please note this 
+        is currently just an experimental feature, which may experience some defects.</CommonAnimatedDiv> 
         </div>
         {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="mb-4">

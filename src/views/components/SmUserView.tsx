@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {useUserContract} from "pix0-react";
 import { User, USE_NFT_AS_PROFILE_IMG} from 'pix0-js';
 import { UserIconView } from "./UserIconView";
@@ -14,8 +14,9 @@ type props = {
 
     flat? : boolean,
 }
+
 export const SmUserView : FC <props> = ({
-    address, className, flat 
+    address, className, flat
 }) =>{
 
     const {getUser} = useUserContract();
@@ -24,21 +25,28 @@ export const SmUserView : FC <props> = ({
 
     const [profileImageTokenId, setProfileImageTokenId] = useState("");
 
-    const fetchUser = useCallback(async ()=>{
-
-        let u = await getUser(address);
-        setUser(u);
-        if (u.profile_image !== undefined && u.profile_image.pic_type === USE_NFT_AS_PROFILE_IMG){
-            setProfileImageTokenId(u.profile_image.value);
-        }
-    },[address]);
-
     const {image, isImagePlaceHolder} = useNftLoader(profileImageTokenId);
 
     useEffect(()=>{
-        fetchUser();
-    },[fetchUser]);
+       
+        getUser(address).then (u =>{
 
+            setUser(u);
+
+            if (u.profile_image !== undefined && u.profile_image.pic_type === USE_NFT_AS_PROFILE_IMG){
+                setProfileImageTokenId(u.profile_image.value);
+            }
+            
+        }).catch(_e =>{
+
+            setProfileImageTokenId("");
+            setUser(undefined);
+
+        });
+       
+    },[address]);
+
+   
     return <div className={className ?? "inline-block font-bold items-center"} title={`${user?.first_name} ${user?.last_name}`}>
         {isConnectedWallet(address) ? <>You</> : 
         <>{user && <div className={`text-sm${flat ? " inline mt-1 float-left mr-2" :""}`}>
