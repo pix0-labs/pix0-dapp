@@ -50,7 +50,7 @@ export const NFTsSelector: FC <NProps> = ({
                 })
             }</div>
         </div>
-        : <CommonMessageDiv>You do NOT have any collectibles yet. Go Mint or Buy some NFTs</CommonMessageDiv>
+        : <CommonMessageDiv className="text-gray-100">You do NOT have any collectibles yet. Go Mint or Buy some NFTs</CommonMessageDiv>
     }
 
     </div>
