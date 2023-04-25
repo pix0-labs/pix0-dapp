@@ -41,6 +41,8 @@ export const SellOfferForm : FC <props> = ({
 
     const [adminFee, setAdminFee] = useState<Coin>();
 
+    const [gasValue, setGasValue] = useState(420_000);
+
     useEffect(()=>{
         getCreateSellOfferFee()
         .then(c=>{
@@ -80,12 +82,19 @@ export const SellOfferForm : FC <props> = ({
                 denom : "uconst",
             }, allowed_direct_buy : allowedDirectBuy, nft : token,
             contract_addr : contractAddr, 
-        }, 400_000);
+        }, gasValue);
 
 
         setTxHash(tx);
        
         setProcessing(false);
+
+        if (tx instanceof Error) {
+
+            if ( tx.message.indexOf("out of gas")!== -1){
+
+            }
+        }
     }
 
 
@@ -131,6 +140,9 @@ export const SellOfferForm : FC <props> = ({
 
     }
 
+
+  
+
     return <div className="modal rounded bg-gray-800 w-full text-center text-gray-100 p-2">
     <div className="mb-2 header">{isEditMode ? <>Update Sell Offer</> : <>Create Sell Offer For</>}</div>
     {txHash && <div className="p-2"><TxHashDiv txHash={txHash}/></div>}
@@ -151,7 +163,6 @@ export const SellOfferForm : FC <props> = ({
         <input type="checkbox" checked={allowedDirectBuy} onChange={(e)=>{
             setAllowedDirectBuy(e.target.checked);}}/>
         </div> 
-
          <div className="mb-4"><button 
          disabled={processing}
          className="bg-green-900 p-2 text-base font-bold rounded-3xl text-gray-100"

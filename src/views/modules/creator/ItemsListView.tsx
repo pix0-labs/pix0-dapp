@@ -58,7 +58,7 @@ export const ItemsListView : FC <props> = ({
         fetchItems();
     },[]);
 
-    return <CommonAnimatedDiv className="text-center"><div className="w-10/2 p-2 overflow-x-auto">
+    return <CommonAnimatedDiv className="text-center"><div className="w-full overflow-x-hidden">
     {txHash && <TxHashDiv txHash={txHash}/>}
    
         {
@@ -72,7 +72,7 @@ export const ItemsListView : FC <props> = ({
             items.length > 0 
             ?
             <>
-            <table style={{width:"100%"}} className="table-auto mr-2 border-collapse border rounded-2xl overflow-hidden">
+            <table style={{width:"100%"}} className="table-auto mr-2 border-collapse border rounded overflow-hidden">
             <thead>
             <tr className="bg-gray-700">    
             <th className="px-4 py-2">No</th>

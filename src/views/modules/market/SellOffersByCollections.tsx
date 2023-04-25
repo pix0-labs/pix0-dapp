@@ -63,14 +63,14 @@ export const SellOffersByCollections : FC = () =>{
         fetchCollectionIndexes();
     },[fetchCollectionIndexes]);
 
-    return <div className="items-center pt-2">
+    return <div className="items-center pt-2 h-full">
     { loading ?
 
         <div className="text-left p-2"><Loader color="#eee"/></div>
         :
         indexes.length > 0 ?
 
-        <div className="text-left rounded overflow-x-hidden overflow-y-hidden w-full" style={{maxHeight:"320px"}}>
+        <div className="text-left rounded overflow-x-hidden overflow-y-auto w-full">
         <div className="text-gray-100 font-bold mb-2 mt-2">Newly listed collections</div>       
         <table className="text-left w-full mt-4 mr-4 border-collapse rounded-md" cellPadding={5} cellSpacing={3}>
         <thead>
