@@ -30,7 +30,7 @@ export const SocialSideBar : FC<props> = ({
         </a>
         <a target="_blank" 
         href={`https://www.reddit.com/submit?=url=${encodeURIComponent(url ?? currentUrl)}&title=${encodeURIComponent(title ?? "")}`} 
-        className="block py-2 px-3 bg-gray-500 hover:bg-gray-600 rounded-md text-white mb-2">
+        className="block py-2 px-3 bg-orange-500 hover:bg-orange-700 rounded-md text-white mb-2">
             <SiReddit className={iconClassName}/>
         </a>
 
