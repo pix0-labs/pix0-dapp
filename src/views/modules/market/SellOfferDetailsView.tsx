@@ -13,6 +13,7 @@ import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
 import { BuyOffersListView } from "./BuyOffersListView";
 import { SmUserView } from "../../components/SmUserView";
+import useBalanceQuerier from "../../../hooks/useBalanceQuerier";
 import { FaEdit} from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
 import '../../css/Img.css';
@@ -35,6 +36,9 @@ export const SellOfferDetailsView : FC <props> = ({
 
     const {cancelSellOffer, directBuy} = useMarketContract();
 
+    const {balanceAsUcoin, fetchBalanceNow} = useBalanceQuerier({});
+
+
     const cancelSellOfferNow = async () =>{
 
         setProcessing(true);
@@ -47,6 +51,14 @@ export const SellOfferDetailsView : FC <props> = ({
 
     const directBuyNow = async () =>{
         try {
+
+            await fetchBalanceNow();
+
+            //console.log("b::", balanceAsUcoin, offer.price.amount);
+            if ( balanceAsUcoin < parseInt(offer.price.amount)) {
+                setError('Insufficient balance!');
+                return;    
+            }
 
             if ( offer.offer_id === undefined){
                 setError('Undefined offer id');
@@ -70,7 +82,6 @@ export const SellOfferDetailsView : FC <props> = ({
 
     return <CommonAnimatedDiv style={{width:"100%"}}
     className="w-full text-left pt-2 bg-gray-900 text-center rounded-md p-4 mt-4">
-          {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="p-2 rounded-3xl bg-gray-700 text-gray-200 mb-4" style={{minHeight:"40px"}}>
             {backToList && <button style={{minWidth:"70px",border:"1px solid #ccc"}} 
             className="float-right rounded-3xl ml-2 text-sm" disabled={processing} onClick={(e)=>{
@@ -105,6 +116,7 @@ export const SellOfferDetailsView : FC <props> = ({
             Price : <span className="font-bold">{priceForDisplay}</span>
             </div>
         </div>
+        {txHash && <TxHashDiv txHash={txHash}/>}
         {(!isConnectedWallet(offer.owner) && offer.allowed_direct_buy) 
         && <button className="p-2 rounded-3xl bg-blue-800 text-gray-100 font-bold mb-4" 
         disabled={processing} style={{minWidth:"220px"}} onClick={async (e)=>{

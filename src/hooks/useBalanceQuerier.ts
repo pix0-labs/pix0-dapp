@@ -15,6 +15,8 @@ export function useBalanceQuerier(
 
     const [balance, setBalance] = useState(0);
 
+    const [balanceAsUcoin, setBalanceAsUcoin] = useState(0);
+
     const [balanceAsStr, setBalanceAsStr] = useState("");
 
     const [address, setAddress] = useState("");
@@ -27,6 +29,7 @@ export function useBalanceQuerier(
             setAddress(binfo.address);
             setBalanceAsStr(binfo.balanceAsStr);
             setBalance(binfo.balance);
+            setBalanceAsUcoin(binfo.balanceAsUcoin);
         }
        
     },[WalletConnectionStorage.get()]);
@@ -36,7 +39,7 @@ export function useBalanceQuerier(
     },[fetchBalance]);
 
 
-    return {balance, address, balanceAsStr, fetchBalance, fetchBalanceNow};
+    return {balance, address, balanceAsStr, fetchBalance, fetchBalanceNow, balanceAsUcoin};
 }
 
 export default useBalanceQuerier;
