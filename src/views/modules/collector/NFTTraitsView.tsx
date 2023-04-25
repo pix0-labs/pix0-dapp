@@ -47,7 +47,7 @@ export const NFTTraitsView : FC <props> = ({
     }
 
     return <div><div className="p-2">
-        Metadata<FcNext id="MetadataExpandIcon" className="ml-2 w-4 h-4 inline-block transform cursor-pointer"
+        <span className='font-bold text-sm'>Traits</span><FcNext id="MetadataExpandIcon" className="ml-2 w-4 h-4 inline-block transform cursor-pointer"
         onClick={()=>{
             toggleMetadataDetails();
         }}/></div>
