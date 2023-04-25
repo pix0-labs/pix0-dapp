@@ -40,7 +40,7 @@ export const SellOffersListView : FC <CProps> = ({
         catch(e: any){
             setLoading(false);
         }
-     }, []);
+     }, [forConnectedWallet]);
  
 
      useEffect(()=>{
@@ -76,7 +76,7 @@ export const SellOffersListView : FC <CProps> = ({
                 <th className="sticky top-0 NoCol">No.</th>
                 <th className="sticky top-0" style={{width:"20%"}}>NFT</th>
                 <th className="sticky top-0 cursor-pointer" style={{width:"15%"}}
-                onClick={()=>{ sortByPrice();}}>Price{priceSortAsc ? 
+                onClick={()=>{ sortByPrice();}}>Price (<span className="text-sm">CONST</span>){priceSortAsc ? 
                 <AiFillCaretDown className="ml-1 w-4 h-4 inline"/> : <AiFillCaretUp className="ml-1 w-4 h-4 inline"/>}</th>
                 {!forConnectedWallet && <th className="sticky top-0" style={{width:"15%"}}>By</th>}
                 <th className="sticky top-0" style={{width:"15%"}}>In Collection</th>

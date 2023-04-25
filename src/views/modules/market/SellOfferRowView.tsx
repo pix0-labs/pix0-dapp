@@ -21,6 +21,8 @@ export const SellOfferRowView : FC <props> = ({
 
     const {image, token, getCollectionName} = useNftLoader(offer.token_id);
 
+    const priceValue = toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom);
+
     return <tr className="border-b border-slate-600 hover:bg-gray-700 p-2 cursor-pointer"
     onClick={()=>{
         if (toSellOfferDetails) {
@@ -32,9 +34,8 @@ export const SellOfferRowView : FC <props> = ({
         <TokenImageView image={image} className="sm_img_container"/>
         <div className="font-bold text-sm truncate TokName">{token?.extension.name}</div>
         </td>
-        <td title={`${offer.price.amount}${offer.price.denom}`} className="sticky top-0 text-sm" 
-        
-        style={{width:"20%"}}>{toCoinStr(parseFloat(offer.price.amount),3, offer.price.denom)} CONST</td>
+        <td title={`${priceValue} CONST`} className="sticky top-0 text-sm" 
+        style={{width:"20%"}}>{priceValue}</td>
         {!forConnectedWallet && <td className="sticky top-0" 
         style={{width:"15%"}}><SmUserView address={offer.owner}/></td>}
         <td className="sticky top-0 truncate text-sm" title={getCollectionName()} style={{width:"15%", maxWidth:"80px"}}>{getCollectionName()}</td>
