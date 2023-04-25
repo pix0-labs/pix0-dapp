@@ -145,15 +145,15 @@ export const CollectionForm : FC <props>= ({
     </div>
 
     <div className="mb-4">
-        <CollectionLinksForm collection={collection} setCollection={setCollection}/>
-    </div>
-   
-    <div className="mb-4">
         <TreasuriesForm collection={collection} setCollection={setCollection}/>
     </div>
     <div className="mb-4">
         <RoyaltiesForm collection={collection} setCollection={setCollection}/>
     </div>
+    <div className="mb-4">
+        <CollectionLinksForm collection={collection} setCollection={setCollection}/>
+    </div>
+   
     <ProceedOrCancelButtons proceedAction={saveCollection} cancelAction={()=>{
         if ( setViewType)setViewType(ViewType.LIST);
         setPage(Page.CreateCollection, ViewType.LIST);
