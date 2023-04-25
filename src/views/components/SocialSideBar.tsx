@@ -1,4 +1,3 @@
-import { escape } from 'querystring';
 import { FC} from 'react';
 import { SiTwitter, SiFacebook, SiReddit} from 'react-icons/si';
 
