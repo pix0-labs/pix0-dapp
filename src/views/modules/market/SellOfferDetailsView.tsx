@@ -13,7 +13,6 @@ import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
 import { BuyOffersListView } from "./BuyOffersListView";
 import { SmUserView } from "../../components/SmUserView";
-import useBalanceQuerier from "../../../hooks/useBalanceQuerier";
 import { FaEdit} from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
 import '../../css/Img.css';
@@ -36,8 +35,6 @@ export const SellOfferDetailsView : FC <props> = ({
 
     const {cancelSellOffer, directBuy} = useMarketContract();
 
-    const {balanceAsUcoin, fetchBalanceNow} = useBalanceQuerier({});
-
 
     const cancelSellOfferNow = async () =>{
 
@@ -51,14 +48,6 @@ export const SellOfferDetailsView : FC <props> = ({
 
     const directBuyNow = async () =>{
         try {
-
-            await fetchBalanceNow();
-
-            //console.log("b::", balanceAsUcoin, offer.price.amount);
-            if ( balanceAsUcoin < parseInt(offer.price.amount)) {
-                setError('Insufficient balance!');
-                return;    
-            }
 
             if ( offer.offer_id === undefined){
                 setError('Undefined offer id');
