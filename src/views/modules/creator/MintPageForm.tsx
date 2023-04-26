@@ -1,15 +1,16 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import { MintPage, Collection} from "pix0-js";
+import { MintPage, Collection, mintPageLogoUrl} from "pix0-js";
 import { MintTemplatesSelPopup } from "./MintTemplatesSelPopup";
 import useTxHash from "../../../hooks/useTxHash";
 import { UploadField } from "../../components/UploadField";
 import { CollectionViewProps, ViewType} from './CollectionsView';
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
-import { AiOutlineCloudUpload } from "react-icons/ai";
+import { AiOutlineCloudUpload, AiFillCheckCircle } from "react-icons/ai";
 import {useMintPageContract, uploadToCloud} from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { Page } from "../../../sm/PageActions";
+import { Template , getTemplate} from "./MintTemplatesSel";
 import { PulseLoader as Loader } from "react-spinners";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
 import { Media } from "./ItemForm";
@@ -40,6 +41,8 @@ export const MintPageForm : FC <props>= ({
     const [uploaded, setUploaded] = useState(false);
 
     const [mediaUrl, setMediaUrl] = useState<string>();
+
+    const [chosenTemplate, setChosenTemplate] = useState<Template>();
 
     const {setPage} = usePage();
 
@@ -72,10 +75,13 @@ export const MintPageForm : FC <props>= ({
         collection_symbol : collection?.symbol ?? "",
     });
 
+    const [logoUrl, setLogoUrl] = useState<string>();
 
     useEffect(()=>{
         if ( isEditMode && mintPageToEdit){
             setMintPage(mintPageToEdit);
+            setChosenTemplate( getTemplate(mintPageToEdit.page_template ?? 0));
+            setLogoUrl(mintPageLogoUrl(mintPageToEdit));
         }
         else {
 
@@ -133,28 +139,37 @@ export const MintPageForm : FC <props>= ({
         onChange={(e)=>{
             setMintPage({...mintPage, description : e.target.value});
         }} value={mintPage.description}/>
-    
     </div>
    
     <div className="mb-4">
-        <div className="text-gray-100 text-xs font-bold mb-1">Upload Logo:</div>
+        {logoUrl && <div className="inline-block mr-2">
+        <img src={logoUrl} className="w-8 h-8" />
+        </div>}
+        <div className="text-gray-100 text-xs font-bold mb-1">{ isEditMode ? <>Change</> : <>Upload</>} Logo:</div>
         <UploadField label="Upload Logo" withImagePreview={true}
         useDragAndDrop={true}
         setMediaCallback={setMediaCallback} onClick={()=>{
             setMediaUrl(undefined)
         }}/>
         {mediaUrl && 
-        <button style={{minWidth:"120px"}} className="ml-2 p-1 bg-gray-500 text-gray text-sm font-bold rounded-3xl inline"
+        <button style={{minWidth:"120px"}} className="p-1 bg-gray-500 text-gray text-sm font-bold rounded-3xl block"
         disabled={uploading} onClick={async (e)=>{
             e.preventDefault();
             await uploadNow();
         }}>
-        { uploading ? <Loader size={6} color="white"/> : <><AiOutlineCloudUpload className="inline mr-2 w-5 h-5"/>Upload</>}</button>}
+        { uploading ? <Loader size={6} color="white"/> : <><AiOutlineCloudUpload 
+        className="inline mr-2 w-5 h-5"/>Upload</>}</button>}
         {uploaded && <CommonAnimatedDiv className="bg-gray-500 text-gray-100 rounded p-2">Uploaded!</CommonAnimatedDiv>}
     </div>
 
     <div className="mb-4">
-        <MintTemplatesSelPopup/>
+        <MintTemplatesSelPopup selectTemplate={(t)=>{
+            setChosenTemplate(t);
+            setMintPage({...mintPage, page_template: t.id});
+        }}/>
+        {chosenTemplate && 
+        <div className="text-gray-100 text-sm mt-1 font-bold"><AiFillCheckCircle 
+        className="mr-1 w-4 h-4 inline-block"/>{chosenTemplate.name}</div>}
     </div>
    
     <ProceedOrCancelButtons proceedAction={saveMintPage} cancelAction={()=>{

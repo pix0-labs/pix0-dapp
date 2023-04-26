@@ -23,6 +23,8 @@ export enum ViewType {
 
     CREATE_MINT_PAGE = 6,
 
+    EDIT_MINT_PAGE = 7,
+
     NONE = 0,
 }
 
@@ -78,6 +80,10 @@ export const CollectionsView : FC  = () =>{
                 case ViewType.CREATE_MINT_PAGE :
     
                     return <MintPageForm collection={viewTypeParam} viewType={viewType} setViewType={setViewType}/>
+    
+                case ViewType.EDIT_MINT_PAGE :
+    
+                    return <MintPageForm mintPageToEdit={viewTypeParam} isEditMode={true} viewType={viewType} setViewType={setViewType}/>
     
                 default :
     

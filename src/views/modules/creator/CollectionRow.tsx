@@ -1,10 +1,11 @@
-import { FC } from "react";
-import { Collection } from "pix0-js";
+import { FC, useEffect, useState } from "react";
+import { Collection, MintPage } from "pix0-js";
 import { statusText } from "./CollectionsListView";
 import { AiOutlineMore} from 'react-icons/ai';
 import useCollectionContract from "pix0-react";
 import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import {FiPlusCircle,FiTrash,FiEdit, FiTool,FiFolder} from 'react-icons/fi';
+import { useMintPageContract } from "pix0-react";
 import { Popup} from 'reactjs-popup';
 import { ViewType } from "./CollectionsView";
 import 'reactjs-popup/dist/index.css';
@@ -100,6 +101,22 @@ export const CollectionRow : FC <props> = ({
         }
     }
 
+    const {getMintPage} = useMintPageContract();
+
+    const [mintPage, setMintPage] = useState<MintPage>();
+
+    useEffect(()=>{
+
+        getMintPage({owner: collection.owner ?? "", collection_name : collection.name,
+        collection_symbol : collection.symbol})
+        .then (m =>{
+            setMintPage(m);
+        }).catch(_e=>{
+
+        })
+
+    },[collection]);
+
     const menu =  <Popup contentStyle={{background:"#222",minWidth:"240px"}} 
     arrowStyle={{color:"#222", border:"1px"}}
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
@@ -149,7 +166,7 @@ export const CollectionRow : FC <props> = ({
         }}
         ><FiFolder className="mr-2 inline mb-1"/>Manage Items</div>}
 
-        {collection.status === 1 && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        {(collection.status === 1 && mintPage === undefined) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2"
         onClick={(e)=>{
             e.preventDefault();
@@ -159,6 +176,18 @@ export const CollectionRow : FC <props> = ({
             }
         }}
         ><FiEdit className="mr-2 inline mb-1"/>Create Mint Page</div>}
+
+        {(mintPage !== undefined) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        bg-gray-800 text-gray-200 p-2"
+        onClick={(e)=>{
+            e.preventDefault();
+            if ( setViewType )
+            {
+                setViewType(ViewType.EDIT_MINT_PAGE, mintPage);
+            }
+        }}
+        ><FiEdit className="mr-2 inline mb-1"/>Edit Mint Page</div>}
+        
 
   </Popup>
 
