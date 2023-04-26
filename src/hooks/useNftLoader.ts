@@ -33,6 +33,8 @@ export function useNftLoader (tokenId : string) {
 
     const fetchToken = useCallback(async ()=>{
 
+        setImage(placeholder);
+     
         try {
             setLoading(true);
             let tk = await getNftTokenInfo(tokenId);

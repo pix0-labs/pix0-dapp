@@ -33,8 +33,12 @@ export const SmUserView : FC <props> = ({
 
         setUser(u);
 
-        if (u.profile_image !== undefined && u.profile_image.pic_type === USE_NFT_AS_PROFILE_IMG){
+        if (u.profile_image !== undefined && u.profile_image!== null && u.profile_image.pic_type === USE_NFT_AS_PROFILE_IMG){
             setProfileImageTokenId(u.profile_image.value);
+        }
+        else {
+
+            setProfileImageTokenId("");
         }
 
     },[address]);
