@@ -1,13 +1,17 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import { MintPage, Collection} from "pix0-js";
+import { MintPage, Collection, mintPageLogoUrl} from "pix0-js";
 import useTxHash from "../../../hooks/useTxHash";
+import { UploadField } from "../../components/UploadField";
 import { CollectionViewProps, ViewType} from './CollectionsView';
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
-import {useMintPageContract} from "pix0-react";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import {useMintPageContract, uploadToCloud} from "pix0-react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import { Page } from "../../../sm/PageActions";
+import { PulseLoader as Loader } from "react-spinners";
 import { ProceedOrCancelButtons } from "../../components/ProceedOrCancelButtons";
+import { Media } from "./ItemForm";
 import usePage from "../../../hooks/usePage";
 
 type props = CollectionViewProps & {
@@ -29,6 +33,12 @@ export const MintPageForm : FC <props>= ({
     const {txHash, setTxHash, setError} = useTxHash();
 
     const [processing, setProcessing] = useState(false);
+
+    const [uploading, setUploading] = useState(false);
+
+    const [uploaded, setUploaded] = useState(false);
+
+    const [mediaUrl, setMediaUrl] = useState<string>();
 
     const {setPage} = usePage();
 
@@ -79,6 +89,35 @@ export const MintPageForm : FC <props>= ({
     },[isEditMode, mintPageToEdit, collection]);
 
 
+    const setMediaCallback = async (_media: Media, _index? : number ) => 
+    {
+        setMediaUrl(_media.mediaDataUrl); 
+    }
+
+    const uploadNow = async () =>{
+        if ( mediaUrl ){
+            setUploading(true);
+            let url = await uploadToCloud(mediaUrl);
+            if ( url instanceof Error){
+                setError(url);
+                setMediaUrl(undefined);
+            }
+            else {
+                let newMintpage = {...mintPage, attributes : [{name : "LOGO", value : url}]};
+                setMintPage(newMintpage);
+                setMediaUrl(undefined);
+                
+                setUploaded(true);
+                setTimeout(()=>{
+                    setUploaded(false);
+                },5000);
+            }
+          
+            setUploading(false);
+        }
+    }
+    
+
     return <CommonAnimatedDiv className="text-center">
     <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-md w-full text-left shadow-md">
     <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
@@ -97,7 +136,20 @@ export const MintPageForm : FC <props>= ({
     
     </div>
     <div className="mb-4">
-       
+        <div className="text-gray-100 text-xs font-bold mb-1">Upload Logo:</div>
+        <UploadField label="Upload Logo" withImagePreview={true}
+        useDragAndDrop={true}
+        setMediaCallback={setMediaCallback} onClick={()=>{
+            setMediaUrl(undefined)
+        }}/>
+        {mediaUrl && 
+        <button style={{minWidth:"120px"}} className="ml-2 p-1 bg-gray-500 text-gray text-sm font-bold rounded-3xl inline"
+        disabled={uploading} onClick={async (e)=>{
+            e.preventDefault();
+            await uploadNow();
+        }}>
+        { uploading ? <Loader size={6} color="white"/> : <><AiOutlineCloudUpload className="inline mr-2 w-5 h-5"/>Upload</>}</button>}
+        {uploaded && <CommonAnimatedDiv className="bg-gray-500 text-gray-100 rounded p-2">Uploaded!</CommonAnimatedDiv>}
     </div>
    
     <ProceedOrCancelButtons proceedAction={saveMintPage} cancelAction={()=>{
