@@ -2,6 +2,7 @@ import { FC , useState, useEffect} from "react";
 import { CollectionsListView } from "./CollectionsListView";
 import { CollectionForm } from "./CollectionForm";
 import { ItemForm } from "./ItemForm";
+import { MintPageForm } from "./MintPageForm";
 import { ItemsListView } from "./ItemsListView";
 import { FiPlusCircle} from 'react-icons/fi';
 import { FcCancel} from 'react-icons/fc';
@@ -19,6 +20,8 @@ export enum ViewType {
     ADD_ITEM = 4,
 
     ITEMS_LIST =5,
+
+    CREATE_MINT_PAGE = 6,
 
     NONE = 0,
 }
@@ -71,6 +74,10 @@ export const CollectionsView : FC  = () =>{
                 case ViewType.ADD_ITEM :
     
                     return <ItemForm forCollection={viewTypeParam} viewType={viewType} setViewType={setViewType}/>
+    
+                case ViewType.CREATE_MINT_PAGE :
+    
+                    return <MintPageForm collection={viewTypeParam} viewType={viewType} setViewType={setViewType}/>
     
                 default :
     

@@ -148,6 +148,18 @@ export const CollectionRow : FC <props> = ({
             }
         }}
         ><FiFolder className="mr-2 inline mb-1"/>Manage Items</div>}
+
+        {collection.status === 1 && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        bg-gray-800 text-gray-200 p-2"
+        onClick={(e)=>{
+            e.preventDefault();
+            if ( setViewType )
+            {
+                setViewType(ViewType.CREATE_MINT_PAGE, collection);
+            }
+        }}
+        ><FiEdit className="mr-2 inline mb-1"/>Create Mint Page</div>}
+
   </Popup>
 
 
