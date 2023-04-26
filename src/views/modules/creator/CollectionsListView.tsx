@@ -89,7 +89,7 @@ export const CollectionsListView : FC <props> = ({
 
             collections.length > 0 
             ?
-            <table className="table-auto mr-2 border-collapse mt-4 mr-4 rounded-md overflow-hidden w-full">
+            <><table className="table-auto mr-2 border-collapse mt-4 mr-4 rounded-md overflow-hidden w-full">
             <thead>
             <tr className="bg-gray-700">  
             <td className="px-4 py-2 text-center">No</td>
@@ -108,6 +108,7 @@ export const CollectionsListView : FC <props> = ({
             })}
             </tbody>
             </table>
+           </>
             : 
             <div>   
                 <CommonMessageDiv>No collection found, add one!</CommonMessageDiv>

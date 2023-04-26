@@ -1,6 +1,7 @@
 import { FC , useState, useEffect} from "react";
 import { TextField, commonTextfieldClassName } from "../../components/TextField";
-import { MintPage, Collection, mintPageLogoUrl} from "pix0-js";
+import { MintPage, Collection} from "pix0-js";
+import { MintTemplatesSelPopup } from "./MintTemplatesSelPopup";
 import useTxHash from "../../../hooks/useTxHash";
 import { UploadField } from "../../components/UploadField";
 import { CollectionViewProps, ViewType} from './CollectionsView';
@@ -120,9 +121,8 @@ export const MintPageForm : FC <props>= ({
 
     return <CommonAnimatedDiv className="text-center">
     <div className="mxl-2 p-2 mt-4 border border-gray-600 rounded-md w-full text-left shadow-md">
-    <form className="shadow-md rounded-2xl px-8 pt-6 pb-8 mb-4 mt-4">
     <div className="mt-2 mb-4 bg-gray-600 p-2 rounded">
-    {isEditMode ? "Update" : "Create"} Minting Web Page For Collection<span 
+    {isEditMode ? "Update" : "Create"} Mint Web Page For Collection<span 
     className="font-bold ml-1">{collection?.name ?? mintPageToEdit?.collection_name} 
     &nbsp;({collection?.symbol ?? mintPageToEdit?.collection_symbol})</span>
     </div>
@@ -135,6 +135,7 @@ export const MintPageForm : FC <props>= ({
         }} value={mintPage.description}/>
     
     </div>
+   
     <div className="mb-4">
         <div className="text-gray-100 text-xs font-bold mb-1">Upload Logo:</div>
         <UploadField label="Upload Logo" withImagePreview={true}
@@ -151,12 +152,15 @@ export const MintPageForm : FC <props>= ({
         { uploading ? <Loader size={6} color="white"/> : <><AiOutlineCloudUpload className="inline mr-2 w-5 h-5"/>Upload</>}</button>}
         {uploaded && <CommonAnimatedDiv className="bg-gray-500 text-gray-100 rounded p-2">Uploaded!</CommonAnimatedDiv>}
     </div>
+
+    <div className="mb-4">
+        <MintTemplatesSelPopup/>
+    </div>
    
     <ProceedOrCancelButtons proceedAction={saveMintPage} cancelAction={()=>{
         if ( setViewType)setViewType(ViewType.LIST);
         setPage(Page.CreateCollection, ViewType.LIST);
 
     }} processing={processing} proceedButtonText={isEditMode ? "Edit" : "Create"}/>
-    </form>
     </div></CommonAnimatedDiv>
 }
