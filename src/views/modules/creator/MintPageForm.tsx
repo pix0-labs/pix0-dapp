@@ -143,7 +143,7 @@ export const MintPageForm : FC <props>= ({
    
     <div className="mb-4">
         {logoUrl && <div className="inline-block mr-2">
-        <img src={logoUrl} className="w-8 h-8" />
+        <img src={logoUrl} className="w-10 h-10" />
         </div>}
         <div className="text-gray-100 text-xs font-bold mb-1">{ isEditMode ? <>Change</> : <>Upload</>} Logo:</div>
         <UploadField label="Upload Logo" withImagePreview={true}
