@@ -25,7 +25,7 @@ export const MintTemplatesSelPopup : FC <props> = ({
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4" onClose={closeModal}
     trigger={ trigger ?? <button style={{minWidth:"100px"}} onClick={() => setOpen(o => !o)} 
     className="bg-green-800 font-bold pl-2 pr-2 p-1 text-gray-100 rounded-3xl text-xs">Choose A Template</button>}
-    closeOnEscape={false} closeOnDocumentClick={false} ><MintTemplatesSel selectTemplate={(tmpl)=>{
+    closeOnEscape={false} closeOnDocumentClick={true} ><MintTemplatesSel selectTemplate={(tmpl)=>{
         if (selectTemplate){
             selectTemplate(tmpl);
         }
