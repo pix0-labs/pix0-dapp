@@ -79,7 +79,7 @@ export const SellOffersListView : FC <CProps> = ({
                 onClick={()=>{ sortByPrice();}}>Price (<span className="text-sm">CONST</span>){priceSortAsc ? 
                 <AiFillCaretDown className="ml-1 w-4 h-4 inline"/> : <AiFillCaretUp className="ml-1 w-4 h-4 inline"/>}</th>
                 {!forConnectedWallet && <th className="sticky top-0" style={{width:"15%"}}>By</th>}
-                <th className="sticky top-0" style={{width:"15%"}}>In Collection</th>
+                <th className="sticky top-0 text-center" style={{width:"15%"}}>{ forConnectedWallet ? "Buy Offers" : "In Collection" }</th>
                 <th className="sticky top-0" style={{width:"10%"}}>&nbsp;</th> 
                 <th className="sticky top-0 NextArrow" style={{width:"10%"}}>&nbsp;</th>
             </tr>
