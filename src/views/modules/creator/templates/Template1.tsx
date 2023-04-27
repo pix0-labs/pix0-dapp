@@ -52,7 +52,7 @@ export const Template1 : FC <props> = ({
         if (!walletConnected){
 
             return <ConnectButton experimental={true}
-            className="p-2 mt-4 mb-2 bg-gray-800 w-3/5 hover:bg-cyan-900 
+            className="p-2 mt-4 mb-2 bg-gray-800 w-2/5 hover:bg-cyan-900 
             rounded-3xl mx-auto text-gray-100 font-bold"
             onError={(e : Error)=>{
                 setError(e);
@@ -113,15 +113,14 @@ export const Template1 : FC <props> = ({
             style={{maxWidth:"300px",maxHeight:"200px"}}/>
         </div>
         <div className="text-gray-100 text-sm font-bold mb-4 mx-auto text-center truncate">{mintPage.description}</div>
-        {txHash && <TxHashDiv txHash={txHash}/>}
-
+       
         <div className="border-t-8 border-b-8 border-double border-gray-500 p-4 w-64 mx-auto mb-4">
             Price :<span className="ml-2 font-bold">{toCoinStr(parseInt(totalFee().amount), 4)} CONST</span>
             <div className="text-xs">+ Admin Fee :<span className="ml-2 font-bold">
             ≈{toCoinStr(parseInt(adminFee?.amount ?? "0"), 5)} CONST   
             </span></div>
         </div>
-       
+        {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="text-gray-100 text-sm font-bold mb-4 mx-auto text-center">
         {mintOrConnButt()}
         </div>
