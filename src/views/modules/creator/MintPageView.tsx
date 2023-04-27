@@ -1,15 +1,14 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import {useMintPageContract} from 'pix0-react';
-import { MintPage} from 'pix0-js';
+import { MintPage } from 'pix0-js';
 import { Template1 } from "./templates/Template1";
+import { SocialSideBar } from "../../components/SocialSideBar";
 
 type props = {
     pageId : string, 
 }
 
-export const MintPageView : FC <props> = ({
-    pageId
-}) =>{
+export const MintPageView : FC <props> = ({pageId}) =>{
 
     const {getMintPageBy} = useMintPageContract();
 
@@ -35,5 +34,5 @@ export const MintPageView : FC <props> = ({
         return <></>
     }
 
-    return <>{switchView()}</>
+    return <>{switchView()}<SocialSideBar/></>
 }
