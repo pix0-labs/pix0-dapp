@@ -194,7 +194,7 @@ export const CollectionRow : FC <props> = ({
             e.preventDefault();
             window.open(`/page/${mintPage.id}`, "_blank");
         }}
-        ><FiEdit className="mr-2 inline mb-1"/>Open Mint Page</div> }
+        ><FiEdit className="mr-2 inline mb-1"/>Share Your Mint Page</div> }
        
         
 
