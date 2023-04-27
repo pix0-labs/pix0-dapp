@@ -9,7 +9,6 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { useCollectionInfo } from "../../../hooks/useCollectionInfo";
 import useCollectionContract from "pix0-react";
 import {useBalanceQuerier} from "../../../hooks/useBalanceQuerier";
-import { SmUserView } from "../../components/SmUserView";
 import { UserViewPopup} from "../user/UserViewPopup";
 import { PulseLoader as Loader  } from "react-spinners";
 import {toCoinStr} from 'pix0-js';
