@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC} from "react";
 import usePage from "../hooks/usePage";
 import { Page } from "../sm/PageActions";
 import { MainView as MarketView } from "./modules/market/MainView";

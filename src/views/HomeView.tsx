@@ -8,9 +8,7 @@ import './css/SideBar.css';
 
 export const HomeView : FC = () =>{
 
-
     const [sideBarVisible, setSideBarVisible] = useState(true);
-
 
     const hideOrExpandSideBar = () =>{
 
@@ -32,15 +30,15 @@ export const HomeView : FC = () =>{
     }
 
 
-    return  <div className="flex flex-row min-h-screen text-gray-800">
-        <ToggleButton onClick={hideOrExpandSideBar}/>
-        <AnimatedDiv2 isVisible={sideBarVisible}> 
-        <div id="sideBarId" className="w-0 lg:w-32 md:shadow ASideBar overflow-y-auto overflow-x-hidden">
+    return <div className="flex flex-row min-h-screen text-gray-800">
+    <ToggleButton onClick={hideOrExpandSideBar}/>
+    <AnimatedDiv2 isVisible={sideBarVisible}> 
+    <div id="sideBarId" className="w-0 lg:w-32 md:shadow ASideBar overflow-y-auto overflow-x-hidden">
         <SideBar/>
-        </div>
-        </AnimatedDiv2>
-        <main className="main flex flex-col grow md:ml-0 h-screen mx-auto bg-black text-center overflow-y-auto overflow-x-hidden">
-            <AllRoutes/>
-        </main>  
-      </div> ;
+    </div>
+    </AnimatedDiv2>
+    <main className="main flex flex-col grow md:ml-0 h-screen mx-auto bg-black text-center overflow-y-auto overflow-x-hidden">
+        <AllRoutes/>
+    </main>  
+  </div>
 }

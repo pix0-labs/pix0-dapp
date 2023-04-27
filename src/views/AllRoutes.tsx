@@ -9,8 +9,7 @@ export const AllRoutes : FC = () =>{
     const [matchCreator] = useRoute("/creator");
     const [matchCollector] = useRoute("/collector");
     const [matchMarket] = useRoute("/market");
-
-
+   
     const pageTitle = () => {
 
         if (matchMarket){

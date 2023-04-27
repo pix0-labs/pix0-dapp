@@ -113,6 +113,7 @@ export const CollectionRow : FC <props> = ({
             setMintPage(m);
         }).catch(_e=>{
 
+            setMintPage(undefined);
         })
 
     },[collection]);
@@ -166,7 +167,7 @@ export const CollectionRow : FC <props> = ({
         }}
         ><FiFolder className="mr-2 inline mb-1"/>Manage Items</div>}
 
-        {(collection.status === 1 && mintPage === undefined) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        {(collection.status === 1 && (mintPage === undefined || mintPage === null)) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2"
         onClick={(e)=>{
             e.preventDefault();
@@ -177,7 +178,7 @@ export const CollectionRow : FC <props> = ({
         }}
         ><FiEdit className="mr-2 inline mb-1"/>Create Mint Page</div>}
 
-        {(mintPage !== undefined) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        {(mintPage !== undefined && mintPage !== null) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2"
         onClick={(e)=>{
             e.preventDefault();
@@ -186,7 +187,15 @@ export const CollectionRow : FC <props> = ({
                 setViewType(ViewType.EDIT_MINT_PAGE, mintPage);
             }
         }}
-        ><FiEdit className="mr-2 inline mb-1"/>Edit Mint Page</div>}
+        ><FiEdit className="mr-2 inline mb-1"/>Edit Mint Page</div> }
+        
+        {(mintPage !== undefined && mintPage !== null) && <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        bg-gray-800 text-gray-200 p-2" onClick={(e)=>{
+            e.preventDefault();
+            window.open(`/page/${mintPage.id}`, "_blank");
+        }}
+        ><FiEdit className="mr-2 inline mb-1"/>Open Mint Page</div> }
+       
         
 
   </Popup>

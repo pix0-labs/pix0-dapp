@@ -44,8 +44,9 @@ export const MintPageForm : FC <props>= ({
 
     const [chosenTemplate, setChosenTemplate] = useState<Template>();
 
-    const {setPage} = usePage();
+    const [notToShowUploadLogo, setNotToShowUploadLogo] = useState(false);
 
+    const {setPage} = usePage();
 
     const saveMintPage = async () =>{
 
@@ -60,11 +61,8 @@ export const MintPageForm : FC <props>= ({
         }
         else {
 
-   
-            let tx = await createMintPage(mintPage);
-            
+            let tx = await createMintPage(mintPage);            
             setTxHash(tx);
-
         }
 
         setProcessing(false);
@@ -82,6 +80,7 @@ export const MintPageForm : FC <props>= ({
             setMintPage(mintPageToEdit);
             setChosenTemplate( getTemplate(mintPageToEdit.page_template ?? 0));
             setLogoUrl(mintPageLogoUrl(mintPageToEdit));
+            setNotToShowUploadLogo(true);
         }
         else {
 
@@ -142,17 +141,19 @@ export const MintPageForm : FC <props>= ({
     </div>
    
     <div className="mb-4">
-        {logoUrl && <div className="inline-block mr-2">
-        <img src={logoUrl} className="w-10 h-10" />
+        {logoUrl && <div className="block mb-2">
+        <img src={logoUrl} className="w-14 h-14" />
         </div>}
-        <div className="text-gray-100 text-xs font-bold mb-1">{ isEditMode ? <>Change</> : <>Upload</>} Logo:</div>
-        <UploadField label="Upload Logo" withImagePreview={true}
-        useDragAndDrop={true}
+        <div className="text-gray-100 text-xs font-bold mb-1">{ isEditMode ? 
+        <button className="bg-gray-600 rounded text-gray-100 p-1" onClick={(e)=>{
+            e.preventDefault();
+            setNotToShowUploadLogo(!notToShowUploadLogo);
+        }}>Change</button> : <>Upload</>} Logo:</div>
+        {!notToShowUploadLogo && <UploadField label="Upload Logo" withImagePreview={true} useDragAndDrop={true}
         setMediaCallback={setMediaCallback} onClick={()=>{
             setMediaUrl(undefined)
-        }}/>
-        {mediaUrl && 
-        <button style={{minWidth:"120px"}} className="p-1 bg-gray-500 text-gray text-sm font-bold rounded-3xl block"
+        }}/>}{mediaUrl && <button style={{minWidth:"120px"}} 
+        className="p-1 bg-gray-500 text-gray text-sm font-bold rounded-3xl block"
         disabled={uploading} onClick={async (e)=>{
             e.preventDefault();
             await uploadNow();
