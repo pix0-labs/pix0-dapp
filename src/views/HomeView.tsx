@@ -13,19 +13,23 @@ export const HomeView : FC = () =>{
     const hideOrExpandSideBar = () =>{
 
         let e = document.getElementById("sideBarId");
-        //let e2 = document.getElementById("toggleButtId");
+        let e2 = document.getElementById("toggleButtId");
         
         if (sideBarVisible) {
 
             setSideBarVisible(false);
             e?.classList.remove("ASideBarShow");
-          //  e2?.classList.remove("toggleButt"); 
+            e2?.classList.remove("toggleButt");
+            e2?.classList.add("toggleButtSL");
+             
         }
         else {
 
             setSideBarVisible(true);
             e?.classList.add("ASideBarShow");
-            //e2?.classList.add("toggleButt");
+            e2?.classList.remove("toggleButtSL");
+            e2?.classList.add("toggleButt");
+
         }
     }
 
