@@ -4,7 +4,7 @@ import { CollectionIndex} from 'pix0-js';
 import { CollectionIndexRow } from "./CollectionIndexRow";
 import { PulseLoader as Loader} from 'react-spinners';
 import { PaginationView } from "../../components/PaginationView";
-import { DEFAULT_PAGE_PARAM, usePagination } from "../../../hooks/usePagination";
+import { usePagination, PageParam } from "../../../hooks/usePagination";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
 
@@ -40,9 +40,16 @@ export const SellOffersByCollections : FC = () =>{
 
     const {getCollectionIndexes} = useMarketContract();
 
+    const PAGE_PARAM : PageParam  = {
+        totalCount : 0,
+        pageSize : 5,
+        siblingCount : 1,
+        currentPage : 1, 
+    }
+    
    
     const {start, setTotal, isPaginationAction, currentPage, 
-        setIsPaginationAction, onPageChange, total} = usePagination(DEFAULT_PAGE_PARAM);
+        setIsPaginationAction, onPageChange, total} = usePagination(PAGE_PARAM);
 
 
     const fetchCollectionIndexes = useCallback(async () =>{
@@ -52,7 +59,7 @@ export const SellOffersByCollections : FC = () =>{
             if ( !isPaginationAction)
                 setLoading(true);
 
-            let c = await getCollectionIndexes (undefined, 3 ,start ,DEFAULT_PAGE_PARAM.pageSize);
+            let c = await getCollectionIndexes (undefined, 3 ,start ,PAGE_PARAM.pageSize);
             if (c.collection_indexes.length > 0 ){
                 setIndexes(c.collection_indexes);
             }
@@ -106,7 +113,7 @@ export const SellOffersByCollections : FC = () =>{
 
         <tr>
             <td colSpan={5}>
-                <PaginationView param={{totalCount : total, pageSize :DEFAULT_PAGE_PARAM.pageSize, 
+                <PaginationView param={{totalCount : total, pageSize :PAGE_PARAM.pageSize, 
                 currentPage:currentPage, siblingCount:1}}
                 onPageChange={onPageChange}/>
             </td>

@@ -13,7 +13,7 @@ export interface PageParam {
 
 export const DEFAULT_PAGE_PARAM : PageParam  = {
     totalCount : 0,
-    pageSize : 3,
+    pageSize : 10,
     siblingCount : 1,
     currentPage : 1, 
 }
