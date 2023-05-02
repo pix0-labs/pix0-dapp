@@ -52,21 +52,23 @@ export const UserView : FC <props> = ({
         <UserIconView chosenImageUrl={image} 
         className="w-24 h-24 rounded-full mx-auto"/>
         </div>}
+        <div className="mb-4 bg-gray-800 p-1 rounded">
+        Username:<span className="ml-2 font-bold">@{user?.user_name}</span>
+        </div>
         <div className="mb-4">
-        Wallet:<span className="ml-2 font-bold">{shortenStringTo(user?.owner ?? "",10)}</span>
+        Wallet:<span className="ml-2 font-bold">{shortenStringTo(user?.owner ?? "",8)}</span>
         <span className="ml-2"><button className="bg-transparent p-1 rounded w-8 h-8 
         active:bg-gray-800 transition duration-3000" 
         onClick={(e)=>{
             e.preventDefault();
             copy(user?.owner ?? "");
-        }}><FaCopy className="inline"/></button></span>
+        }}><FaCopy className="inline" title={`Copy ${user?.owner ?? ""}`}/></button></span>
         </div>
-        <div className="mb-4 bg-gray-800 p-1 rounded">
-        Username:<span className="ml-2 font-bold">@{user?.user_name}</span>
-        </div>
+      
+        { (user?.first_name && user?.last_name) &&
         <div className="mb-4">
         Name:<span className="ml-2 font-bold">{user?.first_name} {user?.last_name}</span>
-        </div>
+        </div>}
         {user?.bio && <div className="mb-4">
         <div className="inline-block mr-2 mx-auto w-16">Bio:</div><div title={user?.bio} className="font-bold truncate h-16 max-h-16 leading-6">{user?.bio}</div>
         </div>}</>}
