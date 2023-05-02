@@ -3,6 +3,8 @@ import { useMarketContract } from 'pix0-react';
 import { CollectionIndex} from 'pix0-js';
 import { CollectionIndexRow } from "./CollectionIndexRow";
 import { PulseLoader as Loader} from 'react-spinners';
+import { PaginationView } from "../../components/PaginationView";
+import { DEFAULT_PAGE_PARAM, usePagination } from "../../../hooks/usePagination";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 
 
@@ -38,17 +40,28 @@ export const SellOffersByCollections : FC = () =>{
 
     const {getCollectionIndexes} = useMarketContract();
 
+   
+    const {start, setTotal, isPaginationAction, currentPage, 
+        setIsPaginationAction, onPageChange, total} = usePagination(DEFAULT_PAGE_PARAM);
+
+
     const fetchCollectionIndexes = useCallback(async () =>{
 
         try {
 
-            setLoading(true);
-            let c = await getCollectionIndexes (undefined, 3 ,0,10);
+            if ( !isPaginationAction)
+                setLoading(true);
+
+            let c = await getCollectionIndexes (undefined, 3 ,start ,DEFAULT_PAGE_PARAM.pageSize);
             if (c.collection_indexes.length > 0 ){
                 setIndexes(c.collection_indexes);
             }
-
-            setLoading(false);
+            setTotal( c.total ?? 0);
+            
+            if ( !isPaginationAction)
+                setLoading(false);
+            else 
+                setIsPaginationAction(false);
         }
         catch(e : any){
 
@@ -56,7 +69,7 @@ export const SellOffersByCollections : FC = () =>{
         }
        
        
-    }, []);
+    }, [start]);
 
 
     useEffect(()=>{
@@ -90,6 +103,14 @@ export const SellOffersByCollections : FC = () =>{
             })
         }
         </tbody>
+
+        <tr>
+            <td colSpan={5}>
+                <PaginationView param={{totalCount : total, pageSize :DEFAULT_PAGE_PARAM.pageSize, 
+                currentPage:currentPage, siblingCount:1}}
+                onPageChange={onPageChange}/>
+            </td>
+        </tr>
         </table>
         </div>
 

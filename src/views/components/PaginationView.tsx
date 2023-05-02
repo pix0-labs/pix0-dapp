@@ -13,7 +13,7 @@ export const PaginationView : FC <props> = ({
     param, onPageChange
 }) =>{
 
-    const pagiRange = usePagination(param);
+    const {paginationRange} = usePagination(param);
 
     const onNext = () => {
         if (onPageChange)
@@ -37,13 +37,13 @@ export const PaginationView : FC <props> = ({
         }
     };
 
-    const lastPage = pagiRange ? pagiRange[pagiRange.length - 1] : 1;
+    const lastPage = paginationRange ? paginationRange[paginationRange.length - 1] : 1;
 
     return (param.totalCount > param.pageSize) ? <div className="pagination-container text-gray-100">
          <button className="pagination-item" disabled ={param.currentPage === 1} onClick={onPrev}>
          &lt;
          </button>
-        {pagiRange?.map(pageNumber => {
+        {paginationRange?.map(pageNumber => {
             if (pageNumber === DOTS) {
                 return <div className="pagination-item dots">{DOTS}</div>;
             }

@@ -7,9 +7,9 @@ import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { PaginationView } from "../../components/PaginationView";
+import { usePagination, DEFAULT_PAGE_PARAM } from "../../../hooks/usePagination";
 import { SellOffer } from "pix0-js";
 import './css/so_list.css';
-import usePage from "../../../hooks/usePage";
 
 export type CProps = {
 
@@ -30,30 +30,24 @@ export const SellOffersListView : FC <CProps> = ({
 
     const [sos, setSos] = useState<SellOffer[]>([]);
 
-    const [total, setTotal] = useState(0);
-
-    const [start, setStart] = useState(0);
-
-    const pageSize = 10;
-
-    const [currentPage, setCurrentPage] = useState(1);
-
-    const onPgChange = (pg : number) => {
-        setCurrentPage(pg);
-        let st = (pg - 1) * pageSize;
-        setStart(st);
-    }
+    const {onPageChange, start, total, currentPage, setTotal,
+    isPaginationAction, setIsPaginationAction} = usePagination(DEFAULT_PAGE_PARAM);
 
     const[loading, setLoading] = useState(false);
 
     const fetchSellOffers = useCallback (async () =>{
         try {
-            setLoading(true);
-            let res = forConnectedWallet ? await getSellOffersOf(1,start, pageSize, connectedWallet()) : 
-            await getSellOffers(1, undefined, start, pageSize);
+            if ( !isPaginationAction )
+                setLoading(true);
+            let res = forConnectedWallet ? await getSellOffersOf(1,start, DEFAULT_PAGE_PARAM.pageSize, connectedWallet()) : 
+            await getSellOffers(1, undefined, start, DEFAULT_PAGE_PARAM.pageSize);
             setSos(res.offers);
             setTotal(res.total ?? 0 );
-            setLoading(false);    
+            if ( !isPaginationAction )
+                setLoading(false);  
+            else 
+                setIsPaginationAction(false);
+            
         }
         catch(e: any){
             setLoading(false);
@@ -113,8 +107,8 @@ export const SellOffersListView : FC <CProps> = ({
 
         <tr>
             <td colSpan={forConnectedWallet ? 7 : 8}>
-                <PaginationView param={{totalCount : total, pageSize :pageSize, currentPage:currentPage, siblingCount:1}}
-                onPageChange={onPgChange}/>
+                <PaginationView param={{totalCount : total, pageSize : DEFAULT_PAGE_PARAM.pageSize, 
+                currentPage:currentPage, siblingCount:1}} onPageChange={onPageChange}/>
             </td>
         </tr>
     </table>

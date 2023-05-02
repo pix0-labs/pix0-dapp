@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { range } from "../utils";
 
 
@@ -11,10 +11,36 @@ export interface PageParam {
 
 }
 
+export const DEFAULT_PAGE_PARAM : PageParam  = {
+    totalCount : 0,
+    pageSize : 3,
+    siblingCount : 1,
+    currentPage : 1, 
+}
+
+
 export const DOTS : string  = "...";
 
 export const usePagination = ( pageParam : PageParam) => {
+
+    const [total, setTotal] = useState(0);
+
+    const [start, setStart] = useState(0);
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const [isPaginationAction, setIsPaginationAction] = useState(false);
+
+
+    const onPageChange = (pg : number) => {
+        setCurrentPage(pg);
+        let st = (pg - 1) * pageParam.pageSize;
+        setStart(st);
+        setIsPaginationAction(true);
+    }
+
     const paginationRange = useMemo(() => {
+
         const totalPageCount = Math.ceil(pageParam.totalCount / pageParam.pageSize);
     
         // Pages count is determined as pageParam.siblingCount + firstPage + lastPage + currentPage + 2*DOTS
@@ -79,5 +105,6 @@ export const usePagination = ( pageParam : PageParam) => {
         }
     }, [pageParam.totalCount, pageParam.pageSize, pageParam.siblingCount, pageParam.currentPage]);
   
-    return paginationRange;
+    return {paginationRange, onPageChange, total, currentPage, 
+        start, setTotal,isPaginationAction, setIsPaginationAction};
 };
