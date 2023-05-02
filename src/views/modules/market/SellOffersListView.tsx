@@ -108,7 +108,7 @@ export const SellOffersListView : FC <CProps> = ({
         <tr>
             <td colSpan={forConnectedWallet ? 7 : 8}>
                 <PaginationView param={{totalCount : total, pageSize : DEFAULT_PAGE_PARAM.pageSize, 
-                currentPage:currentPage, siblingCount:1}} onPageChange={onPageChange}/>
+                currentPage:currentPage, siblingCount:1}} onPageChange={onPageChange} isPaginationAction={isPaginationAction}/>
             </td>
         </tr>
     </table>

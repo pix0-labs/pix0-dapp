@@ -115,7 +115,7 @@ export const SellOffersByCollections : FC = () =>{
             <td colSpan={5}>
                 <PaginationView param={{totalCount : total, pageSize :PAGE_PARAM.pageSize, 
                 currentPage:currentPage, siblingCount:1}}
-                onPageChange={onPageChange}/>
+                onPageChange={onPageChange} isPaginationAction={isPaginationAction}/>
             </td>
         </tr>
         </table>

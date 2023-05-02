@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { usePagination, PageParam, DOTS } from "../../hooks/usePagination";
+import { PulseLoader as Loader } from "react-spinners";
 import './css/Pagi.css';
 
 type props = {
@@ -7,10 +8,12 @@ type props = {
     param : PageParam,
 
     onPageChange?: (page : number) => void, 
+
+    isPaginationAction? : boolean,
 }
 
 export const PaginationView : FC <props> = ({
-    param, onPageChange
+    param, onPageChange, isPaginationAction
 }) =>{
 
     const {paginationRange} = usePagination(param);
@@ -55,9 +58,10 @@ export const PaginationView : FC <props> = ({
                 </button>
             );
         })}
-         <button className="pagination-item" disabled ={param.currentPage === lastPage } onClick={onNext}>
+        <button className="pagination-item" disabled ={param.currentPage === lastPage } onClick={onNext}>
         &gt;
         </button>
 
+        {isPaginationAction && <Loader className="ml-2 mt-3" color="white" size={5}/>}
     </div> : <></>;
 }
