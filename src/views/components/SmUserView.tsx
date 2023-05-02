@@ -13,10 +13,12 @@ type props = {
     className? : string, 
 
     flat? : boolean,
+
+    prefix? : string, 
 }
 
 export const SmUserView : FC <props> = ({
-    address, className, flat
+    address, className, flat, prefix 
 }) =>{
 
     const {getUser} = useUserContract();
@@ -50,7 +52,7 @@ export const SmUserView : FC <props> = ({
    
     return <div className={className ?? "inline-block font-bold items-center"} title={
         (user?.first_name && user.last_name) ? `${user?.first_name} ${user?.last_name}` : 
-        address}>
+        address}>{ (prefix !== undefined && prefix !== "") && <div className="inline mr-2 float-left">{prefix}</div>}
         {isConnectedWallet(address) ? <>You</> : 
         <>{user && <div className={`text-sm${flat ? " inline mt-1 float-left mr-2" :""}`}>
             {!isImagePlaceHolder() && <UserIconView chosenImageUrl={image} style={{width:"20px",height:"20px"}}

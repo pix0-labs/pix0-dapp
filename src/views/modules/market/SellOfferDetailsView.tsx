@@ -13,6 +13,7 @@ import { TokenImageView } from "../../components/TokenImageView";
 import { NFTTraitsView } from "../collector/NFTTraitsView";
 import { BuyOffersListView } from "./BuyOffersListView";
 import { SmUserView } from "../../components/SmUserView";
+import { UserViewPopup } from "../user/UserViewPopup";
 import { FaEdit} from 'react-icons/fa';
 import { GiCancel } from 'react-icons/gi';
 import '../../css/Img.css';
@@ -84,8 +85,9 @@ export const SellOfferDetailsView : FC <props> = ({
         <div className="mb-1 items-start">
         Sell Offer : <span className="font-bold">{offer.offer_id}</span>
         </div>
-        <div className="mb-1 items-start">
-        By : <SmUserView address={offer.owner} flat={true}/>
+        <div className="mb-1 items-start text-center">
+        <UserViewPopup address={offer.owner} flat={true} 
+        smUserViewClassName="p-2 mx-auto text-center inline-block" smUserViewPrefix="By:"/>
         </div>
         <div className="rounded p-2 bg-gray-700 mb-2">
             <div className="mb-1">

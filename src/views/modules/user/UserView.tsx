@@ -68,7 +68,7 @@ export const UserView : FC <props> = ({
         Name:<span className="ml-2 font-bold">{user?.first_name} {user?.last_name}</span>
         </div>
         {user?.bio && <div className="mb-4">
-        Bio:<div className="font-bold truncate h-16 max-h-16 leading-6">{user?.bio}</div>
+        <div className="inline-block mr-2 mx-auto w-16">Bio:</div><div title={user?.bio} className="font-bold truncate h-16 max-h-16 leading-6">{user?.bio}</div>
         </div>}</>}
     </div>
 }
