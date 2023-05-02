@@ -46,7 +46,7 @@ export const UserView : FC <props> = ({
         fetchUser();
     },[fetchUser]);
 
-    return <div style={{width:"98%"}} className="p-2 mx-auto bg-slate-700 rounded text-gray-100 text-center">
+    return <div style={{width:"98%"}} className="p-2 mx-auto bg-slate-700 w-2/5 rounded text-gray-100 text-center">
         {loading ? <Loader color="white" size={10}/> :
          <>{profileImage && <div className="mb-4">
         <UserIconView chosenImageUrl={image} 
@@ -61,14 +61,14 @@ export const UserView : FC <props> = ({
             copy(user?.owner ?? "");
         }}><FaCopy className="inline"/></button></span>
         </div>
-        <div className="mb-4">
+        <div className="mb-4 bg-gray-800 p-1 rounded">
         Username:<span className="ml-2 font-bold">@{user?.user_name}</span>
         </div>
         <div className="mb-4">
         Name:<span className="ml-2 font-bold">{user?.first_name} {user?.last_name}</span>
         </div>
         {user?.bio && <div className="mb-4">
-        Bio:<span className="ml-2 font-bold">{user?.bio}</span>
+        Bio:<div className="font-bold truncate h-16 max-h-16 leading-6">{user?.bio}</div>
         </div>}</>}
     </div>
 }
