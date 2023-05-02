@@ -6,6 +6,7 @@ import { SellOfferRowView } from "./SellOfferRowView";
 import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
 import { CommonMessageDiv } from "../../components/CommonMessageDiv";
 import { AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
+import { PaginationView } from "../../components/PaginationView";
 import { SellOffer } from "pix0-js";
 import './css/so_list.css';
 
@@ -92,6 +93,12 @@ export const SellOffersListView : FC <CProps> = ({
                 forConnectedWallet={forConnectedWallet}/>
             })
         }</tbody>
+
+        <tr>
+            <td colSpan={forConnectedWallet ? 7 : 8}>
+                <PaginationView param={{totalCount : 52, pageSize :10, currentPage:1, siblingCount:1}}/>
+            </td>
+        </tr>
     </table>
     </div>
     : <CommonMessageDiv>NO Active sell offers...</CommonMessageDiv>
