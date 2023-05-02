@@ -25,20 +25,22 @@
 }
 
 .pagination-item-sel {
-    padding: 0 12px;
+    padding: 0 4px 0 4px;
     height: 24px;
     text-align: center;
-    margin: auto 4px;
-    color: #0ab;
+    margin: auto;
+    margin-left: 4px;
+    margin-right: 4px;
+    color: #0de;
     display: flex;
     box-sizing: border-box;
     align-items: center;
     letter-spacing: 0.01071em;
     border-radius: 32px;
     line-height: 1.43;
-    font-size: 13px;
-    min-width: 32px;
-    border: 1px solid #aaa;
+    font-size: 12px;
+    font-weight: 900;
+    border: 1px solid #ddd;
 }
     
 .dots:hover {

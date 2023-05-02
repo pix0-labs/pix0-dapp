@@ -1,6 +1,6 @@
 {
   "name": "pix0-dapp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
