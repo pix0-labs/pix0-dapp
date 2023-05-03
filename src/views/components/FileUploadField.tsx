@@ -69,8 +69,8 @@ export   const checkIfFileValid = (file : any,
             return false;
         }
     }
-  
-    let allowedMax = (maxFileSize ?? 2*1024*1024);
+    
+    let allowedMax = (maxFileSize ?? 4*1024*1024);
     const isLtAllowed = file.size < allowedMax;
   
     if (!isLtAllowed) {
