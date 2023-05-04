@@ -1,4 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
+import { TxHashDiv } from "../../components/TxHashDiv";
+import useTxHash from "../../../hooks/useTxHash";
 import {useUserContract} from "pix0-react";
 import { TfiGift } from "react-icons/tfi";
 import { PulseLoader as Loader } from "react-spinners";
@@ -8,8 +10,25 @@ export const RewardsView : FC = () =>{
 
     const [totalRewards, setTotalRewards] = useState<Coin>();
 
-    const { getOutstandingRewards } = useUserContract();
+    const [processing, setProcessing] = useState(false);
 
+    const { getOutstandingRewards, withdrawRewards } = useUserContract();
+
+    const {txHash , setTxHash} = useTxHash();
+
+    const claimRewards = async () =>{
+
+        setProcessing(false);
+
+        let tx = await withdrawRewards();
+
+        console.log("tx:::", tx);
+
+        setTxHash(tx);
+
+        setProcessing(false);
+        
+    }
 
     const fetchRewards = useCallback(async ()=>{
 
@@ -26,6 +45,7 @@ export const RewardsView : FC = () =>{
 
 
     return <div className="p-2 text-gray-100 bg-gray-800 rounded w-full text-center">
+        {txHash && <TxHashDiv txHash={txHash}/>}
         <div className="mb-6 mx-auto">
             <TfiGift className="w-24 h-24 mx-auto"/>
         </div>
@@ -34,7 +54,11 @@ export const RewardsView : FC = () =>{
                 parseInt(totalRewards?.amount ?? "0"),4)} CONST</span>
         </div> : <Loader color="white" size={6}/>}
         
-        {totalRewards && <button className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl "
+        {totalRewards && <button onClick={async (e)=>{
+            e.preventDefault();
+            await claimRewards();
+        }}
+        className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl "
         style={{minWidth:"120px"}}>Claim</button>}
     </div>
 
