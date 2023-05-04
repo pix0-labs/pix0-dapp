@@ -2400,9 +2400,9 @@
   integrity sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==
 
 "@types/node@>=13.7.0":
-  version "18.16.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.1.tgz#5db121e9c5352925bb1f1b892c4ae620e3526799"
-  integrity sha512-DZxSZWXxFfOlx7k7Rv4LAyiMroaxa3Ly/7OOzZO8cBNho0YzAi4qlbrx8W27JGqG57IgR/6J7r+nOJWw6kcvZA==
+  version "18.16.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.3.tgz#6bda7819aae6ea0b386ebc5b24bdf602f1b42b01"
+  integrity sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==
 
 "@types/node@^16.7.13":
   version "16.18.13"
@@ -2447,9 +2447,9 @@
     "@types/react" "*"
 
 "@types/react-dom@^18.0.11":
-  version "18.2.1"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.1.tgz#663b2612feb5f6431a70207430d7c04881b87f29"
-  integrity sha512-8QZEV9+Kwy7tXFmjJrp3XUKQSs9LTnE0KnoUb0YCguWBiNW0Yfb2iBMYZ08WPg35IR6P3Z0s00B15SwZnO26+w==
+  version "18.2.3"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.2.3.tgz#2fe492bb0e67047b7b43e18166d8f50d44e0525e"
+  integrity sha512-hxXEXWxFJXbY0LMj/T69mznqOZJXNtQMqVxIiirVAZnnpeYiD4zt+lPsgcr/cfWg2VLsxZ1y26vigG03prYB+Q==
   dependencies:
     "@types/react" "*"
 
@@ -2463,9 +2463,9 @@
     csstype "^3.0.2"
 
 "@types/react@^18.0.28":
-  version "18.2.0"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.0.tgz#15cda145354accfc09a18d2f2305f9fc099ada21"
-  integrity sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==
+  version "18.2.2"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.2.tgz#2b6b1831d9c805b3790b6613becb5c8d2f3be479"
+  integrity sha512-4GZH3GLuqdZbDvOW5Pqqe7jgsDrKwkJfZMZLwFcgoz3CVDSvnMeG/Ihe44IbZ5Mqhh1fyTh5e44z6pNjIzzV8g==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -5323,9 +5323,9 @@ fraction.js@^4.2.0:
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
 framer-motion@^10.0.1:
-  version "10.12.4"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.4.tgz#905fdfa5b63dae53a63d2549b29aef6193eb78c7"
-  integrity sha512-9gLtv8T6dui0tujHROR+VM3kdJyKiFCFiD94IQE+0OuX6LaIyXtdVpviokVdrHSb1giWhmmX4yzoucALMx6mtw==
+  version "10.12.7"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-10.12.7.tgz#7a32a891d61b0cb0eaff54ebe054e96bb3815d9c"
+  integrity sha512-awOlKkDvcQpv92Pzw5KCWFehxzvqtGYZqnLvHWZvQFpIxaPsRMypRX+vhugpciOzQPkZbc37X4dJLIZLfGM/CQ==
   dependencies:
     tslib "^2.4.0"
   optionalDependencies:
@@ -7706,7 +7706,7 @@ pirates@^4.0.4:
   integrity sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==
 
 pix0-js@../../js/pix0-js:
-  version "1.4.7"
+  version "1.4.8"
   dependencies:
     "@archwayhq/arch3.js" "^0.1.0"
     "@cosmjs/proto-signing" "^0.29.5"
