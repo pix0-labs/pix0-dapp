@@ -66,7 +66,7 @@ export const BalanceView : FC <props> = ({
 
     },[walletConnected])
 
-    const menu =  <Popup contentStyle={{background:"#222",minWidth:"160px"}} 
+    const menu =  <Popup nested contentStyle={{background:"#222",minWidth:"160px"}} 
     arrowStyle={{display:"none"}}
     className="bg-gray-900 text-gray-300 w-64 p-4 m-4"
     trigger={ <button className="ProfileImage"><UserIconView refreshAfter={500}/></button>
@@ -79,9 +79,7 @@ export const BalanceView : FC <props> = ({
         }}
         >User Profile</div>
        
-        <UserClaimPopup trigger={ <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
-        bg-gray-800 text-gray-200 p-2 font-bold text-sm">Claim Rewards</div>
-        }/>
+        <UserClaimPopup />
         
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2 font-bold text-sm" onClick={async (e)=>{

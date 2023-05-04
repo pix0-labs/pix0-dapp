@@ -6,7 +6,15 @@ import { TfiGift } from "react-icons/tfi";
 import { PulseLoader as Loader } from "react-spinners";
 import { Coin, toCoinStr} from 'pix0-js';
 
-export const RewardsView : FC = () =>{
+
+type props = {
+
+    closeModal? : () =>void, 
+}
+
+export const RewardsView : FC <props> = ({
+    closeModal
+}) =>{
 
     const [totalRewards, setTotalRewards] = useState<Coin>();
 
@@ -18,11 +26,11 @@ export const RewardsView : FC = () =>{
 
     const claimRewards = async () =>{
 
-        setProcessing(false);
+        setProcessing(true);
 
         let tx = await withdrawRewards();
 
-        console.log("tx:::", tx);
+        //console.log("tx:::", tx);
 
         setTxHash(tx);
 
@@ -46,19 +54,24 @@ export const RewardsView : FC = () =>{
 
     return <div className="p-2 text-gray-100 bg-gray-800 rounded w-full text-center">
         {txHash && <TxHashDiv txHash={txHash}/>}
+        {closeModal && <a className="close float-right mr-2 cursor-pointer" onClick={closeModal}>
+            &times;
+        </a>}
         <div className="mb-6 mx-auto">
             <TfiGift className="w-24 h-24 mx-auto"/>
         </div>
         {totalRewards ? <div className="p-2 mt-4 text-lg">
-            Available Rewards:<span className="ml-2 font-bold">{toCoinStr(
-                parseInt(totalRewards?.amount ?? "0"),4)} CONST</span>
+            Available Rewards In Pool:<div className="mt-1 font-bold">{toCoinStr(
+                parseInt(totalRewards?.amount ?? "0"),4)} CONST</div>
         </div> : <Loader color="white" size={6}/>}
         
-        {totalRewards && <div onClick={async (e)=>{
+        {totalRewards && <button disabled={processing} 
+        onClick={async (e)=>{
+            e.preventDefault();
             await claimRewards();
         }}
         className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl cursor-pointer"
-        style={{minWidth:"120px"}}>Claim</div>}
+        style={{minWidth:"120px"}}>{processing ? <Loader size={6} color="white"/> : <>Claim</>}</button>}
     </div>
 
 }
