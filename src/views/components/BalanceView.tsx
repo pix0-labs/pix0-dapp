@@ -6,6 +6,7 @@ import useWalletState from "../../hooks/useWalletState";
 import { shortenStringTo,copy } from "pix0-react";
 import { UserIconView } from "./UserIconView";
 import { Popup} from 'reactjs-popup';
+import { UserClaimPopup } from "../modules/user/UserClaimPopup";
 import { ConnectButton, disconnectWallet } from "pix0-react";
 import './css/BalanceView.css';
 import { Page } from "../../sm/PageActions";
@@ -77,6 +78,11 @@ export const BalanceView : FC <props> = ({
             setPage(Page.UserProfile);
         }}
         >User Profile</div>
+       
+        <UserClaimPopup trigger={ <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
+        bg-gray-800 text-gray-200 p-2 font-bold text-sm">Claim Rewards</div>
+        }/>
+        
         <div className="rounded hover:bg-gray-600 hover:cursor-pointer 
         bg-gray-800 text-gray-200 p-2 font-bold text-sm" onClick={async (e)=>{
             e.preventDefault();
