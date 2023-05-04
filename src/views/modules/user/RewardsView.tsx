@@ -54,12 +54,11 @@ export const RewardsView : FC = () =>{
                 parseInt(totalRewards?.amount ?? "0"),4)} CONST</span>
         </div> : <Loader color="white" size={6}/>}
         
-        {totalRewards && <button onClick={async (e)=>{
-            e.preventDefault();
+        {totalRewards && <div onClick={async (e)=>{
             await claimRewards();
         }}
-        className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl "
-        style={{minWidth:"120px"}}>Claim</button>}
+        className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl cursor-pointer"
+        style={{minWidth:"120px"}}>Claim</div>}
     </div>
 
 }
