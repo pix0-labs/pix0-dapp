@@ -20,11 +20,13 @@ export const RewardsView : FC <props> = ({
 
     const [processing, setProcessing] = useState(false);
 
-    const { getOutstandingRewards, withdrawRewards } = useUserContract();
+    const { getOutstandingRewards, withdrawRewards, withdrawTokenRewards } = useUserContract();
+
+    const [initiated, setInitiated] = useState(false);
 
     const {txHash , setTxHash} = useTxHash();
 
-    const claimRewards = async () =>{
+    const initRewards = async () =>{
 
         setProcessing(true);
 
@@ -35,8 +37,28 @@ export const RewardsView : FC <props> = ({
         setTxHash(tx);
 
         setProcessing(false);
+
+        if ( !(tx instanceof Error)){
+
+            setInitiated(true);
+        }
         
     }
+
+    const claimRewards = async () =>{
+
+        setProcessing(true);
+
+        let tx = await withdrawTokenRewards();
+
+        setTxHash(tx);
+
+        setProcessing(false);
+
+        setInitiated(false);
+            
+    }
+
 
     const fetchRewards = useCallback(async ()=>{
 
@@ -68,10 +90,18 @@ export const RewardsView : FC <props> = ({
         {totalRewards && <button disabled={processing} 
         onClick={async (e)=>{
             e.preventDefault();
-            await claimRewards();
+
+            if ( !initiated){
+                await initRewards();
+            }
+            else {
+
+                await claimRewards();
+            }
         }}
         className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl cursor-pointer"
-        style={{minWidth:"120px"}}>{processing ? <Loader size={6} color="white"/> : <>Claim</>}</button>}
+        style={{minWidth:"120px"}}>{processing ? <Loader size={6} color="white"/> : 
+        <>{initiated ? "Claim" : "Initiate"}</>}</button>}
     </div>
 
 }
