@@ -57,7 +57,7 @@ export const RewardsView : FC <props> = ({
 
         setProcessing(false);
 
-        setInitiated(false);
+        //setInitiated(false);
 
         setClaimed(true);
             
