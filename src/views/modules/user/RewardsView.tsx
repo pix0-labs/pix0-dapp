@@ -24,13 +24,15 @@ export const RewardsView : FC <props> = ({
 
     const [initiated, setInitiated] = useState(false);
 
+    const [claimed, setClaimed] = useState(false);
+
     const {txHash , setTxHash} = useTxHash();
 
     const initRewards = async () =>{
 
         setProcessing(true);
 
-        let tx = await withdrawRewards();
+        let tx = await withdrawRewards(300_000);
 
         //console.log("tx:::", tx);
 
@@ -56,6 +58,8 @@ export const RewardsView : FC <props> = ({
         setProcessing(false);
 
         setInitiated(false);
+
+        setClaimed(true);
             
     }
 
@@ -85,9 +89,10 @@ export const RewardsView : FC <props> = ({
         {totalRewards ? <div className="p-2 mt-4 text-lg">
             Available Rewards In Pool:<div className="mt-1 font-bold">{toCoinStr(
                 parseInt(totalRewards?.amount ?? "0"),4)} CONST</div>
+            <div className="text-xs text-gray-300 mt-2">You'll be able to claim up to 5% daily of the total available rewards</div>
         </div> : <Loader color="white" size={6}/>}
         
-        {totalRewards && <button disabled={processing} 
+        {totalRewards && <button disabled={processing || claimed} 
         onClick={async (e)=>{
             e.preventDefault();
 
@@ -101,7 +106,7 @@ export const RewardsView : FC <props> = ({
         }}
         className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl cursor-pointer"
         style={{minWidth:"120px"}}>{processing ? <Loader size={6} color="white"/> : 
-        <>{initiated ? "Claim" : "Initiate"}</>}</button>}
+        <>{initiated ? `Claim${claimed ? "ed" :""}` : "Initiate"}</>}</button>}
     </div>
 
 }
