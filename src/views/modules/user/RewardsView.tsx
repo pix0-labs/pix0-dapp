@@ -32,7 +32,7 @@ export const RewardsView : FC <props> = ({
 
         setProcessing(true);
 
-        let tx = await withdrawRewards(300_000);
+        let tx = await withdrawRewards(true, 220_000);
 
         //console.log("tx:::", tx);
 
