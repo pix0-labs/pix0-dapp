@@ -31,6 +31,8 @@ export const SmUserView : FC <props> = ({
 
     const fetchUser = useCallback( async () =>{
 
+        setUser(undefined);
+
         let u = await getUser(address);
 
         setUser(u);
@@ -57,7 +59,7 @@ export const SmUserView : FC <props> = ({
         <>{user && <div className={`text-sm${flat ? " inline mt-1 float-left mr-2" :""}`}>
             {!isImagePlaceHolder() && <UserIconView chosenImageUrl={image} style={{width:"20px",height:"20px"}}
             className="mr-1 inline rounded-full"/>}
-            {`@${user.user_name}`}</div>}
+            {user.user_name ? `@${user.user_name}` : ""}</div>}
         <div className={`text-sm${flat ? " inline bg-gray-600 pl-1 pr-1 rounded" :""}`}>{shortenStringTo(address,8)}</div></>}
     </div>
 }
