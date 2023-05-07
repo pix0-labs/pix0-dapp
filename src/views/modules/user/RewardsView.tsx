@@ -1,8 +1,11 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { TxHashDiv } from "../../components/TxHashDiv";
 import useTxHash from "../../../hooks/useTxHash";
-import {useUserContract} from "pix0-react";
+import { CommonAnimatedDiv } from "../../components/CommonAnimatedDiv";
+import {useUserContract as useUserContractReact} from "pix0-react";
+import useUserContract from "../../../hooks/useUserContract";
 import { TfiGift } from "react-icons/tfi";
+import { timestampToTimeAgo } from "pix0-react";
 import { PulseLoader as Loader } from "react-spinners";
 import { Coin, toCoinStr} from 'pix0-js';
 
@@ -20,7 +23,9 @@ export const RewardsView : FC <props> = ({
 
     const [processing, setProcessing] = useState(false);
 
-    const { getOutstandingRewards, withdrawRewards, withdrawTokenRewards } = useUserContract();
+    const { getOutstandingRewards, withdrawRewards, withdrawTokenRewards } = useUserContractReact();
+
+    const {currentUser} = useUserContract();
 
     const [initiated, setInitiated] = useState(false);
 
@@ -78,6 +83,11 @@ export const RewardsView : FC <props> = ({
     },[fetchRewards]);
 
 
+    const lastClaimedDate : { short? : string, 
+    long? : string, asDate?: string } | undefined = 
+    currentUser?.last_reward_claimed ?
+    timestampToTimeAgo(currentUser?.last_reward_claimed) : undefined;
+
     return <div className="p-2 text-gray-100 bg-gray-800 rounded w-full text-center">
         {txHash && <TxHashDiv txHash={txHash}/>}
         {closeModal && <a className="close float-right mr-2 cursor-pointer" onClick={closeModal}>
@@ -89,7 +99,8 @@ export const RewardsView : FC <props> = ({
         {totalRewards ? <div className="p-2 mt-4 text-lg">
             Available Rewards In Pool:<div className="mt-1 font-bold">{toCoinStr(
                 parseInt(totalRewards?.amount ?? "0"),4)} CONST</div>
-            <div className="text-xs text-gray-300 mt-2">You'll be able to claim up to 5% daily of the total available rewards</div>
+            <CommonAnimatedDiv className="text-xs text-gray-300 mt-2">Check In And Claim Rewareds<br/>
+            You'll be able to claim up to 5% daily of the total available rewards</CommonAnimatedDiv>
         </div> : <Loader color="white" size={6}/>}
         
         {totalRewards && <button disabled={processing || claimed} 
@@ -106,7 +117,11 @@ export const RewardsView : FC <props> = ({
         }}
         className="mt-4 font-bold mb-4 bg-green-800 text-gray-100 p-2 rounded-3xl cursor-pointer"
         style={{minWidth:"120px"}}>{processing ? <Loader size={6} color="white"/> : 
-        <>{initiated ? `Claim${claimed ? "ed" :""}` : "Initiate"}</>}</button>}
+        <>{initiated ? `Claim${claimed ? "ed" :""}` : "Check In"}</>}</button>}
+        {lastClaimedDate && 
+        <div title={lastClaimedDate.asDate} className="mt-4 text-xs text-gray-300">Last Claim Date: 
+        {lastClaimedDate.short}</div>}
+    
     </div>
 
 }
